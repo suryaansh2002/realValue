@@ -1,16 +1,12 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
 
 const offersSchema = new mongoose.Schema({
-  text: {
-    type: String,
-    required: true
+  image: {
+    type: String, // Store image as binary data
+    required: true, // Assuming image is required
   },
-  name: {
-    type: String,
-    default: ''
-  }
-});
+})
 
-const Offers = mongoose.model('Offers', offersSchema);
+const Offers = mongoose.model('Offers', offersSchema)
 
-module.exports = Offers;
+module.exports = Offers

@@ -71,24 +71,36 @@ const Navbar = () => {
           </Space>
         }
       >
-        <div className='flex flex-col items-center mt-4 space-y-4'>
+        <div className='flex flex-col items-center mt-4 space-y-4' style={{ fontSize: '20px' }}>
           <Link legacyBehavior href='/'>
-            <a className='text-white font-bold'>Home</a>
+            <a className='text-white font-bold' onClick={onClose}>
+              Home
+            </a>
           </Link>
           <Link legacyBehavior href='/buy'>
-            <a className='text-white font-bold'>Buy Car</a>
+            <a className='text-white font-bold' onClick={onClose}>
+              Buy Car
+            </a>
           </Link>
           <Link legacyBehavior href='/sell'>
-            <a className='text-white font-bold'>Sell Car</a>
+            <a className='text-white font-bold' onClick={onClose}>
+              Sell Car
+            </a>
           </Link>
           <Link legacyBehavior href='/finance'>
-            <a className='text-white font-bold'>Finance</a>
+            <a className='text-white font-bold' onClick={onClose}>
+              Finance
+            </a>
           </Link>
           <Link legacyBehavior href='/about'>
-            <a className='text-white font-bold'>About Us</a>
+            <a className='text-white font-bold' onClick={onClose}>
+              About Us
+            </a>
           </Link>
           <Link legacyBehavior href='/contact'>
-            <a className='text-white font-bold'>Contact Us</a>
+            <a className='text-white font-bold' onClick={onClose}>
+              Contact Us
+            </a>
           </Link>
         </div>
       </Drawer>

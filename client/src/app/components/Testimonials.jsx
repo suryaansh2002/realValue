@@ -72,7 +72,7 @@ const Testimonials = () => {
               {testimonials.map((item) => (
                 <SwiperSlide style={{ paddingBottom: "30px" }}>
                   <div className="max-w-xs mx-auto bg-white rounded-xl p-5 shadow-2xl m-2 flex flex-col h-full">
-                    <p className="text-black flex-grow">{item.text}</p>
+                    <p className="text-black flex-grow h-[10rem]">{item.text}</p>
                     <div className="mt-5 flex items-center">
                       <div className="ml-3">
                         <h3 className="font-semibold text-gray-600">

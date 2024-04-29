@@ -11,3 +11,22 @@ export const formatAmount = (amount) => {
   // Return the formatted amount with 'Lakh' appended
   return `₹${formattedAmount} Lakh`;
 };
+
+export const EMICalcLite = (principal, rate, tenure) => {
+  const principalAmount = parseFloat(principal);
+  const rateOfInterest = parseFloat(rate);
+  const tenureMonths = parseFloat(tenure);
+
+  if (principalAmount && rateOfInterest && tenureMonths) {
+    const rate = rateOfInterest / 100 / 12;
+    const emi =
+      (principalAmount * rate * Math.pow(1 + rate, tenureMonths)) /
+      (Math.pow(1 + rate, tenureMonths) - 1);
+
+    return Math.round(emi);
+  }
+};
+
+export const AmountWithCommas = (amount) => {
+  return amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+};

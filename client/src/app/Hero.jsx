@@ -15,35 +15,59 @@ import { CarOutlined } from '@ant-design/icons';
 const imageStyles = {
   width: '3rem',
   height: '2rem',
-  display: 'inline'
-}
+  display: 'inline',
+};
 const brands = [
   {
-    label: <div><Image style={imageStyles}  src={maruti}/> Maruti Suzuki</div>,
+    label: (
+      <div>
+        <Image style={imageStyles} src={maruti} alt='maruti' /> Maruti Suzuki
+      </div>
+    ),
     key: '1',
   },
   {
-    label:  <div><Image style={imageStyles} src={hyundai}/> Hyundai</div>,
+    label: (
+      <div>
+        <Image style={imageStyles} src={hyundai} alt='hyundai' /> Hyundai
+      </div>
+    ),
     key: '2',
   },
   {
-    label:  <div><Image style={imageStyles} src={tata}/> Tata</div>,
+    label: (
+      <div>
+        <Image style={imageStyles} src={tata} alt='tata' /> Tata
+      </div>
+    ),
     key: '3',
   },
   {
-    label:  <div><Image style={imageStyles} src={mahindra}/> Mahindra</div>,
+    label: (
+      <div>
+        <Image style={imageStyles} src={mahindra} alt='mahindra' /> Mahindra
+      </div>
+    ),
     key: '4',
   },
   {
-    label:  <div><Image style={imageStyles} src={honda}/> Honda</div>,
+    label: (
+      <div>
+        <Image style={imageStyles} src={honda} alt='honda' /> Honda
+      </div>
+    ),
     key: '5',
   },
   {
-    label:  <div><Image style={imageStyles} src={kia}/> Kia</div>,
+    label: (
+      <div>
+        <Image style={imageStyles} src={kia} alt='kia' /> Kia
+      </div>
+    ),
     key: '6',
   },
   {
-    label:  <a href='/buy'>Checkout all cars</a>,
+    label: <a href='/buy'>Checkout all cars</a>,
     key: '7',
   },
 ];
@@ -120,23 +144,25 @@ const Hero = () => {
           >
             Or get started directly by...
           </p>
-       <div class="button-container">
-  <span class="button-wrapper mr-3">
-    <ButtonCloud options={brands} label='Brand' />
-  </span>
-  <span class="button-wrapper mr-3">
-    <ButtonCloud options={segments} label='Segment' />
-  </span>
-  <span class="button-wrapper mr-3 md:mt-9">
-    <ButtonCloud options={budgets} label='Budget' />
-  </span>
-  <span class="button-wrapper mr-3 md:mt-9">
-    <a href='#' class='inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800 md:mt-10'>
-      Search
-    </a>
-  </span>
-</div>
-
+          <div className='button-container'>
+            <span className='button-wrapper mr-3'>
+              <ButtonCloud options={brands} label='Brand' />
+            </span>
+            <span className='button-wrapper mr-3'>
+              <ButtonCloud options={segments} label='Segment' />
+            </span>
+            <span className='button-wrapper mr-3 md:mt-9'>
+              <ButtonCloud options={budgets} label='Budget' />
+            </span>
+            <span className='button-wrapper mr-3 md:mt-9'>
+              <a
+                href='#'
+                className='inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800 md:mt-10'
+              >
+                Search
+              </a>
+            </span>
+          </div>
         </div>
       </div>
     </section>

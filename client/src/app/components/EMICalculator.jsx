@@ -148,12 +148,12 @@ const EMICalculator = () => {
                     className='w-1/2 ml-5'
                   />
                 </div>
-                <button
+                {/* <button
                   onClick={calculateEmi}
                   className='bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600'
                 >
                   Calculate EMI
-                </button>
+                </button> */}
               </div>
             </div>
             <div className='bg-white p-4 rounded-lg shadow-lg'>

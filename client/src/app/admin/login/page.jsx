@@ -53,8 +53,7 @@ const Login = () => {
           <></>
         )}
         <form className='mt-8 space-y-6' onSubmit={handleSubmit}>
-          <div className='rounded-md shadow-sm -space-y-px'>
-            <div>
+          <div className='rounded-md shadow-sm -space-y-px'><div>
               <label htmlFor='username' className='sr-only'>
                 Username
               </label>
@@ -69,8 +68,7 @@ const Login = () => {
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
               />
-            </div>
-            <div>
+            </div><div>
               <label htmlFor='password' className='sr-only'>
                 Password
               </label>
@@ -85,17 +83,14 @@ const Login = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-            </div>
-          </div>
-          <div>
+            </div></div><div>
             <button
               type='submit'
               className='group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
             >
               Login
             </button>
-          </div>
-        </form>
+          </div></form>
         <div className='text-center'>
           <p>Don't have an account?</p>
           <Link className='text-indigo-600 hover:text-indigo-700' href='/admin/signup'>

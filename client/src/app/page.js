@@ -7,6 +7,7 @@ import Footer from './components/Footer';
 import Offers from './components/Offers';
 import Testimonials from './components/Testimonials';
 import Features from './Features';
+import Faq from './components/Faq';
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
       <FeaturedCars />
       <Features />
       <Highlights />
+      <Faq/>
       <Offers />
       <Testimonials />
     </div>

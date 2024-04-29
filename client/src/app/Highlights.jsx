@@ -3,13 +3,13 @@ import React from 'react';
 const Highlights = () => {
   return (
     <div className='mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8'>
-      <h2 className='text-4xl font-bold text-gray-900 mb-5 mt-32'>Why Choose Us?</h2>
+      <h2 className='text-4xl font-bold text-gray-900 mb-5 mt-12'>Why Choose Us?</h2>
 
       <div
-        className='flex flex-wrap gap-10 items-center py-10'
+        className='flex md:flex-row flex-col flex-wrap gap-5 items-center py-10'
         style={{ maxWidth: '1200px', margin: '0 auto' }}
       >
-        <div className='mb-5' style={{ width: '300px' }}>
+        <div className='mb-5 md:w-[25vw] w-[80vw]'>
           <iframe
             width='100%'
             height='250'
@@ -21,7 +21,7 @@ const Highlights = () => {
             allowFullScreen
           ></iframe>
         </div>
-        <div className='mb-5' style={{ width: '300px' }}>
+        <div className='mb-5 md:w-[25vw] w-[80vw]'>
           <iframe
             width='100%'
             height='250'
@@ -33,7 +33,7 @@ const Highlights = () => {
             allowFullScreen
           ></iframe>
         </div>
-        <div className='mb-5' style={{ width: '300px' }}>
+        <div className='mb-5 md:w-[25vw] w-[80vw]'>
           <iframe
             width='100%'
             height='250'

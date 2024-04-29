@@ -102,25 +102,25 @@ const Hero = () => {
             className='max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400'
             // style={{ marginTop: '-25px' }}
           >
-            Or get started directly by,
+            Or get started directly by...
           </p>
-          <span className='mr-3'>
-            <ButtonCloud options={models} label='Model' />
-          </span>
-          <span className='mr-3'>
-            <ButtonCloud options={segments} label='Segment' />
-          </span>
-          <span className='mr-3 md:mt-9'>
-            <ButtonCloud options={budgets} label='Budget' />
-          </span>
-          <span className='mr-3 md:mt-9'>
-            <a
-              href='#'
-              className='inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800 md:mt-10'
-            >
-              Search
-            </a>
-          </span>
+       <div class="button-container">
+  <span class="button-wrapper mr-3">
+    <ButtonCloud options={models} label='Model' />
+  </span>
+  <span class="button-wrapper mr-3">
+    <ButtonCloud options={segments} label='Segment' />
+  </span>
+  <span class="button-wrapper mr-3 md:mt-9">
+    <ButtonCloud options={budgets} label='Budget' />
+  </span>
+  <span class="button-wrapper mr-3 md:mt-9">
+    <a href='#' class='inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800 md:mt-10'>
+      Search
+    </a>
+  </span>
+</div>
+
         </div>
       </div>
     </section>

@@ -49,6 +49,7 @@ const Offers = () => {
       });
       setNewOfferImage(null);
       fetchOffers();
+      window.location.reload()
     } catch (error) {
       console.error('Error adding offer:', error);
     } finally {
@@ -66,6 +67,7 @@ const Offers = () => {
             type='file'
             onChange={handleImageChange}
             className='border border-gray-300 rounded-md py-2 px-4 mb-2'
+            id='offer-file'
           />
           <button
             onClick={handleAddOffer}

@@ -23,42 +23,41 @@ const Features = () => {
             Why we stand out from the rest
           </p>
         </div>
-        <div className='space-y-8 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-12 md:space-y-0'>
+        <div className='md:space-y-8 space-y-12 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-12 md:space-y-0 md:text-left text-center items-center'>
           <div>
-            <div className='flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900'>
+            <div className='flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 w-[90vw] dark:bg-primary-900'>
               <FaAward color='white' size={50} style={{ marginTop: '5px' }} />
             </div>
             <h3 className='mb-2 text-xl font-bold dark:text-white'>Quality Selection</h3>
           </div>
           <div>
-            <div className='flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900'>
+            <div className='flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 w-[90vw]  dark:bg-primary-900'>
               <FaRupeeSign color='white' size={50} style={{ marginBottom: '5px' }} />
             </div>
             <h3 className='mb-2 text-xl font-bold dark:text-white'>Competitive Pricing</h3>
           </div>
           <div>
-            <div className='flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900'>
+            <div className='flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 w-[90vw] dark:bg-primary-900'>
               <FaCar color='white' size={50} />
             </div>
             <h3 className='mb-2 text-xl font-bold dark:text-white'>Certified Pre-Owned Program </h3>
           </div>
           <div>
-            <div className='flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900'>
+            <div className='flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 w-[90vw] dark:bg-primary-900'>
               <FaHandshake color='white' size={50} />
             </div>
             <h3 className='mb-2 text-xl font-bold dark:text-white'>Easy Financing Options</h3>
           </div>
           <div>
-            <div className='flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900'>
+            <div className='flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 w-[90vw] dark:bg-primary-900'>
               <BiHappyBeaming color='white' size={50} />
             </div>
             <h3 className='mb-2 text-xl font-bold dark:text-white'>Customer Satisfaction</h3>
           </div>
           <div>
-            <div className='flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900'>
+            <div className='flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12  w-[90vw] dark:bg-primary-900'>
               <FaRecycle color='white' size={50} />
             </div>
-
             <h3 className='mb-2 text-xl font-bold dark:text-white'>Refurbished to the best</h3>
           </div>
         </div>

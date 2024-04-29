@@ -10,25 +10,41 @@ import mahindra from '../images/brands/mahindra.png';
 import tata from '../images/brands/tata.png';
 import maruti from '../images/brands/maruti.png';
 import { Icon } from '@ant-design/icons';
-
 import { CarOutlined } from '@ant-design/icons';
 
-const models = [
+const imageStyles = {
+  width: '3rem',
+  height: '2rem',
+  display: 'inline'
+}
+const brands = [
   {
-    label: 'Maruti',
+    label: <div><Image style={imageStyles}  src={maruti}/> Maruti Suzuki</div>,
     key: '1',
-    // icon: <Icon component={() => <Image src={maruti} alt='maruti' width={30} height={30} />} />,
-    icon: <CarOutlined />,
   },
   {
-    label: 'Hyundai',
+    label:  <div><Image style={imageStyles} src={hyundai}/> Hyundai</div>,
     key: '2',
-    icon: <CarOutlined />,
   },
   {
-    label: 'Honda',
+    label:  <div><Image style={imageStyles} src={tata}/> Tata</div>,
     key: '3',
-    icon: <CarOutlined />,
+  },
+  {
+    label:  <div><Image style={imageStyles} src={mahindra}/> Mahindra</div>,
+    key: '4',
+  },
+  {
+    label:  <div><Image style={imageStyles} src={honda}/> Honda</div>,
+    key: '5',
+  },
+  {
+    label:  <div><Image style={imageStyles} src={kia}/> Kia</div>,
+    key: '6',
+  },
+  {
+    label:  <a href='/buy'>Checkout all cars</a>,
+    key: '7',
   },
 ];
 
@@ -106,7 +122,7 @@ const Hero = () => {
           </p>
        <div class="button-container">
   <span class="button-wrapper mr-3">
-    <ButtonCloud options={models} label='Model' />
+    <ButtonCloud options={brands} label='Brand' />
   </span>
   <span class="button-wrapper mr-3">
     <ButtonCloud options={segments} label='Segment' />

@@ -9,6 +9,9 @@ const ButtonCloud = ({ options, label }) => {
 
   const [currentItem, setCurrentItem ] = useState('')
   const handleMenuClick = (e) => {
+    if(label == 'Brand' && e.key=='7'){
+      return
+    }
     const obj = options.find((item)=>item.key == e.key)
     setCurrentItem(obj.label)
   };
@@ -21,7 +24,10 @@ const ButtonCloud = ({ options, label }) => {
       else{
         tempObj = JSON.parse(tempObj)
       }
+      if(label=='model'){
+      tempObj[label] = currentItem.innerHTML
 
+      }
       tempObj[label] = currentItem
       localStorage.setItem('filters', JSON.stringify(tempObj))
     }

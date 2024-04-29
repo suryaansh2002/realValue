@@ -6,7 +6,9 @@ export const formatAmount = (amount) => {
   const lakhs = num / 100000;
 
   // Format the lakhs amount with commas
-  const formattedAmount = lakhs.toLocaleString(undefined, { maximumFractionDigits: 2 });
+  const formattedAmount = lakhs.toLocaleString(undefined, {
+    maximumFractionDigits: 2,
+  });
 
   // Return the formatted amount with 'Lakh' appended
   return `₹${formattedAmount} Lakh`;
@@ -28,5 +30,5 @@ export const EMICalcLite = (principal, rate, tenure) => {
 };
 
 export const AmountWithCommas = (amount) => {
-  return amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  return amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 };

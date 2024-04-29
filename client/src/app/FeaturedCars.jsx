@@ -74,49 +74,53 @@ const FeaturedCars = () => {
               1024: { slidesPerView: 3, spaceBetween: 32 },
             }}
           >
-            {carData.map((car) => (
-              <SwiperSlide key={car._id} style={{ paddingBottom: "40px" }}>
-                <div className="max-w-sm rounded overflow-hidden shadow-lg">
-                  <Image
-                    className="w-full"
-                    src={car.images[0]}
-                    width={300}
-                    height={300}
-                    alt={`${car.brand} ${car.model}`}
-                  />
-                  <div className="md:mb-0 px-6 py-4 flex align-top flex-col md:flex-row justify-between items-center">
-                    <div className="font-bold text-xl mb-2">
-                      {car.brand} {car.model}
-                      <span className="text-gray-900 xs:text-sm xs:ml-6 font-light text-base inline md:block">
-                      {car.variant}
-                    </span>
+            {carData &&
+              carData.map((car) => (
+                <SwiperSlide key={car._id} style={{ paddingBottom: "40px" }}>
+                  <div className="max-w-sm rounded overflow-hidden shadow-lg">
+                    <Image
+                      className="w-full"
+                      src={car.images[0]}
+                      width={300}
+                      height={300}
+                      alt={`${car.brand} ${car.model}`}
+                    />
+
+                    <div className="md:mb-0 md:pb-0 px-6 py-4 align-top  justify-between">
+                      <div className="font-bold text-xl mb-2  w-[80%] inline-block">
+                        {car.brand} {car.model}
+                        <span className="text-gray-900 xs:text-sm ml-2  inline-block font-light text-base ">
+                          {car.variant}
+                        </span>
+                      </div>
+                      <div className="text-gray-700 font-semibold text-base inline-block">
+                        {car.year}
+                      </div>
                     </div>
-                    <div className="md:mt-0 md:ml-4 translate-y-4 flex flex-row md:flex-col">
-                      <div className="text-gray-800 font-bold text-lg mb-2">
+
+                    <div className="mt-2 ml-6 ">
+                      <div className="text-gray-800 font-bold text-lg mb-2 inline-block w-[60%]">
                         {formatAmount(car.price)}
                       </div>
-                      <p className="text-green-600 text-base md:translate-0 translate-x-4 translate-y-0.5">EMI ₹16,115/m</p>
+                      <div className="text-green-600 text-basetranslate-0  inline-block">
+                        EMI ₹16,115/m
+                      </div>
                     </div>
+
+                    <div className="px-6 pt-2 pb-4 flex flex-wrap">
+                      <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+                        {car.kmDriven}km
+                      </span>
+                      <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+                        {car.fuelType}
+                      </span>
+                      <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+                        {toTitleCase(car.transmissionType)}
+                      </span>
                     </div>
-                    <div className="md:mb-0 px-6 py-4 flex align-top flex-col md:flex-row justify-between items-center">
-                    <p className="text-gray-700 font-semibold text-base">
-                      {car.year}
-                    </p>
-                    </div>
-                  <div className="px-6 pt-2 pb-4 flex flex-wrap">
-                    <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-                      {car.kmDriven}km
-                    </span>
-                    <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-                      {car.fuelType}
-                    </span>
-                    <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-                      {toTitleCase(car.transmissionType)}
-                    </span>
                   </div>
-                </div>
-              </SwiperSlide>
-            ))}
+                </SwiperSlide>
+              ))}
           </Swiper>
         )}
       </div>

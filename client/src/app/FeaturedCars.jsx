@@ -5,7 +5,7 @@ import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import carImage from "../images/car-image.png";
 import Image from "next/image";
-import { formatAmount } from "./utils";
+import { formatAmount, AmountWithCommas, EMICalcLite } from './utils';
 
 function toTitleCase(str) {
   return str.replace(/\w\S*/g, function (txt) {
@@ -103,7 +103,7 @@ const FeaturedCars = () => {
                         {formatAmount(car.price)}
                       </div>
                       <div className="text-green-600 text-basetranslate-0  inline-block">
-                        EMI ₹16,115
+                      EMI ₹{AmountWithCommas(EMICalcLite(car.price, 10, 36))}
                       </div>
                     </div>
 

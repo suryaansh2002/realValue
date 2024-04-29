@@ -71,11 +71,17 @@ const BookingsPage = () => {
     fetchBookings();
   }, []);
 
+  useEffect(() => {
+    fetchBookings();
+    fetchArchivedBookings();
+
+  }, [showArchive]);
+
   return (
     <div>
       <AdminNavbar />
 
-      <div className='container mx-auto'>
+      <div className='container mx-auto mb-8'>
         <h1 className='text-3xl font-semibold mb-6'>Bookings</h1>
         <div className='grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'>
           {bookings.map((booking) => (
@@ -126,34 +132,35 @@ const BookingsPage = () => {
         </div>
 
         {showArchive && (
-          <div>
-            {archivedBookings.map((booking) => (
-              <div key={booking._id} className='bg-white shadow-md rounded-md p-4'>
-                <div className='mb-4'>
-                  <p className='font-semibold'>
-                    Listing: {booking.listingId.brand} {booking.listingId.model} -{' '}
-                    {booking.listingId.vehicleNumber}
-                  </p>
-                  <p className='mt-1'>Name: {booking.name}</p>
-                  <p className='mt-1'>Mobile Number: {booking.mobileNumber}</p>
-                  <p className='mt-1'>Email: {booking.email ? booking.email : 'N/A'}</p>
-                  <p className='mt-1'>Date: {booking.date}</p>
-                  <p className='mt-1'>Time: {booking.time}</p>
-                </div>
-                <button
-                  onClick={() => unArchiveBooking(booking._id)}
-                  className='bg-blue-500 text-white px-4 py-2 rounded-md'
-                >
-                  Unarchive
-                </button>
-
-                <button
-                  onClick={() => deleteBooking(booking._id)}
-                  className='bg-red-500 text-white mx-4 px-4 py-2 rounded-md'
-                >
-                  Delete
-                </button>
-              </div>
+        <div className='grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'>
+        {archivedBookings.map((booking) => (
+                       <div key={booking._id} className='bg-white shadow-md rounded-md p-4'>
+                       <div className='mb-4'>
+                         <p className='font-semibold'>
+                           Listing: {booking.listingId.brand} {booking.listingId.model} -{' '}
+                           {booking.listingId.vehicleNumber}
+                         </p>
+                         <p className='mt-1'>Name: {booking.name}</p>
+                         <p className='mt-1'>Mobile Number: {booking.mobileNumber}</p>
+                         <p className='mt-1'>Email: {booking.email ? booking.email : 'N/A'}</p>
+                         <p className='mt-1'>Date: {booking.date}</p>
+                         <p className='mt-1'>Time: {booking.time}</p>
+                       </div>
+                       <button
+                         onClick={() => archiveBooking(booking._id)}
+                         className='bg-blue-500 text-white px-4 py-2 rounded-md'
+                       >
+                         Archive
+                       </button>
+         
+                       <button
+                         onClick={() => deleteBooking(booking._id)}
+                         className='bg-red-500 text-white mx-4 px-4 py-2 rounded-md'
+                       >
+                         Delete
+                       </button>
+                     </div>
+         
             ))}
           </div>
         )}

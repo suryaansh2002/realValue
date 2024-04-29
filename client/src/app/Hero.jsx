@@ -119,13 +119,13 @@ const Hero = () => {
             the best deals on all types of cars.
           </p>
           <a
-            href='#'
+            href='/buy'
             className='inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-900 border rounded-lg focus:ring-4 focus:ring-gray-100 dark:text-gray-800 dark:border-gray-700 dark:bg-slate-300 dark:hover:bg-gray-400 dark:focus:ring-gray-800 mr-5'
           >
             Buy Car
           </a>
           <a
-            href='#'
+            href='/sell'
             className='inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800'
           >
             Sell Car
@@ -140,7 +140,6 @@ const Hero = () => {
         <div className='mr-auto place-self-center lg:col-span-7'>
           <p
             className='max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400'
-            // style={{ marginTop: '-25px' }}
           >
             Or get started directly by...
           </p>

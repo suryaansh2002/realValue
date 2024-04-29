@@ -1,8 +1,8 @@
-'use client';
-import { useState, useEffect } from 'react';
-import axios from 'axios';
-import AdminNavbar from '@/app/components/AdminNavbar';
-import JSZip from 'jszip';
+"use client";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import AdminNavbar from "@/app/components/AdminNavbar";
+import JSZip from "jszip";
 
 const CreateListing = () => {
   const [features, setFeatures] = useState([]);
@@ -12,49 +12,52 @@ const CreateListing = () => {
   const [images, setImages] = useState([]);
   const [imagesLength, setImagesLength] = useState(null);
   const [imagesDone, setImagesDone] = useState(0);
-  let url = 'https://real-value-server.vercel.app/';
+  let url = "https://real-value-server.vercel.app/";
   // url = 'http://localhost:5000/'
 
   const [formData, setFormData] = useState({
-    brand: '',
-    model: '',
-    variant: '',
-    vehicleNumber: '',
-    fuelType: '',
-    year: '',
-    color: '',
-    ownership: '',
-    kmDriven: '',
-    price: '',
-    type: '',
-    transmissionType: '',
-    location: '',
+    brand: "",
+    model: "",
+    variant: "",
+    vehicleNumber: "",
+    fuelType: "",
+    year: "",
+    color: "",
+    ownership: "",
+    kmDriven: "",
+    price: "",
+    type: "",
+    transmissionType: "",
+    location: "",
     featured: false,
     selectedFeatures: [],
   });
 
   const uploadImagesToCloudinary = async (images) => {
     let tempArr = [];
-    const NAME_OF_UPLOAD_PRESET = 'jyz7szi4';
-    const YOUR_ID = 'dsi5cmgg9';
-    const API_KEY = '455265386657195';
+    const NAME_OF_UPLOAD_PRESET = "jyz7szi4";
+    const YOUR_ID = "dsi5cmgg9";
+    const API_KEY = "455265386657195";
 
     // Loop through each extracted image and upload to Cloudinary
     for (let i = 0; i < images.length; i++) {
       let image = images[i];
       const data = new FormData();
-      data.append('file', image);
-      data.append('upload_preset', NAME_OF_UPLOAD_PRESET);
-      data.append('api_key', API_KEY);
-      const res = await fetch(`https://api.cloudinary.com/v1_1/${YOUR_ID}/image/upload`, {
-        method: 'POST',
-        body: data,
-      });
+      data.append("file", image);
+      data.append("upload_preset", NAME_OF_UPLOAD_PRESET);
+      data.append("api_key", API_KEY);
+      const res = await fetch(
+        `https://api.cloudinary.com/v1_1/${YOUR_ID}/image/upload`,
+        {
+          method: "POST",
+          body: data,
+        },
+      );
       const img = await res.json();
       // You can handle the Cloudinary response here as needed
       tempArr.push(img.secure_url);
       setImages(tempArr);
-      console.log('Uploaded image:', img.secure_url);
+      console.log("Uploaded image:", img.secure_url);
     }
     console.log(tempArr);
   };
@@ -63,8 +66,8 @@ const CreateListing = () => {
     setImageFile(e.target.files[0]);
     const form = new FormData();
     const file = e.target.files[0];
-    if (file.type != 'application/zip') {
-      alert('Please upload zip file only');
+    if (file.type != "application/zip") {
+      alert("Please upload zip file only");
       return;
     }
     try {
@@ -84,22 +87,26 @@ const CreateListing = () => {
       await Promise.all(
         Object.keys(zip.files).map(async (filename) => {
           const file = zip.files[filename];
-          if (file.dir || !file.name.match(/\.(jpg|jpeg|png)$/i) || filename.includes('__MACOSX'))
+          if (
+            file.dir ||
+            !file.name.match(/\.(jpg|jpeg|png)$/i) ||
+            filename.includes("__MACOSX")
+          )
             return;
 
           // Read the image file
-          const imageData = await file.async('blob');
+          const imageData = await file.async("blob");
 
           // Convert the Blob to a data URL
           const imageFile = new File([imageData], filename);
 
           extractedImages.push(imageFile);
-        })
+        }),
       );
 
       console.log(extractedImages);
       const getFileName = (path) => {
-        return path.split('/').pop();
+        return path.split("/").pop();
       };
 
       // Sort the files based on the filename
@@ -116,7 +123,7 @@ const CreateListing = () => {
       setUploading(false);
     } catch (error) {
       setUploading(false);
-      console.error('Error uploading image:', error.message);
+      console.error("Error uploading image:", error.message);
     }
   };
 
@@ -126,10 +133,10 @@ const CreateListing = () => {
 
   const fetchFeatures = async () => {
     try {
-      const response = await axios.get(url + 'api/features');
+      const response = await axios.get(url + "api/features");
       setFeatures(response.data);
     } catch (error) {
-      console.error('Error fetching features:', error);
+      console.error("Error fetching features:", error);
     }
   };
 
@@ -148,7 +155,9 @@ const CreateListing = () => {
     } else {
       setFormData({
         ...formData,
-        selectedFeatures: formData.selectedFeatures.filter((item) => item !== value),
+        selectedFeatures: formData.selectedFeatures.filter(
+          (item) => item !== value,
+        ),
       });
     }
   };
@@ -158,46 +167,46 @@ const CreateListing = () => {
     try {
       setLoading(true);
       const tempData = formData;
-      tempData['features'] = formData['selectedFeatures'];
-      tempData['images'] = images;
+      tempData["features"] = formData["selectedFeatures"];
+      tempData["images"] = images;
       setImages([]);
-      await axios.post(url + 'api/listings', tempData);
+      await axios.post(url + "api/listings", tempData);
       setFormData({
-        brand: '',
-        model: '',
-        variant: '',
-        vehicleNumber: '',
-        fuelType: '',
-        year: '',
-        color: '',
-        ownership: '',
-        kmDriven: '',
-        price: '',
-        type: '',
-        transmissionType: '',
-        location: '',
+        brand: "",
+        model: "",
+        variant: "",
+        vehicleNumber: "",
+        fuelType: "",
+        year: "",
+        color: "",
+        ownership: "",
+        kmDriven: "",
+        price: "",
+        type: "",
+        transmissionType: "",
+        location: "",
         featured: false,
         selectedFeatures: [],
       });
       setLoading(false);
-      alert('Listing created successfully');
+      alert("Listing created successfully");
     } catch (error) {
       setLoading(false);
-      console.error('Error creating listing:', error);
+      console.error("Error creating listing:", error);
     }
   };
 
   return (
     <div>
       <AdminNavbar />
-      <div className='max-w-3xl mx-auto py-8 px-4'>
-        <h1 className='text-3xl font-bold mb-6'>Create Listing</h1>
-        <form onSubmit={handleSubmit} className='space-y-4'>
-          <div className='mb-6'>
+      <div className="max-w-3xl mx-auto py-8 px-4">
+        <h1 className="text-3xl font-bold mb-6">Create Listing</h1>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div className="mb-6">
             <input
-              type='file'
+              type="file"
               onChange={handleImageChange}
-              className='border border-gray-300 rounded-md py-2 px-4 mb-2'
+              className="border border-gray-300 rounded-md py-2 px-4 mb-2"
             />
             {uploading && imagesLength && (
               <div>
@@ -206,219 +215,242 @@ const CreateListing = () => {
             )}
           </div>
           <div>
-            <label htmlFor='brand' className='block font-medium text-gray-700'>
+            <label htmlFor="brand" className="block font-medium text-gray-700">
               Brand
             </label>
             <input
-              type='text'
-              id='brand'
-              name='brand'
+              type="text"
+              id="brand"
+              name="brand"
               value={formData.brand}
               onChange={handleInputChange}
-              className='mt-1 p-2 w-full border rounded-md'
+              className="mt-1 p-2 w-full border rounded-md"
             />
           </div>
           <div>
-            <label htmlFor='model' className='block font-medium text-gray-700'>
+            <label htmlFor="model" className="block font-medium text-gray-700">
               Model
             </label>
             <input
-              type='text'
-              id='model'
-              name='model'
+              type="text"
+              id="model"
+              name="model"
               value={formData.model}
               onChange={handleInputChange}
-              className='mt-1 p-2 w-full border rounded-md'
+              className="mt-1 p-2 w-full border rounded-md"
             />
           </div>
           <div>
-            <label htmlFor='variant' className='block font-medium text-gray-700'>
+            <label
+              htmlFor="variant"
+              className="block font-medium text-gray-700"
+            >
               Variant
             </label>
             <input
-              type='text'
-              id='variant'
-              name='variant'
+              type="text"
+              id="variant"
+              name="variant"
               value={formData.variant}
               onChange={handleInputChange}
-              className='mt-1 p-2 w-full border rounded-md'
+              className="mt-1 p-2 w-full border rounded-md"
             />
           </div>
           <div>
-            <label htmlFor='vehicleNumber' className='block font-medium text-gray-700'>
+            <label
+              htmlFor="vehicleNumber"
+              className="block font-medium text-gray-700"
+            >
               Vehicle Number
             </label>
             <input
-              type='text'
-              id='vehicleNumber'
-              name='vehicleNumber'
+              type="text"
+              id="vehicleNumber"
+              name="vehicleNumber"
               value={formData.vehicleNumber}
               onChange={handleInputChange}
-              className='mt-1 p-2 w-full border rounded-md'
+              className="mt-1 p-2 w-full border rounded-md"
             />
           </div>
           <div>
-            <label htmlFor='fuelType' className='block font-medium text-gray-700'>
+            <label
+              htmlFor="fuelType"
+              className="block font-medium text-gray-700"
+            >
               Fuel Type
             </label>
             <select
-              id='fuelType'
-              name='fuelType'
+              id="fuelType"
+              name="fuelType"
               value={formData.fuelType}
               onChange={handleInputChange}
-              className='mt-1 p-2 w-full border rounded-md'
+              className="mt-1 p-2 w-full border rounded-md"
             >
-              <option value=''>Select Fuel Type</option>
-              <option value='Petrol'>Petrol</option>
-              <option value='Diesel'>Diesel</option>
-              <option value='CNG'>CNG</option>
-              <option value='EV'>EV</option>
+              <option value="">Select Fuel Type</option>
+              <option value="Petrol">Petrol</option>
+              <option value="Diesel">Diesel</option>
+              <option value="CNG">CNG</option>
+              <option value="EV">EV</option>
             </select>
           </div>
           <div>
-            <label htmlFor='year' className='block font-medium text-gray-700'>
+            <label htmlFor="year" className="block font-medium text-gray-700">
               Year
             </label>
             <input
-              type='number'
-              id='year'
-              name='year'
+              type="number"
+              id="year"
+              name="year"
               value={formData.year}
               onChange={handleInputChange}
-              className='mt-1 p-2 w-full border rounded-md'
+              className="mt-1 p-2 w-full border rounded-md"
             />
           </div>
           <div>
-            <label htmlFor='color' className='block font-medium text-gray-700'>
+            <label htmlFor="color" className="block font-medium text-gray-700">
               Color
             </label>
             <input
-              type='text'
-              id='color'
-              name='color'
+              type="text"
+              id="color"
+              name="color"
               value={formData.color}
               onChange={handleInputChange}
-              className='mt-1 p-2 w-full border rounded-md'
+              className="mt-1 p-2 w-full border rounded-md"
             />
           </div>
           <div>
-            <label htmlFor='ownership' className='block font-medium text-gray-700'>
+            <label
+              htmlFor="ownership"
+              className="block font-medium text-gray-700"
+            >
               Ownership
             </label>
             <input
-              type='number'
-              id='ownership'
-              name='ownership'
+              type="number"
+              id="ownership"
+              name="ownership"
               value={formData.ownership}
               onChange={handleInputChange}
-              className='mt-1 p-2 w-full border rounded-md'
+              className="mt-1 p-2 w-full border rounded-md"
             />
           </div>
           <div>
-            <label htmlFor='kmDriven' className='block font-medium text-gray-700'>
+            <label
+              htmlFor="kmDriven"
+              className="block font-medium text-gray-700"
+            >
               Kilometers Driven
             </label>
             <input
-              type='number'
-              id='kmDriven'
-              name='kmDriven'
+              type="number"
+              id="kmDriven"
+              name="kmDriven"
               value={formData.kmDriven}
               onChange={handleInputChange}
-              className='mt-1 p-2 w-full border rounded-md'
+              className="mt-1 p-2 w-full border rounded-md"
             />
           </div>
           <div>
-            <label htmlFor='price' className='block font-medium text-gray-700'>
+            <label htmlFor="price" className="block font-medium text-gray-700">
               Price
             </label>
             <input
-              type='number'
-              id='price'
-              name='price'
+              type="number"
+              id="price"
+              name="price"
               value={formData.price}
               onChange={handleInputChange}
-              className='mt-1 p-2 w-full border rounded-md'
+              className="mt-1 p-2 w-full border rounded-md"
             />
           </div>
           <div>
-            <label htmlFor='type' className='block font-medium text-gray-700'>
+            <label htmlFor="type" className="block font-medium text-gray-700">
               Type
             </label>
             <input
-              type='text'
-              id='type'
-              name='type'
+              type="text"
+              id="type"
+              name="type"
               value={formData.type}
               onChange={handleInputChange}
-              className='mt-1 p-2 w-full border rounded-md'
+              className="mt-1 p-2 w-full border rounded-md"
             />
           </div>
           <div>
-            <label htmlFor='transmissionType' className='block font-medium text-gray-700'>
+            <label
+              htmlFor="transmissionType"
+              className="block font-medium text-gray-700"
+            >
               Transmission Type
             </label>
             <select
-              id='transmissionType'
-              name='transmissionType'
+              id="transmissionType"
+              name="transmissionType"
               value={formData.transmissionType}
               onChange={handleInputChange}
-              className='mt-1 p-2 w-full border rounded-md'
+              className="mt-1 p-2 w-full border rounded-md"
             >
-              <option value=''>Select Transmission Type</option>
-              <option value='automatic'>Automatic</option>
-              <option value='manual'>Manual</option>
+              <option value="">Select Transmission Type</option>
+              <option value="automatic">Automatic</option>
+              <option value="manual">Manual</option>
             </select>
           </div>
           <div>
-            <label htmlFor='location' className='block font-medium text-gray-700'>
+            <label
+              htmlFor="location"
+              className="block font-medium text-gray-700"
+            >
               Location
             </label>
             <input
-              type='text'
-              id='location'
-              name='location'
+              type="text"
+              id="location"
+              name="location"
               value={formData.location}
               onChange={handleInputChange}
-              className='mt-1 p-2 w-full border rounded-md'
+              className="mt-1 p-2 w-full border rounded-md"
             />
           </div>
           <div>
-            <label htmlFor='featured' className='flex items-center'>
+            <label htmlFor="featured" className="flex items-center">
               <input
-                type='checkbox'
-                id='featured'
-                name='featured'
+                type="checkbox"
+                id="featured"
+                name="featured"
                 checked={formData.featured}
-                onChange={() => setFormData({ ...formData, featured: !formData.featured })}
-                className='mr-2'
+                onChange={() =>
+                  setFormData({ ...formData, featured: !formData.featured })
+                }
+                className="mr-2"
               />
-              <span className='text-gray-700'>Featured</span>
+              <span className="text-gray-700">Featured</span>
             </label>
           </div>
           <div>
-            <label className='block font-medium text-gray-700'>Features</label>
+            <label className="block font-medium text-gray-700">Features</label>
             {features.map((feature) => (
-              <div key={feature._id} className='flex items-center'>
+              <div key={feature._id} className="flex items-center">
                 <input
-                  type='checkbox'
+                  type="checkbox"
                   id={feature._id}
                   name={feature._id}
                   value={feature.text}
                   onChange={handleCheckboxChange}
-                  className='mr-2'
+                  className="mr-2"
                 />
-                <label htmlFor={feature._id} className='text-gray-700'>
+                <label htmlFor={feature._id} className="text-gray-700">
                   {feature.text}
                 </label>
               </div>
             ))}
           </div>
           <button
-            type='submit'
+            type="submit"
             disabled={loading || uploading}
-            className='bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md'
+            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md"
           >
-            {loading ? 'Creating...' : 'Create Listing'}
+            {loading ? "Creating..." : "Create Listing"}
           </button>
         </form>
       </div>

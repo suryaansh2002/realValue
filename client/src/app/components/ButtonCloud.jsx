@@ -4,39 +4,34 @@ import { DownOutlined, CarOutlined } from "@ant-design/icons";
 
 import { Button, Dropdown, message, Space } from "antd";
 
-
 const ButtonCloud = ({ options, label }) => {
-
-  const [currentItem, setCurrentItem ] = useState('')
+  const [currentItem, setCurrentItem] = useState("");
   const handleMenuClick = (e) => {
-    if(label == 'Brand' && e.key=='7'){
-      return
+    if (label == "Brand" && e.key == "7") {
+      return;
     }
-    const obj = options.find((item)=>item.key == e.key)
-    setCurrentItem(obj.label)
+    const obj = options.find((item) => item.key == e.key);
+    setCurrentItem(obj.label);
   };
-  useEffect(()=>{
-    if(currentItem){
-      let tempObj = localStorage.getItem('filters')
-      if(!tempObj){
-        tempObj = {}
+  useEffect(() => {
+    if (currentItem) {
+      let tempObj = localStorage.getItem("filters");
+      if (!tempObj) {
+        tempObj = {};
+      } else {
+        tempObj = JSON.parse(tempObj);
       }
-      else{
-        tempObj = JSON.parse(tempObj)
+      if (label == "model") {
+        tempObj[label] = currentItem.innerHTML;
       }
-      if(label=='model'){
-      tempObj[label] = currentItem.innerHTML
-
-      }
-      tempObj[label] = currentItem
-      localStorage.setItem('filters', JSON.stringify(tempObj))
+      tempObj[label] = currentItem;
+      localStorage.setItem("filters", JSON.stringify(tempObj));
     }
-  },
-[currentItem])
+  }, [currentItem]);
   const menuProps = { onClick: handleMenuClick, items: options };
   return (
     <Space wrap>
-      <Dropdown menu={menuProps} trigger={["click"]} placement="bottom" >
+      <Dropdown menu={menuProps} trigger={["click"]} placement="bottom">
         <Button size="large">
           <Space className="button-cloud">
             {currentItem ? currentItem : label}

@@ -5,7 +5,7 @@ import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import carImage from "../images/car-image.png";
 import Image from "next/image";
-import { formatAmount, AmountWithCommas, EMICalcLite } from './utils';
+import { formatAmount, AmountWithCommas, EMICalcLite } from "./utils";
 
 function toTitleCase(str) {
   return str.replace(/\w\S*/g, function (txt) {
@@ -23,7 +23,7 @@ const FeaturedCars = () => {
     const fetchFeaturedCars = async () => {
       try {
         const response = await fetch(
-          "https://real-value-server.vercel.app/api/listings/featured"
+          "https://real-value-server.vercel.app/api/listings/featured",
         );
         if (!response.ok) {
           throw new Error("Failed to fetch data");
@@ -103,7 +103,7 @@ const FeaturedCars = () => {
                         {formatAmount(car.price)}
                       </div>
                       <div className="text-green-600 text-basetranslate-0  inline-block">
-                      EMI ₹{AmountWithCommas(EMICalcLite(car.price, 10, 36))}
+                        EMI ₹{AmountWithCommas(EMICalcLite(car.price, 10, 36))}
                       </div>
                     </div>
 

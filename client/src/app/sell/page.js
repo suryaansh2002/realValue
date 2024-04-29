@@ -3,10 +3,37 @@ import { useState } from "react";
 import styles from "../styles/Sell.module.css";
 import axios from "axios";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
+import FaqCard from "../components/FaqCard";
+
+const faqData = [
+  {
+    question: "Can I sell a car that has an ongoing loan on it?",
+    answer: "Yes",
+  },
+  {
+    question:
+      "Is the car owner required to be present at the time of car pick up & inspection?",
+    answer:
+      "Yes, the owner of the car or an authorised person on behalf of the owner of the car must be present at the time of inspection and car pick up.",
+  },
+  {
+    question: "How long does the RC transfer take?",
+    answer: "60-90 days",
+  },
+  {
+    question: "Will real value handle/take care of the paperwork?",
+    answer:
+      "Yes, all paperwork related to the RTO will be taken care by Real Value",
+  },
+  {
+    question: "How long does it take during car inspection?",
+    answer: "It just takes 30 minutes to physically inspect the car",
+  },
+];
 
 const SellRequestForm = () => {
   let url = "https://real-value-server.vercel.app/";
-  url = "http://localhost:5000/";
+  // url = "http://localhost:5000/";
   const [showForm, setShowForm] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [formData, setFormData] = useState({
@@ -76,127 +103,157 @@ const SellRequestForm = () => {
   };
 
   return (
-    <div className={styles.mainContainer}>
-      <div className={styles.mainHeading}>Sell Your Vehicle</div>
+    <div className="text-left pt-4 dark:bg-gray-900 text-white">
+      <div className="font-semibold text-3xl mb-8 pl-12">Sell Your Vehicle</div>
 
       <button
         onClick={() => setShowForm(!showForm)}
-        className={styles.showForm}
+        className="border border-gray-300 ml-12 rounded px-12 py-2 mt-4"
       >
         Submit Your Sell Request{" "}
         {showForm ? (
-          <FaChevronUp className={styles.icon} />
+          <FaChevronUp className="inline-block align-text-top" />
         ) : (
-          <FaChevronDown className={styles.icon} />
+          <FaChevronDown className="inline-block align-text-top" />
         )}
       </button>
       {showForm && (
-        <div className={styles.container}>
-          <form className={styles.form} onSubmit={handleSubmit}>
-            <label>Name *</label>
+        <div className="max-w-screen-md  border-white border-2   ml-16 p-4 rounded-md mt-4">
+          <form className="grid grid-cols-1 gap-4" onSubmit={handleSubmit}>
+            <label className="font-normal text-sm">Name *</label>
             <input
               type="text"
               name="name"
               value={formData.name}
               onChange={handleChange}
+              className="w-full p-2 border border-gray-300 rounded"
               required
             />
-            <label>Phone Number *</label>
+            <label className="font-normal text-sm">Phone Number *</label>
             <input
               type="text"
               name="phoneNumber"
               value={formData.phoneNumber}
               onChange={handleChange}
+              className="w-full p-2 border border-gray-300 rounded"
               required
             />
-            <label>Email</label>
+            <label className="font-normal text-sm">Email</label>
             <input
               type="email"
               name="email"
               value={formData.email}
               onChange={handleChange}
+              className="w-full p-2 border border-gray-300 rounded"
             />
-            <label>Location *</label>
+            <label className="font-normal text-sm">Location *</label>
             <input
               type="text"
               name="location"
               value={formData.location}
               onChange={handleChange}
+              className="w-full p-2 border border-gray-300 rounded"
               required
             />
-            <label>Registration Number *</label>
+            <label className="font-normal text-sm">Registration Number *</label>
             <input
               type="text"
               name="registrationNumber"
               value={formData.registrationNumber}
               onChange={handleChange}
+              className="w-full p-2 border border-gray-300 rounded"
               required
             />
-            <label>Brand *</label>
+            <label className="font-normal text-sm">Brand *</label>
             <input
               type="text"
               name="brand"
               value={formData.brand}
               onChange={handleChange}
+              className="w-full p-2 border border-gray-300 rounded"
               required
             />
-            <label>Model *</label>
+            <label className="font-normal text-sm">Model *</label>
             <input
               type="text"
               name="model"
               value={formData.model}
               onChange={handleChange}
+              className="w-full p-2 border border-gray-300 rounded"
               required
             />
-            <label>Variant</label>
+            <label className="font-normal text-sm">Variant</label>
             <input
               type="text"
               name="variant"
               value={formData.variant}
               onChange={handleChange}
+              className="w-full p-2 border border-gray-300 rounded"
             />
-            <label>Manufacture Year *</label>
+            <label className="font-normal text-sm">Manufacture Year *</label>
             <input
               type="number"
               name="manufactureYear"
               value={formData.manufactureYear}
               onChange={handleChange}
+              className="w-full p-2 border border-gray-300 rounded"
               required
             />
-            <label>Kilometers *</label>
+            <label className="font-normal text-sm">Kilometers *</label>
             <input
               type="number"
               name="kilometers"
               value={formData.kilometers}
               onChange={handleChange}
+              className="w-full p-2 border border-gray-300 rounded"
               required
             />
-            <label>Price</label>
+            <label className="font-normal text-sm">Price</label>
             <input
               type="number"
               name="price"
               value={formData.price}
               onChange={handleChange}
+              className="w-full p-2 border border-gray-300 rounded"
             />
-            <button type="submit" className={styles.submitButton}>
+            <button
+              type="submit"
+              className="bg-blue-500 text-white px-6 py-2 rounded"
+            >
               Submit
             </button>
           </form>
         </div>
       )}
-      <div className={styles.steps}>
-        <h4>Steps to sell your vehicle:</h4>
-        <ul type="1">
+      <div className="font-semibold text-3xl mb-8 pl-12">FAQs</div>
+      <p className="text-gray-500 sm:text-xl dark:text-gray-400">
+        Please reach out to us if your queries are not answered below.
+      </p>
+      <div className="">
+        {faqData.map((item) => (
+          <FaqCard
+            key={item.id}
+            question={item.question}
+            answer={item.answer}
+          />
+        ))}
+      </div>
+
+      <div className="text-left border border-gray-300 max-w-screen-md mx-auto mt-4 p-4">
+        <h4 className="font-semibold text-sm">Steps to sell your vehicle:</h4>
+        <ul className="text-xs mt-2">
           <li>- Fill the above form with all the details of your vehicle.</li>
-          <li>- Wait for out executive to contact you.</li>
+          <li>- Wait for our executive to contact you.</li>
         </ul>
       </div>
       {showModal && (
         <>
-          <div className={styles.overlay}></div>
-          <div className={styles.model}>
-            <h4>Thank You for submitting your car details!</h4>
-            <p>Our executive will reach out to you soon!</p>
+          <div className="fixed inset-0 bg-black bg-opacity-50 z-10"></div>
+          <div className="fixed top-1/4 left-1/2 transform -translate-x-1/2 bg-white z-20 p-4 rounded">
+            <h4 className="font-semibold text-sm">
+              Thank You for submitting your car details!
+            </h4>
+            <p className="text-xs">Our executive will reach out to you soon!</p>
           </div>
         </>
       )}

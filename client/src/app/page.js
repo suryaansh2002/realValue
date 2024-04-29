@@ -8,6 +8,7 @@ import Offers from "./components/Offers";
 import Testimonials from "./components/Testimonials";
 import Features from "./Features";
 import Faq from "./components/Faq";
+import Contact from "./components/Contact";
 
 export default function Home() {
   return (
@@ -15,10 +16,11 @@ export default function Home() {
       <Hero />
       <FeaturedCars />
       <Features />
+      <Offers />
       <Highlights />
       <Faq />
-      <Offers />
       <Testimonials />
+      <Contact />
     </div>
   );
 }

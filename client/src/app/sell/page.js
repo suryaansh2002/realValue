@@ -4,6 +4,8 @@ import styles from "../styles/Sell.module.css";
 import axios from "axios";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 import FaqCard from "../components/FaqCard";
+import { FaCheckCircle, FaPhone, FaMapMarkerAlt, FaCarSide, FaFileAlt, FaHandshake } from 'react-icons/fa';
+import { FaCoins, FaClipboardCheck, FaMoneyCheckAlt } from 'react-icons/fa';
 
 const faqData = [
   {
@@ -118,7 +120,7 @@ const SellRequestForm = () => {
         )}
       </button>
       {showForm && (
-        <div className="max-w-screen-md  border-white border-2   ml-16 p-4 rounded-md mt-4">
+        <div className="border-white border-2 p-4 rounded-md mt-4 ml-4 md:ml-16 w-[90vw] md:w-auto md:max-w-screen-md">
           <form className="grid grid-cols-1 gap-4" onSubmit={handleSubmit}>
             <label className="font-normal text-sm">Name *</label>
             <input
@@ -126,7 +128,7 @@ const SellRequestForm = () => {
               name="name"
               value={formData.name}
               onChange={handleChange}
-              className="w-full p-2 border border-gray-300 rounded"
+              className="w-full p-2 border border-gray-300 rounded text-black"
               required
             />
             <label className="font-normal text-sm">Phone Number *</label>
@@ -135,7 +137,7 @@ const SellRequestForm = () => {
               name="phoneNumber"
               value={formData.phoneNumber}
               onChange={handleChange}
-              className="w-full p-2 border border-gray-300 rounded"
+              className="w-full p-2 border border-gray-300 rounded text-black"
               required
             />
             <label className="font-normal text-sm">Email</label>
@@ -144,7 +146,7 @@ const SellRequestForm = () => {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              className="w-full p-2 border border-gray-300 rounded"
+              className="w-full p-2 border border-gray-300 rounded text-black"
             />
             <label className="font-normal text-sm">Location *</label>
             <input
@@ -152,7 +154,7 @@ const SellRequestForm = () => {
               name="location"
               value={formData.location}
               onChange={handleChange}
-              className="w-full p-2 border border-gray-300 rounded"
+              className="w-full p-2 border border-gray-300 rounded text-black"
               required
             />
             <label className="font-normal text-sm">Registration Number *</label>
@@ -161,7 +163,7 @@ const SellRequestForm = () => {
               name="registrationNumber"
               value={formData.registrationNumber}
               onChange={handleChange}
-              className="w-full p-2 border border-gray-300 rounded"
+              className="w-full p-2 border border-gray-300 rounded text-black"
               required
             />
             <label className="font-normal text-sm">Brand *</label>
@@ -170,7 +172,7 @@ const SellRequestForm = () => {
               name="brand"
               value={formData.brand}
               onChange={handleChange}
-              className="w-full p-2 border border-gray-300 rounded"
+              className="w-full p-2 border border-gray-300 rounded text-black"
               required
             />
             <label className="font-normal text-sm">Model *</label>
@@ -179,7 +181,7 @@ const SellRequestForm = () => {
               name="model"
               value={formData.model}
               onChange={handleChange}
-              className="w-full p-2 border border-gray-300 rounded"
+              className="w-full p-2 border border-gray-300 rounded text-black"
               required
             />
             <label className="font-normal text-sm">Variant</label>
@@ -188,7 +190,7 @@ const SellRequestForm = () => {
               name="variant"
               value={formData.variant}
               onChange={handleChange}
-              className="w-full p-2 border border-gray-300 rounded"
+              className="w-full p-2 border border-gray-300 rounded text-black"
             />
             <label className="font-normal text-sm">Manufacture Year *</label>
             <input
@@ -196,7 +198,7 @@ const SellRequestForm = () => {
               name="manufactureYear"
               value={formData.manufactureYear}
               onChange={handleChange}
-              className="w-full p-2 border border-gray-300 rounded"
+              className="w-full p-2 border border-gray-300 rounded text-black"
               required
             />
             <label className="font-normal text-sm">Kilometers *</label>
@@ -205,7 +207,7 @@ const SellRequestForm = () => {
               name="kilometers"
               value={formData.kilometers}
               onChange={handleChange}
-              className="w-full p-2 border border-gray-300 rounded"
+              className="w-full p-2 border border-gray-300 rounded text-black"
               required
             />
             <label className="font-normal text-sm">Price</label>
@@ -214,22 +216,86 @@ const SellRequestForm = () => {
               name="price"
               value={formData.price}
               onChange={handleChange}
-              className="w-full p-2 border border-gray-300 rounded"
+              className="w-full p-2 border border-gray-300 rounded text-black"
             />
-            <button
-              type="submit"
-              className="bg-blue-500 text-white px-6 py-2 rounded"
-            >
-              Submit
-            </button>
+           <button
+  type="submit"
+  className="bg-blue-500 hover:bg-yellow-500 text-white px-6 py-2 rounded"
+>
+  Submit
+</button>
+
           </form>
         </div>
       )}
-      <div className="font-semibold text-3xl mb-8 pl-12">FAQs</div>
-      <p className="text-gray-500 sm:text-xl dark:text-gray-400">
+      <div className="font-semibold text-2xl my-8 pl-12">Steps To Sell</div>
+
+      <ul className="space-y-4 ml-14">
+    <li className="flex items-center py-2">
+      <span className="flex-shrink-0 mr-4">
+        <FaCheckCircle className="text-green-500 text-xl" />
+      </span>
+      <span className="text-lg">Digital Verification</span>
+    </li>
+    <li className="flex items-center py-2">
+      <span className="flex-shrink-0 mr-4">
+        <FaPhone className="text-blue-500 text-xl" />
+      </span>
+      <span className="text-lg">Call with our team</span>
+    </li>
+    <li className="flex items-center py-2">
+      <span className="flex-shrink-0 mr-4">
+        <FaMapMarkerAlt className="text-red-500 text-xl" />
+      </span>
+      <span className="text-lg">Physical inspection (home and showroom)</span>
+    </li>
+    <li className="flex items-center py-2">
+      <span className="flex-shrink-0 mr-4">
+        <FaCarSide className="text-yellow-500 text-xl" />
+      </span>
+      <span className="text-lg">Car condition</span>
+    </li>
+    <li className="flex items-center py-2">
+      <span className="flex-shrink-0 mr-4">
+        <FaFileAlt className="text-indigo-500 text-xl" />
+      </span>
+      <span className="text-lg">Papers</span>
+    </li>
+    <li className="flex items-center py-2">
+      <span className="flex-shrink-0 mr-4">
+        <FaHandshake className="text-purple-500 text-xl" />
+      </span>
+      <span className="text-lg">Car pickup and payment</span>
+    </li>
+  </ul>
+  <div className="font-semibold text-2xl my-8 pl-12">Why Sell Your Car To Us?</div>
+
+  <ul className="space-y-4 ml-14">
+    <li className="flex items-center py-2">
+      <span className="flex-shrink-0 mr-4">
+        <FaCoins className="text-green-500 text-lg" />
+      </span>
+      <span className="text-lg">Best price</span>
+    </li>
+    <li className="flex items-center py-2">
+      <span className="flex-shrink-0 mr-4">
+        <FaClipboardCheck className="text-blue-500 text-lg" />
+      </span>
+      <span className="text-lg">Hassle-free documentation</span>
+    </li>
+    <li className="flex items-center py-2">
+      <span className="flex-shrink-0 mr-4">
+        <FaMoneyCheckAlt className="text-yellow-500 text-lg" />
+      </span>
+      <span className="text-lg">Instant Payment</span>
+    </li>
+  </ul>
+
+      <div className="font-semibold text-2xl mt-8 pl-12">FAQs</div>
+      <p className="text-gray-500 text-lg ml-12 my-4 dark:text-gray-400">
         Please reach out to us if your queries are not answered below.
       </p>
-      <div className="">
+      <div className="ml-6 md:ml-12 pb-4">
         {faqData.map((item) => (
           <FaqCard
             key={item.id}
@@ -239,21 +305,14 @@ const SellRequestForm = () => {
         ))}
       </div>
 
-      <div className="text-left border border-gray-300 max-w-screen-md mx-auto mt-4 p-4">
-        <h4 className="font-semibold text-sm">Steps to sell your vehicle:</h4>
-        <ul className="text-xs mt-2">
-          <li>- Fill the above form with all the details of your vehicle.</li>
-          <li>- Wait for our executive to contact you.</li>
-        </ul>
-      </div>
       {showModal && (
         <>
-          <div className="fixed inset-0 bg-black bg-opacity-50 z-10"></div>
-          <div className="fixed top-1/4 left-1/2 transform -translate-x-1/2 bg-white z-20 p-4 rounded">
-            <h4 className="font-semibold text-sm">
+          <div className="fixed inset-0 text-lg bg-black bg-opacity-50 z-10"></div>
+          <div className="fixed top-1/4 left-1/2 transform text-black -translate-x-1/2 bg-white z-20 p-4 rounded">
+            <h4 className="font-semibold">
               Thank You for submitting your car details!
             </h4>
-            <p className="text-xs">Our executive will reach out to you soon!</p>
+            <p className="">Our executive will reach out to you soon!</p>
           </div>
         </>
       )}

@@ -19,6 +19,8 @@ router.get('/', listingController.getAllListings)
 
 router.get('/featured', listingController.geFeaturedListings)
 
+router.get('/brands', listingController.getAllBrands)
+
 // Read one listing by ID
 router.get('/:id', listingController.getListingById)
 

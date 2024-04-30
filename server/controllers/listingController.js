@@ -22,27 +22,6 @@ function bufferToDataUri(buffer, contentType) {
 exports.uploadImage = async (req, res) => {
   try {
     console.log(req.file)
-    //     const zipBuffer = req.file.buffer; // Buffer containing the zip file data
-
-    // const zip = new AdmZip(zipBuffer);
-    // const zipEntries = zip.getEntries();
-    // const dataUris = []
-    // for(let i=0; i<zipEntries.length; i++){
-    //   let entry = zipEntries[i]
-    //   if (!entry.isDirectory && !entry.entryName.includes("__MACOSX") && entry.entryName.match(/\.(jpg|jpeg|png)$/i)) {
-    //     let type={}
-    //     await detect.fromBuffer(entry.getData(), function(err, result) {
-    //      type = result
-    //   })
-    //     const buffer = entry.getData()
-    //     const dataUri = bufferToDataUri(buffer, type.mime)
-    //     dataUris.push(dataUri)
-    //   }
-    // }
-    // const listingImages = new ListingImages({images: dataUris});
-    // await listingImages.save();
-    // console.log(listingImages['_id'])
-    // console.log(Object.keys(listingImages))
     res.status(201).json({ message: 'Listing Image created successfully' })
   } catch (error) {
     res.status(400).json({ error: error.message })
@@ -58,6 +37,15 @@ exports.getAllListings = async (req, res) => {
     res.status(500).json({ error: 'Server error' })
   }
 }
+
+exports.getAllBrands = async (req, res) => {
+  try {
+    const brands = await Listing.distinct('brand');
+    res.json(brands);
+  } catch (error) {
+    res.status(500).json({ error: 'Server error' });
+  }
+};
 
 exports.geFeaturedListings = async (req, res) => {
   try {

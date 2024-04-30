@@ -236,79 +236,77 @@ const SellRequestForm = () => {
         </div>
       )}
 
-
       <div className="my-4">
-      <div className="w-[100vw] block md:w-[50vw] md:inline-block">
-      <div className="font-semibold text-2xl my-8 pl-12">Steps To Sell</div>
-      <ul className="space-y-4 ml-14">
-        <li className="flex items-center py-2">
-          <span className="flex-shrink-0 mr-4">
-            <FaCheckCircle className="text-green-500 text-xl" />
-          </span>
-          <span className="text-lg">Digital Verification</span>
-        </li>
-        <li className="flex items-center py-2">
-          <span className="flex-shrink-0 mr-4">
-            <FaPhone className="text-blue-500 text-xl" />
-          </span>
-          <span className="text-lg">Call with our team</span>
-        </li>
-        <li className="flex items-center py-2">
-          <span className="flex-shrink-0 mr-4">
-            <FaMapMarkerAlt className="text-red-500 text-xl" />
-          </span>
-          <span className="text-lg">
-            Physical inspection (home and showroom)
-          </span>
-        </li>
-        <li className="flex items-center py-2">
-          <span className="flex-shrink-0 mr-4">
-            <FaCarSide className="text-yellow-500 text-xl" />
-          </span>
-          <span className="text-lg">Car condition</span>
-        </li>
-        <li className="flex items-center py-2">
-          <span className="flex-shrink-0 mr-4">
-            <FaFileAlt className="text-indigo-500 text-xl" />
-          </span>
-          <span className="text-lg">Papers</span>
-        </li>
-        <li className="flex items-center py-2">
-          <span className="flex-shrink-0 mr-4">
-            <FaHandshake className="text-purple-500 text-xl" />
-          </span>
-          <span className="text-lg">Car pickup and payment</span>
-        </li>
-      </ul>
-      </div>
+        <div className="w-[100vw] block md:w-[50vw] md:inline-block">
+          <div className="font-semibold text-2xl my-8 pl-12">Steps To Sell</div>
+          <ul className="space-y-4 ml-14">
+            <li className="flex items-center py-2">
+              <span className="flex-shrink-0 mr-4">
+                <FaCheckCircle className="text-green-500 text-xl" />
+              </span>
+              <span className="text-lg">Digital Verification</span>
+            </li>
+            <li className="flex items-center py-2">
+              <span className="flex-shrink-0 mr-4">
+                <FaPhone className="text-blue-500 text-xl" />
+              </span>
+              <span className="text-lg">Call with our team</span>
+            </li>
+            <li className="flex items-center py-2">
+              <span className="flex-shrink-0 mr-4">
+                <FaMapMarkerAlt className="text-red-500 text-xl" />
+              </span>
+              <span className="text-lg">
+                Physical inspection (home and showroom)
+              </span>
+            </li>
+            <li className="flex items-center py-2">
+              <span className="flex-shrink-0 mr-4">
+                <FaCarSide className="text-yellow-500 text-xl" />
+              </span>
+              <span className="text-lg">Car condition</span>
+            </li>
+            <li className="flex items-center py-2">
+              <span className="flex-shrink-0 mr-4">
+                <FaFileAlt className="text-indigo-500 text-xl" />
+              </span>
+              <span className="text-lg">Papers</span>
+            </li>
+            <li className="flex items-center py-2">
+              <span className="flex-shrink-0 mr-4">
+                <FaHandshake className="text-purple-500 text-xl" />
+              </span>
+              <span className="text-lg">Car pickup and payment</span>
+            </li>
+          </ul>
+        </div>
 
-      <div className="w-[100vw] block md:w-[40vw] md:inline-block align-top">
-      <div className="font-semibold text-2xl my-8 pl-12">
-        Why Sell Your Car To Us?
+        <div className="w-[100vw] block md:w-[40vw] md:inline-block align-top">
+          <div className="font-semibold text-2xl my-8 pl-12">
+            Why Sell Your Car To Us?
+          </div>
+          <ul className="space-y-4 ml-14">
+            <li className="flex items-center py-2">
+              <span className="flex-shrink-0 mr-4">
+                <FaCoins className="text-green-500 text-lg" />
+              </span>
+              <span className="text-lg">Best price</span>
+            </li>
+            <li className="flex items-center py-2">
+              <span className="flex-shrink-0 mr-4">
+                <FaClipboardCheck className="text-blue-500 text-lg" />
+              </span>
+              <span className="text-lg">Hassle-free documentation</span>
+            </li>
+            <li className="flex items-center py-2">
+              <span className="flex-shrink-0 mr-4">
+                <FaMoneyCheckAlt className="text-yellow-500 text-lg" />
+              </span>
+              <span className="text-lg">Instant Payment</span>
+            </li>
+          </ul>
+        </div>
       </div>
-      <ul className="space-y-4 ml-14">
-        <li className="flex items-center py-2">
-          <span className="flex-shrink-0 mr-4">
-            <FaCoins className="text-green-500 text-lg" />
-          </span>
-          <span className="text-lg">Best price</span>
-        </li>
-        <li className="flex items-center py-2">
-          <span className="flex-shrink-0 mr-4">
-            <FaClipboardCheck className="text-blue-500 text-lg" />
-          </span>
-          <span className="text-lg">Hassle-free documentation</span>
-        </li>
-        <li className="flex items-center py-2">
-          <span className="flex-shrink-0 mr-4">
-            <FaMoneyCheckAlt className="text-yellow-500 text-lg" />
-          </span>
-          <span className="text-lg">Instant Payment</span>
-        </li>
-      </ul>
-      </div>
-      </div>
-
 
       <div className="font-semibold text-2xl mt-8 pl-12">FAQs</div>
       <p className="text-gray-500 text-sm ml-6 md:text-lg md:ml-12 my-4 dark:text-gray-400">

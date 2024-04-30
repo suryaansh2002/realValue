@@ -58,7 +58,6 @@ const Login = () => {
         )}
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
           <div className="rounded-md shadow-sm -space-y-px">
-            <div>
               <label htmlFor="username" className="sr-only">
                 Username
               </label>
@@ -73,8 +72,7 @@ const Login = () => {
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
               />
-            </div>
-            <div>
+            
               <label htmlFor="password" className="sr-only">
                 Password
               </label>
@@ -89,7 +87,6 @@ const Login = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-            </div>
           </div>
           <div>
             <button

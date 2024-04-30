@@ -114,9 +114,7 @@ const SellRequestForm = () => {
 
   return (
     <div className="text-left pt-4 dark:bg-gray-900 text-white">
-      <div className="font-semibold text-3xl mb-8 ml-4 md:ml-12">
-        Sell Your Vehicle
-      </div>
+      <div className="font-semibold text-3xl mb-8 ml-4 md:ml-12">Sell Your Vehicle</div>
 
       <button
         onClick={() => setShowForm(!showForm)}
@@ -240,9 +238,7 @@ const SellRequestForm = () => {
 
       <div className="my-4">
         <div className="w-[100vw] block md:w-[50vw] md:inline-block">
-          <div className="font-semibold text-2xl my-8 ml-4 md:ml-12">
-            Steps To Sell
-          </div>
+          <div className="font-semibold text-2xl my-8 ml-4 md:ml-12">Steps To Sell</div>
           <ul className="space-y-4 ml-6 md:ml-14">
             <li className="flex items-center py-2">
               <span className="flex-shrink-0 mr-4">

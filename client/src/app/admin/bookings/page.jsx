@@ -156,10 +156,10 @@ const BookingsPage = () => {
                   <p className="mt-1">Time: {booking.time}</p>
                 </div>
                 <button
-                  onClick={() => archiveBooking(booking._id)}
+                  onClick={() => unArchiveBooking(booking._id)}
                   className="bg-blue-500 text-white px-4 py-2 rounded-md"
                 >
-                  Archive
+                  Unarchive
                 </button>
 
                 <button

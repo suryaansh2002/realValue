@@ -11,7 +11,11 @@ const ButtonCloud = ({ options, label }) => {
       return;
     }
     const obj = options.find((item) => item.key == e.key);
-    setCurrentItem(obj.label);
+    if (label == "Brand") {
+      setCurrentItem(obj.label.props.children[1].trim());
+    } else {
+      setCurrentItem(obj.label);
+    }
   };
   useEffect(() => {
     if (currentItem) {
@@ -21,8 +25,8 @@ const ButtonCloud = ({ options, label }) => {
       } else {
         tempObj = JSON.parse(tempObj);
       }
-      if (label == "model") {
-        tempObj[label] = currentItem.innerHTML;
+      if (label == "Brand") {
+        tempObj[label] = currentItem.innerText;
       }
       tempObj[label] = currentItem;
       localStorage.setItem("filters", JSON.stringify(tempObj));

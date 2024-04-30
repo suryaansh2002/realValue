@@ -4,8 +4,16 @@ import styles from "../styles/Sell.module.css";
 import axios from "axios";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 import FaqCard from "../components/FaqCard";
-import { FaCheckCircle, FaPhone, FaMapMarkerAlt, FaCarSide, FaFileAlt, FaHandshake } from 'react-icons/fa';
-import { FaCoins, FaClipboardCheck, FaMoneyCheckAlt } from 'react-icons/fa';
+import {
+  FaCheckCircle,
+  FaPhone,
+  FaMapMarkerAlt,
+  FaCarSide,
+  FaFileAlt,
+  FaHandshake,
+} from "react-icons/fa";
+import { FaCoins, FaClipboardCheck, FaMoneyCheckAlt } from "react-icons/fa";
+import FeaturedCars from "../FeaturedCars";
 
 const faqData = [
   {
@@ -218,78 +226,81 @@ const SellRequestForm = () => {
               onChange={handleChange}
               className="w-full p-2 border border-gray-300 rounded text-black"
             />
-           <button
-  type="submit"
-  className="bg-blue-500 hover:bg-yellow-500 text-white px-6 py-2 rounded"
->
-  Submit
-</button>
-
+            <button
+              type="submit"
+              className="bg-blue-500 hover:bg-yellow-500 text-white px-6 py-2 rounded"
+            >
+              Submit
+            </button>
           </form>
         </div>
       )}
       <div className="font-semibold text-2xl my-8 pl-12">Steps To Sell</div>
 
       <ul className="space-y-4 ml-14">
-    <li className="flex items-center py-2">
-      <span className="flex-shrink-0 mr-4">
-        <FaCheckCircle className="text-green-500 text-xl" />
-      </span>
-      <span className="text-lg">Digital Verification</span>
-    </li>
-    <li className="flex items-center py-2">
-      <span className="flex-shrink-0 mr-4">
-        <FaPhone className="text-blue-500 text-xl" />
-      </span>
-      <span className="text-lg">Call with our team</span>
-    </li>
-    <li className="flex items-center py-2">
-      <span className="flex-shrink-0 mr-4">
-        <FaMapMarkerAlt className="text-red-500 text-xl" />
-      </span>
-      <span className="text-lg">Physical inspection (home and showroom)</span>
-    </li>
-    <li className="flex items-center py-2">
-      <span className="flex-shrink-0 mr-4">
-        <FaCarSide className="text-yellow-500 text-xl" />
-      </span>
-      <span className="text-lg">Car condition</span>
-    </li>
-    <li className="flex items-center py-2">
-      <span className="flex-shrink-0 mr-4">
-        <FaFileAlt className="text-indigo-500 text-xl" />
-      </span>
-      <span className="text-lg">Papers</span>
-    </li>
-    <li className="flex items-center py-2">
-      <span className="flex-shrink-0 mr-4">
-        <FaHandshake className="text-purple-500 text-xl" />
-      </span>
-      <span className="text-lg">Car pickup and payment</span>
-    </li>
-  </ul>
-  <div className="font-semibold text-2xl my-8 pl-12">Why Sell Your Car To Us?</div>
+        <li className="flex items-center py-2">
+          <span className="flex-shrink-0 mr-4">
+            <FaCheckCircle className="text-green-500 text-xl" />
+          </span>
+          <span className="text-lg">Digital Verification</span>
+        </li>
+        <li className="flex items-center py-2">
+          <span className="flex-shrink-0 mr-4">
+            <FaPhone className="text-blue-500 text-xl" />
+          </span>
+          <span className="text-lg">Call with our team</span>
+        </li>
+        <li className="flex items-center py-2">
+          <span className="flex-shrink-0 mr-4">
+            <FaMapMarkerAlt className="text-red-500 text-xl" />
+          </span>
+          <span className="text-lg">
+            Physical inspection (home and showroom)
+          </span>
+        </li>
+        <li className="flex items-center py-2">
+          <span className="flex-shrink-0 mr-4">
+            <FaCarSide className="text-yellow-500 text-xl" />
+          </span>
+          <span className="text-lg">Car condition</span>
+        </li>
+        <li className="flex items-center py-2">
+          <span className="flex-shrink-0 mr-4">
+            <FaFileAlt className="text-indigo-500 text-xl" />
+          </span>
+          <span className="text-lg">Papers</span>
+        </li>
+        <li className="flex items-center py-2">
+          <span className="flex-shrink-0 mr-4">
+            <FaHandshake className="text-purple-500 text-xl" />
+          </span>
+          <span className="text-lg">Car pickup and payment</span>
+        </li>
+      </ul>
+      <div className="font-semibold text-2xl my-8 pl-12">
+        Why Sell Your Car To Us?
+      </div>
 
-  <ul className="space-y-4 ml-14">
-    <li className="flex items-center py-2">
-      <span className="flex-shrink-0 mr-4">
-        <FaCoins className="text-green-500 text-lg" />
-      </span>
-      <span className="text-lg">Best price</span>
-    </li>
-    <li className="flex items-center py-2">
-      <span className="flex-shrink-0 mr-4">
-        <FaClipboardCheck className="text-blue-500 text-lg" />
-      </span>
-      <span className="text-lg">Hassle-free documentation</span>
-    </li>
-    <li className="flex items-center py-2">
-      <span className="flex-shrink-0 mr-4">
-        <FaMoneyCheckAlt className="text-yellow-500 text-lg" />
-      </span>
-      <span className="text-lg">Instant Payment</span>
-    </li>
-  </ul>
+      <ul className="space-y-4 ml-14">
+        <li className="flex items-center py-2">
+          <span className="flex-shrink-0 mr-4">
+            <FaCoins className="text-green-500 text-lg" />
+          </span>
+          <span className="text-lg">Best price</span>
+        </li>
+        <li className="flex items-center py-2">
+          <span className="flex-shrink-0 mr-4">
+            <FaClipboardCheck className="text-blue-500 text-lg" />
+          </span>
+          <span className="text-lg">Hassle-free documentation</span>
+        </li>
+        <li className="flex items-center py-2">
+          <span className="flex-shrink-0 mr-4">
+            <FaMoneyCheckAlt className="text-yellow-500 text-lg" />
+          </span>
+          <span className="text-lg">Instant Payment</span>
+        </li>
+      </ul>
 
       <div className="font-semibold text-2xl mt-8 pl-12">FAQs</div>
       <p className="text-gray-500 text-lg ml-12 my-4 dark:text-gray-400">
@@ -304,7 +315,9 @@ const SellRequestForm = () => {
           />
         ))}
       </div>
-
+      <div>
+        <FeaturedCars />
+      </div>
       {showModal && (
         <>
           <div className="fixed inset-0 text-lg bg-black bg-opacity-50 z-10"></div>

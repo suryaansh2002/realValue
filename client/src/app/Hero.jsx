@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import carImage2 from "../images/car-image-2.jpg";
 import Image from "next/image";
 import ButtonCloud from "./components/ButtonCloud";
@@ -107,6 +107,9 @@ const budgets = [
 ];
 
 const Hero = () => {
+  useEffect(() => {
+    localStorage.removeItem("filters");
+  }, []);
   return (
     <section className="bg-white dark:bg-gray-900">
       <div className="grid max-w-screen-xl px-4 py-12 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
@@ -120,13 +123,13 @@ const Hero = () => {
           </p>
           <a
             href="/buy"
-            className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-900 border rounded-lg focus:ring-4 focus:ring-gray-100 dark:text-gray-800 dark:border-gray-700 dark:bg-slate-300 dark:hover:bg-gray-400 dark:focus:ring-gray-800 mr-5"
+            className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-900 border rounded-lg focus:ring-4 focus:ring-gray-100 dark:text-gray-800 dark:border-gray-700 dark:bg-slate-300 dark:hover:bg-gray-400 dark:focus:ring-gray-800 mr-5 hover:!border-yellow-300"
           >
             Buy Car
           </a>
           <a
             href="/sell"
-            className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
+            className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800 hover:!border-yellow-500"
           >
             Sell Car
           </a>

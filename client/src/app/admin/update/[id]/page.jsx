@@ -28,6 +28,7 @@ const CreateListing = () => {
     price: "",
     type: "",
     transmissionType: "",
+    seats: "",
     location: "",
     featured: false,
     selectedFeatures: [],
@@ -50,6 +51,7 @@ const CreateListing = () => {
         price: currListing.price,
         type: currListing.type,
         transmissionType: currListing.transmissionType,
+        seats: currListing.seats,
         location: currListing.transmissionType,
         featured: currListing.featured,
         selectedFeatures: currListing.features,
@@ -434,6 +436,22 @@ const CreateListing = () => {
               <option value="automatic">Automatic</option>
               <option value="manual">Manual</option>
             </select>
+          </div>
+          <div>
+            <label
+              htmlFor="seats"
+              className="block font-medium text-gray-700"
+            >
+              No. of seats
+            </label>
+            <input
+              type="number"
+              id="seats"
+              name="seats"
+              value={formData.seats}
+              onChange={handleInputChange}
+              className="mt-1 p-2 w-full border rounded-md"
+            />
           </div>
           <div>
             <label

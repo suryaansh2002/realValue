@@ -1,36 +1,36 @@
-"use client";
-import { useState } from "react";
-import axios from "axios";
-import Link from "next/link";
+'use client'
+import { useState } from 'react'
+import axios from 'axios'
+import Link from 'next/link'
 
 const SignUp = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [accessLevel, setAccessLevel] = useState("regular");
-  const [success, setSuccess] = useState(null);
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
+  const [accessLevel, setAccessLevel] = useState('regular')
+  const [success, setSuccess] = useState(null)
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
     try {
-      let url = "http://localhost:5000/";
-      const response = await axios.post(url + "api/user/signup", {
+      let url = 'http://localhost:5000/'
+      const response = await axios.post(url + 'api/user/signup', {
         username,
         password,
         access_level: accessLevel,
-      });
+      })
       // Optionally, you can redirect the user to another page after successful signup
       if (response.status == 201) {
-        setSuccess(true);
+        setSuccess(true)
         setTimeout(() => {
-          window.location.href = "./login";
-        }, 1000);
+          window.location.href = './login'
+        }, 1000)
       } else {
-        setSuccess(false);
+        setSuccess(false)
       }
     } catch (error) {
-      console.error("Error:", error);
-      setSuccess(false);
+      console.error('Error:', error)
+      setSuccess(false)
     }
-  };
+  }
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
@@ -121,7 +121,7 @@ const SignUp = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default SignUp;
+export default SignUp

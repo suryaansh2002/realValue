@@ -1,6 +1,6 @@
-import React from "react";
-import Image from "next/image";
-import logo from "../../images/logo.png";
+import React from 'react'
+import Image from 'next/image'
+import logo from '../../images/logo.png'
 
 const Footer = () => {
   return (
@@ -20,7 +20,7 @@ const Footer = () => {
         </div>
       </div>
     </footer>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer

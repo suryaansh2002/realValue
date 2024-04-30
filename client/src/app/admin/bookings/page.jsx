@@ -1,80 +1,80 @@
-"use client";
-import { useState, useEffect } from "react";
-import axios from "axios";
-import AdminNavbar from "@/app/components/AdminNavbar";
+'use client'
+import { useState, useEffect } from 'react'
+import axios from 'axios'
+import AdminNavbar from '@/app/components/AdminNavbar'
 
 const BookingsPage = () => {
-  const [bookings, setBookings] = useState([]);
-  const [archivedBookings, setArchivedBookings] = useState([]);
+  const [bookings, setBookings] = useState([])
+  const [archivedBookings, setArchivedBookings] = useState([])
 
-  const [showArchive, setShowArchive] = useState(false);
-  let url = "https://real-value-server.vercel.app/";
+  const [showArchive, setShowArchive] = useState(false)
+  let url = 'https://real-value-server.vercel.app/'
   // url = 'http://localhost:5000/'
   // Function to fetch bookings from the server
   const fetchBookings = async () => {
     try {
-      const response = await axios.get(url + "api/bookings");
-      setBookings(response.data);
+      const response = await axios.get(url + 'api/bookings')
+      setBookings(response.data)
     } catch (error) {
-      console.error("Error fetching bookings:", error);
+      console.error('Error fetching bookings:', error)
     }
-  };
+  }
 
   const fetchArchivedBookings = async () => {
     try {
-      const response = await axios.get(url + "api/bookings/archived");
-      setArchivedBookings(response.data);
+      const response = await axios.get(url + 'api/bookings/archived')
+      setArchivedBookings(response.data)
     } catch (error) {
-      console.error("Error fetching bookings:", error);
+      console.error('Error fetching bookings:', error)
     }
-  };
+  }
 
   // Function to archive a booking
   const archiveBooking = async (id) => {
     try {
       await axios.put(url + `api/bookings/${id}`, {
         archived: true,
-      });
+      })
       // Refresh bookings after archiving
-      fetchBookings();
-      fetchArchivedBookings();
+      fetchBookings()
+      fetchArchivedBookings()
     } catch (error) {
-      console.error("Error archiving booking:", error);
+      console.error('Error archiving booking:', error)
     }
-  };
+  }
 
   const unArchiveBooking = async (id) => {
     try {
       await axios.put(url + `api/bookings/${id}`, {
         archived: false,
-      });
+      })
       // Refresh bookings after archiving
-      fetchBookings();
-      fetchArchivedBookings();
+      fetchBookings()
+      fetchArchivedBookings()
     } catch (error) {
-      console.error("Error archiving booking:", error);
+      console.error('Error archiving booking:', error)
     }
-  };
+  }
 
   const deleteBooking = async (id) => {
     try {
-      await axios.delete(url + `api/bookings/${id}`);
+      await axios.delete(url + `api/bookings/${id}`)
       // Refresh bookings after archiving
-      fetchBookings();
+      fetchBookings()
     } catch (error) {
-      console.error("Error archiving booking:", error);
+      console.error('Error archiving booking:', error)
     }
-  };
+  }
 
   // Fetch bookings on component mount
   useEffect(() => {
-    fetchBookings();
-  }, []);
+    fetchBookings()
+  }, [])
 
   useEffect(() => {
-    fetchBookings();
-    fetchArchivedBookings();
-  }, [showArchive]);
+    fetchBookings()
+    fetchArchivedBookings()
+  }, [showArchive])
 
   return (
     <div>
@@ -90,13 +90,13 @@ const BookingsPage = () => {
             >
               <div className="mb-4">
                 <p className="font-semibold">
-                  Listing: {booking.listingId.brand} {booking.listingId.model} -{" "}
+                  Listing: {booking.listingId.brand} {booking.listingId.model} -{' '}
                   {booking.listingId.vehicleNumber}
                 </p>
                 <p className="mt-1">Name: {booking.name}</p>
                 <p className="mt-1">Mobile Number: {booking.mobileNumber}</p>
                 <p className="mt-1">
-                  Email: {booking.email ? booking.email : "N/A"}
+                  Email: {booking.email ? booking.email : 'N/A'}
                 </p>
                 <p className="mt-1">Date: {booking.date}</p>
                 <p className="mt-1">Time: {booking.time}</p>
@@ -144,13 +144,13 @@ const BookingsPage = () => {
               >
                 <div className="mb-4">
                   <p className="font-semibold">
-                    Listing: {booking.listingId.brand} {booking.listingId.model}{" "}
+                    Listing: {booking.listingId.brand} {booking.listingId.model}{' '}
                     - {booking.listingId.vehicleNumber}
                   </p>
                   <p className="mt-1">Name: {booking.name}</p>
                   <p className="mt-1">Mobile Number: {booking.mobileNumber}</p>
                   <p className="mt-1">
-                    Email: {booking.email ? booking.email : "N/A"}
+                    Email: {booking.email ? booking.email : 'N/A'}
                   </p>
                   <p className="mt-1">Date: {booking.date}</p>
                   <p className="mt-1">Time: {booking.time}</p>
@@ -174,7 +174,7 @@ const BookingsPage = () => {
         )}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default BookingsPage;
+export default BookingsPage

@@ -1,110 +1,133 @@
-"use client";
-import axios from "axios";
-import React, { useState, useEffect } from "react";
-import FeaturedCard from "../components/FeaturedCard";
-import { FaChevronDown, FaChevronUp } from "react-icons/fa";
-import { Checkbox, Slider, Select } from "antd";
-import { FaFilter } from "react-icons/fa";
+'use client'
+import axios from 'axios'
+import React, { useState, useEffect } from 'react'
+import FeaturedCard from '../components/FeaturedCard'
+import { FaChevronDown, FaChevronUp } from 'react-icons/fa'
+import { Checkbox, Slider, Select } from 'antd'
+import { FaFilter } from 'react-icons/fa'
+import { AmountWithCommas } from '../utils'
 
-const { Option } = Select;
+const { Option } = Select
 
 export default function Buy() {
-  const [listings, setListings] = useState([]);
-  const [brands, setBrands] = useState([]);
-  const [filters, setFilters] = useState({});
-  const [loading, setLoading] = useState(false);
-  const [showFilters, setShowFilters] = useState(false);
+  const [listings, setListings] = useState([])
+  const [brands, setBrands] = useState([])
+  const [filters, setFilters] = useState({})
+  const [loading, setLoading] = useState(false)
+  const [showFilters, setShowFilters] = useState(false)
+  const [seatsCount, setSeatsCount] = useState([])
 
   const handleBrandChange = (checkedValues) => {
-    setFilters({ ...filters, brand: checkedValues });
-  };
+    setFilters({ ...filters, brand: checkedValues })
+  }
 
   const handleBudgetChange = (value) => {
-    setFilters({ ...filters, budget: value });
-  };
+    setFilters({ ...filters, budget: value })
+  }
 
   const handleModelYearChange = (value) => {
-    setFilters({ ...filters, modelYear: value });
-  };
+    setFilters({ ...filters, modelYear: value })
+  }
 
   const handleFuelTypeChange = (checkedValues) => {
-    setFilters({ ...filters, fuelType: checkedValues });
-  };
+    setFilters({ ...filters, fuelType: checkedValues })
+  }
 
   const handleTransmissionTypeChange = (checkedValues) => {
-    setFilters({ ...filters, transmissionType: checkedValues });
-  };
+    setFilters({ ...filters, transmissionType: checkedValues })
+  }
 
   const handleOwnersChange = (value) => {
-    setFilters({ ...filters, owners: value });
-  };
+    setFilters({ ...filters, owners: value })
+  }
 
   const handleKmsDrivenChange = (value) => {
-    setFilters({ ...filters, kmsDriven: value });
-  };
+    setFilters({ ...filters, kmsDriven: value })
+  }
 
   const handleSeatsChange = (checkedValues) => {
-    setFilters({ ...filters, seats: checkedValues });
-  };
+    setFilters({ ...filters, seats: checkedValues })
+  }
+  const sliderFormatter = (value) => {
+    if (value) return AmountWithCommas(value)
+  }
 
-  let url = "https://real-value-server.vercel.app/";
-  url = "http://localhost:5000/";
+  let url = 'https://real-value-server.vercel.app/'
+  url = 'http://localhost:5000/'
 
   const fetchAllListings = async () => {
     try {
-      setLoading(true);
-      const response = await axios.get(url + "api/listings");
+      setLoading(true)
+      const response = await axios.get(url + 'api/listings')
       if (response.data) {
-        setListings(response.data);
+        setListings(response.data)
       }
-      setLoading(false);
+      setLoading(false)
     } catch (e) {
-      console.log(e.message);
-      setLoading(false);
+      console.log(e.message)
+      setLoading(false)
     }
-  };
+  }
 
   const fetchAllBrands = async () => {
     try {
-      const response = await axios.get(url + "api/listings/brands");
+      const response = await axios.get(url + 'api/listings/brands')
       if (response.data) {
-        response.data.sort();
-        setBrands(response.data);
+        response.data.sort()
+        setBrands(response.data)
       }
     } catch (e) {
-      console.log(e.message);
+      console.log(e.message)
     }
-  };
+  }
+  const fetchAllSeats = async () => {
+    try {
+      const response = await axios.get(url + 'api/listings/seats')
+      if (response.data) {
+        response.data.sort()
+        setSeatsCount(response.data)
+      }
+    } catch (e) {
+      console.log(e.message)
+    }
+  }
 
   const handleSubmit = () => {
-    console.log(filters);
-    let tempFilters = { ...filters };
-    if (tempFilters["owners"]) {
-      if (tempFilters["owners"] == "Any") {
-        delete tempFilters["owners"];
+    console.log(filters)
+    let tempFilters = { ...filters }
+    if (tempFilters['owners']) {
+      if (tempFilters['owners'] == 'Any') {
+        delete tempFilters['owners']
       } else {
-        tempFilters["owners"] = parseInt(tempFilters["owners"]);
+        tempFilters['owners'] = parseInt(tempFilters['owners'])
       }
     }
-    if (tempFilters["seats"]) {
-      let seatsArr = [];
-      tempFilters["seats"].map((count) => {
-        seatsArr.push(parseInt(count));
-      });
-      tempFilters["seats"] = seatsArr;
+    if (tempFilters['seats']) {
+      let seatsArr = []
+      tempFilters['seats'].map((count) => {
+        seatsArr.push(parseInt(count))
+      })
+      tempFilters['seats'] = seatsArr
     }
-    console.log(tempFilters);
-    fetchFilteredListings(tempFilters);
-  };
+    console.log(tempFilters)
+    fetchFilteredListings(tempFilters)
+  }
 
-  const fetchFilteredListings = async (filters) => {};
+  const fetchFilteredListings = async (filters) => {
+    try {
+      const response = await axios.post(url + 'api/listings/filtered', filters)
+    } catch (e) {
+      console.log(e.message)
+    }
+  }
 
   useEffect(() => {
-    if (localStorage.getItem("filters")) {
+    if (localStorage.getItem('filters')) {
     }
-    fetchAllListings();
-    fetchAllBrands();
-  }, []);
+    fetchAllListings()
+    fetchAllBrands()
+    fetchAllSeats()
+  }, [])
 
   return (
     <div>
@@ -113,7 +136,7 @@ export default function Buy() {
           onClick={() => setShowFilters(!showFilters)}
           className="border border-gray-300 ml-4 md:ml-12 rounded px-16 py-2 mt-4"
         >
-          <FaFilter className="inline-block text-sm mr-1"/> Filter
+          <FaFilter className="inline-block text-sm mr-1" /> Filter
           {showFilters ? (
             <FaChevronUp className="inline-block ml-4 text-sm" />
           ) : (
@@ -143,6 +166,9 @@ export default function Buy() {
                 min={0}
                 max={1500000}
                 step={1000}
+                tooltip={{
+                  formatter: sliderFormatter,
+                }}
                 onChange={handleBudgetChange}
               />
               {/* Adjust defaultValue and range as needed */}
@@ -201,9 +227,12 @@ export default function Buy() {
                 range
                 defaultValue={[0, 100000]}
                 min={0}
-                marks={100000}
+                max={100000}
                 step={100}
                 onChange={handleKmsDrivenChange}
+                tooltip={{
+                  formatter: sliderFormatter,
+                }}
               />
               {/* Adjust defaultValue and range as needed */}
             </div>
@@ -212,11 +241,9 @@ export default function Buy() {
             <div>
               <h3 className="font-bold">No. of Seats:</h3>
               <Checkbox.Group onChange={handleSeatsChange}>
-                <Checkbox value="2">2</Checkbox>
-                <Checkbox value="4">4</Checkbox>
-                <Checkbox value="5">5</Checkbox>
-                <Checkbox value="7">7</Checkbox>
-                {/* Add more checkboxes as needed */}
+                {seatsCount.map((count) => (
+                  <Checkbox value={count}>{count}</Checkbox>
+                ))}
               </Checkbox.Group>
             </div>
             <button
@@ -240,5 +267,5 @@ export default function Buy() {
         )
       )}
     </div>
-  );
+  )
 }

@@ -1,47 +1,47 @@
-"use client";
-import { useState, useEffect } from "react";
-import axios from "axios";
-import AdminNavbar from "@/app/components/AdminNavbar";
+'use client'
+import { useState, useEffect } from 'react'
+import axios from 'axios'
+import AdminNavbar from '@/app/components/AdminNavbar'
 
 const Features = () => {
-  const [features, setFeatures] = useState([]);
-  const [newFeatureText, setNewFeatureText] = useState("");
-  let url = "https://real-value-server.vercel.app/";
+  const [features, setFeatures] = useState([])
+  const [newFeatureText, setNewFeatureText] = useState('')
+  let url = 'https://real-value-server.vercel.app/'
   // url = 'http://localhost:5000/'
 
   useEffect(() => {
-    fetchFeatures();
-  }, []);
+    fetchFeatures()
+  }, [])
 
   const fetchFeatures = async () => {
     try {
-      const response = await axios.get(url + "api/features");
-      setFeatures(response.data);
+      const response = await axios.get(url + 'api/features')
+      setFeatures(response.data)
     } catch (error) {
-      console.error("Error fetching features:", error);
+      console.error('Error fetching features:', error)
     }
-  };
+  }
 
   const handleDeleteFeature = async (id) => {
     try {
-      await axios.delete(url + `api/features/${id}`);
-      fetchFeatures();
+      await axios.delete(url + `api/features/${id}`)
+      fetchFeatures()
     } catch (error) {
-      console.error("Error deleting feature:", error);
+      console.error('Error deleting feature:', error)
     }
-  };
+  }
 
   const handleAddFeature = async () => {
     try {
-      await axios.post(url + "api/features", {
+      await axios.post(url + 'api/features', {
         text: newFeatureText,
-      });
-      setNewFeatureText("");
-      fetchFeatures();
+      })
+      setNewFeatureText('')
+      fetchFeatures()
     } catch (error) {
-      console.error("Error adding feature:", error);
+      console.error('Error adding feature:', error)
     }
-  };
+  }
 
   return (
     <div>
@@ -81,7 +81,7 @@ const Features = () => {
         </ul>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Features;
+export default Features

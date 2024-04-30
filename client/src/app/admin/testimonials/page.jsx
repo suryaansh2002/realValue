@@ -1,50 +1,50 @@
-"use client";
-import { useState, useEffect } from "react";
-import axios from "axios";
-import AdminNavbar from "@/app/components/AdminNavbar";
+'use client'
+import { useState, useEffect } from 'react'
+import axios from 'axios'
+import AdminNavbar from '@/app/components/AdminNavbar'
 
 const Testimonials = () => {
-  const [testimonials, setTestimonials] = useState([]);
-  const [newTestimonialText, setNewTestimonialText] = useState("");
-  const [newTestimonialName, setNewTestimonialName] = useState("");
+  const [testimonials, setTestimonials] = useState([])
+  const [newTestimonialText, setNewTestimonialText] = useState('')
+  const [newTestimonialName, setNewTestimonialName] = useState('')
 
   useEffect(() => {
-    fetchTestimonials();
-  }, []);
-  let url = "https://real-value-server.vercel.app/";
+    fetchTestimonials()
+  }, [])
+  let url = 'https://real-value-server.vercel.app/'
   // url = 'http://localhost:5000/'
 
   const fetchTestimonials = async () => {
     try {
-      const response = await axios.get(url + "api/testimonials");
-      setTestimonials(response.data);
+      const response = await axios.get(url + 'api/testimonials')
+      setTestimonials(response.data)
     } catch (error) {
-      console.error("Error fetching testimonials:", error);
+      console.error('Error fetching testimonials:', error)
     }
-  };
+  }
 
   const handleDeleteTestimonial = async (id) => {
     try {
-      await axios.delete(url + `api/testimonials/${id}`);
-      fetchTestimonials();
+      await axios.delete(url + `api/testimonials/${id}`)
+      fetchTestimonials()
     } catch (error) {
-      console.error("Error deleting testimonial:", error);
+      console.error('Error deleting testimonial:', error)
     }
-  };
+  }
 
   const handleAddTestimonial = async () => {
     try {
-      await axios.post(url + "api/testimonials", {
+      await axios.post(url + 'api/testimonials', {
         text: newTestimonialText,
         name: newTestimonialName,
-      });
-      setNewTestimonialText("");
-      setNewTestimonialName("");
-      fetchTestimonials();
+      })
+      setNewTestimonialText('')
+      setNewTestimonialName('')
+      fetchTestimonials()
     } catch (error) {
-      console.error("Error adding testimonial:", error);
+      console.error('Error adding testimonial:', error)
     }
-  };
+  }
 
   return (
     <div>
@@ -94,7 +94,7 @@ const Testimonials = () => {
         </ul>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Testimonials;
+export default Testimonials

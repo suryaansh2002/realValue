@@ -1,39 +1,39 @@
-"use client";
-import { useState, useEffect } from "react";
-import axios from "axios";
-import AdminNavbar from "@/app/components/AdminNavbar";
-import JSZip from "jszip";
-import { useRouter } from "next/router";
+'use client'
+import { useState, useEffect } from 'react'
+import axios from 'axios'
+import AdminNavbar from '@/app/components/AdminNavbar'
+import JSZip from 'jszip'
+import { useRouter } from 'next/router'
 
 const CreateListing = () => {
-  const [features, setFeatures] = useState([]);
-  const [imageFile, setImageFile] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [uploading, setUploading] = useState(false);
-  const [images, setImages] = useState([]);
-  const [imagesLength, setImagesLength] = useState(null);
-  const [imagesDone, setImagesDone] = useState(0);
-  const [currListing, setCurrListing] = useState({});
+  const [features, setFeatures] = useState([])
+  const [imageFile, setImageFile] = useState(null)
+  const [loading, setLoading] = useState(false)
+  const [uploading, setUploading] = useState(false)
+  const [images, setImages] = useState([])
+  const [imagesLength, setImagesLength] = useState(null)
+  const [imagesDone, setImagesDone] = useState(0)
+  const [currListing, setCurrListing] = useState({})
 
   const [formData, setFormData] = useState({
-    brand: "",
-    model: "",
-    variant: "",
-    vehicleNumber: "",
-    fuelType: "",
-    year: "",
-    color: "",
-    ownership: "",
-    kmDriven: "",
-    price: "",
-    type: "",
-    transmissionType: "",
-    seats: "",
-    location: "",
+    brand: '',
+    model: '',
+    variant: '',
+    vehicleNumber: '',
+    fuelType: '',
+    year: '',
+    color: '',
+    ownership: '',
+    kmDriven: '',
+    price: '',
+    type: '',
+    transmissionType: '',
+    seats: '',
+    location: '',
     featured: false,
     selectedFeatures: [],
-  });
-  let url = "https://real-value-server.vercel.app/";
+  })
+  let url = 'https://real-value-server.vercel.app/'
   // url = 'http://localhost:5000/'
 
   useEffect(() => {
@@ -55,163 +55,163 @@ const CreateListing = () => {
         location: currListing.transmissionType,
         featured: currListing.featured,
         selectedFeatures: currListing.features,
-      });
+      })
     }
-  }, [currListing]);
+  }, [currListing])
   const getSingleListing = async () => {
-    const tempArr = window.location.href.split("/");
-    const id = tempArr[tempArr.length - 1];
-    console.log(id);
-    const response = await axios.get(url + `api/listings/${id}`);
-    console.log(response.data);
-    setCurrListing(response.data);
-  };
+    const tempArr = window.location.href.split('/')
+    const id = tempArr[tempArr.length - 1]
+    console.log(id)
+    const response = await axios.get(url + `api/listings/${id}`)
+    console.log(response.data)
+    setCurrListing(response.data)
+  }
 
   const uploadImagesToCloudinary = async (images) => {
-    let tempArr = [];
-    const NAME_OF_UPLOAD_PRESET = "jyz7szi4";
-    const YOUR_ID = "dsi5cmgg9";
-    const API_KEY = "455265386657195";
+    let tempArr = []
+    const NAME_OF_UPLOAD_PRESET = 'jyz7szi4'
+    const YOUR_ID = 'dsi5cmgg9'
+    const API_KEY = '455265386657195'
 
     // Loop through each extracted image and upload to Cloudinary
     for (let i = 0; i < images.length; i++) {
-      let image = images[i];
-      const data = new FormData();
-      data.append("file", image);
-      data.append("upload_preset", NAME_OF_UPLOAD_PRESET);
-      data.append("api_key", API_KEY);
+      let image = images[i]
+      const data = new FormData()
+      data.append('file', image)
+      data.append('upload_preset', NAME_OF_UPLOAD_PRESET)
+      data.append('api_key', API_KEY)
       const res = await fetch(
         `https://api.cloudinary.com/v1_1/${YOUR_ID}/image/upload`,
         {
-          method: "POST",
+          method: 'POST',
           body: data,
         },
-      );
-      const img = await res.json();
+      )
+      const img = await res.json()
       // You can handle the Cloudinary response here as needed
-      tempArr.push(img.secure_url);
-      setImages(tempArr);
-      console.log("Uploaded image:", img.secure_url);
+      tempArr.push(img.secure_url)
+      setImages(tempArr)
+      console.log('Uploaded image:', img.secure_url)
     }
-    console.log(tempArr);
-  };
+    console.log(tempArr)
+  }
 
   const handleImageChange = async (e) => {
-    setImageFile(e.target.files[0]);
-    const form = new FormData();
-    const file = e.target.files[0];
-    if (file.type != "application/zip") {
-      alert("Please upload zip file only");
-      return;
+    setImageFile(e.target.files[0])
+    const form = new FormData()
+    const file = e.target.files[0]
+    if (file.type != 'application/zip') {
+      alert('Please upload zip file only')
+      return
     }
     try {
-      setUploading(true);
-      const file = e.target.files[0];
-      const zip = new JSZip();
+      setUploading(true)
+      const file = e.target.files[0]
+      const zip = new JSZip()
 
       // Read the uploaded file
-      const zipData = await file.arrayBuffer();
+      const zipData = await file.arrayBuffer()
 
       // Load the ZIP file
-      await zip.loadAsync(zipData);
+      await zip.loadAsync(zipData)
 
-      const extractedImages = [];
+      const extractedImages = []
 
       // Extract images from the ZIP file
       await Promise.all(
         Object.keys(zip.files).map(async (filename) => {
-          const file = zip.files[filename];
+          const file = zip.files[filename]
           if (
             file.dir ||
             !file.name.match(/\.(jpg|jpeg|png)$/i) ||
-            filename.includes("__MACOSX")
+            filename.includes('__MACOSX')
           )
-            return;
+            return
 
           // Read the image file
-          const imageData = await file.async("blob");
+          const imageData = await file.async('blob')
 
           // Convert the Blob to a data URL
-          const imageFile = new File([imageData], filename);
+          const imageFile = new File([imageData], filename)
 
-          extractedImages.push(imageFile);
+          extractedImages.push(imageFile)
         }),
-      );
+      )
 
-      console.log(extractedImages);
+      console.log(extractedImages)
       const getFileName = (path) => {
-        return path.split("/").pop();
-      };
+        return path.split('/').pop()
+      }
 
       // Sort the files based on the filename
       extractedImages.sort((a, b) => {
-        const fileNameA = getFileName(a.name);
-        const fileNameB = getFileName(b.name);
-        return fileNameA.localeCompare(fileNameB);
-      });
+        const fileNameA = getFileName(a.name)
+        const fileNameB = getFileName(b.name)
+        return fileNameA.localeCompare(fileNameB)
+      })
 
-      console.log(extractedImages);
-      setImagesLength(extractedImages.length);
-      await uploadImagesToCloudinary(extractedImages);
+      console.log(extractedImages)
+      setImagesLength(extractedImages.length)
+      await uploadImagesToCloudinary(extractedImages)
 
-      setUploading(false);
+      setUploading(false)
     } catch (error) {
-      setUploading(false);
-      console.error("Error uploading image:", error.message);
+      setUploading(false)
+      console.error('Error uploading image:', error.message)
     }
-  };
+  }
 
   useEffect(() => {
-    getSingleListing();
-    fetchFeatures();
-  }, []);
+    getSingleListing()
+    fetchFeatures()
+  }, [])
 
   const fetchFeatures = async () => {
     try {
-      const response = await axios.get(url + "api/features");
-      setFeatures(response.data);
+      const response = await axios.get(url + 'api/features')
+      setFeatures(response.data)
     } catch (error) {
-      console.error("Error fetching features:", error);
+      console.error('Error fetching features:', error)
     }
-  };
+  }
 
   const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
+    const { name, value } = e.target
+    setFormData({ ...formData, [name]: value })
+  }
 
   const handleCheckboxChange = (e) => {
-    const { value, checked } = e.target;
+    const { value, checked } = e.target
     if (checked) {
       setFormData({
         ...formData,
         selectedFeatures: [...formData.selectedFeatures, value],
-      });
+      })
     } else {
       setFormData({
         ...formData,
         selectedFeatures: formData.selectedFeatures.filter(
           (item) => item !== value,
         ),
-      });
+      })
     }
-  };
+  }
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
     try {
-      setLoading(true);
-      const tempData = formData;
-      tempData["features"] = formData["selectedFeatures"];
+      setLoading(true)
+      const tempData = formData
+      tempData['features'] = formData['selectedFeatures']
       if (images.length) {
-        tempData["images"] = images;
+        tempData['images'] = images
       }
-      console.log(tempData);
-      setImages([]);
-      const tempArr = window.location.href.split("/");
-      const id = tempArr[tempArr.length - 1];
+      console.log(tempData)
+      setImages([])
+      const tempArr = window.location.href.split('/')
+      const id = tempArr[tempArr.length - 1]
 
-      await axios.put(url + "api/listings/" + id, tempData);
+      await axios.put(url + 'api/listings/' + id, tempData)
       // setFormData({
       //   brand: '',
       //   model: '',
@@ -229,13 +229,13 @@ const CreateListing = () => {
       //   featured: false,
       //   selectedFeatures: []
       // });
-      setLoading(false);
-      alert("Listing updated successfully");
+      setLoading(false)
+      alert('Listing updated successfully')
     } catch (error) {
-      setLoading(false);
-      console.error("Error creating listing:", error);
+      setLoading(false)
+      console.error('Error creating listing:', error)
     }
-  };
+  }
 
   return (
     <div>
@@ -438,10 +438,7 @@ const CreateListing = () => {
             </select>
           </div>
           <div>
-            <label
-              htmlFor="seats"
-              className="block font-medium text-gray-700"
-            >
+            <label htmlFor="seats" className="block font-medium text-gray-700">
               No. of seats
             </label>
             <input
@@ -512,12 +509,12 @@ const CreateListing = () => {
             disabled={loading || uploading}
             className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md"
           >
-            {loading ? "Updating..." : "Update Listing"}
+            {loading ? 'Updating...' : 'Update Listing'}
           </button>
         </form>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default CreateListing;
+export default CreateListing

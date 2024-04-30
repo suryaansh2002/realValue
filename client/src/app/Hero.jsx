@@ -1,22 +1,22 @@
-"use client";
-import React, { useEffect } from "react";
-import carImage2 from "../images/car-image-2.jpg";
-import Image from "next/image";
-import ButtonCloud from "./components/ButtonCloud";
-import honda from "../images/brands/Honda.png";
-import hyundai from "../images/brands/hyundai.png";
-import kia from "../images/brands/kia.png";
-import mahindra from "../images/brands/mahindra.png";
-import tata from "../images/brands/tata.png";
-import maruti from "../images/brands/maruti.png";
-import { Icon } from "@ant-design/icons";
-import { CarOutlined } from "@ant-design/icons";
+'use client'
+import React, { useEffect } from 'react'
+import carImage2 from '../images/car-image-2.jpg'
+import Image from 'next/image'
+import ButtonCloud from './components/ButtonCloud'
+import honda from '../images/brands/Honda.png'
+import hyundai from '../images/brands/hyundai.png'
+import kia from '../images/brands/kia.png'
+import mahindra from '../images/brands/mahindra.png'
+import tata from '../images/brands/tata.png'
+import maruti from '../images/brands/maruti.png'
+import { Icon } from '@ant-design/icons'
+import { CarOutlined } from '@ant-design/icons'
 
 const imageStyles = {
-  width: "3rem",
-  height: "2rem",
-  display: "inline",
-};
+  width: '3rem',
+  height: '2rem',
+  display: 'inline',
+}
 const brands = [
   {
     label: (
@@ -24,7 +24,7 @@ const brands = [
         <Image style={imageStyles} src={maruti} alt="maruti" /> Maruti Suzuki
       </div>
     ),
-    key: "1",
+    key: '1',
   },
   {
     label: (
@@ -32,7 +32,7 @@ const brands = [
         <Image style={imageStyles} src={hyundai} alt="hyundai" /> Hyundai
       </div>
     ),
-    key: "2",
+    key: '2',
   },
   {
     label: (
@@ -40,7 +40,7 @@ const brands = [
         <Image style={imageStyles} src={tata} alt="tata" /> Tata
       </div>
     ),
-    key: "3",
+    key: '3',
   },
   {
     label: (
@@ -48,7 +48,7 @@ const brands = [
         <Image style={imageStyles} src={mahindra} alt="mahindra" /> Mahindra
       </div>
     ),
-    key: "4",
+    key: '4',
   },
   {
     label: (
@@ -56,7 +56,7 @@ const brands = [
         <Image style={imageStyles} src={honda} alt="honda" /> Honda
       </div>
     ),
-    key: "5",
+    key: '5',
   },
   {
     label: (
@@ -64,52 +64,52 @@ const brands = [
         <Image style={imageStyles} src={kia} alt="kia" /> Kia
       </div>
     ),
-    key: "6",
+    key: '6',
   },
   {
     label: <a href="/buy">Checkout all cars</a>,
-    key: "7",
+    key: '7',
   },
-];
+]
 
 const segments = [
   {
-    label: "SUV",
-    key: "1",
+    label: 'SUV',
+    key: '1',
   },
   {
-    label: "Sedan",
-    key: "2",
+    label: 'Sedan',
+    key: '2',
   },
   {
-    label: "Hatchback",
-    key: "3",
+    label: 'Hatchback',
+    key: '3',
   },
   {
-    label: "MUV",
-    key: "3",
+    label: 'MUV',
+    key: '3',
   },
-];
+]
 
 const budgets = [
   {
-    label: "<4 Lakh",
-    key: "1",
+    label: '<4 Lakh',
+    key: '1',
   },
   {
-    label: "4-8 Lakh",
-    key: "2",
+    label: '4-8 Lakh',
+    key: '2',
   },
   {
-    label: ">8 Lakh",
-    key: "3",
+    label: '>8 Lakh',
+    key: '3',
   },
-];
+]
 
 const Hero = () => {
   useEffect(() => {
-    localStorage.removeItem("filters");
-  }, []);
+    localStorage.removeItem('filters')
+  }, [])
   return (
     <section className="bg-white dark:bg-gray-900">
       <div className="grid max-w-screen-xl px-4 py-12 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
@@ -166,7 +166,7 @@ const Hero = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default Hero;
+export default Hero

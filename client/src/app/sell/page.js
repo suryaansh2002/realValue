@@ -1,9 +1,9 @@
-"use client";
-import { useState } from "react";
-import styles from "../styles/Sell.module.css";
-import axios from "axios";
-import { FaChevronDown, FaChevronUp } from "react-icons/fa";
-import FaqCard from "../components/FaqCard";
+'use client'
+import { useState } from 'react'
+import styles from '../styles/Sell.module.css'
+import axios from 'axios'
+import { FaChevronDown, FaChevronUp } from 'react-icons/fa'
+import FaqCard from '../components/FaqCard'
 import {
   FaCheckCircle,
   FaPhone,
@@ -11,116 +11,93 @@ import {
   FaCarSide,
   FaFileAlt,
   FaHandshake,
-} from "react-icons/fa";
-import { FaCoins, FaClipboardCheck, FaMoneyCheckAlt } from "react-icons/fa";
-import FeaturedCars from "../FeaturedCars";
-
-const faqData = [
-  {
-    question: "Can I sell a car that has an ongoing loan on it?",
-    answer: "Yes",
-  },
-  {
-    question:
-      "Is the car owner required to be present at the time of car pick up & inspection?",
-    answer:
-      "Yes, the owner of the car or an authorised person on behalf of the owner of the car must be present at the time of inspection and car pick up.",
-  },
-  {
-    question: "How long does the RC transfer take?",
-    answer: "60-90 days",
-  },
-  {
-    question: "Will real value handle/take care of the paperwork?",
-    answer:
-      "Yes, all paperwork related to the RTO will be taken care by Real Value",
-  },
-  {
-    question: "How long does it take during car inspection?",
-    answer: "It just takes 30 minutes to physically inspect the car",
-  },
-];
+} from 'react-icons/fa'
+import { FaCoins, FaClipboardCheck, FaMoneyCheckAlt } from 'react-icons/fa'
+import FeaturedCars from '../FeaturedCars'
+import { sellFAQData } from '../data/sellFAQs'
 
 const SellRequestForm = () => {
-  let url = "https://real-value-server.vercel.app/";
+  let url = 'https://real-value-server.vercel.app/'
   // url = "http://localhost:5000/";
-  const [showForm, setShowForm] = useState(false);
-  const [showModal, setShowModal] = useState(false);
+  const [showForm, setShowForm] = useState(false)
+  const [showModal, setShowModal] = useState(false)
   const [formData, setFormData] = useState({
-    name: "",
-    phoneNumber: "",
-    email: "",
-    location: "",
-    registrationNumber: "",
-    brand: "",
-    model: "",
-    variant: "",
-    manufactureYear: "",
-    kilometers: "",
-    price: "",
-  });
+    name: '',
+    phoneNumber: '',
+    email: '',
+    location: '',
+    registrationNumber: '',
+    brand: '',
+    model: '',
+    variant: '',
+    manufactureYear: '',
+    kilometers: '',
+    price: '',
+  })
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+    setFormData({ ...formData, [e.target.name]: e.target.value })
+  }
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
     // Check for compulsory fields
     const compulsoryFields = [
-      "name",
-      "phoneNumber",
-      "location",
-      "registrationNumber",
-      "brand",
-      "model",
-      "manufactureYear",
-      "kilometers",
-    ];
-    const missingFields = compulsoryFields.filter((field) => !formData[field]);
+      'name',
+      'phoneNumber',
+      'location',
+      'registrationNumber',
+      'brand',
+      'model',
+      'manufactureYear',
+      'kilometers',
+    ]
+    const missingFields = compulsoryFields.filter((field) => !formData[field])
 
     if (missingFields.length > 0) {
-      alert(`Please fill in the following fields: ${missingFields.join(", ")}`);
-      return;
+      alert(`Please fill in the following fields: ${missingFields.join(', ')}`)
+      return
     }
 
     try {
-      await axios.post(url + "api/sellRequests", formData);
+      await axios.post(url + 'api/sellRequests', formData)
       // Clear form after submission
-      setShowForm(false);
-      setShowModal(true);
+      setShowForm(false)
+      setShowModal(true)
       setTimeout(() => {
-        setShowModal(false);
-      }, 2000);
+        setShowModal(false)
+      }, 2000)
       setFormData({
-        name: "",
-        phoneNumber: "",
-        email: "",
-        location: "",
-        registrationNumber: "",
-        brand: "",
-        model: "",
-        variant: "",
-        manufactureYear: "",
-        kilometers: "",
-        price: "",
-      });
+        name: '',
+        phoneNumber: '',
+        email: '',
+        location: '',
+        registrationNumber: '',
+        brand: '',
+        model: '',
+        variant: '',
+        manufactureYear: '',
+        kilometers: '',
+        price: '',
+      })
     } catch (error) {
-      console.error("Error submitting sell request:", error);
-      alert("Error submitting sell request. Please try again later.");
+      console.error('Error submitting sell request:', error)
+      alert('Error submitting sell request. Please try again later.')
     }
-  };
+  }
 
   return (
     <div className="text-left pt-4 dark:bg-gray-900 text-white">
-      <div className="font-semibold text-3xl mb-8 ml-4 md:ml-12">Sell Your Vehicle</div>
+      <div className="font-semibold text-3xl mb-8 ml-4 md:ml-12">
+        Sell Your Vehicle
+      </div>
 
       <button
         onClick={() => setShowForm(!showForm)}
         className="border border-gray-300 ml-4 md:ml-12 rounded px-12 py-2 mt-4"
       >
-        Submit Your Sell Request{" "}
+        Submit Your Sell Request{' '}
         {showForm ? (
           <FaChevronUp className="inline-block align-text-top" />
         ) : (
@@ -238,7 +215,9 @@ const SellRequestForm = () => {
 
       <div className="my-4">
         <div className="w-[100vw] block md:w-[50vw] md:inline-block">
-          <div className="font-semibold text-2xl my-8 ml-4 md:ml-12">Steps To Sell</div>
+          <div className="font-semibold text-2xl my-8 ml-4 md:ml-12">
+            Steps To Sell
+          </div>
           <ul className="space-y-4 ml-6 md:ml-14">
             <li className="flex items-center py-2">
               <span className="flex-shrink-0 mr-4">
@@ -308,12 +287,12 @@ const SellRequestForm = () => {
         </div>
       </div>
 
-      <div className="font-semibold text-2xl mt-8 pl-12">FAQs</div>
+      <div className="font-semibold text-2xl mt-8 pl-6 lg:pl-12">FAQs</div>
       <p className="text-gray-500 text-sm ml-6 md:text-lg md:ml-12 my-4 dark:text-gray-400">
         Please reach out to us if your queries are not answered below.
       </p>
       <div className="ml-6 md:ml-12 pb-4">
-        {faqData.map((item) => (
+        {sellFAQData.map((item) => (
           <FaqCard
             key={item.id}
             question={item.question}
@@ -336,7 +315,7 @@ const SellRequestForm = () => {
         </>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default SellRequestForm;
+export default SellRequestForm

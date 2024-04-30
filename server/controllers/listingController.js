@@ -47,6 +47,16 @@ exports.getAllBrands = async (req, res) => {
   }
 };
 
+
+exports.getAllSeats = async (req, res) => {
+  try {
+    const brands = await Listing.distinct('seats');
+    res.json(brands);
+  } catch (error) {
+    res.status(500).json({ error: 'Server error' });
+  }
+};
+
 exports.geFeaturedListings = async (req, res) => {
   try {
     const listings = await Listing.find({ featured: true })
@@ -58,8 +68,10 @@ exports.geFeaturedListings = async (req, res) => {
 
 exports.getFilteredListings = async (req, res) => {
   try {
-    const listings = await Listing.find(req.body)
-    res.json(listings)
+    const filters = req.body
+    console.log(filters)
+    // const listings = await Listing.find(req.body)
+    res.json([])
   } catch (error) {
     res.status(500).json({ error: 'Server error' })
   }

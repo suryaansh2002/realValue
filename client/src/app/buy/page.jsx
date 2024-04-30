@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import FeaturedCard from "../components/FeaturedCard";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 import { Checkbox, Slider, Select } from "antd";
-// import "antd/dist/antd.css";
+import { FaFilter } from "react-icons/fa";
 
 const { Option } = Select;
 
@@ -113,11 +113,11 @@ export default function Buy() {
           onClick={() => setShowFilters(!showFilters)}
           className="border border-gray-300 ml-4 md:ml-12 rounded px-16 py-2 mt-4"
         >
-          Filters
+          <FaFilter className="inline-block text-sm mr-1"/> Filter
           {showFilters ? (
-            <FaChevronUp className="inline-block ml-2 text-sm" />
+            <FaChevronUp className="inline-block ml-4 text-sm" />
           ) : (
-            <FaChevronDown className="inline-block ml-2 text-sm" />
+            <FaChevronDown className="inline-block ml-4 text-sm" />
           )}
         </button>
       </div>

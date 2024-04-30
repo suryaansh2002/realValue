@@ -1,35 +1,34 @@
-"use client";
-import Image from "next/image";
-import React, { useState, useEffect } from "react";
-import offer from "../../images/offer.jpg";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper/modules";
-import "swiper/css";
-import axios from "axios";
+'use client'
+import Image from 'next/image'
+import React, { useState, useEffect } from 'react'
+import offer from '../../images/offer.jpg'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Navigation, Pagination } from 'swiper/modules'
+import 'swiper/css'
+import axios from 'axios'
 const Offers = () => {
-  const [loading, setLoading] = useState(true);
-  const [offers, setOffers] = useState([]);
-  let url = "https://real-value-server.vercel.app/";
+  const [loading, setLoading] = useState(true)
+  const [offers, setOffers] = useState([])
+  let url = 'https://real-value-server.vercel.app/'
   // url = 'http://localhost:5000/'
 
   const fetchOffers = async () => {
     try {
-      setLoading(true);
+      setLoading(true)
 
-      const response = await axios.get(url + "api/offers");
-      console.log("orffers:", response.data);
-      setOffers(response.data);
+      const response = await axios.get(url + 'api/offers')
+      setOffers(response.data)
       if (response.data) {
-        setLoading(false);
+        setLoading(false)
       }
     } catch (e) {
-      setLoading(false);
-      console.log(e.message);
+      setLoading(false)
+      console.log(e.message)
     }
-  };
+  }
   useEffect(() => {
-    fetchOffers();
-  }, []);
+    fetchOffers()
+  }, [])
   return (
     <section className="py-24 bg-white-50 text-black relative">
       <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
@@ -63,7 +62,7 @@ const Offers = () => {
             }}
           >
             {offers.map((offer) => (
-              <SwiperSlide key={offer._id} style={{ paddingBottom: "40px" }}>
+              <SwiperSlide key={offer._id} style={{ paddingBottom: '40px' }}>
                 <div className="max-w-sm bg-white  rounded-lg shadow dark:bg-gray-800">
                   <Image
                     className="rounded-t-lg object-cover w-full"
@@ -81,7 +80,7 @@ const Offers = () => {
         )}
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default Offers;
+export default Offers

@@ -1,41 +1,41 @@
-"use client";
-import { useState } from "react";
-import axios from "axios";
-import jwt_decode from "jwt-decode";
-import Link from "next/link";
+'use client'
+import { useState } from 'react'
+import axios from 'axios'
+import jwt_decode from 'jwt-decode'
+import Link from 'next/link'
 
 const Login = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [success, setSuccess] = useState(null);
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
+  const [success, setSuccess] = useState(null)
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
     try {
-      let url = "https://real-value-server.vercel.app/";
+      let url = 'https://real-value-server.vercel.app/'
       // url = 'http://localhost:5000/'
 
-      const response = await axios.post(url + "api/user/login", {
+      const response = await axios.post(url + 'api/user/login', {
         username,
         password,
-      });
-      const token = response.data.token;
-      localStorage.setItem("jwt_token", token);
+      })
+      const token = response.data.token
+      localStorage.setItem('jwt_token', token)
       if (response.status == 200) {
-        setSuccess(true);
+        setSuccess(true)
         setTimeout(() => {
-          window.location.href = "./home";
-        }, 1000);
+          window.location.href = './home'
+        }, 1000)
       } else {
-        setSuccess(false);
+        setSuccess(false)
       }
 
       // Optionally, you can redirect the user to another page after successful login
     } catch (error) {
-      setSuccess(false);
-      console.error("Error:", error);
+      setSuccess(false)
+      console.error('Error:', error)
     }
-  };
+  }
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
@@ -47,7 +47,7 @@ const Login = () => {
         </div>
         {success == true ? (
           <h3 className="mt-6 text-center text-green-500 text-lg font-extrabold">
-            Signed up successfully
+            Logged in successfully
           </h3>
         ) : success == false ? (
           <h3 className="mt-6 text-center text-red-500 text-lg font-extrabold">
@@ -108,7 +108,7 @@ const Login = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Login;
+export default Login

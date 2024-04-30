@@ -118,7 +118,7 @@ const SellRequestForm = () => {
 
       <button
         onClick={() => setShowForm(!showForm)}
-        className="border border-gray-300 ml-12 rounded px-12 py-2 mt-4"
+        className="border border-gray-300 ml-4 md:ml-12 rounded px-12 py-2 mt-4"
       >
         Submit Your Sell Request{" "}
         {showForm ? (
@@ -235,8 +235,11 @@ const SellRequestForm = () => {
           </form>
         </div>
       )}
-      <div className="font-semibold text-2xl my-8 pl-12">Steps To Sell</div>
 
+
+      <div className="my-4">
+      <div className="w-[100vw] block md:w-[50vw] md:inline-block">
+      <div className="font-semibold text-2xl my-8 pl-12">Steps To Sell</div>
       <ul className="space-y-4 ml-14">
         <li className="flex items-center py-2">
           <span className="flex-shrink-0 mr-4">
@@ -277,10 +280,12 @@ const SellRequestForm = () => {
           <span className="text-lg">Car pickup and payment</span>
         </li>
       </ul>
+      </div>
+
+      <div className="w-[100vw] block md:w-[40vw] md:inline-block align-top">
       <div className="font-semibold text-2xl my-8 pl-12">
         Why Sell Your Car To Us?
       </div>
-
       <ul className="space-y-4 ml-14">
         <li className="flex items-center py-2">
           <span className="flex-shrink-0 mr-4">
@@ -301,9 +306,12 @@ const SellRequestForm = () => {
           <span className="text-lg">Instant Payment</span>
         </li>
       </ul>
+      </div>
+      </div>
+
 
       <div className="font-semibold text-2xl mt-8 pl-12">FAQs</div>
-      <p className="text-gray-500 text-lg ml-12 my-4 dark:text-gray-400">
+      <p className="text-gray-500 text-sm ml-6 md:text-lg md:ml-12 my-4 dark:text-gray-400">
         Please reach out to us if your queries are not answered below.
       </p>
       <div className="ml-6 md:ml-12 pb-4">

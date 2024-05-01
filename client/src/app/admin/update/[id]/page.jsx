@@ -29,12 +29,19 @@ const CreateListing = () => {
     type: '',
     transmissionType: '',
     seats: '',
+    displacement: '',
+    cylinders: '',
+    maxPower:'',
+    bootspace:'',
+    fuelTank:'',
+    gears : '',
+    mileage:'',
     location: '',
     featured: false,
     selectedFeatures: [],
   })
   let url = 'https://real-value-server.vercel.app/'
-  // url = 'http://localhost:5000/'
+  url = 'http://localhost:5000/'
 
   useEffect(() => {
     if (Object.keys(currListing).length) {
@@ -52,6 +59,13 @@ const CreateListing = () => {
         type: currListing.type,
         transmissionType: currListing.transmissionType,
         seats: currListing.seats,
+        displacement: currListing.displacement,
+        cylinders: currListing.cylinders,
+        maxPower:currListing.maxPower,
+        bootspace:currListing.bootspace,
+        fuelTank:currListing.fuelTank,
+        gears : currListing.gears,
+        mileage:currListing.mileage,    
         location: currListing.transmissionType,
         featured: currListing.featured,
         selectedFeatures: currListing.features,
@@ -446,6 +460,97 @@ const CreateListing = () => {
               id="seats"
               name="seats"
               value={formData.seats}
+              onChange={handleInputChange}
+              className="mt-1 p-2 w-full border rounded-md"
+            />
+          </div>
+          <div>
+            <label htmlFor="displacement" className="block font-medium text-gray-700">
+              Displacement (CC):
+            </label>
+            <input
+              type="number"
+              id="displacement"
+              name="displacement"
+              value={formData.displacement}
+              onChange={handleInputChange}
+              className="mt-1 p-2 w-full border rounded-md"
+            />
+          </div>
+          <div>
+            <label htmlFor="cylinders" className="block font-medium text-gray-700">
+              No. of Cylinders:
+            </label>
+            <input
+              type="number"
+              id="cylinders"
+              name="cylinders"
+              value={formData.cylinders}
+              onChange={handleInputChange}
+              className="mt-1 p-2 w-full border rounded-md"
+            />
+          </div>
+          <div>
+            <label htmlFor="maxPower" className="block font-medium text-gray-700">
+              Max Power (BHP):
+            </label>
+            <input
+              type="number"
+              id="maxPower"
+              name="maxPower"
+              value={formData.maxPower}
+              onChange={handleInputChange}
+              className="mt-1 p-2 w-full border rounded-md"
+            />
+          </div>
+          <div>
+            <label htmlFor="bootspace" className="block font-medium text-gray-700">
+             Bootspace (Litres):
+            </label>
+            <input
+              type="number"
+              id="bootspace"
+              name="bootspace"
+              value={formData.bootspace}
+              onChange={handleInputChange}
+              className="mt-1 p-2 w-full border rounded-md"
+            />
+          </div>
+          <div>
+            <label htmlFor="fuelTank" className="block font-medium text-gray-700">
+             Fuel Tank (Litres):
+            </label>
+            <input
+              type="number"
+              id="fuelTank"
+              name="fuelTank"
+              value={formData.fuelTank}
+              onChange={handleInputChange}
+              className="mt-1 p-2 w-full border rounded-md"
+            />
+          </div>
+          <div>
+            <label htmlFor="gears" className="block font-medium text-gray-700">
+             No. of Gears:
+            </label>
+            <input
+              type="number"
+              id="gears"
+              name="gears"
+              value={formData.gears}
+              onChange={handleInputChange}
+              className="mt-1 p-2 w-full border rounded-md"
+            />
+          </div>
+          <div>
+            <label htmlFor="mileage" className="block font-medium text-gray-700">
+             Mileage (KMPL):
+            </label>
+            <input
+              type="number"
+              id="mileage"
+              name="mileage"
+              value={formData.mileage}
               onChange={handleInputChange}
               className="mt-1 p-2 w-full border rounded-md"
             />

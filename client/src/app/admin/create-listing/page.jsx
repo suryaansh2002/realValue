@@ -31,11 +31,11 @@ const CreateListing = () => {
     seats: '',
     displacement: '',
     cylinders: '',
-    maxPower:'',
-    bootspace:'',
-    fuelTank:'',
-    gears : '',
-    mileage:'',
+    maxPower: '',
+    bootspace: '',
+    fuelTank: '',
+    gears: '',
+    mileage: '',
     location: '',
     featured: false,
     selectedFeatures: [],
@@ -195,11 +195,11 @@ const CreateListing = () => {
         seats: '',
         displacement: '',
         cylinders: '',
-        maxPower:'',
-        bootspace:'',
-        fuelTank:'',
-        gears : '',
-        mileage:'',    
+        maxPower: '',
+        bootspace: '',
+        fuelTank: '',
+        gears: '',
+        mileage: '',
         location: '',
         featured: false,
         selectedFeatures: [],
@@ -211,6 +211,19 @@ const CreateListing = () => {
       console.error('Error creating listing:', error)
     }
   }
+
+  const carTypes = [
+    'Micro Car',
+    'Hatchback',
+    'Compact Sedan',
+    'Mid Size Sedan',
+    'Full Size Sedan',
+    'Compact SUV',
+    'Mid Size SUV',
+    'Full Size SUV',
+    'MUV/MPV',
+    'Luxury',
+  ]
 
   return (
     <div>
@@ -384,14 +397,19 @@ const CreateListing = () => {
             <label htmlFor="type" className="block font-medium text-gray-700">
               Type
             </label>
-            <input
-              type="text"
+
+            <select
               id="type"
               name="type"
               value={formData.type}
               onChange={handleInputChange}
               className="mt-1 p-2 w-full border rounded-md"
-            />
+            >
+              <option value="">Select Type</option>
+              {carTypes.map((type) => (
+                <option value={type}>{type}</option>
+              ))}
+            </select>
           </div>
           <div>
             <label
@@ -426,7 +444,10 @@ const CreateListing = () => {
             />
           </div>
           <div>
-            <label htmlFor="displacement" className="block font-medium text-gray-700">
+            <label
+              htmlFor="displacement"
+              className="block font-medium text-gray-700"
+            >
               Displacement (CC):
             </label>
             <input
@@ -439,7 +460,10 @@ const CreateListing = () => {
             />
           </div>
           <div>
-            <label htmlFor="cylinders" className="block font-medium text-gray-700">
+            <label
+              htmlFor="cylinders"
+              className="block font-medium text-gray-700"
+            >
               No. of Cylinders:
             </label>
             <input
@@ -452,7 +476,10 @@ const CreateListing = () => {
             />
           </div>
           <div>
-            <label htmlFor="maxPower" className="block font-medium text-gray-700">
+            <label
+              htmlFor="maxPower"
+              className="block font-medium text-gray-700"
+            >
               Max Power (BHP):
             </label>
             <input
@@ -465,8 +492,11 @@ const CreateListing = () => {
             />
           </div>
           <div>
-            <label htmlFor="bootspace" className="block font-medium text-gray-700">
-             Bootspace (Litres):
+            <label
+              htmlFor="bootspace"
+              className="block font-medium text-gray-700"
+            >
+              Bootspace (Litres):
             </label>
             <input
               type="number"
@@ -478,8 +508,11 @@ const CreateListing = () => {
             />
           </div>
           <div>
-            <label htmlFor="fuelTank" className="block font-medium text-gray-700">
-             Fuel Tank (Litres):
+            <label
+              htmlFor="fuelTank"
+              className="block font-medium text-gray-700"
+            >
+              Fuel Tank (Litres):
             </label>
             <input
               type="number"
@@ -492,7 +525,7 @@ const CreateListing = () => {
           </div>
           <div>
             <label htmlFor="gears" className="block font-medium text-gray-700">
-             No. of Gears:
+              No. of Gears:
             </label>
             <input
               type="number"
@@ -504,8 +537,11 @@ const CreateListing = () => {
             />
           </div>
           <div>
-            <label htmlFor="mileage" className="block font-medium text-gray-700">
-             Mileage (KMPL):
+            <label
+              htmlFor="mileage"
+              className="block font-medium text-gray-700"
+            >
+              Mileage (KMPL):
             </label>
             <input
               type="number"

@@ -16,7 +16,9 @@ export default function Buy() {
   const [loading, setLoading] = useState(false)
   const [showFilters, setShowFilters] = useState(false)
   const [seatsCount, setSeatsCount] = useState([])
-
+useEffect(()=>{
+  console.log(filters)
+},[filters])
   const handleBrandChange = (checkedValues) => {
     setFilters({ ...filters, brand: checkedValues })
   }
@@ -53,7 +55,7 @@ export default function Buy() {
   }
 
   let url = 'https://real-value-server.vercel.app/'
-  url = 'http://localhost:5000/'
+  // url = 'http://localhost:5000/'
 
   const fetchAllListings = async () => {
     try {
@@ -92,7 +94,7 @@ export default function Buy() {
     }
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     console.log(filters)
     let tempFilters = { ...filters }
     if (tempFilters['owners']) {
@@ -110,12 +112,16 @@ export default function Buy() {
       tempFilters['seats'] = seatsArr
     }
     console.log(tempFilters)
-    fetchFilteredListings(tempFilters)
+    await fetchFilteredListings(tempFilters)
   }
 
   const fetchFilteredListings = async (filters) => {
     try {
       const response = await axios.post(url + 'api/listings/filtered', filters)
+      if (response.data) {
+        console.log(response.data)
+        setListings(response.data)
+      }
     } catch (e) {
       console.log(e.message)
     }
@@ -128,7 +134,9 @@ export default function Buy() {
     fetchAllBrands()
     fetchAllSeats()
   }, [])
-
+const kmsDrivenRange = [0, 100000]
+const budgetRange = [0, 1500000]
+const yearRange = [2010, new Date().getFullYear()]
   return (
     <div>
       <div className="text-center">
@@ -150,9 +158,15 @@ export default function Buy() {
             {/* Brand */}
             <div>
               <h3 className="font-bold">Brand:</h3>
-              <Checkbox.Group onChange={handleBrandChange}>
+              <Checkbox.Group
+              defaultValue={filters['brand']}
+              onChange={handleBrandChange}>
                 {brands.map((brand) => (
-                  <Checkbox value={brand}>{brand}</Checkbox>
+                  <Checkbox
+                    value={brand}
+                  >
+                    {brand}
+                  </Checkbox>
                 ))}
               </Checkbox.Group>
             </div>
@@ -162,7 +176,7 @@ export default function Buy() {
               <h3 className="font-bold">Budget:</h3>
               <Slider
                 range
-                defaultValue={[0, 1500000]}
+                defaultValue={filters['budget'] || budgetRange}
                 min={0}
                 max={1500000}
                 step={1000}
@@ -179,39 +193,41 @@ export default function Buy() {
               <h3 className="font-bold">Model Year:</h3>
               <Slider
                 range
-                defaultValue={[2010, new Date().getFullYear()]}
+                defaultValue={filters['modelYear'] || yearRange}
                 min={2010}
                 max={new Date().getFullYear()}
                 step={1}
                 onChange={handleModelYearChange}
               />
-              {/* Adjust defaultValue and range as needed */}
             </div>
 
             {/* Fuel Type */}
             <div>
               <h3 className="font-bold">Fuel Type:</h3>
-              <Checkbox.Group onChange={handleFuelTypeChange}>
+              <Checkbox.Group onChange={handleFuelTypeChange}               
+              defaultValue={filters['fuelType']}
+>
                 <Checkbox value="Petrol">Petrol</Checkbox>
                 <Checkbox value="Diesel">Diesel</Checkbox>
-                {/* Add more checkboxes as needed */}
+                <Checkbox value="CNG">CNG</Checkbox>
               </Checkbox.Group>
             </div>
 
             {/* Transmission Type */}
             <div>
               <h3 className="font-bold">Transmission Type:</h3>
-              <Checkbox.Group onChange={handleTransmissionTypeChange}>
-                <Checkbox value="Automatic">Automatic</Checkbox>
-                <Checkbox value="Manual">Manual</Checkbox>
-                {/* Add more checkboxes as needed */}
+              <Checkbox.Group onChange={handleTransmissionTypeChange}
+                            defaultValue={filters['transmissionType']}
+                            >
+                <Checkbox value="automatic">Automatic</Checkbox>
+                <Checkbox value="manual">Manual</Checkbox>
               </Checkbox.Group>
             </div>
 
             {/* Owners */}
             <div>
               <h3 className="font-bold">Owners:</h3>
-              <Select defaultValue="Any" onChange={handleOwnersChange}>
+              <Select defaultValue={filters['owners'] ? filters['owners'] : 'Any'} onChange={handleOwnersChange}>
                 <Option value="Any">Any</Option>
                 <Option value="1">1</Option>
                 <Option value="2">2</Option>
@@ -225,7 +241,7 @@ export default function Buy() {
               <h3 className="font-bold">Kms Driven:</h3>
               <Slider
                 range
-                defaultValue={[0, 100000]}
+                defaultValue={filters['kmsDriven'] || kmsDrivenRange}
                 min={0}
                 max={100000}
                 step={100}
@@ -240,7 +256,7 @@ export default function Buy() {
             {/* No. of Seats */}
             <div>
               <h3 className="font-bold">No. of Seats:</h3>
-              <Checkbox.Group onChange={handleSeatsChange}>
+              <Checkbox.Group defaultValue={filters['seats']} onChange={handleSeatsChange}>
                 {seatsCount.map((count) => (
                   <Checkbox value={count}>{count}</Checkbox>
                 ))}
@@ -257,14 +273,14 @@ export default function Buy() {
       )}
       {loading ? (
         <div>Loading...</div>
+      ) : listings.length == 0 ? (
+        <div className='text-lg font-semibold text-left ml-8 h-[70vh] p-4'>No vehicles match these filters</div>
       ) : (
-        listings && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 mt-8 px-8">
-            {listings.map((car) => (
-              <FeaturedCard key={car.id} car={car} />
-            ))}
-          </div>
-        )
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 mt-8 px-8">
+          {listings.map((car) => (
+            <FeaturedCard key={car.id} car={car} />
+          ))}
+        </div>
       )}
     </div>
   )

@@ -11,11 +11,16 @@ import Faq from './components/Faq'
 import Contact from './components/Contact'
 import { homeFAQ } from './data/homeFAQs'
 
-export default function Home() {
+export default async function Home() {
+  const data = await fetch(
+    `https://real-value-server.vercel.app/api/listings/featured`,
+    { cache: 'no-store' },
+  ).then((res) => res.json())
+
   return (
     <div>
       <Hero />
-      <FeaturedCars />
+      <FeaturedCars featuredCarData={data} />
       <Features />
       <Offers />
       <Highlights />

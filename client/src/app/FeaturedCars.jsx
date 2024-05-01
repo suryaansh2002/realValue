@@ -1,38 +1,43 @@
-"use client";
-import React, { useEffect, useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Navigation, Pagination } from "swiper/modules";
-import "swiper/css";
-import carImage from "../images/car-image.png";
-import Image from "next/image";
-import FeaturedCard from "./components/FeaturedCard";
+'use client'
+import React, { useEffect, useState } from 'react'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Autoplay, Navigation, Pagination } from 'swiper/modules'
+import 'swiper/css'
+import carImage from '../images/car-image.png'
+import Image from 'next/image'
+import FeaturedCard from './components/FeaturedCard'
 
-const FeaturedCars = () => {
-  const [carData, setCarData] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+import { Oval } from 'react-loader-spinner'
+
+const FeaturedCars = ({ featuredCarData }) => {
+  const [carData, setCarData] = useState(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
 
   useEffect(() => {
     // Make API call.
-    const fetchFeaturedCars = async () => {
-      try {
-        const response = await fetch(
-          "https://real-value-server.vercel.app/api/listings/featured",
-        );
-        if (!response.ok) {
-          throw new Error("Failed to fetch data");
-        }
-        const result = await response.json();
-        setCarData(result);
-      } catch (err) {
-        setError(error);
-      } finally {
-        setLoading(false);
-      }
-    };
+    // const fetchFeaturedCars = async () => {
+    //   try {
+    //     const response = await fetch(
+    //       'https://real-value-server.vercel.app/api/listings/featured',
+    //     )
+    //     if (!response.ok) {
+    //       throw new Error('Failed to fetch data')
+    //     }
+    //     const result = await response.json()
+    //     setCarData(result)
+    //   } catch (err) {
+    //     setError(error)
+    //   } finally {
+    //     setLoading(false)
+    //   }
+    // }
 
-    fetchFeaturedCars();
-  }, []);
+    // fetchFeaturedCars()
+
+    setCarData(featuredCarData)
+    setLoading(false)
+  }, [])
 
   return (
     <section className="py-10 !bg-white">
@@ -49,11 +54,14 @@ const FeaturedCars = () => {
         {error && <p>Error, please try again...</p>}
 
         {loading ? (
-          <p>Loading...</p>
+          <div className="flex items-center justify-center p-2">
+            {/* Style this loading in the center of screen */}
+            <Oval color="#000" height={50} width={50} />
+          </div>
         ) : (
           <Swiper
             modules={[Navigation, Pagination, Autoplay]}
-            className="mySwiper"
+            className="myfeaturedCarsSwiper"
             slidesPerView={1}
             spaceBetween={32}
             navigation
@@ -70,7 +78,7 @@ const FeaturedCars = () => {
           >
             {carData &&
               carData.map((car) => (
-                <SwiperSlide key={car._id} style={{ paddingBottom: "40px" }}>
+                <SwiperSlide key={car._id} style={{ paddingBottom: '40px' }}>
                   <FeaturedCard car={car} />
                 </SwiperSlide>
               ))}
@@ -78,7 +86,7 @@ const FeaturedCars = () => {
         )}
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default FeaturedCars;
+export default FeaturedCars

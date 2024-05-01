@@ -1,12 +1,8 @@
-import React from "react";
-import Image from "next/image";
-import { formatAmount, AmountWithCommas, EMICalcLite } from "@/app/utils";
+import React from 'react'
+import Image from 'next/image'
+import { formatAmount, AmountWithCommas, EMICalcLite } from '@/app/utils'
 
-function toTitleCase(str) {
-  return str.replace(/\w\S*/g, function (txt) {
-    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-  });
-}
+import { toTitleCase } from '@/app/utils'
 
 const FeaturedCard = ({ car }) => {
   return (
@@ -52,7 +48,7 @@ const FeaturedCard = ({ car }) => {
         </span>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default FeaturedCard;
+export default FeaturedCard

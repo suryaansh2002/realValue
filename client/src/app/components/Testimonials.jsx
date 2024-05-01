@@ -1,36 +1,36 @@
-"use client";
-import React, { useState, useEffect } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-import axios from "axios";
+'use client'
+import React, { useState, useEffect } from 'react'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Navigation, Pagination } from 'swiper/modules'
+import 'swiper/css'
+import 'swiper/css/pagination'
+import 'swiper/css/navigation'
+import axios from 'axios'
 // import 'swiper/swiper-bundle.css';
-import user from "../../images/user.jpg";
-import Image from "next/image";
+import user from '../../images/user.jpg'
+import Image from 'next/image'
 
 const Testimonials = () => {
-  const [loading, setLoading] = useState(false);
-  const [testimonials, setTestimonials] = useState(false);
-  let url = "https://real-value-server.vercel.app/";
+  const [loading, setLoading] = useState(false)
+  const [testimonials, setTestimonials] = useState(false)
+  let url = 'https://real-value-server.vercel.app/'
   // url = 'http://localhost:5000/'
 
   const fetchTestimonials = async () => {
     try {
-      setLoading(false);
-      const response = await axios.get(url + "api/testimonials");
-      setTestimonials(response.data);
-      setLoading(false);
+      setLoading(false)
+      const response = await axios.get(url + 'api/testimonials')
+      setTestimonials(response.data)
+      setLoading(false)
     } catch (e) {
-      console.log(e.message);
-      setLoading(false);
+      console.log(e.message)
+      setLoading(false)
     }
-  };
+  }
 
   useEffect(() => {
-    fetchTestimonials();
-  }, []);
+    fetchTestimonials()
+  }, [])
 
   return (
     <section className="py-24 bg-gray-900 text-white">
@@ -50,7 +50,7 @@ const Testimonials = () => {
           <div>
             <Swiper
               modules={[Navigation, Pagination]}
-              className="mySwiper"
+              className="myTestimonialSwiper"
               slidesPerView={1}
               spaceBetween={32}
               navigation
@@ -65,12 +65,12 @@ const Testimonials = () => {
                 1024: { slidesPerView: 3, spaceBetween: 32 },
               }}
               style={{
-                height: "auto",
-                "--swiper-pagination-bullet-inactive-color": "#999999",
+                height: 'auto',
+                '--swiper-pagination-bullet-inactive-color': '#999999',
               }}
             >
               {testimonials.map((item) => (
-                <SwiperSlide key={item._id} style={{ paddingBottom: "30px" }}>
+                <SwiperSlide key={item._id} style={{ paddingBottom: '30px' }}>
                   <div className="max-w-xs mx-auto bg-white rounded-xl p-5 shadow-2xl m-2 flex flex-col h-full">
                     <p className="text-black flex-grow h-[10rem]">
                       {item.text}
@@ -78,7 +78,7 @@ const Testimonials = () => {
                     <div className="mt-5 flex items-center">
                       <div className="ml-3">
                         <h3 className="font-semibold text-gray-600">
-                          {item.name ? item.name : "Anonymous"}
+                          {item.name ? item.name : 'Anonymous'}
                         </h3>
                         {/* <p className="text-gray-500"> Software Engineer </p> */}
                       </div>
@@ -93,7 +93,7 @@ const Testimonials = () => {
         )}
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default Testimonials;
+export default Testimonials

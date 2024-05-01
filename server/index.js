@@ -11,6 +11,8 @@ const sellRequestRoutes = require('./routes/sellRequestRoutes')
 
 const cors = require('cors')
 
+const compression = require("compression");
+
 const app = express()
 const PORT = process.env.PORT || 5000
 
@@ -18,6 +20,8 @@ connectDB()
 app.use(cors())
 
 app.use(express.json())
+
+app.use(compression());
 
 app.get('/', (req, res) => {
   res.send('Real Value backend Server')

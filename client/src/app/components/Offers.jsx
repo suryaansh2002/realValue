@@ -46,7 +46,7 @@ const Offers = () => {
         ) : offers.length ? (
           <Swiper
             modules={[Navigation, Pagination]}
-            className="mySwiper"
+            className="myOfferSwiper"
             slidesPerView={1}
             spaceBetween={32}
             navigation

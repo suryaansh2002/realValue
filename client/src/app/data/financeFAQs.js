@@ -4,8 +4,9 @@ export const financeFAQs = [
     question: 'What is a used car loan and how does it work?',
     answer: (
       <div>
-        Yes, you can book a free test drive at our showroom through the
-        following line
+        Used cars loans are a type of personal loans taken for used cars. The
+        lender provides loans on the basis of your credit score and your income.
+        After a loan is granted, you can repay the lender with interest.
       </div>
     ),
   },
@@ -14,8 +15,8 @@ export const financeFAQs = [
     question: 'What is the maximum loan amount for a used car loan?',
     answer: (
       <div>
-        Simply choose your favourite car and book a test drive at your nearest
-        Real Value Showroom from{' '}
+        The maximum loan amount varies depending on the lender. Some lenders in
+        India allow you to borrow 100% of the value of the car.
         <u>
           <a href="/buy">here</a>
         </u>
@@ -28,8 +29,7 @@ export const financeFAQs = [
     question: 'What is the average interest rate on a second hand car?',
     answer: (
       <div>
-        Real Value Prime are a selected range of cars that have benefits like
-        warranty, first party insurance, and free paper transfer.
+        The average interest rate on a second hand car is 11% in Jharkhand.
       </div>
     ),
   },
@@ -37,11 +37,7 @@ export const financeFAQs = [
     id: 4,
     question: 'What is the repayment term for a used car loan?',
     answer: (
-      <div>
-        Real value offers warranty on Real Value Prime cars. Generally, the
-        warranty is on the engine and gearbox for a period of 1 year or next
-        10,000kms, whichever comes first.
-      </div>
+      <div>A repayment term for a used car loan varies from 1 to 6 years.</div>
     ),
   },
   {
@@ -49,7 +45,8 @@ export const financeFAQs = [
     question: 'Can I get a used car loan with a low credit score?',
     answer: (
       <div>
-        No, Real Value does not provide accidental or meter tampered cars.
+        It is possible to get a used car loan with a low credit score however
+        you may have to pay a higher interest amount to the lender.
       </div>
     ),
   },
@@ -58,8 +55,15 @@ export const financeFAQs = [
     question: 'What are some tips for getting approved for a used car loan?',
     answer: (
       <div>
-        Booking amount can be refunded in cases involving genuine cases for
-        cancellation.
+        {/* Add a unordered list */}
+        <ul>
+          <li>Make sure you have a good credit score.</li>
+          <li>Have a down payment ready.</li>
+          <li>
+            Get pre-approved for a loan before you start shopping for a car.
+          </li>
+          <li>Shop around and compare rates from different lenders.</li>
+        </ul>
       </div>
     ),
   },
@@ -68,10 +72,8 @@ export const financeFAQs = [
     question: 'How many days does it take for the loan disbursement?',
     answer: (
       <div>
-        RSA includes Battery jumpstart, tyre puncture assistance, on-road minor
-        repairs, towing assistance, emergency fuel assistance, and key lock-out
-        assistance. Detailed coverage and T&Cs will be shared with you after
-        service activation.
+        If you have all the required documents ready then the loan disbursement
+        can be done on the same day. Generally, it takes 2-7 days in Jharkhand.
       </div>
     ),
   },

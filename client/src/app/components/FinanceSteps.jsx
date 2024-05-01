@@ -22,10 +22,16 @@ const FinanceSteps = () => {
               <FaAddressCard size={30} />
             </div>
             <div className="text-white text-2xl mt-4 font-semibold">
-              1. Share basic details:
+              1. Share basic details (<span className="font-bold">*</span> means
+              if applicable):
               <ol className="mt-2 text-left text-gray-400 text-lg list-inside">
                 <li>a. Aadhar Card</li>
                 <li>b. PAN Card</li>
+                <li>c. Electricity Bill (*)</li>
+                <li>d. Rent Agreement (*)</li>
+                <li>e. Cheque Book</li>
+                <li>f. Passport-sized Photo</li>
+                <li>g. ITR (2 years) </li>
               </ol>
             </div>
           </div>
@@ -37,7 +43,7 @@ const FinanceSteps = () => {
               2. Pre-Approval of Loan
               <ol className="mt-2 text-left text-gray-400 text-lg list-inside">
                 <li>a. Book the car of your choice</li>
-                <li>b. Share bank statement</li>
+                <li>b. Share bank statement upto 6 months</li>
               </ol>
             </div>
           </div>
@@ -61,8 +67,8 @@ const FinanceSteps = () => {
             <div className="text-white text-2xl mt-4 font-semibold">
               4. Loan Disbursement
               <ol className="mt-2 text-left text-gray-400 text-lg list-inside">
-                <li>b. We will contact our finance partners</li>
-                <li>c. Your loan should be credited in 3-4 business days.</li>
+                <li>a. We will contact our finance partners</li>
+                <li>b. Your loan should be credited in 3-4 business days.</li>
               </ol>
             </div>
           </div>

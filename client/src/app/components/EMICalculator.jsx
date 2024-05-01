@@ -1,34 +1,36 @@
 'use client'
 import React, { useState, useEffect } from 'react'
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js'
-import { Pie } from 'react-chartjs-2'
+import { Doughnut } from 'react-chartjs-2'
+
+import { AmountWithCommas } from '../utils'
 
 ChartJS.register(ArcElement, Tooltip, Legend)
 
-const EMICalculator = () => {
+const EMICalculator = ({ indiPrincipal }) => {
   const [principalAmount, setPrincipalAmount] = useState(100000)
-  const [rateOfInterest, setRateOfInterest] = useState(9)
-  const [tenure, setTenure] = useState(24)
+  const [rateOfInterest, setRateOfInterest] = useState(11)
+  const [tenure, setTenure] = useState(36)
   const [emi, setEmi] = useState(0)
   const [totalInterest, setTotalInterest] = useState(0)
   const [totalPayment, setTotalPayment] = useState(0)
 
   const calculateEmi = () => {
     const principal = parseFloat(principalAmount)
-    const rate = parseFloat(rateOfInterest) / 100 / 12
+    const rate = parseFloat(rateOfInterest) / 12 / 100
     const months = parseFloat(tenure)
 
     if (principal && rate && months) {
-      const emi =
-        (principal * rate * Math.pow(1 + rate, months)) /
-        (Math.pow(1 + rate, months) - 1)
-      setEmi(emi.toFixed(2))
+      const emiNumerator = principal * rate * Math.pow(1 + rate, months)
+      const emiDenominator = Math.pow(1 + rate, months) - 1
+      const emi = emiNumerator / emiDenominator
+      setEmi(Math.round(emi))
 
       const totalPayment = emi * months
-      setTotalPayment(totalPayment.toFixed(2))
+      setTotalPayment(Math.round(totalPayment))
 
       const totalInterest = totalPayment - principal
-      setTotalInterest(totalInterest.toFixed(2))
+      setTotalInterest(Math.round(totalInterest))
     } else {
       setEmi(0)
       setTotalPayment(0)
@@ -36,7 +38,7 @@ const EMICalculator = () => {
     }
   }
 
-  const pieChartData = {
+  const doughnutChartData = {
     labels: ['Principal', 'Interest'],
     datasets: [
       {
@@ -50,10 +52,16 @@ const EMICalculator = () => {
   }
 
   useEffect(() => {
-    calculateEmi()
+    if (indiPrincipal) {
+      setPrincipalAmount(indiPrincipal)
+    }
   }, [])
 
-  const pieOptions = {
+  useEffect(() => {
+    calculateEmi()
+  }, [principalAmount, rateOfInterest, tenure])
+
+  const doughnutOptions = {
     maintainAspectRatio: false,
     aspectRatio: 1,
   }
@@ -61,53 +69,57 @@ const EMICalculator = () => {
   return (
     <section className="py-16">
       {/* Heading on the left */}
-      <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-        <div className="mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-5 ">Finance</h2>
-          <span className="mb-8 lg:mb-16 text-xl tracking-tight leading-tight text-gray-500 md:text-2xl">
-            Everything you need to know financially before buying/selling a car.
-          </span>
-        </div>
+      <div
+        className={`mx-auto max-w-7xl ${indiPrincipal ? 'py-8' : 'px-4 py-8 sm:px-6 lg:px-8'}`}
+      >
+        {indiPrincipal ? (
+          <></>
+        ) : (
+          <div className="mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-5 ">Finance</h2>
+            <span className="mb-8 lg:mb-16 text-xl tracking-tight leading-tight text-gray-500 md:text-2xl">
+              Everything you need to know financially before buying/selling a
+              car.
+            </span>
+          </div>
+        )}
+
         <div className="flex lg:flex-row flex-col justify-start">
           <div className="py-4">
             <div className="bg-white p-4 rounded-lg shadow-lg mb-4">
               <div className="text-2xl font-bold mb-4">EMI Calculator</div>
               <div className="flex flex-col space-y-4">
                 <div className="flex items-center justify-between">
-                  <label htmlFor="principalAmount">Principal Amount:</label>
+                  <label htmlFor="principalAmount">Principal Amt:</label>
                   <input
                     id="principalAmount"
                     type="number"
                     value={principalAmount}
                     onChange={(e) => {
                       setPrincipalAmount(e.target.value)
-                      calculateEmi()
                     }}
                     className="border rounded px-2 py-1 w-1/2"
                   />
                   <input
                     type="range"
-                    min="10000"
-                    max="1000000"
+                    min="100000"
+                    max="5000000"
                     step="10000"
                     value={principalAmount}
                     onChange={(e) => {
                       setPrincipalAmount(e.target.value)
-                      // Recalculate EMI
-                      calculateEmi()
                     }}
                     className="w-1/2 ml-5"
                   />
                 </div>
                 <div className="flex items-center justify-between">
-                  <label htmlFor="rateOfInterest">Rate of Interest:</label>
+                  <label htmlFor="rateOfInterest">Interest Rate:</label>
                   <input
                     id="rateOfInterest"
                     type="number"
                     value={rateOfInterest}
                     onChange={(e) => {
                       setRateOfInterest(e.target.value)
-                      calculateEmi()
                     }}
                     className="border rounded px-2 py-1 w-1/2"
                   />
@@ -119,7 +131,6 @@ const EMICalculator = () => {
                     value={rateOfInterest}
                     onChange={(e) => {
                       setRateOfInterest(e.target.value)
-                      calculateEmi()
                     }}
                     className="w-1/2 ml-5"
                   />
@@ -132,19 +143,17 @@ const EMICalculator = () => {
                     value={tenure}
                     onChange={(e) => {
                       setTenure(e.target.value)
-                      calculateEmi()
                     }}
                     className="border rounded px-2 py-1 w-1/2"
                   />
                   <input
                     type="range"
                     min="1"
-                    max="128"
+                    max="240"
                     step="1"
                     value={tenure}
                     onChange={(e) => {
                       setTenure(e.target.value)
-                      calculateEmi()
                     }}
                     className="w-1/2 ml-5"
                   />
@@ -160,29 +169,38 @@ const EMICalculator = () => {
             <div className="bg-white p-4 rounded-lg shadow-lg">
               <div className="text-xl font-bold mb-2">EMI Details:</div>
               <div className="flex justify-between mb-2">
-                <div>₹EMI:</div>
-                <div className="font-bold">{emi}</div>
+                <div>EMI:</div>
+                <div className="font-bold" style={{ fontSize: '20px' }}>
+                  ₹{AmountWithCommas(emi)}/month
+                </div>
               </div>
               <div className="flex justify-between mb-2">
                 <div>Total Interest:</div>
-                <div>{totalInterest}</div>
+                <div>₹{AmountWithCommas(totalInterest)}</div>
               </div>
               <div className="flex justify-between">
                 <div>Total Payment:</div>
-                <div>{totalPayment}</div>
+                <div>₹{AmountWithCommas(totalPayment)}</div>
               </div>
             </div>
           </div>
-          <div className="py-4 lg:mx-10">
-            <div className="bg-white p-4 rounded-lg shadow-lg">
-              <div className="text-xl font-bold mb-2">
-                Interest vs Principal:
-              </div>
-              <div style={{ height: '360px' }}>
-                <Pie data={pieChartData} options={pieOptions} />
+          {indiPrincipal ? (
+            <></>
+          ) : (
+            <div className="py-4 lg:mx-10">
+              <div className="bg-white p-4 rounded-lg shadow-lg">
+                <div className="text-xl font-bold mb-2">
+                  Interest vs Principal:
+                </div>
+                <div style={{ height: '367px' }}>
+                  <Doughnut
+                    data={doughnutChartData}
+                    options={doughnutOptions}
+                  />
+                </div>
               </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
     </section>

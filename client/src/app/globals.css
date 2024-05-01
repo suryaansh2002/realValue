@@ -4,16 +4,6 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  /* overflow-x: hidden; */
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    /* overflow-x: hidden; */
-  }
-}
-
 @layer utilities {
   .text-balance {
     text-wrap: balance;

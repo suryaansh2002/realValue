@@ -7,8 +7,6 @@ import 'swiper/css/pagination'
 import 'swiper/css/navigation'
 import axios from 'axios'
 // import 'swiper/swiper-bundle.css';
-import user from '../../images/user.jpg'
-import Image from 'next/image'
 
 const Testimonials = () => {
   const [loading, setLoading] = useState(false)

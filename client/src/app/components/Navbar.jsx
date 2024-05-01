@@ -1,38 +1,38 @@
-"use client";
+'use client'
 
-import { useState } from "react";
-import { Drawer, Button } from "antd";
-import Link from "next/link";
-import { MenuOutlined } from "@ant-design/icons";
-import { Space } from "antd";
+import { useState } from 'react'
+import { Drawer, Button } from 'antd'
+import Link from 'next/link'
+import { MenuOutlined } from '@ant-design/icons'
+import { Space } from 'antd'
 
 // logo
-import Logo from "../../images/logo.png";
-import Image from "next/image";
+import Logo from '../../images/logo.png'
+import Image from 'next/image'
 
 const Navbar = () => {
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(false)
 
   const showDrawer = () => {
-    setVisible(true);
-  };
+    setVisible(true)
+  }
 
   const onClose = () => {
-    setVisible(false);
-  };
+    setVisible(false)
+  }
 
   const NavLink = ({ href, text }) => (
     <div className="h-full hover:border-b-2 hover:border-yellow-400">
       <Link legacyBehavior href={href}>
         <a
           className="text-white text-md"
-          style={{ fontSize: "20px", fontWeight: "bold" }}
+          style={{ fontSize: '20px', fontWeight: 'bold' }}
         >
           {text}
         </a>
       </Link>
     </div>
-  );
+  )
 
   return (
     <>
@@ -54,12 +54,12 @@ const Navbar = () => {
             <Button
               className="bg-white"
               style={{
-                backgroundColor: "transparent",
-                color: "white",
-                border: "none",
+                backgroundColor: 'transparent',
+                color: 'white',
+                border: 'none',
               }}
               icon={
-                <MenuOutlined style={{ color: "white", fontSize: "20px" }} />
+                <MenuOutlined style={{ color: 'white', fontSize: '20px' }} />
               }
               onClick={showDrawer}
             />
@@ -67,13 +67,13 @@ const Navbar = () => {
         </div>
       </div>
       <Drawer
-        title={<span style={{ color: "white" }}>Menu</span>}
+        title={<span style={{ color: 'white' }}>Menu</span>}
         placement="right"
         closable={false}
         onClose={onClose}
         open={visible}
         className="dark:bg-gray-900 text-white"
-        style={{ backgroundColor: "#111827", color: "white" }}
+        style={{ backgroundColor: '#111827', color: 'white' }}
         extra={
           <Space>
             <Button onClick={onClose}>Cancel</Button>
@@ -82,7 +82,7 @@ const Navbar = () => {
       >
         <div
           className="flex flex-col items-center mt-4 space-y-4"
-          style={{ fontSize: "20px" }}
+          style={{ fontSize: '20px' }}
         >
           <Link legacyBehavior href="/">
             <a className="text-white font-bold" onClick={onClose}>
@@ -117,7 +117,7 @@ const Navbar = () => {
         </div>
       </Drawer>
     </>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar

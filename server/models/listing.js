@@ -21,6 +21,14 @@ const listingSchema = new mongoose.Schema({
   location: { type: String, required: true },
   featured: { type: Boolean, default: false },
   features: { type: [String], required: true },
+  seats: { type: Number, required: false },
+  displacement: { type: Number, required: false},
+  cylinders: { type: Number, required: false },
+  maxPower: { type: Number, required: false },
+  bootspace: { type: Number, required: false },
+  fuelTank: { type: Number, required: false },
+  gears: { type: Number, required: false },
+  mileage: { type: Number, required: false },
 })
 
 const Listing = mongoose.model('Listing', listingSchema)

@@ -22,7 +22,7 @@ const bookingSchema = new mongoose.Schema({
     default: '',
   },
   mobileNumber: {
-    type: Number,
+    type: String,
     required: true,
   },
   archived: {

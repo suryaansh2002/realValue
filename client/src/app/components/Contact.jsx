@@ -1,11 +1,6 @@
-import React from "react";
-import {
-  FaFacebook,
-  FaInstagram,
-  FaClock,
-  FaCalendarAlt,
-} from "react-icons/fa";
-import { FiMapPin, FiMessageSquare, FiArrowRight } from "react-icons/fi";
+import React from 'react'
+import { FaFacebook, FaInstagram, FaClock, FaCalendarAlt } from 'react-icons/fa'
+import { FiMapPin, FiMessageSquare, FiArrowRight } from 'react-icons/fi'
 // import { Link } from 'react-router-dom';
 
 const Contact = () => {
@@ -68,7 +63,7 @@ const Contact = () => {
         </a>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Contact;
+export default Contact

@@ -4,7 +4,7 @@ const Listing = require('../models/listing')
 // Create a booking
 exports.createBooking = async (req, res) => {
   try {
-    const { listingId, date, time, name, email, mobileNumber } = req.body
+    const { listingId, date, time, name, mobileNumber } = req.body
     const booking = new Booking({ listingId, date, time, name, mobileNumber })
     await booking.save()
     res.status(201).json({ message: 'Booking created successfully', booking })

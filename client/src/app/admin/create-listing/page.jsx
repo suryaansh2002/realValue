@@ -1,200 +1,229 @@
-"use client";
-import { useState, useEffect } from "react";
-import axios from "axios";
-import AdminNavbar from "@/app/components/AdminNavbar";
-import JSZip from "jszip";
+'use client'
+import { useState, useEffect } from 'react'
+import axios from 'axios'
+import AdminNavbar from '@/app/components/AdminNavbar'
+import JSZip from 'jszip'
 
 const CreateListing = () => {
-  const [features, setFeatures] = useState([]);
-  const [imageFile, setImageFile] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [uploading, setUploading] = useState(false);
-  const [images, setImages] = useState([]);
-  const [imagesLength, setImagesLength] = useState(null);
-  const [imagesDone, setImagesDone] = useState(0);
-  let url = "https://real-value-server.vercel.app/";
+  const [features, setFeatures] = useState([])
+  const [imageFile, setImageFile] = useState(null)
+  const [loading, setLoading] = useState(false)
+  const [uploading, setUploading] = useState(false)
+  const [images, setImages] = useState([])
+  const [imagesLength, setImagesLength] = useState(null)
+  const [imagesDone, setImagesDone] = useState(0)
+  let url = 'https://real-value-server.vercel.app/'
   // url = 'http://localhost:5000/'
 
   const [formData, setFormData] = useState({
-    brand: "",
-    model: "",
-    variant: "",
-    vehicleNumber: "",
-    fuelType: "",
-    year: "",
-    color: "",
-    ownership: "",
-    kmDriven: "",
-    price: "",
-    type: "",
-    transmissionType: "",
-    location: "",
+    brand: '',
+    model: '',
+    variant: '',
+    vehicleNumber: '',
+    fuelType: '',
+    year: '',
+    color: '',
+    ownership: '',
+    kmDriven: '',
+    price: '',
+    type: '',
+    transmissionType: '',
+    seats: '',
+    displacement: '',
+    cylinders: '',
+    maxPower: '',
+    bootspace: '',
+    fuelTank: '',
+    gears: '',
+    mileage: '',
+    location: '',
     featured: false,
     selectedFeatures: [],
-  });
+  })
 
   const uploadImagesToCloudinary = async (images) => {
-    let tempArr = [];
-    const NAME_OF_UPLOAD_PRESET = "jyz7szi4";
-    const YOUR_ID = "dsi5cmgg9";
-    const API_KEY = "455265386657195";
+    let tempArr = []
+    const NAME_OF_UPLOAD_PRESET = 'jyz7szi4'
+    const YOUR_ID = 'dsi5cmgg9'
+    const API_KEY = '455265386657195'
 
     // Loop through each extracted image and upload to Cloudinary
     for (let i = 0; i < images.length; i++) {
-      let image = images[i];
-      const data = new FormData();
-      data.append("file", image);
-      data.append("upload_preset", NAME_OF_UPLOAD_PRESET);
-      data.append("api_key", API_KEY);
+      let image = images[i]
+      const data = new FormData()
+      data.append('file', image)
+      data.append('upload_preset', NAME_OF_UPLOAD_PRESET)
+      data.append('api_key', API_KEY)
       const res = await fetch(
         `https://api.cloudinary.com/v1_1/${YOUR_ID}/image/upload`,
         {
-          method: "POST",
+          method: 'POST',
           body: data,
         },
-      );
-      const img = await res.json();
+      )
+      const img = await res.json()
       // You can handle the Cloudinary response here as needed
-      tempArr.push(img.secure_url);
-      setImages(tempArr);
-      console.log("Uploaded image:", img.secure_url);
+      tempArr.push(img.secure_url)
+      setImages(tempArr)
+      console.log('Uploaded image:', img.secure_url)
     }
-    console.log(tempArr);
-  };
+    console.log(tempArr)
+  }
 
   const handleImageChange = async (e) => {
-    setImageFile(e.target.files[0]);
-    const form = new FormData();
-    const file = e.target.files[0];
-    if (file.type != "application/zip") {
-      alert("Please upload zip file only");
-      return;
+    setImageFile(e.target.files[0])
+    const form = new FormData()
+    const file = e.target.files[0]
+    if (file.type != 'application/zip') {
+      alert('Please upload zip file only')
+      return
     }
     try {
-      setUploading(true);
-      const file = e.target.files[0];
-      const zip = new JSZip();
+      setUploading(true)
+      const file = e.target.files[0]
+      const zip = new JSZip()
 
       // Read the uploaded file
-      const zipData = await file.arrayBuffer();
+      const zipData = await file.arrayBuffer()
 
       // Load the ZIP file
-      await zip.loadAsync(zipData);
+      await zip.loadAsync(zipData)
 
-      const extractedImages = [];
+      const extractedImages = []
 
       // Extract images from the ZIP file
       await Promise.all(
         Object.keys(zip.files).map(async (filename) => {
-          const file = zip.files[filename];
+          const file = zip.files[filename]
           if (
             file.dir ||
             !file.name.match(/\.(jpg|jpeg|png)$/i) ||
-            filename.includes("__MACOSX")
+            filename.includes('__MACOSX')
           )
-            return;
+            return
 
           // Read the image file
-          const imageData = await file.async("blob");
+          const imageData = await file.async('blob')
 
           // Convert the Blob to a data URL
-          const imageFile = new File([imageData], filename);
+          const imageFile = new File([imageData], filename)
 
-          extractedImages.push(imageFile);
+          extractedImages.push(imageFile)
         }),
-      );
+      )
 
-      console.log(extractedImages);
+      console.log(extractedImages)
       const getFileName = (path) => {
-        return path.split("/").pop();
-      };
+        return path.split('/').pop()
+      }
 
       // Sort the files based on the filename
       extractedImages.sort((a, b) => {
-        const fileNameA = getFileName(a.name);
-        const fileNameB = getFileName(b.name);
-        return fileNameA.localeCompare(fileNameB);
-      });
+        const fileNameA = getFileName(a.name)
+        const fileNameB = getFileName(b.name)
+        return fileNameA.localeCompare(fileNameB)
+      })
 
-      console.log(extractedImages);
-      setImagesLength(extractedImages.length);
-      await uploadImagesToCloudinary(extractedImages);
+      console.log(extractedImages)
+      setImagesLength(extractedImages.length)
+      await uploadImagesToCloudinary(extractedImages)
 
-      setUploading(false);
+      setUploading(false)
     } catch (error) {
-      setUploading(false);
-      console.error("Error uploading image:", error.message);
+      setUploading(false)
+      console.error('Error uploading image:', error.message)
     }
-  };
+  }
 
   useEffect(() => {
-    fetchFeatures();
-  }, []);
+    fetchFeatures()
+  }, [])
 
   const fetchFeatures = async () => {
     try {
-      const response = await axios.get(url + "api/features");
-      setFeatures(response.data);
+      const response = await axios.get(url + 'api/features')
+      setFeatures(response.data)
     } catch (error) {
-      console.error("Error fetching features:", error);
+      console.error('Error fetching features:', error)
     }
-  };
+  }
 
   const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
+    const { name, value } = e.target
+    setFormData({ ...formData, [name]: value })
+  }
 
   const handleCheckboxChange = (e) => {
-    const { value, checked } = e.target;
+    const { value, checked } = e.target
     if (checked) {
       setFormData({
         ...formData,
         selectedFeatures: [...formData.selectedFeatures, value],
-      });
+      })
     } else {
       setFormData({
         ...formData,
         selectedFeatures: formData.selectedFeatures.filter(
           (item) => item !== value,
         ),
-      });
+      })
     }
-  };
+  }
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
     try {
-      setLoading(true);
-      const tempData = formData;
-      tempData["features"] = formData["selectedFeatures"];
-      tempData["images"] = images;
-      setImages([]);
-      await axios.post(url + "api/listings", tempData);
+      setLoading(true)
+      const tempData = formData
+      tempData['features'] = formData['selectedFeatures']
+      tempData['images'] = images
+      setImages([])
+      await axios.post(url + 'api/listings', tempData)
       setFormData({
-        brand: "",
-        model: "",
-        variant: "",
-        vehicleNumber: "",
-        fuelType: "",
-        year: "",
-        color: "",
-        ownership: "",
-        kmDriven: "",
-        price: "",
-        type: "",
-        transmissionType: "",
-        location: "",
+        brand: '',
+        model: '',
+        variant: '',
+        vehicleNumber: '',
+        fuelType: '',
+        year: '',
+        color: '',
+        ownership: '',
+        kmDriven: '',
+        price: '',
+        type: '',
+        transmissionType: '',
+        seats: '',
+        displacement: '',
+        cylinders: '',
+        maxPower: '',
+        bootspace: '',
+        fuelTank: '',
+        gears: '',
+        mileage: '',
+        location: '',
         featured: false,
         selectedFeatures: [],
-      });
-      setLoading(false);
-      alert("Listing created successfully");
+      })
+      setLoading(false)
+      alert('Listing created successfully')
     } catch (error) {
-      setLoading(false);
-      console.error("Error creating listing:", error);
+      setLoading(false)
+      console.error('Error creating listing:', error)
     }
-  };
+  }
+
+  const carTypes = [
+    'Micro Car',
+    'Hatchback',
+    'Compact Sedan',
+    'Mid Size Sedan',
+    'Full Size Sedan',
+    'Compact SUV',
+    'Mid Size SUV',
+    'Full Size SUV',
+    'MUV/MPV',
+    'Luxury',
+  ]
 
   return (
     <div>
@@ -368,14 +397,19 @@ const CreateListing = () => {
             <label htmlFor="type" className="block font-medium text-gray-700">
               Type
             </label>
-            <input
-              type="text"
+
+            <select
               id="type"
               name="type"
               value={formData.type}
               onChange={handleInputChange}
               className="mt-1 p-2 w-full border rounded-md"
-            />
+            >
+              <option value="">Select Type</option>
+              {carTypes.map((type) => (
+                <option value={type}>{type}</option>
+              ))}
+            </select>
           </div>
           <div>
             <label
@@ -395,6 +429,128 @@ const CreateListing = () => {
               <option value="automatic">Automatic</option>
               <option value="manual">Manual</option>
             </select>
+          </div>
+          <div>
+            <label htmlFor="seats" className="block font-medium text-gray-700">
+              No. of seats
+            </label>
+            <input
+              type="number"
+              id="seats"
+              name="seats"
+              value={formData.seats}
+              onChange={handleInputChange}
+              className="mt-1 p-2 w-full border rounded-md"
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="displacement"
+              className="block font-medium text-gray-700"
+            >
+              Displacement (CC):
+            </label>
+            <input
+              type="number"
+              id="displacement"
+              name="displacement"
+              value={formData.displacement}
+              onChange={handleInputChange}
+              className="mt-1 p-2 w-full border rounded-md"
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="cylinders"
+              className="block font-medium text-gray-700"
+            >
+              No. of Cylinders:
+            </label>
+            <input
+              type="number"
+              id="cylinders"
+              name="cylinders"
+              value={formData.cylinders}
+              onChange={handleInputChange}
+              className="mt-1 p-2 w-full border rounded-md"
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="maxPower"
+              className="block font-medium text-gray-700"
+            >
+              Max Power (BHP):
+            </label>
+            <input
+              type="number"
+              id="maxPower"
+              name="maxPower"
+              value={formData.maxPower}
+              onChange={handleInputChange}
+              className="mt-1 p-2 w-full border rounded-md"
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="bootspace"
+              className="block font-medium text-gray-700"
+            >
+              Bootspace (Litres):
+            </label>
+            <input
+              type="number"
+              id="bootspace"
+              name="bootspace"
+              value={formData.bootspace}
+              onChange={handleInputChange}
+              className="mt-1 p-2 w-full border rounded-md"
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="fuelTank"
+              className="block font-medium text-gray-700"
+            >
+              Fuel Tank (Litres):
+            </label>
+            <input
+              type="number"
+              id="fuelTank"
+              name="fuelTank"
+              value={formData.fuelTank}
+              onChange={handleInputChange}
+              className="mt-1 p-2 w-full border rounded-md"
+            />
+          </div>
+          <div>
+            <label htmlFor="gears" className="block font-medium text-gray-700">
+              No. of Gears:
+            </label>
+            <input
+              type="number"
+              id="gears"
+              name="gears"
+              value={formData.gears}
+              onChange={handleInputChange}
+              className="mt-1 p-2 w-full border rounded-md"
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="mileage"
+              className="block font-medium text-gray-700"
+            >
+              Mileage (KMPL):
+            </label>
+            <input
+              type="number"
+              id="mileage"
+              name="mileage"
+              value={formData.mileage}
+              onChange={handleInputChange}
+              className="mt-1 p-2 w-full border rounded-md"
+            />
           </div>
           <div>
             <label
@@ -450,12 +606,12 @@ const CreateListing = () => {
             disabled={loading || uploading}
             className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md"
           >
-            {loading ? "Creating..." : "Create Listing"}
+            {loading ? 'Creating...' : 'Create Listing'}
           </button>
         </form>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default CreateListing;
+export default CreateListing

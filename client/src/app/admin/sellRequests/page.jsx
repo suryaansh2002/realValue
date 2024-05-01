@@ -1,78 +1,78 @@
-"use client";
-import { useState, useEffect } from "react";
-import axios from "axios";
-import AdminNavbar from "@/app/components/AdminNavbar";
+'use client'
+import { useState, useEffect } from 'react'
+import axios from 'axios'
+import AdminNavbar from '@/app/components/AdminNavbar'
 
 const SellRequestsPage = () => {
-  const [sellRequests, setSellRequests] = useState([]);
-  const [archivedSellRequests, setArchivedSellRequests] = useState([]);
-  const [showArchived, setShowArchived] = useState(false);
-  let url = "https://real-value-server.vercel.app/";
+  const [sellRequests, setSellRequests] = useState([])
+  const [archivedSellRequests, setArchivedSellRequests] = useState([])
+  const [showArchived, setShowArchived] = useState(false)
+  let url = 'https://real-value-server.vercel.app/'
   // url = 'http://localhost:5000/'
 
   const fetchSellRequests = async () => {
     try {
-      const response = await axios.get(url + "api/sellRequests");
-      setSellRequests(response.data);
+      const response = await axios.get(url + 'api/sellRequests')
+      setSellRequests(response.data)
     } catch (error) {
-      console.error("Error fetching sell requests:", error);
+      console.error('Error fetching sell requests:', error)
     }
-  };
+  }
 
   const fetchArchivedSellRequests = async () => {
     try {
-      const response = await axios.get(url + "api/sellRequests/archived");
-      setArchivedSellRequests(response.data);
+      const response = await axios.get(url + 'api/sellRequests/archived')
+      setArchivedSellRequests(response.data)
     } catch (error) {
-      console.error("Error fetching sell requests:", error);
+      console.error('Error fetching sell requests:', error)
     }
-  };
+  }
 
   useEffect(() => {
-    fetchSellRequests();
-  }, []);
+    fetchSellRequests()
+  }, [])
 
   const handleStatusChange = async (id, status) => {
     try {
       await axios.put(url + `api/sellRequests/${id}`, {
         status,
-      });
+      })
       // Refresh sell requests after status change
-      fetchSellRequests();
-      fetchArchivedSellRequests();
+      fetchSellRequests()
+      fetchArchivedSellRequests()
     } catch (error) {
-      console.error("Error updating status:", error);
+      console.error('Error updating status:', error)
     }
-  };
+  }
 
   const handleArchive = async (id, archiveValue) => {
     try {
       await axios.put(url + `api/sellRequests/${id}`, {
         archived: archiveValue,
-      });
+      })
       // Refresh sell requests after archive
-      fetchSellRequests();
-      fetchArchivedSellRequests();
+      fetchSellRequests()
+      fetchArchivedSellRequests()
     } catch (error) {
-      console.error("Error archiving sell request:", error);
+      console.error('Error archiving sell request:', error)
     }
-  };
+  }
 
   const deleteSellRequest = async (id) => {
     try {
-      await axios.delete(url + `api/sellRequests/${id}`);
-      fetchSellRequests();
-      fetchArchivedSellRequests();
+      await axios.delete(url + `api/sellRequests/${id}`)
+      fetchSellRequests()
+      fetchArchivedSellRequests()
     } catch (error) {
-      console.error("Error archiving sell request:", error);
+      console.error('Error archiving sell request:', error)
     }
-  };
+  }
 
   useEffect(() => {
     if (showArchived && !archivedSellRequests.length) {
-      fetchArchivedSellRequests();
+      fetchArchivedSellRequests()
     }
-  }, [showArchived]);
+  }, [showArchived])
 
   return (
     <div>
@@ -93,18 +93,18 @@ const SellRequestsPage = () => {
               <p className="text-gray-500">Name: {request.name}</p>
               <p className="text-gray-500">Mobile No: {request.phoneNumber}</p>
               <p className="text-gray-500">
-                Email: {request.email ? request.email : "N/A"}
+                Email: {request.email ? request.email : 'N/A'}
               </p>
               <p className="text-gray-500">Location: {request.location}</p>
               <p className="text-gray-500">
                 Reg. No.: {request.registrationNumber}
               </p>
               <p className="text-gray-500">
-                Variant: {request.variant ? request.variant : "N/A"}
+                Variant: {request.variant ? request.variant : 'N/A'}
               </p>
               <p className="text-gray-500">Year: {request.manufactureYear}</p>
               <p className="text-gray-500">
-                Price: {request.price ? request.price : "N/A"}
+                Price: {request.price ? request.price : 'N/A'}
               </p>
 
               <button
@@ -169,18 +169,18 @@ const SellRequestsPage = () => {
                   Mobile No: {request.phoneNumber}
                 </p>
                 <p className="text-gray-500">
-                  Email: {request.email ? request.email : "N/A"}
+                  Email: {request.email ? request.email : 'N/A'}
                 </p>
                 <p className="text-gray-500">Location: {request.location}</p>
                 <p className="text-gray-500">
                   Reg. No.: {request.registrationNumber}
                 </p>
                 <p className="text-gray-500">
-                  Variant: {request.variant ? request.variant : "N/A"}
+                  Variant: {request.variant ? request.variant : 'N/A'}
                 </p>
                 <p className="text-gray-500">Year: {request.manufactureYear}</p>
                 <p className="text-gray-500">
-                  Price: {request.price ? request.price : "N/A"}
+                  Price: {request.price ? request.price : 'N/A'}
                 </p>
 
                 <button
@@ -213,7 +213,7 @@ const SellRequestsPage = () => {
         )}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default SellRequestsPage;
+export default SellRequestsPage

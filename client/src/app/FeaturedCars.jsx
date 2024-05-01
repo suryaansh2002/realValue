@@ -3,8 +3,6 @@ import React, { useEffect, useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, Navigation, Pagination } from 'swiper/modules'
 import 'swiper/css'
-import carImage from '../images/car-image.png'
-import Image from 'next/image'
 import FeaturedCard from './components/FeaturedCard'
 
 import { Oval } from 'react-loader-spinner'
@@ -15,28 +13,29 @@ const FeaturedCars = ({ featuredCarData }) => {
   const [error, setError] = useState(null)
 
   useEffect(() => {
-    // Make API call.
-    // const fetchFeaturedCars = async () => {
-    //   try {
-    //     const response = await fetch(
-    //       'https://real-value-server.vercel.app/api/listings/featured',
-    //     )
-    //     if (!response.ok) {
-    //       throw new Error('Failed to fetch data')
-    //     }
-    //     const result = await response.json()
-    //     setCarData(result)
-    //   } catch (err) {
-    //     setError(error)
-    //   } finally {
-    //     setLoading(false)
-    //   }
-    // }
+    if (featuredCarData) {
+      setCarData(featuredCarData)
+      setLoading(false)
+    } else {
+      const fetchFeaturedCars = async () => {
+        try {
+          const response = await fetch(
+            'https://real-value-server.vercel.app/api/listings/featured',
+          )
+          if (!response.ok) {
+            throw new Error('Failed to fetch data')
+          }
+          const result = await response.json()
+          setCarData(result)
+        } catch (err) {
+          setError(error)
+        } finally {
+          setLoading(false)
+        }
+      }
 
-    // fetchFeaturedCars()
-
-    setCarData(featuredCarData)
-    setLoading(false)
+      fetchFeaturedCars()
+    }
   }, [])
 
   return (

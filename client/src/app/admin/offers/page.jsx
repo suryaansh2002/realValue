@@ -1,61 +1,61 @@
-"use client";
-import { useState, useEffect } from "react";
-import axios from "axios";
-import AdminNavbar from "@/app/components/AdminNavbar";
+'use client'
+import { useState, useEffect } from 'react'
+import axios from 'axios'
+import AdminNavbar from '@/app/components/AdminNavbar'
 
 const Offers = () => {
-  const [offers, setOffers] = useState([]);
-  const [newOfferImage, setNewOfferImage] = useState(null);
-  const [uploading, setUploading] = useState(false);
-  let url = "https://real-value-server.vercel.app/";
+  const [offers, setOffers] = useState([])
+  const [newOfferImage, setNewOfferImage] = useState(null)
+  const [uploading, setUploading] = useState(false)
+  let url = 'https://real-value-server.vercel.app/'
   // url = 'http://localhost:5000/'
 
   useEffect(() => {
-    fetchOffers();
-  }, []);
+    fetchOffers()
+  }, [])
 
   const fetchOffers = async () => {
     try {
-      const response = await axios.get(url + "api/offers");
-      setOffers(response.data);
+      const response = await axios.get(url + 'api/offers')
+      setOffers(response.data)
     } catch (error) {
-      console.error("Error fetching offers:", error);
+      console.error('Error fetching offers:', error)
     }
-  };
+  }
 
   const handleDeleteOffer = async (id) => {
     try {
-      await axios.delete(url + `api/offers/${id}`);
-      fetchOffers();
+      await axios.delete(url + `api/offers/${id}`)
+      fetchOffers()
     } catch (error) {
-      console.error("Error deleting offer:", error);
+      console.error('Error deleting offer:', error)
     }
-  };
+  }
 
   const handleImageChange = (e) => {
-    setNewOfferImage(e.target.files[0]);
-  };
+    setNewOfferImage(e.target.files[0])
+  }
 
   const handleAddOffer = async () => {
-    if (!newOfferImage) return;
+    if (!newOfferImage) return
     try {
-      setUploading(true);
-      const formData = new FormData();
-      formData.append("image", newOfferImage);
-      await axios.post(url + "api/offers", formData, {
+      setUploading(true)
+      const formData = new FormData()
+      formData.append('image', newOfferImage)
+      await axios.post(url + 'api/offers', formData, {
         headers: {
-          "Content-Type": "multipart/form-data",
+          'Content-Type': 'multipart/form-data',
         },
-      });
-      setNewOfferImage(null);
-      fetchOffers();
-      window.location.reload();
+      })
+      setNewOfferImage(null)
+      fetchOffers()
+      window.location.reload()
     } catch (error) {
-      console.error("Error adding offer:", error);
+      console.error('Error adding offer:', error)
     } finally {
-      setUploading(false);
+      setUploading(false)
     }
-  };
+  }
 
   return (
     <div>
@@ -73,10 +73,10 @@ const Offers = () => {
             onClick={handleAddOffer}
             disabled={!newOfferImage || uploading}
             className={`bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md ${
-              uploading ? "opacity-50 cursor-not-allowed" : ""
+              uploading ? 'opacity-50 cursor-not-allowed' : ''
             }`}
           >
-            {uploading ? "Uploading..." : "Add Offer"}
+            {uploading ? 'Uploading...' : 'Add Offer'}
           </button>
         </div>
         <ul>
@@ -97,7 +97,7 @@ const Offers = () => {
         </ul>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Offers;
+export default Offers

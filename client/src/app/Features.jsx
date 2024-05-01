@@ -1,12 +1,12 @@
-import React from "react";
+import React from 'react'
 import {
   FaAward,
   FaHandshake,
   FaRecycle,
   FaCar,
   FaRupeeSign,
-} from "react-icons/fa";
-import { BiHappyBeaming } from "react-icons/bi";
+} from 'react-icons/fa'
+import { BiHappyBeaming } from 'react-icons/bi'
 
 import {
   CheckOutlined,
@@ -15,7 +15,7 @@ import {
   DollarCircleOutlined,
   SmileOutlined,
   ToolOutlined,
-} from "@ant-design/icons";
+} from '@ant-design/icons'
 
 const Features = () => {
   return (
@@ -32,7 +32,7 @@ const Features = () => {
         <div className="md:space-y-8 space-y-12 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-12 md:space-y-0 md:text-left text-center items-center">
           <div>
             <div className="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 w-[90vw] dark:bg-primary-900">
-              <FaAward color="white" size={50} style={{ marginTop: "5px" }} />
+              <FaAward color="white" size={50} style={{ marginTop: '5px' }} />
             </div>
             <h3 className="mb-2 text-xl font-bold dark:text-white">
               Quality Selection
@@ -43,7 +43,7 @@ const Features = () => {
               <FaRupeeSign
                 color="white"
                 size={50}
-                style={{ marginBottom: "5px" }}
+                style={{ marginBottom: '5px' }}
               />
             </div>
             <h3 className="mb-2 text-xl font-bold dark:text-white">
@@ -55,7 +55,7 @@ const Features = () => {
               <FaCar color="white" size={50} />
             </div>
             <h3 className="mb-2 text-xl font-bold dark:text-white">
-              Certified Pre-Owned Program{" "}
+              Certified Pre-Owned Program{' '}
             </h3>
           </div>
           <div>
@@ -85,7 +85,7 @@ const Features = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default Features;
+export default Features

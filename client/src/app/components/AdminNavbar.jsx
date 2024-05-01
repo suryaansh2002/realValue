@@ -1,23 +1,23 @@
-"use client";
-import Link from "next/link";
-import { useEffect } from "react";
-import { jwtDecode } from "jwt-decode";
+'use client'
+import Link from 'next/link'
+import { useEffect } from 'react'
+import { jwtDecode } from 'jwt-decode'
 
 const AdminNavbar = () => {
   useEffect(() => {
-    const jwt_token = localStorage.getItem("jwt_token");
+    const jwt_token = localStorage.getItem('jwt_token')
     if (!jwt_token) {
-      window.location.href = "/admin/login";
+      window.location.href = '/admin/login'
     }
-    const decodedToken = jwtDecode(jwt_token);
-    if (decodedToken.access_level != "regular") {
-      window.location.href = "/admin/login";
+    const decodedToken = jwtDecode(jwt_token)
+    if (decodedToken.access_level != 'regular') {
+      window.location.href = '/admin/login'
     }
-  }, []);
+  }, [])
   const handleLogout = () => {
-    localStorage.removeItem("jwt_token");
-    window.location.href = "/admin/login";
-  };
+    localStorage.removeItem('jwt_token')
+    window.location.href = '/admin/login'
+  }
   return (
     <nav className="bg-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -78,7 +78,7 @@ const AdminNavbar = () => {
         </div>
       </div>
     </nav>
-  );
-};
+  )
+}
 
-export default AdminNavbar;
+export default AdminNavbar

@@ -1,4 +1,4 @@
-import AdminNavbar from "@/app/components/AdminNavbar";
+import AdminNavbar from '@/app/components/AdminNavbar'
 
 const Home = () => {
   return (
@@ -13,7 +13,7 @@ const Home = () => {
         </p>
       </main>
     </div>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home

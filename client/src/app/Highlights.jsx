@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 
 const Highlights = () => {
   return (
@@ -9,7 +9,7 @@ const Highlights = () => {
 
       <div
         className="flex md:flex-row flex-col flex-wrap gap-5 items-center py-10"
-        style={{ maxWidth: "1200px", margin: "0 auto" }}
+        style={{ maxWidth: '1200px', margin: '0 auto' }}
       >
         <div className="mb-5 md:w-[25vw] w-[80vw]">
           <iframe
@@ -49,7 +49,7 @@ const Highlights = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Highlights;
+export default Highlights

@@ -1,44 +1,44 @@
-"use client";
-import React, { useState, useEffect } from "react";
-import Link from "next/link";
-import axios from "axios";
-import AdminNavbar from "@/app/components/AdminNavbar";
+'use client'
+import React, { useState, useEffect } from 'react'
+import Link from 'next/link'
+import axios from 'axios'
+import AdminNavbar from '@/app/components/AdminNavbar'
 
 const Listings = () => {
-  const [listings, setListings] = useState([]);
-  let url = "https://real-value-server.vercel.app/";
+  const [listings, setListings] = useState([])
+  let url = 'https://real-value-server.vercel.app/'
   // url = 'http://localhost:5000/'
 
   useEffect(() => {
-    fetchListings();
-  }, []);
+    fetchListings()
+  }, [])
 
   const fetchListings = async () => {
     try {
-      const response = await axios.get(url + "api/listings");
-      let arr = [];
+      const response = await axios.get(url + 'api/listings')
+      let arr = []
       for (let i = 0; i < 5; i++) {
-        arr.push(response.data[0]);
+        arr.push(response.data[0])
       }
-      console.log(arr);
+      console.log(arr)
       //   arr = arr * 5
-      setListings(response.data);
+      setListings(response.data)
     } catch (error) {
-      console.error("Error fetching listings:", error);
+      console.error('Error fetching listings:', error)
     }
-  };
+  }
 
   const deleteListing = async (id) => {
     try {
-      await axios.delete(url + `api/listings/${id}`);
-      fetchListings();
+      await axios.delete(url + `api/listings/${id}`)
+      fetchListings()
     } catch (error) {
-      console.error("Error deleting listing:", error);
+      console.error('Error deleting listing:', error)
     }
-  };
+  }
   const goToUpdate = (id) => {
-    window.location.href = "./update/" + id;
-  };
+    window.location.href = './update/' + id
+  }
   return (
     <div>
       <AdminNavbar />
@@ -81,7 +81,7 @@ const Listings = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Listings;
+export default Listings

@@ -9,6 +9,7 @@ import axios from 'axios'
 // import 'swiper/swiper-bundle.css';
 
 import { Oval } from 'react-loader-spinner'
+import Link from 'next/link'
 
 const Testimonials = () => {
   const [loading, setLoading] = useState(false)
@@ -91,8 +92,20 @@ const Testimonials = () => {
             </Swiper>
           </div>
         ) : (
+          //   To add button to view more testimonials
           <p>No Testimonials to show...</p>
         )}
+        <div className="flex justify-center mt-8">
+          <Link
+            href="https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChdDSUhNMG9nS0VJQ0FnSUNqNzlDMDFnRRAB!2m1!1s0x0:0xbc6d6be675cca0f0!3m1!1s2@1:CIHM0ogKEICAgICj79C01gE%7CCgwIhKizsQYQ6Mz_xQI%7C?hl=en-US"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <button className="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-full">
+              View All
+            </button>
+          </Link>
+        </div>
       </div>
     </section>
   )

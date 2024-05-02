@@ -70,7 +70,7 @@ const EMICalculator = ({ indiPrincipal }) => {
   }
 
   return (
-    <section className="py-16">
+    <section className={`${indiPrincipal ? 'py-0' : 'py-16'}`}>
       {/* Heading on the left */}
       <div
         className={`mx-auto max-w-7xl ${indiPrincipal ? 'py-8' : 'px-4 py-8 sm:px-6 lg:px-8'}`}

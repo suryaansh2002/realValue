@@ -50,13 +50,13 @@ const ContactUsPage = () => {
                 Drop a mail for any queries.
               </p>
               <div className="space-y-2">
-                <p className="mt-2 text-base text-yellow-500">
+                <p className="mt-2 text-base text-white hover:text-yellow-500">
                   poddarranchi@gmail.com
                 </p>
-                <p className="mt-2 text-base text-yellow-500">
+                <p className="mt-2 text-base text-white hover:text-yellow-500">
                   info@poddarmotors.com
                 </p>
-                <p className="mt-2 text-base text-yellow-500">
+                <p className="mt-2 text-base text-white hover:text-yellow-500">
                   contact@poddarmotors.com
                 </p>
               </div>
@@ -89,17 +89,21 @@ const ContactUsPage = () => {
               <div className="space-y-2">
                 <div className="mt-2 flex items-center justify-start">
                   <FaWhatsapp
-                    className="text-yellow-500 text-2xl mr-2"
+                    className="text-green-500 text-2xl mr-2"
                     size={20}
                   />
-                  <p className="text-base text-yellow-500">+91 8102856301</p>
+                  <p className="text-base text-white hover:text-yellow-500">
+                    +91 8102856301
+                  </p>
                 </div>
                 <div className="mt-2 flex items-center justify-start">
                   <TbDeviceLandlinePhone
-                    className="text-yellow-500 text-2xl mr-2"
+                    className="text-cyan-600 text-2xl mr-2"
                     size={20}
                   />
-                  <p className="text-base text-yellow-500">8873002702</p>
+                  <p className="text-base text-white hover:text-yellow-500">
+                    8873002702
+                  </p>
                 </div>
               </div>
             </div>
@@ -121,14 +125,14 @@ const ContactUsPage = () => {
                   rel="noopener noreferrer"
                   target="_blank"
                 >
-                  <FaInstagram className="text-yellow-500 text-2xl" size={20} />
+                  <FaInstagram className="text-pink-500 text-2xl" size={20} />
                 </Link>
                 <Link
                   href="https://www.instagram.com/pmplrealvalue/"
                   rel="noopener noreferrer"
                   target="_blank"
                 >
-                  <FaFacebook className="text-yellow-500 text-2xl" size={20} />
+                  <FaFacebook className="text-blue-500 text-2xl" size={20} />
                 </Link>
               </div>
             </div>
@@ -164,19 +168,19 @@ const ContactUsPage = () => {
               Browse our exquisite collection of cars.
             </p>
             <div className="space-y-2">
-              <p className="mt-2 mb-4 text-base text-yellow-500">
+              <p className="mt-2 mb-4 text-base text-white hover:text-yellow-500">
                 1. (Poddar Automart) Real Value, Kokar Industrial Area, Kokar,
                 Ranchi - 834001 Landmark: Electricity Sub Station
               </p>
-              <p className="mt-2 mb-4 text-base text-yellow-500">
+              <p className="mt-2 mb-4 text-base text-white hover:text-yellow-500">
                 2. (Poddar Motors) Poddar Motors Pvt. Ltd. , Kokar Industrial
                 Area, Kokar , Ranchi -834001 Landmark: Beside moreish bread
               </p>
-              <p className="mt-2 mb-4 text-base text-yellow-500">
+              <p className="mt-2 mb-4 text-base text-white hover:text-yellow-500">
                 3. (Tirupati Engicon) Real Value, Kokar Chowk, Kokar, Ranchi -
                 834001 Landmark: Kokar Chowk - Kantatoli road
               </p>
-              <p className="mt-2 mb-4 text-base text-yellow-500">
+              <p className="mt-2 mb-4 text-base text-white hover:text-yellow-500">
                 4. Real Value, Hazaribagh Road ,Mesra , Ranchi - 834001
                 Landmark: Near BIT Mesra campus
               </p>

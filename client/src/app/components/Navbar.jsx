@@ -40,7 +40,7 @@ const Navbar = () => {
         <div className="flex items-center justify-center gap-x-60 lg:justify-around lg:gap-x-96">
           <div className="mx-auto">
             <Link href="/">
-              <Image src={Logo} alt="logo" width={80} height={80} />
+              <Image src={Logo} alt="logo" width={80} height={80} priority />
             </Link>
           </div>
           <div className="hidden md:flex justify-evenly items-center space-x-4 mx-auto flex-grow-1">

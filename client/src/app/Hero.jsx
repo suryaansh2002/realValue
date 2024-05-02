@@ -9,8 +9,6 @@ import kia from '../images/brands/kia.png'
 import mahindra from '../images/brands/mahindra.png'
 import tata from '../images/brands/tata.png'
 import maruti from '../images/brands/maruti.png'
-import { Icon } from '@ant-design/icons'
-import { CarOutlined } from '@ant-design/icons'
 
 const imageStyles = {
   width: '3rem',
@@ -151,7 +149,7 @@ const Hero = () => {
           </a>
         </div>
         <div className="mt-10 lg:mt-0 lg:col-span-5 lg:flex">
-          <Image src={carImage2} alt="Hero car image" />
+          <Image src={carImage2} alt="Hero car image" priority />
         </div>
       </div>
 

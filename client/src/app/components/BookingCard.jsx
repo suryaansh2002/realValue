@@ -36,7 +36,7 @@ const BookingCard = ({ sendDataToParent }) => {
       onFinishFailed={onFinishFailed}
       onSubmit={(e) => e.preventDefault()}
     >
-      <Form.Item label="name" name="name" required>
+      <Form.Item label="Name" name="name" required>
         <Input placeholder="Enter your name" required />
       </Form.Item>
 
@@ -55,7 +55,7 @@ const BookingCard = ({ sendDataToParent }) => {
       </Form.Item>
 
       <Form.Item
-        label="email"
+        label="Email"
         name="email"
         rules={[
           { type: 'email', message: 'Please enter a valid email address' },
@@ -65,7 +65,7 @@ const BookingCard = ({ sendDataToParent }) => {
       </Form.Item>
 
       <Form.Item
-        label="date"
+        label="Date"
         name="date"
         required
         rules={[{ required: true, message: 'Please enter a date' }]}
@@ -83,7 +83,7 @@ const BookingCard = ({ sendDataToParent }) => {
       </Form.Item>
 
       <Form.Item
-        label="time"
+        label="Time"
         name="time"
         required
         rules={[{ required: true, message: 'Please enter a time' }]}

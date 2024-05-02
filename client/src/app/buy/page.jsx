@@ -170,10 +170,10 @@ export default function Buy() {
   const yearRange = [2010, new Date().getFullYear()]
   return (
     <div>
-      <div className="text-center">
+      <div className="text-center flex md:flex-row flex-col justify-end mr-12 mt-8 ml-[10%]">
         <button
           onClick={() => setShowFilters(!showFilters)}
-          className="border border-gray-300 ml-4 md:ml-12 rounded px-16 py-2 mt-4"
+          className="border border-gray-300 text-sm ml-4 md:mb-0 mb-8 md:ml-12 rounded md:px-8 py-1  md:w-auto w-[90%]"
         >
           <FaFilter className="inline-block text-sm mr-1" /> Filter
           {showFilters ? (
@@ -182,9 +182,37 @@ export default function Buy() {
             <FaChevronDown className="inline-block ml-4 text-sm" />
           )}
         </button>
+        <Select
+          className="border border-gray-300 ml-4 md:w-[12rem] w-[90%] text-lg md:ml-12 rounded px-16 w-[12rem] py-8 mt-4 md:translate-x-6 translate-x-4"
+          value={selectedOption}
+          onChange={handleSort}
+        >
+          <Option value="">
+            <span>Sort By...</span>
+            {/* <ArrowUpOutlined /> */}
+          </Option>
+          <Option value="price_asc">
+            <span>Price: Low to High</span>
+          </Option>
+          <Option value="price_desc">
+            <span>Price: High to Low</span>
+          </Option>
+          <Option value="kmDriven_asc">
+            <span>KM Driven: Low to High</span>
+          </Option>
+          <Option value="kmDriven_desc">
+            <span>KM Driven: High to Low</span>
+          </Option>
+          <Option value="year_asc">
+            <span>Year: Low to High</span>
+          </Option>
+          <Option value="year_desc">
+            <span>Year: High to Low</span>
+          </Option>
+        </Select>
       </div>
       {showFilters && (
-        <div className="w-[90vw] md:w-[50vw] p-4 border-2 border-gray-500 rounded-md ml-[50%] -translate-x-[50%] mt-2 !absolute z-10 bg-white">
+        <div className="w-[90vw] md:w-[40vw] p-4 border-2 border-gray-500  ml-[50%] -translate-x-[50%] rounded-md md:mt-2 -mt-12 !absolute z-10 md:right-4 md:ml-0 md:translate-x-0 bg-white">
           <div className="space-y-4">
             {/* Brand */}
             <div>
@@ -307,35 +335,9 @@ export default function Buy() {
           </div>
         </div>
       )}
-      <div className="text-center mt-8">
-        <Select
-          className="border border-gray-300 ml-4 text-lg md:ml-12 rounded px-16 w-[12rem] py-8 mt-4 md:translate-x-6 translate-x-2"
-          value={selectedOption}
-          onChange={handleSort}
-        >
-          <Option value="">
-            <span>Sort By...</span>
-            {/* <ArrowUpOutlined /> */}
-          </Option>
-          <Option value="price_asc">
-            <span>Price: Low to High</span>
-          </Option>
-          <Option value="price_desc">
-            <span>Price: High to Low</span>
-          </Option>
-          <Option value="kmDriven_asc">
-            <span>KM Driven: Low to High</span>
-          </Option>
-          <Option value="kmDriven_desc">
-            <span>KM Driven: High to Low</span>
-          </Option>
-          <Option value="year_asc">
-            <span>Year: Low to High</span>
-          </Option>
-          <Option value="year_desc">
-            <span>Year: High to Low</span>
-          </Option>
-        </Select>
+   
+      <div className='font-semibold text-2xl pl-4 pt-4 -mb-2 md:-translate-y-2 md: pl-8'> 
+        Explore All Cars:
       </div>
       {loading ? (
         <div className="flex items-center justify-center p-10">

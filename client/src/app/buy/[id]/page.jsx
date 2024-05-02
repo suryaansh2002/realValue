@@ -259,7 +259,7 @@ const page = ({ params: { id } }) => {
               Book Test Drive
             </button>
             <Modal
-              title="Title"
+              title="Book Test Drive"
               open={open}
               confirmLoading={confirmLoading}
               onCancel={handleCancel}
@@ -268,7 +268,7 @@ const page = ({ params: { id } }) => {
               {confirmLoading ? (
                 <>
                   <BookingCard sendDataToParent={handleChildData} />
-                  <div className="p-5">
+                  <div className="p-5 flex items-center justify-center">
                     <Oval color="#000" height={50} width={50} />
                   </div>
                 </>

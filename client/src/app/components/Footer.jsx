@@ -1,7 +1,8 @@
 import React from 'react'
 import Image from 'next/image'
 import logo from '../../images/logo.png'
-
+import { MdCopyright } from "react-icons/md";
+import moment  from 'moment';
 const Footer = () => {
   return (
     <footer className="bg-gray-900 text-white py-4">
@@ -18,6 +19,9 @@ const Footer = () => {
           <p className="mr-0 lg:mr-4 mb-2 lg:mb-0">Phone: +91 8873002702</p>
           <p className="mr-0 lg:mr-4">Email: aman@poddarmotors.com</p>
         </div>
+      </div>
+      <div className='container w-[100vw] text-center text-sm mt-2'>
+      <MdCopyright className='inline text-lg'/> Copyright {new Date().getFullYear()}
       </div>
     </footer>
   )

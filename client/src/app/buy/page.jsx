@@ -221,8 +221,10 @@ export default function Buy() {
                 defaultValue={filters['brand']}
                 onChange={handleBrandChange}
               >
-                {brands.map((brand) => (
-                  <Checkbox value={brand}>{brand}</Checkbox>
+                {brands.map((brand, i) => (
+                  <Checkbox key={i} value={brand}>
+                    {brand}
+                  </Checkbox>
                 ))}
               </Checkbox.Group>
             </div>
@@ -321,8 +323,10 @@ export default function Buy() {
                 defaultValue={filters['seats']}
                 onChange={handleSeatsChange}
               >
-                {seatsCount.map((count) => (
-                  <Checkbox value={count}>{count}</Checkbox>
+                {seatsCount.map((count, i) => (
+                  <Checkbox key={i} value={count}>
+                    {count}
+                  </Checkbox>
                 ))}
               </Checkbox.Group>
             </div>
@@ -335,8 +339,8 @@ export default function Buy() {
           </div>
         </div>
       )}
-   
-      <div className='font-semibold text-2xl pl-4 pt-4 -mb-2 md:-translate-y-2 md: pl-8'> 
+
+      <div className="font-semibold text-2xl pl-4 pt-4 -mb-2 md:-translate-y-2 md: pl-8">
         Explore All Cars:
       </div>
       {loading ? (
@@ -350,7 +354,7 @@ export default function Buy() {
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 mt-8 px-8 mb-12">
           {listings.map((car) => (
-            <FeaturedCard key={car.id} car={car} />
+            <FeaturedCard key={car._id} car={car} />
           ))}
         </div>
       )}

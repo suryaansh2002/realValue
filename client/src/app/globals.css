@@ -9,6 +9,10 @@
     text-wrap: balance;
   }
 }
+body{
+  width: 100vw !important;
+  overflow-x: hidden !important;
+}
 .button-cloud {
   font-family: 'Inter', sans-serif;
   font-weight: 600;

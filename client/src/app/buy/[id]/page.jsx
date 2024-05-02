@@ -30,6 +30,10 @@ import { toTitleCase, getOwnerShipSuffix, EMICalcLite } from '@/app/utils'
 import { Tabs, Modal } from 'antd'
 import BookingCard from '@/app/components/BookingCard'
 
+
+// import { BsFillFuelPumpFill } from "react-icons/bs";
+// import { CiCreditCard1 } from "react-icons/ci";
+
 const page = ({ params: { id } }) => {
   // API call to this route: 662bed523ec1ae8416673630
   const [loading, setLoading] = useState(true)
@@ -308,18 +312,16 @@ const page = ({ params: { id } }) => {
                   Features
                 </h2>
                 <ul
-                  style={{
-                    display: 'grid',
-                    alignItems: 'center',
-                    gridTemplateColumns: 'repeat(auto-fit, minmax(100px, 1fr))',
-                    gap: '10px',
-                  }}
+                 
                 >
                   {carData.features &&
                     carData.features.map((feature, i) => (
                       <li
                         key={i}
-                        className="text-gray-700 inline-block bg-gray-300 rounded-full px-3 py-1 text-sm font-semibold text-center"
+                        className="
+                        md:inline-block md:mr-4 md:w-max md:ml-0 md:translate-x-0
+                        block w-[80%] my-2 ml-[50%] -translate-x-[50%] py-2
+                        text-gray-700 inline-block bg-gray-300 rounded-full px-3 md:py-1 text-sm font-semibold text-center"
                       >
                         {feature}
                       </li>
@@ -334,113 +336,118 @@ const page = ({ params: { id } }) => {
                   Specifications
                 </h2>
                 <div
-                  className="grid"
-                  style={{
-                    gap: 4,
-                    gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))',
-                  }}
                 >
                   {carData.displacement && (
-                    <div className="flex items-center">
-                      <div className="px-2">
-                        <Image src={disp} alt="disp" width={30} height={30} />
-                      </div>
-                      <span className="text-gray-700">
+                    <div className="inline-block my-3 md:w-[45%] ">
+                      <div className="px-2 inline">
+                        <Image src={disp} alt="disp" width={30} height={30} className='inline  mr-2'/>
+                        <span className="text-gray-700 inline">
                         <span className="font-bold">Displacement</span>:{' '}
                         {carData.displacement} cc
                       </span>
+                      </div>
                     </div>
                   )}
 
                   {carData.cylinders && (
-                    <div className="flex items-center">
-                      <div className="px-2">
-                        <BiCylinder size={20} className="text-gray-600" />
-                      </div>
-                      <span className="text-gray-700">
+                    <div className="items-center inline-block my-3 md:w-[45%] ">
+                      <div className="px-2 inline">
+                        <BiCylinder size={20} className="text-gray-600 mx-1 mr-4 inline" />
+                        <span className="text-gray-700 inline">
                         <span className="font-bold">No. of cylinders</span>:
                         {carData.cylinders}
                       </span>
                     </div>
+                    </div>
                   )}
 
                   {carData.maxPower && (
-                    <div className="flex items-center">
-                      <div className="px-2">
-                        <FaBoltLightning size={20} className="text-gray-600" />
-                      </div>
-                      <span className="text-gray-700">
+                    <div className="items-center inline-block my-3 md:w-[45%] ">
+                      <div className="px-2 inline">
+                        <FaBoltLightning size={20} className="text-gray-600 mx-1 mr-4 inline" />
+                        <span className="text-gray-700 inline">
                         <span className="font-bold">Max Power</span>:{' '}
                         {carData.maxPower} BHP
                       </span>
+
+                      </div>
                     </div>
                   )}
 
                   {carData.seats && (
-                    <div className="flex items-center">
-                      <div className="px-2">
+                    <div className="items-center inline-block my-3 md:w-[45%] ">
+                      <div className="px-2 inline">
                         <MdAirlineSeatReclineNormal
                           size={30}
-                          className="text-gray-600"
-                        />
-                      </div>
-                      <span className="text-gray-700">
+                          className="text-gray-600 mx-1 mr-2 inline"
+                          
+                          />
+                      <span className="text-gray-700 inline">
                         <span className="font-bold">Seats</span>:{' '}
                         {carData.seats}
                       </span>
+                      </div>
+                     
                     </div>
                   )}
 
                   {carData.bootspace && (
-                    <div className="flex items-center">
-                      <div className="px-2">
-                        <Image src={trunk} alt="trunk" width={20} height={20} />
-                      </div>
-                      <span className="text-gray-700">
+                    <div className="items-center inline-block my-3 md:w-[45%] ">
+                      <div className="px-2 inline">
+                        <Image src={trunk} alt="trunk" className='inline mx-2 mr-4' width={20} height={20} />
+                        <span className="text-gray-700 inline">
                         <span className="font-bold">Bootspace</span>:{' '}
                         {carData.bootspace} L
                       </span>
+
+                      </div>
                     </div>
                   )}
 
                   {carData.fuelTank && (
-                    <div className="flex items-center">
-                      <div className="px-2">
-                        <BsFuelPumpFill size={20} className="text-gray-600" />
-                      </div>
-                      <span className="text-gray-700">
+                    <div className="items-center inline-block my-3 md:w-[45%] ">
+                      <div className="px-2 inline">
+                        <BsFuelPumpFill size={20}                           
+                        className="text-gray-600 mx-2 mr-4 inline"
+ />
+                        <span className="text-gray-700 inline">
                         <span className="font-bold">Fuel-Tank</span>:{' '}
                         {carData.fuelTank} L
                       </span>
+
+                      </div>
                     </div>
                   )}
 
                   {carData.gears && (
-                    <div className="flex items-center">
-                      <div className="px-2">
-                        <PiGearSixFill size={20} className="text-gray-600" />
-                      </div>
-                      <span className="text-gray-700">
+                    <div className="items-center inline-block my-3 md:w-[45%] ">
+                      <div className="px-2 inline">
+                        <PiGearSixFill size={20} className="text-gray-600 inline mx-2 mr-4" />
+                        <span className="text-gray-700 inline">
                         <span className="font-bold">No. of Gears</span>:{' '}
                         {carData.gears}
                       </span>
+
+                      </div>
                     </div>
                   )}
 
                   {carData.mileage && (
-                    <div className="flex items-center">
-                      <div className="px-2">
+                    <div className="items-center inline-block my-3 md:w-[45%] ">
+                      <div className="px-2 inline">
                         <Image
                           src={mileage}
                           alt="mileage"
                           width={30}
                           height={30}
+                          className='inline mx-1 mr-2'
                         />
-                      </div>
-                      <span className="text-gray-700">
+                      <span className="text-gray-700 inline">
                         <span className="font-bold">Mileage</span>:{' '}
                         {carData.mileage} kmpl
                       </span>
+
+                      </div>
                     </div>
                   )}
                 </div>

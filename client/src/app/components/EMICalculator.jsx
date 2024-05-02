@@ -11,7 +11,7 @@ import { AmountWithCommas } from '../utils'
 ChartJS.register(ArcElement, Tooltip, Legend)
 
 const EMICalculator = ({ indiPrincipal }) => {
-  const [principalAmount, setPrincipalAmount] = useState(100000)
+  const [principalAmount, setPrincipalAmount] = useState(500000)
   const [rateOfInterest, setRateOfInterest] = useState(11)
   const [tenure, setTenure] = useState(36)
   const [emi, setEmi] = useState(0)
@@ -92,8 +92,13 @@ const EMICalculator = ({ indiPrincipal }) => {
             <div className="bg-white p-4 rounded-lg shadow-lg mb-4">
               <div className="text-2xl font-bold mb-4">EMI Calculator</div>
               <div className="flex flex-col space-y-4">
-                <div className="flex items-center justify-between">
-                  <label htmlFor="principalAmount">Principal Amt:</label>
+                <div className="flex flex-col space-x-0 lg:space-x-4 lg:flex-row items-center justify-start lg:justify-between">
+                  <label
+                    htmlFor="principalAmount"
+                    className="flex-1 mb-2 w-full"
+                  >
+                    Principal Amt:
+                  </label>
                   <input
                     id="principalAmount"
                     type="number"
@@ -102,7 +107,7 @@ const EMICalculator = ({ indiPrincipal }) => {
                     onChange={(e) => {
                       setPrincipalAmount(e.target.value)
                     }}
-                    className="border rounded px-2 py-1 w-1/2"
+                    className="border rounded px-2 py-1 w-full lg:w-1/2 mb-2"
                   />
                   <input
                     type="range"
@@ -113,11 +118,17 @@ const EMICalculator = ({ indiPrincipal }) => {
                     onChange={(e) => {
                       setPrincipalAmount(e.target.value)
                     }}
-                    className="w-1/2 ml-5"
+                    className="w-full lg:w-1/2 ml-5"
                   />
                 </div>
-                <div className="flex items-center justify-between">
-                  <label htmlFor="rateOfInterest">Interest Rate:</label>
+
+                <div className="flex flex-col space-x-0 lg:space-x-4 lg:flex-row items-center justify-start lg:justify-between">
+                  <label
+                    htmlFor="rateOfInterest"
+                    className="flex-1 mb-2 w-full"
+                  >
+                    Interest Rate:
+                  </label>
                   <input
                     id="rateOfInterest"
                     type="number"
@@ -125,7 +136,7 @@ const EMICalculator = ({ indiPrincipal }) => {
                     onChange={(e) => {
                       setRateOfInterest(e.target.value)
                     }}
-                    className="border rounded px-2 py-1 w-1/2"
+                    className="border rounded px-2 py-1 w-full lg:w-1/2 mb-2"
                   />
                   <input
                     type="range"
@@ -136,11 +147,13 @@ const EMICalculator = ({ indiPrincipal }) => {
                     onChange={(e) => {
                       setRateOfInterest(e.target.value)
                     }}
-                    className="w-1/2 ml-5"
+                    className="w-full lg:w-1/2 ml-5"
                   />
                 </div>
-                <div className="flex items-center justify-between">
-                  <label htmlFor="tenure">Tenure (in months):</label>
+                <div className="flex flex-col space-x-0 lg:space-x-4 lg:flex-row items-center justify-start lg:justify-between">
+                  <label htmlFor="tenure" className="flex-1 mb-2 w-full">
+                    Tenure (in months):
+                  </label>
                   <input
                     id="tenure"
                     type="number"
@@ -148,7 +161,7 @@ const EMICalculator = ({ indiPrincipal }) => {
                     onChange={(e) => {
                       setTenure(e.target.value)
                     }}
-                    className="border rounded px-2 py-1 w-1/2"
+                    className="border rounded px-2 py-1 w-full lg:w-1/2 mb-2"
                   />
                   <input
                     type="range"
@@ -159,7 +172,7 @@ const EMICalculator = ({ indiPrincipal }) => {
                     onChange={(e) => {
                       setTenure(e.target.value)
                     }}
-                    className="w-1/2 ml-5"
+                    className="w-full lg:w-1/2 ml-5"
                   />
                 </div>
                 {/* <button

@@ -30,7 +30,6 @@ import { toTitleCase, getOwnerShipSuffix, EMICalcLite } from '@/app/utils'
 import { Tabs, Modal } from 'antd'
 import BookingCard from '@/app/components/BookingCard'
 
-
 // import { BsFillFuelPumpFill } from "react-icons/bs";
 // import { CiCreditCard1 } from "react-icons/ci";
 
@@ -112,7 +111,7 @@ const page = ({ params: { id } }) => {
   }
 
   return (
-    <div className="bg-white">
+    <div className="bg-white overflow-x-hidden">
       <div className="pt-6">
         <nav aria-label="Breadcrumb" className="mb-5">
           <ol
@@ -311,9 +310,7 @@ const page = ({ params: { id } }) => {
                 <h2 className="text-lg font-semibold text-gray-900 mb-2">
                   Features
                 </h2>
-                <ul
-                 
-                >
+                <ul>
                   {carData.features &&
                     carData.features.map((feature, i) => (
                       <li
@@ -335,16 +332,21 @@ const page = ({ params: { id } }) => {
                 <h2 className="text-lg font-semibold text-gray-900 mb-2">
                   Specifications
                 </h2>
-                <div
-                >
+                <div>
                   {carData.displacement && (
                     <div className="inline-block my-3 md:w-[45%] ">
                       <div className="px-2 inline">
-                        <Image src={disp} alt="disp" width={30} height={30} className='inline  mr-2'/>
+                        <Image
+                          src={disp}
+                          alt="disp"
+                          width={30}
+                          height={30}
+                          className="inline  mr-2"
+                        />
                         <span className="text-gray-700 inline">
-                        <span className="font-bold">Displacement</span>:{' '}
-                        {carData.displacement} cc
-                      </span>
+                          <span className="font-bold">Displacement</span>:{' '}
+                          {carData.displacement} cc
+                        </span>
                       </div>
                     </div>
                   )}
@@ -352,24 +354,29 @@ const page = ({ params: { id } }) => {
                   {carData.cylinders && (
                     <div className="items-center inline-block my-3 md:w-[45%] ">
                       <div className="px-2 inline">
-                        <BiCylinder size={20} className="text-gray-600 mx-1 mr-4 inline" />
+                        <BiCylinder
+                          size={20}
+                          className="text-gray-600 mx-1 mr-4 inline"
+                        />
                         <span className="text-gray-700 inline">
-                        <span className="font-bold">No. of cylinders</span>:
-                        {carData.cylinders}
-                      </span>
-                    </div>
+                          <span className="font-bold">No. of cylinders</span>:
+                          {carData.cylinders}
+                        </span>
+                      </div>
                     </div>
                   )}
 
                   {carData.maxPower && (
                     <div className="items-center inline-block my-3 md:w-[45%] ">
                       <div className="px-2 inline">
-                        <FaBoltLightning size={20} className="text-gray-600 mx-1 mr-4 inline" />
+                        <FaBoltLightning
+                          size={20}
+                          className="text-gray-600 mx-1 mr-4 inline"
+                        />
                         <span className="text-gray-700 inline">
-                        <span className="font-bold">Max Power</span>:{' '}
-                        {carData.maxPower} BHP
-                      </span>
-
+                          <span className="font-bold">Max Power</span>:{' '}
+                          {carData.maxPower} BHP
+                        </span>
                       </div>
                     </div>
                   )}
@@ -380,26 +387,29 @@ const page = ({ params: { id } }) => {
                         <MdAirlineSeatReclineNormal
                           size={30}
                           className="text-gray-600 mx-1 mr-2 inline"
-                          
-                          />
-                      <span className="text-gray-700 inline">
-                        <span className="font-bold">Seats</span>:{' '}
-                        {carData.seats}
-                      </span>
+                        />
+                        <span className="text-gray-700 inline">
+                          <span className="font-bold">Seats</span>:{' '}
+                          {carData.seats}
+                        </span>
                       </div>
-                     
                     </div>
                   )}
 
                   {carData.bootspace && (
                     <div className="items-center inline-block my-3 md:w-[45%] ">
                       <div className="px-2 inline">
-                        <Image src={trunk} alt="trunk" className='inline mx-2 mr-4' width={20} height={20} />
+                        <Image
+                          src={trunk}
+                          alt="trunk"
+                          className="inline mx-2 mr-4"
+                          width={20}
+                          height={20}
+                        />
                         <span className="text-gray-700 inline">
-                        <span className="font-bold">Bootspace</span>:{' '}
-                        {carData.bootspace} L
-                      </span>
-
+                          <span className="font-bold">Bootspace</span>:{' '}
+                          {carData.bootspace} L
+                        </span>
                       </div>
                     </div>
                   )}
@@ -407,14 +417,14 @@ const page = ({ params: { id } }) => {
                   {carData.fuelTank && (
                     <div className="items-center inline-block my-3 md:w-[45%] ">
                       <div className="px-2 inline">
-                        <BsFuelPumpFill size={20}                           
-                        className="text-gray-600 mx-2 mr-4 inline"
- />
+                        <BsFuelPumpFill
+                          size={20}
+                          className="text-gray-600 mx-2 mr-4 inline"
+                        />
                         <span className="text-gray-700 inline">
-                        <span className="font-bold">Fuel-Tank</span>:{' '}
-                        {carData.fuelTank} L
-                      </span>
-
+                          <span className="font-bold">Fuel-Tank</span>:{' '}
+                          {carData.fuelTank} L
+                        </span>
                       </div>
                     </div>
                   )}
@@ -422,12 +432,14 @@ const page = ({ params: { id } }) => {
                   {carData.gears && (
                     <div className="items-center inline-block my-3 md:w-[45%] ">
                       <div className="px-2 inline">
-                        <PiGearSixFill size={20} className="text-gray-600 inline mx-2 mr-4" />
+                        <PiGearSixFill
+                          size={20}
+                          className="text-gray-600 inline mx-2 mr-4"
+                        />
                         <span className="text-gray-700 inline">
-                        <span className="font-bold">No. of Gears</span>:{' '}
-                        {carData.gears}
-                      </span>
-
+                          <span className="font-bold">No. of Gears</span>:{' '}
+                          {carData.gears}
+                        </span>
                       </div>
                     </div>
                   )}
@@ -440,13 +452,12 @@ const page = ({ params: { id } }) => {
                           alt="mileage"
                           width={30}
                           height={30}
-                          className='inline mx-1 mr-2'
+                          className="inline mx-1 mr-2"
                         />
-                      <span className="text-gray-700 inline">
-                        <span className="font-bold">Mileage</span>:{' '}
-                        {carData.mileage} kmpl
-                      </span>
-
+                        <span className="text-gray-700 inline">
+                          <span className="font-bold">Mileage</span>:{' '}
+                          {carData.mileage} kmpl
+                        </span>
                       </div>
                     </div>
                   )}

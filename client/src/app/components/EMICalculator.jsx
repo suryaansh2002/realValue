@@ -3,6 +3,9 @@ import React, { useState, useEffect } from 'react'
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js'
 import { Doughnut } from 'react-chartjs-2'
 
+// Antd
+import { Input } from 'antd'
+
 import { AmountWithCommas } from '../utils'
 
 ChartJS.register(ArcElement, Tooltip, Legend)
@@ -95,6 +98,7 @@ const EMICalculator = ({ indiPrincipal }) => {
                     id="principalAmount"
                     type="number"
                     value={principalAmount}
+                    step={10000}
                     onChange={(e) => {
                       setPrincipalAmount(e.target.value)
                     }}
@@ -104,7 +108,7 @@ const EMICalculator = ({ indiPrincipal }) => {
                     type="range"
                     min="100000"
                     max="5000000"
-                    step="10000"
+                    step={10000}
                     value={principalAmount}
                     onChange={(e) => {
                       setPrincipalAmount(e.target.value)

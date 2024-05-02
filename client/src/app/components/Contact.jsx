@@ -34,9 +34,9 @@ const Contact = () => {
             </a>
           </div>
         </div>
-        <p className="text-gray-700 mt-4">
-          <FaCalendarAlt className="inline text-xl" /> 7 Days a Week
-          <FaClock className="inline ml-2 text-xl" /> 9:30am - 7pm
+        <p className="text-gray-700 mt-6">
+          <FaCalendarAlt className="inline text-lg -translate-y-0.5" /> 7 Days a Week
+          <FaClock className="inline ml-2 text-lg mr-0.5 ml-4" style={{transform:'translateY(-0.05rem)'}}/> 9:30am - 7pm
         </p>
       </div>
 

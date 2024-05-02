@@ -2,6 +2,8 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import AdminNavbar from '@/app/components/AdminNavbar'
+import * as XLSX from 'xlsx';
+import moment from 'moment';
 
 const SellRequestsPage = () => {
   const [sellRequests, setSellRequests] = useState([])
@@ -67,6 +69,49 @@ const SellRequestsPage = () => {
       console.error('Error archiving sell request:', error)
     }
   }
+  const downloadSellRequests = () =>{
+  const keysToKeep = [
+    "name",
+    "phoneNumber",
+    "email",
+    "location",
+    "registrationNumber",
+    "brand",
+    "model",
+    "variant",
+    "manufactureYear",
+    "kilometers",
+    "price",
+    "status",
+  ]
+const keyToColumnMapping = {
+  "name": "Name",
+  "phoneNumber": "Phone Number",
+  "email": "Email",
+  "location": "Location",
+  "registrationNumber": "Registration Number",
+  "brand": "Brand",
+  "model": "Model",
+  "variant": "Variant",
+  "manufactureYear": "Manufacture Year",
+  "kilometers": "Kilometers",
+  "price": "Price",
+  "status": "Status",
+}
+
+const tempArr = sellRequests.map((item)=>{
+
+  const tempObj = {}
+  keysToKeep.map((key)=>{
+    tempObj[keyToColumnMapping[key]] = item[key]
+  })
+  return tempObj
+})
+    const ws = XLSX.utils.json_to_sheet(tempArr);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Sell Requests');
+    XLSX.writeFile(wb, `Sell Requests as of ${moment().format('DD-MM-YYYY')}.xlsx`);
+  }
 
   useEffect(() => {
     if (showArchived && !archivedSellRequests.length) {
@@ -79,6 +124,14 @@ const SellRequestsPage = () => {
       <AdminNavbar />
       <div className="container mx-auto">
         <h1 className="text-2xl font-bold my-4">Sell Requests</h1>
+        <div className='text-center my-4'>
+        <button
+                onClick={() => downloadSellRequests()}
+                className="bg-blue-500 text-white px-4 py-2 rounded-md"
+              >
+                Download Sell Requests
+              </button>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {sellRequests.map((request) => (
             <div

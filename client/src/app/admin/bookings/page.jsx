@@ -2,6 +2,8 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import AdminNavbar from '@/app/components/AdminNavbar'
+import * as XLSX from 'xlsx';
+import moment from 'moment';
 
 const BookingsPage = () => {
   const [bookings, setBookings] = useState([])
@@ -76,12 +78,41 @@ const BookingsPage = () => {
     fetchArchivedBookings()
   }, [showArchive])
 
+  const downloadBookings = () =>{
+    const tempArr = bookings.map((item)=>
+  {
+    return {
+      Name: item.name,
+      Date: item.date,
+      Time: item.time,
+      'Mobile Number': item.mobileNumber,
+      'Brand': item.listingId.brand,
+      'Model': item.listingId.model,
+      'Vehicle No.': item.listingId.vehicleNumber,
+    }
+  }
+  )
+    const ws = XLSX.utils.json_to_sheet(tempArr);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Bookings');
+    XLSX.writeFile(wb, `Bookings as of ${moment().format('DD-MM-YYYY')}.xlsx`);
+  }
+
+
   return (
     <div>
       <AdminNavbar />
 
       <div className="container mx-auto mb-8">
         <h1 className="text-3xl font-semibold mb-6">Bookings</h1>
+        <div className='text-center my-4'>
+        <button
+                onClick={() => downloadBookings()}
+                className="bg-blue-500 text-white px-4 py-2 rounded-md"
+              >
+                Download Bookings
+              </button>
+        </div>
         <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {bookings.map((booking) => (
             <div

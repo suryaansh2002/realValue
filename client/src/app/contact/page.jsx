@@ -26,7 +26,7 @@ const ContactUsPage = () => {
         >
           <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-1">
             <div>
-              <span className="inline-block p-3 text-blue-500 rounded-full bg-blue-100/80 dark:bg-gray-800">
+              <span className="inline-block p-3 text-yellow-500 rounded-full bg-blue-100/80 dark:bg-gray-800">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -50,20 +50,20 @@ const ContactUsPage = () => {
                 Drop a mail for any queries.
               </p>
               <div className="space-y-2">
-                <p className="mt-2 text-base text-blue-500 dark:text-blue-400">
+                <p className="mt-2 text-base text-yellow-500">
                   poddarranchi@gmail.com
                 </p>
-                <p className="mt-2 text-base text-blue-500 dark:text-blue-400">
+                <p className="mt-2 text-base text-yellow-500">
                   info@poddarmotors.com
                 </p>
-                <p className="mt-2 text-base text-blue-500 dark:text-blue-400">
+                <p className="mt-2 text-base text-yellow-500">
                   contact@poddarmotors.com
                 </p>
               </div>
             </div>
 
             <div>
-              <span className="inline-block p-3 text-blue-500 rounded-full bg-blue-100/80 dark:bg-gray-800">
+              <span className="inline-block p-3 text-yellow-500 rounded-full bg-blue-100/80 dark:bg-gray-800">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -89,28 +89,24 @@ const ContactUsPage = () => {
               <div className="space-y-2">
                 <div className="mt-2 flex items-center justify-start">
                   <FaWhatsapp
-                    className="text-blue-500 text-2xl mr-2"
+                    className="text-yellow-500 text-2xl mr-2"
                     size={20}
                   />
-                  <p className="text-base text-blue-500 dark:text-blue-400">
-                    +91 8102856301
-                  </p>
+                  <p className="text-base text-yellow-500">+91 8102856301</p>
                 </div>
                 <div className="mt-2 flex items-center justify-start">
                   <TbDeviceLandlinePhone
-                    className="text-blue-500 text-2xl mr-2"
+                    className="text-yellow-500 text-2xl mr-2"
                     size={20}
                   />
-                  <p className="text-base text-blue-500 dark:text-blue-400">
-                    8873002702
-                  </p>
+                  <p className="text-base text-yellow-500">8873002702</p>
                 </div>
               </div>
             </div>
 
             <div>
-              <span className="inline-block p-3 text-blue-500 rounded-full bg-blue-100/80 dark:bg-gray-800 mx-auto">
-                <FaUsers className="text-blue-500 text-2xl" size={20} />
+              <span className="inline-block p-3 text-yellow-500 rounded-full bg-blue-100/80 dark:bg-gray-800 mx-auto">
+                <FaUsers className="text-yellow-500 text-2xl" size={20} />
               </span>
 
               <h2 className="mt-4 text-xl font-medium text-gray-800 dark:text-white">
@@ -125,21 +121,21 @@ const ContactUsPage = () => {
                   rel="noopener noreferrer"
                   target="_blank"
                 >
-                  <FaInstagram className="text-blue-500 text-2xl" size={20} />
+                  <FaInstagram className="text-yellow-500 text-2xl" size={20} />
                 </Link>
                 <Link
                   href="https://www.instagram.com/pmplrealvalue/"
                   rel="noopener noreferrer"
                   target="_blank"
                 >
-                  <FaFacebook className="text-blue-500 text-2xl" size={20} />
+                  <FaFacebook className="text-yellow-500 text-2xl" size={20} />
                 </Link>
               </div>
             </div>
           </div>
 
           <div>
-            <span className="inline-block p-3 text-blue-500 rounded-full bg-blue-100/80 dark:bg-gray-800">
+            <span className="inline-block p-3 text-yellow-500 rounded-full bg-blue-100/80 dark:bg-gray-800">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -168,19 +164,19 @@ const ContactUsPage = () => {
               Browse our exquisite collection of cars.
             </p>
             <div className="space-y-2">
-              <p className="mt-2 mb-4 text-base text-blue-500 dark:text-blue-400">
+              <p className="mt-2 mb-4 text-base text-yellow-500">
                 1. (Poddar Automart) Real Value, Kokar Industrial Area, Kokar,
                 Ranchi - 834001 Landmark: Electricity Sub Station
               </p>
-              <p className="mt-2 mb-4 text-base text-blue-500 dark:text-blue-400">
+              <p className="mt-2 mb-4 text-base text-yellow-500">
                 2. (Poddar Motors) Poddar Motors Pvt. Ltd. , Kokar Industrial
                 Area, Kokar , Ranchi -834001 Landmark: Beside moreish bread
               </p>
-              <p className="mt-2 mb-4 text-base text-blue-500 dark:text-blue-400">
+              <p className="mt-2 mb-4 text-base text-yellow-500">
                 3. (Tirupati Engicon) Real Value, Kokar Chowk, Kokar, Ranchi -
                 834001 Landmark: Kokar Chowk - Kantatoli road
               </p>
-              <p className="mt-2 mb-4 text-base text-blue-500 dark:text-blue-400">
+              <p className="mt-2 mb-4 text-base text-yellow-500">
                 4. Real Value, Hazaribagh Road ,Mesra , Ranchi - 834001
                 Landmark: Near BIT Mesra campus
               </p>

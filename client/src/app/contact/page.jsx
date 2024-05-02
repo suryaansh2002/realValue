@@ -2,6 +2,8 @@ import React from 'react'
 import { FaWhatsapp, FaUsers, FaInstagram, FaFacebook } from 'react-icons/fa'
 import { TbDeviceLandlinePhone } from 'react-icons/tb'
 
+import Link from 'next/link'
+
 const ContactUsPage = () => {
   return (
     <section className="bg-white dark:bg-gray-900 max-w-9xl">
@@ -113,8 +115,20 @@ const ContactUsPage = () => {
                 Follow us!
               </p>
               <div className="flex items-center justify-start space-x-6 mt-3">
-                <FaInstagram className="text-blue-500 text-2xl" size={20} />
-                <FaFacebook className="text-blue-500 text-2xl" size={20} />
+                <Link
+                  href="https://www.facebook.com/RealValueRanchi/"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  <FaInstagram className="text-blue-500 text-2xl" size={20} />
+                </Link>
+                <Link
+                  href="https://www.instagram.com/pmplrealvalue/"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  <FaFacebook className="text-blue-500 text-2xl" size={20} />
+                </Link>
               </div>
             </div>
 

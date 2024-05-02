@@ -1,11 +1,14 @@
 'use client'
 import Image from 'next/image'
 import React, { useState, useEffect } from 'react'
-import offer from '../../images/offer.jpg'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Pagination } from 'swiper/modules'
 import 'swiper/css'
 import axios from 'axios'
+
+// Loader
+import { Oval } from 'react-loader-spinner'
+
 const Offers = () => {
   const [loading, setLoading] = useState(true)
   const [offers, setOffers] = useState([])
@@ -42,7 +45,9 @@ const Offers = () => {
         </div>
 
         {loading ? (
-          <p>Loading...</p>
+          <div className="flex items-center justify-center p-10">
+            <Oval color="#000" height={50} width={50} />
+          </div>
         ) : offers.length ? (
           <Swiper
             modules={[Navigation, Pagination]}

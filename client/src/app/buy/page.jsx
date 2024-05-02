@@ -3,11 +3,12 @@ import axios from 'axios'
 import React, { useState, useEffect } from 'react'
 import FeaturedCard from '../components/FeaturedCard'
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa'
-import { Checkbox, Slider, Select, Spin } from 'antd'
+import { Checkbox, Slider, Select } from 'antd'
 import { FaFilter } from 'react-icons/fa'
 import { AmountWithCommas } from '../utils'
-import { ArrowUpOutlined, ArrowDownOutlined } from '@ant-design/icons'
 // import { FaChevronUp, FaChevronDown } from "react-icons/fa";
+
+import { Oval } from 'react-loader-spinner'
 
 const { Option } = Select
 
@@ -337,8 +338,8 @@ export default function Buy() {
         </Select>
       </div>
       {loading ? (
-        <div className="text-center mt-8 mb-12">
-          <Spin size="large" />
+        <div className="flex items-center justify-center p-10">
+          <Oval color="#000" height={50} width={50} />
         </div>
       ) : listings.length == 0 ? (
         <div className="text-lg font-semibold text-left ml-8 h-[70vh] p-4">

@@ -11,7 +11,7 @@ export default function FinancePage() {
       <EMICalculator />
       <Brands />
       <FinanceSteps />
-      <Faq FAQs={financeFAQs} title="Sell" />
+      <Faq FAQs={financeFAQs} title="Finance" />
     </div>
   )
 }

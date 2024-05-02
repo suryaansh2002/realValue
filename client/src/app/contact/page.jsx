@@ -2,6 +2,8 @@ import React from 'react'
 import { FaWhatsapp, FaUsers, FaInstagram, FaFacebook } from 'react-icons/fa'
 import { TbDeviceLandlinePhone } from 'react-icons/tb'
 
+import Link from 'next/link'
+
 const ContactUsPage = () => {
   return (
     <section className="bg-white dark:bg-gray-900 max-w-9xl">
@@ -16,7 +18,12 @@ const ContactUsPage = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-12 mt-10 lg:grid-cols-3">
+        <div
+          style={{
+            gridTemplateColumns: 'repeat(auto-fit, minmax(100px, 1fr))',
+          }}
+          className="lg:grid flex flex-col gap-12 mt-12"
+        >
           <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-1">
             <div>
               <span className="inline-block p-3 text-blue-500 rounded-full bg-blue-100/80 dark:bg-gray-800">
@@ -113,71 +120,82 @@ const ContactUsPage = () => {
                 Follow us!
               </p>
               <div className="flex items-center justify-start space-x-6 mt-3">
-                <FaInstagram className="text-blue-500 text-2xl" size={20} />
-                <FaFacebook className="text-blue-500 text-2xl" size={20} />
-              </div>
-            </div>
-
-            <div>
-              <span className="inline-block p-3 text-blue-500 rounded-full bg-blue-100/80 dark:bg-gray-800">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="currentColor"
-                  className="w-5 h-5"
+                <Link
+                  href="https://www.facebook.com/RealValueRanchi/"
+                  rel="noopener noreferrer"
+                  target="_blank"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"
-                  />
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
-                  />
-                </svg>
-              </span>
-
-              <h2 className="mt-4 text-xl font-medium text-gray-800 dark:text-white">
-                Showrooms
-              </h2>
-              <p className="mt-2 text-base text-gray-500 dark:text-gray-400">
-                Browse our exquisite collection of cars.
-              </p>
-              <div className="space-y-2">
-                <p className="mt-2 mb-4 text-base text-blue-500 dark:text-blue-400">
-                  1. (Poddar Automart) Real Value, Kokar Industrial Area, Kokar,
-                  Ranchi - 834001 Landmark: Electricity Sub Station
-                </p>
-                <p className="mt-2 mb-4 text-base text-blue-500 dark:text-blue-400">
-                  2. (Poddar Motors) Poddar Motors Pvt. Ltd. , Kokar Industrial
-                  Area, Kokar , Ranchi -834001 Landmark: Beside moreish bread
-                </p>
-                <p className="mt-2 mb-4 text-base text-blue-500 dark:text-blue-400">
-                  3. (Tirupati Engicon) Real Value, Kokar Chowk, Kokar, Ranchi -
-                  834001 Landmark: Kokar Chowk - Kantatoli road
-                </p>
-                <p className="mt-2 mb-4 text-base text-blue-500 dark:text-blue-400">
-                  4. Real Value, Hazaribagh Road ,Mesra , Ranchi - 834001
-                  Landmark: Near BIT Mesra campus
-                </p>
+                  <FaInstagram className="text-blue-500 text-2xl" size={20} />
+                </Link>
+                <Link
+                  href="https://www.instagram.com/pmplrealvalue/"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  <FaFacebook className="text-blue-500 text-2xl" size={20} />
+                </Link>
               </div>
             </div>
           </div>
 
-          <div className="overflow-hidden rounded-lg lg:col-span-2 h-80 lg:h-auto">
-            <iframe
-              width="100%"
-              height="100%"
-              title="map"
-              style={{ border: 0, marginLeft: 'auto', marginRight: 'auto' }}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3662.466933990794!2d85.3504478093273!3d23.371319578842947!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f4e17d184b0973%3A0xbc6d6be675cca0f0!2sREAL%20VALUE!5e0!3m2!1sen!2sin!4v1714636151144!5m2!1sen!2sin"
-            ></iframe>
+          <div>
+            <span className="inline-block p-3 text-blue-500 rounded-full bg-blue-100/80 dark:bg-gray-800">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="1.5"
+                stroke="currentColor"
+                className="w-5 h-5"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"
+                />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
+                />
+              </svg>
+            </span>
+
+            <h2 className="mt-4 text-xl font-medium text-gray-800 dark:text-white">
+              Showrooms
+            </h2>
+            <p className="mt-2 text-base text-gray-500 dark:text-gray-400">
+              Browse our exquisite collection of cars.
+            </p>
+            <div className="space-y-2">
+              <p className="mt-2 mb-4 text-base text-blue-500 dark:text-blue-400">
+                1. (Poddar Automart) Real Value, Kokar Industrial Area, Kokar,
+                Ranchi - 834001 Landmark: Electricity Sub Station
+              </p>
+              <p className="mt-2 mb-4 text-base text-blue-500 dark:text-blue-400">
+                2. (Poddar Motors) Poddar Motors Pvt. Ltd. , Kokar Industrial
+                Area, Kokar , Ranchi -834001 Landmark: Beside moreish bread
+              </p>
+              <p className="mt-2 mb-4 text-base text-blue-500 dark:text-blue-400">
+                3. (Tirupati Engicon) Real Value, Kokar Chowk, Kokar, Ranchi -
+                834001 Landmark: Kokar Chowk - Kantatoli road
+              </p>
+              <p className="mt-2 mb-4 text-base text-blue-500 dark:text-blue-400">
+                4. Real Value, Hazaribagh Road ,Mesra , Ranchi - 834001
+                Landmark: Near BIT Mesra campus
+              </p>
+            </div>
+            <div className="overflow-hidden rounded-lg h-80 lg:h-50 mt-12">
+              <iframe
+                width="100%"
+                height="100%"
+                title="map"
+                style={{ border: 0, marginLeft: 'auto', marginRight: 'auto' }}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3662.466933990794!2d85.3504478093273!3d23.371319578842947!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f4e17d184b0973%3A0xbc6d6be675cca0f0!2sREAL%20VALUE!5e0!3m2!1sen!2sin!4v1714636151144!5m2!1sen!2sin"
+              ></iframe>
+            </div>
           </div>
         </div>
       </div>

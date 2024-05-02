@@ -8,6 +8,8 @@ import 'swiper/css/navigation'
 import axios from 'axios'
 // import 'swiper/swiper-bundle.css';
 
+import { Oval } from 'react-loader-spinner'
+
 const Testimonials = () => {
   const [loading, setLoading] = useState(false)
   const [testimonials, setTestimonials] = useState(false)
@@ -43,7 +45,9 @@ const Testimonials = () => {
         </div>
 
         {loading ? (
-          <p>Loading...</p>
+          <div className="flex items-center justify-center p-10">
+            <Oval color="#000" height={50} width={50} />
+          </div>
         ) : testimonials.length ? (
           <div>
             <Swiper

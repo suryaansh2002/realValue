@@ -5,8 +5,6 @@ import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import PhoneButton from './components/PhoneButton'
 
-import Head from 'next/head'
-
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {

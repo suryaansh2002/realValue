@@ -10,7 +10,6 @@ import 'swiper/css/pagination'
 import Image from 'next/image'
 
 // Icons
-import { FaArrowRight } from 'react-icons/fa'
 import { BiCylinder } from 'react-icons/bi'
 import { FaBoltLightning } from 'react-icons/fa6'
 import { MdAirlineSeatReclineNormal } from 'react-icons/md'

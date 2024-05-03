@@ -89,7 +89,7 @@ const SellRequestForm = () => {
 
   return (
     <div className="text-left pt-4 dark:bg-gray-900 text-white">
-      <div className="font-semibold text-3xl mb-8 ml-4 md:ml-12">
+      <div className="font-semibold text-3xl mb-8 ml-4 md:ml-10">
         Sell Your Vehicle
       </div>
       <div>
@@ -217,7 +217,7 @@ const SellRequestForm = () => {
 
       <div className="my-4">
         <div className="w-[100vw] block md:w-[50vw] md:inline-block">
-          <div className="font-semibold text-2xl my-8 ml-4 md:ml-12">
+          <div className="font-semibold text-2xl my-8 ml-4 md:ml-10">
             Steps To Sell
           </div>
           <ul className="space-y-4 ml-6 md:ml-14">
@@ -263,7 +263,7 @@ const SellRequestForm = () => {
         </div>
 
         <div className="w-[100vw] block md:w-[40vw] md:inline-block align-top">
-          <div className="font-semibold text-2xl my-8 ml-4 md:ml-12">
+          <div className="font-semibold text-2xl my-8 ml-4 md:ml-10">
             Why Sell Your Car To Us?
           </div>
           <ul className="space-y-4 ml-6 md:ml-14">
@@ -290,10 +290,10 @@ const SellRequestForm = () => {
       </div>
 
       <div className="font-semibold text-2xl mt-8 pl-6 lg:pl-12">FAQs</div>
-      <p className="text-gray-500 text-sm ml-6 md:text-lg md:ml-12 my-4 dark:text-gray-400">
+      <p className="text-gray-500 text-sm ml-6 md:text-lg md:ml-10 my-4 dark:text-gray-400">
         Please reach out to us if your queries are not answered below.
       </p>
-      <div className="ml-6 md:ml-12 pb-4">
+      <div className="ml-6 md:ml-10 pb-4">
         {sellFAQData.map((item) => (
           <FaqCard
             key={item.id}
@@ -308,11 +308,11 @@ const SellRequestForm = () => {
       {showModal && (
         <>
           <div className="fixed inset-0 text-lg bg-black bg-opacity-50 z-10"></div>
-          <div className="fixed top-1/4 left-1/2 transform text-black -translate-x-1/2 bg-white z-20 p-4 rounded">
+          <div className="fixed top-1/4 left-1/2 transform text-black -translate-x-1/2 bg-white z-20 p-8 rounded text-center">
             <h4 className="font-semibold">
               Thank You for submitting your car details!
             </h4>
-            <p className="">Our executive will reach out to you soon!</p>
+            <p className="text-sm">Our executive will reach out to you soon!</p>
           </div>
         </>
       )}

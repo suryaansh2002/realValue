@@ -162,7 +162,7 @@ const ButtonRows = () => {
                 ))
               ) : (
                 <Swiper
-                  slidesPerView={1.5}
+                  slidesPerView={1.8}
                   spaceBetween={50}
                   freeMode={true}
                   modules={[FreeMode]}
@@ -188,17 +188,21 @@ const ButtonRows = () => {
                 </>
               ) : (
                 <Swiper
-                  slidesPerView={1.5}
+                  slidesPerView={1.8}
                   spaceBetween={50}
                   freeMode={true}
                   modules={[FreeMode]}
                   className="mySwiperCloudPrice"
                 >
-                  {types.map((type, index) => (
-                    <SwiperSlide key={index} style={{ paddingBottom: '40px' }}>
-                      <ButtonCard item={type} />
-                    </SwiperSlide>
-                  ))}
+                  <SwiperSlide style={{ paddingBottom: '40px' }}>
+                    <ButtonCard item="< 4 Lakh" />
+                  </SwiperSlide>
+                  <SwiperSlide style={{ paddingBottom: '40px' }}>
+                    <ButtonCard item="4 - 8 Lakh" />
+                  </SwiperSlide>
+                  <SwiperSlide style={{ paddingBottom: '40px' }}>
+                    <ButtonCard item="> 8 Lakh" />
+                  </SwiperSlide>
                 </Swiper>
               )}
             </div>

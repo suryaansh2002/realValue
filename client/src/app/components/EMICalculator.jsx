@@ -13,7 +13,7 @@ ChartJS.register(ArcElement, Tooltip, Legend)
 const EMICalculator = ({ indiPrincipal }) => {
   const [principalAmount, setPrincipalAmount] = useState(500000)
   const [rateOfInterest, setRateOfInterest] = useState(11)
-  const [tenure, setTenure] = useState(36)
+  const [tenure, setTenure] = useState(3)
   const [emi, setEmi] = useState(0)
   const [totalInterest, setTotalInterest] = useState(0)
   const [totalPayment, setTotalPayment] = useState(0)
@@ -21,7 +21,7 @@ const EMICalculator = ({ indiPrincipal }) => {
   const calculateEmi = () => {
     const principal = parseFloat(principalAmount)
     const rate = parseFloat(rateOfInterest) / 12 / 100
-    const months = parseFloat(tenure)
+    const months = parseFloat(tenure) * 12
 
     if (principal && rate && months) {
       const emiNumerator = principal * rate * Math.pow(1 + rate, months)
@@ -48,7 +48,6 @@ const EMICalculator = ({ indiPrincipal }) => {
         label: 'Amount in rupees',
         data: [principalAmount, totalInterest],
         backgroundColor: ['rgba(222, 207, 0, 0.4)', 'rgba(255, 157, 0, 0.4)'],
-        borderColor: ['rgba(255, 239, 0, 1)', 'rgba(255, 128, 0, 1)'],
         borderWidth: 1,
       },
     ],
@@ -132,7 +131,7 @@ const EMICalculator = ({ indiPrincipal }) => {
                   <input
                     id="rateOfInterest"
                     type="number"
-                    step={0.1}
+                    step={0.05}
                     value={rateOfInterest}
                     onChange={(e) => {
                       setRateOfInterest(e.target.value)
@@ -141,9 +140,9 @@ const EMICalculator = ({ indiPrincipal }) => {
                   />
                   <input
                     type="range"
-                    min="0"
+                    min="5"
                     max="20"
-                    step="0.1"
+                    step="0.05"
                     value={rateOfInterest}
                     onChange={(e) => {
                       setRateOfInterest(e.target.value)
@@ -153,12 +152,13 @@ const EMICalculator = ({ indiPrincipal }) => {
                 </div>
                 <div className="flex flex-col space-x-0 lg:space-x-4 lg:flex-row items-center justify-start lg:justify-between">
                   <label htmlFor="tenure" className="flex-1 mb-2 w-full">
-                    Tenure (in months):
+                    Tenure (in years):
                   </label>
                   <input
                     id="tenure"
                     type="number"
                     value={tenure}
+                    step={1}
                     onChange={(e) => {
                       setTenure(e.target.value)
                     }}
@@ -166,8 +166,8 @@ const EMICalculator = ({ indiPrincipal }) => {
                   />
                   <input
                     type="range"
-                    min="12"
-                    max="120"
+                    min="1"
+                    max="10"
                     step="1"
                     value={tenure}
                     onChange={(e) => {
@@ -176,12 +176,6 @@ const EMICalculator = ({ indiPrincipal }) => {
                     className="w-full lg:w-1/2 ml-5"
                   />
                 </div>
-                {/* <button
-                  onClick={calculateEmi}
-                  className='bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600'
-                >
-                  Calculate EMI
-                </button> */}
               </div>
             </div>
             <div className="bg-white p-4 rounded-lg shadow-lg">

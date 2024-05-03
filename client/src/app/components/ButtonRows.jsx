@@ -162,7 +162,7 @@ const ButtonRows = () => {
                 ))
               ) : (
                 <Swiper
-                  slidesPerView={1.8}
+                  slidesPerView={2.2}
                   spaceBetween={50}
                   freeMode={true}
                   modules={[FreeMode]}
@@ -188,7 +188,7 @@ const ButtonRows = () => {
                 </>
               ) : (
                 <Swiper
-                  slidesPerView={1.8}
+                  slidesPerView={2.2}
                   spaceBetween={50}
                   freeMode={true}
                   modules={[FreeMode]}

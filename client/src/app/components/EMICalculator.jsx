@@ -3,9 +3,6 @@ import React, { useState, useEffect } from 'react'
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js'
 import { Doughnut } from 'react-chartjs-2'
 
-// Antd
-import { Input } from 'antd'
-
 import { AmountWithCommas } from '../utils'
 
 ChartJS.register(ArcElement, Tooltip, Legend)

@@ -162,7 +162,7 @@ const ButtonRows = () => {
                 ))
               ) : (
                 <Swiper
-                  slidesPerView={2.5}
+                  slidesPerView={1.5}
                   spaceBetween={50}
                   freeMode={true}
                   modules={[FreeMode]}
@@ -180,9 +180,27 @@ const ButtonRows = () => {
               Price Range
             </h3>
             <div className="flex flex-wrap gap-4">
-              <ButtonCard item="< 4 Lakh" />
-              <ButtonCard item="4 - 8 Lakh" />
-              <ButtonCard item="> 8 Lakh" />
+              {isDesktop ? (
+                <>
+                  <ButtonCard item="< 4 Lakh" />
+                  <ButtonCard item="4 - 8 Lakh" />
+                  <ButtonCard item="> 8 Lakh" />
+                </>
+              ) : (
+                <Swiper
+                  slidesPerView={1.5}
+                  spaceBetween={50}
+                  freeMode={true}
+                  modules={[FreeMode]}
+                  className="mySwiperCloudPrice"
+                >
+                  {types.map((type, index) => (
+                    <SwiperSlide key={index} style={{ paddingBottom: '40px' }}>
+                      <ButtonCard item={type} />
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
+              )}
             </div>
           </div>
         </>

@@ -1,6 +1,6 @@
 import Features from '../Features'
 import { FaCoins, FaClipboardCheck, FaMoneyCheckAlt } from 'react-icons/fa'
-import { FaStar, FaStarHalf } from "react-icons/fa";
+import { FaStar, FaStarHalf } from 'react-icons/fa'
 
 const AboutUs = () => {
   return (
@@ -16,13 +16,13 @@ const AboutUs = () => {
               satisfaction has made us a one-stop solution for individuals
               seeking high-quality used vehicles.
             </p>
-            <p className='mt-4'>
-              Google Ratings: 4.7 
-              <FaStar className='text-[#ffd700] inline -translate-y-0.5 ml-1'/>
-              <FaStar className='text-[#ffd700] inline -translate-y-0.5 mx-0.5'/>
-              <FaStar className='text-[#ffd700] inline -translate-y-0.5 mx-0.5'/>
-              <FaStar className='text-[#ffd700] inline -translate-y-0.5 mx-0.5'/>
-              <FaStarHalf className='text-[#ffd700] inline -translate-y-0.5 mx-0.5'/>
+            <p className="mt-4">
+              Google Ratings: 4.7
+              <FaStar className="text-[#ffd700] inline -translate-y-0.5 ml-1" />
+              <FaStar className="text-[#ffd700] inline -translate-y-0.5 mx-0.5" />
+              <FaStar className="text-[#ffd700] inline -translate-y-0.5 mx-0.5" />
+              <FaStar className="text-[#ffd700] inline -translate-y-0.5 mx-0.5" />
+              <FaStarHalf className="text-[#ffd700] inline -translate-y-0.5 mx-0.5" />
             </p>
           </div>
         </div>
@@ -55,12 +55,16 @@ const AboutUs = () => {
         </div>
 
         <div className="container mx-auto">
-          <div className="md:text-3xl text-2xl md:pl-0 pl-4 font-bold mt-8 mb-4">Our Vision</div>
+          <div className="md:text-3xl text-2xl md:pl-0 pl-4 font-bold mt-8 mb-4">
+            Our Vision
+          </div>
 
           <div>{/* Vision */}</div>
         </div>
         <div className="container mx-auto">
-        <div className="md:text-3xl text-2xl md:pl-0 pl-4 font-bold mt-8 mb-4">Our Team</div>
+          <div className="md:text-3xl text-2xl md:pl-0 pl-4 font-bold mt-8 mb-4">
+            Our Team
+          </div>
           <div>{/* Vision */}</div>
         </div>
         <Features />

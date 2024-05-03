@@ -92,20 +92,22 @@ const SellRequestForm = () => {
       <div className="font-semibold text-3xl mb-8 ml-4 md:ml-12">
         Sell Your Vehicle
       </div>
+      <div>
+        <button
+          onClick={() => setShowForm(!showForm)}
+          className="hover:bg-yellow-500  border border-gray-900 ml-[50%] bg-yellow-400 text-gray-900 -translate-x-[50%] w-max rounded px-12 py-2 mt-4 "
+        >
+          Submit Your Sell Request{' '}
+          {showForm ? (
+            <FaChevronUp className="inline-block align-text-top translate-y-05" />
+          ) : (
+            <FaChevronDown className="inline-block align-text-top translate-y-0.5" />
+          )}
+        </button>
+      </div>
 
-      <button
-        onClick={() => setShowForm(!showForm)}
-        className="border border-gray-300 ml-4 md:ml-12 rounded px-12 py-2 mt-4"
-      >
-        Submit Your Sell Request{' '}
-        {showForm ? (
-          <FaChevronUp className="inline-block align-text-top" />
-        ) : (
-          <FaChevronDown className="inline-block align-text-top" />
-        )}
-      </button>
       {showForm && (
-        <div className="border-white border-2 p-4 rounded-md mt-4 ml-4 md:ml-16 w-[90vw] md:w-auto md:max-w-screen-md">
+        <div className="border-white border-2 p-4 rounded-md mt-4  ml-[50%] -translate-x-[50%]  w-[90vw] md:w-auto md:max-w-screen-md">
           <form className="grid grid-cols-1 gap-4" onSubmit={handleSubmit}>
             <label className="font-normal text-sm">Name *</label>
             <input
@@ -195,7 +197,7 @@ const SellRequestForm = () => {
               className="w-full p-2 border border-gray-300 rounded text-black"
               required
             />
-            <label className="font-normal text-sm">Price</label>
+            <label className="font-normal text-sm">Expected Price</label>
             <input
               type="number"
               name="price"
@@ -207,7 +209,7 @@ const SellRequestForm = () => {
               type="submit"
               className="bg-blue-500 hover:bg-yellow-500 text-white px-6 py-2 rounded"
             >
-              Submit
+              Get Valuation
             </button>
           </form>
         </div>

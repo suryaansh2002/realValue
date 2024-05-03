@@ -2,7 +2,7 @@ import React from 'react'
 import { FaFacebook, FaInstagram, FaClock, FaCalendarAlt } from 'react-icons/fa'
 import { FiMapPin, FiMessageSquare, FiArrowRight } from 'react-icons/fi'
 // import { Link } from 'react-router-dom';
-import carImage2 from '@/images/car-image-2.jpg'
+import contactImage from '@/images/contact.jpg'
 
 import { FaWhatsapp } from 'react-icons/fa'
 import Image from 'next/image'
@@ -74,7 +74,7 @@ const Contact = () => {
         </div>
       </div>
       <div className="w-[90%] mx-auto lg:w-[40%] py-8 lg:pt-12 lg:pb-0">
-        <Image src={carImage2} alt="contact image" className="rounded-md" />
+        <Image src={contactImage} alt="contact image" className="rounded-md w-[80%] h-[75%] mx-auto" />
       </div>
     </div>
   )

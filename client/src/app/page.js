@@ -1,15 +1,14 @@
 // import Image from 'next/image';
 import Hero from './Hero'
-import Navbar from './components/Navbar'
 import FeaturedCars from './FeaturedCars'
 import Highlights from './Highlights'
-import Footer from './components/Footer'
 import Offers from './components/Offers'
 import Testimonials from './components/Testimonials'
 import Features from './Features'
 import Faq from './components/Faq'
 import Contact from './components/Contact'
 import { homeFAQ } from './data/homeFAQs'
+import ButtonRows from './components/ButtonRows'
 
 export default async function Home() {
   const data = await fetch(
@@ -20,6 +19,7 @@ export default async function Home() {
   return (
     <div>
       <Hero />
+      <ButtonRows />
       <FeaturedCars featuredCarData={data} />
       <Features />
       <Offers />

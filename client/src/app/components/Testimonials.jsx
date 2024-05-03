@@ -97,7 +97,7 @@ const Testimonials = () => {
         )}
         <div className="flex justify-center mt-8">
           <Link
-            href="https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChdDSUhNMG9nS0VJQ0FnSUNqNzlDMDFnRRAB!2m1!1s0x0:0xbc6d6be675cca0f0!3m1!1s2@1:CIHM0ogKEICAgICj79C01gE%7CCgwIhKizsQYQ6Mz_xQI%7C?hl=en-US"
+            href="https://www.google.com/maps/place/REAL+VALUE/@23.3713196,85.3504478,17z/data=!3m1!4b1!4m6!3m5!1s0x39f4e17d184b0973:0xbc6d6be675cca0f0!8m2!3d23.3713196!4d85.3530281!16s%2Fg%2F1pxq4x774?hl=en-US&entry=ttu"
             target="_blank"
             rel="noopener noreferrer"
           >

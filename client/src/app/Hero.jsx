@@ -171,7 +171,7 @@ const Hero = () => {
             <span className="button-wrapper mr-3 md:mt-9">
               <a
                 href="#"
-                className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-900 border border-gray-300 rounded-lg text-white focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 hover:!bg-yellow-500 dark:hover:bg-gray-700 dark:focus:ring-gray-800 md:mt-10"
+                className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center border border-gray-300 rounded-lg text-white focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 hover:!bg-yellow-500 dark:hover:bg-gray-700 dark:focus:ring-gray-800 md:mt-10"
               >
                 Search
               </a>

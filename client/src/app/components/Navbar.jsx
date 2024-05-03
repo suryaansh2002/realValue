@@ -9,6 +9,7 @@ import { Space } from 'antd'
 // logo
 import Logo from '../../images/logo.png'
 import Image from 'next/image'
+import { IoMdClose } from 'react-icons/io'
 
 const Navbar = () => {
   const [visible, setVisible] = useState(false)
@@ -76,7 +77,12 @@ const Navbar = () => {
         style={{ backgroundColor: '#111827', color: 'white' }}
         extra={
           <Space>
-            <Button onClick={onClose}>Cancel</Button>
+            <IoMdClose
+              color="white"
+              size={25}
+              onClick={onClose}
+              style={{ alignSelf: 'center' }}
+            />
           </Space>
         }
       >

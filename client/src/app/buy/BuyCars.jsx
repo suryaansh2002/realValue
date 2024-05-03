@@ -86,6 +86,7 @@ export default function Buy({ allListings }) {
       console.log(e.message)
     }
   }
+
   const fetchAllSeats = async () => {
     try {
       const response = await axios.get(url + 'api/listings/seats')
@@ -160,6 +161,7 @@ export default function Buy({ allListings }) {
     })
     setListings(tempListings)
   }
+
   const handleSort = (value) => {
     setSelectedOption(value)
     console.log(value)

@@ -66,7 +66,7 @@ const Contact = () => {
         </div>
         <div className="mt-8">
           <a
-            href="/buy"
+            href="/contact"
             className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-900 border rounded-lg focus:ring-4 focus:ring-gray-100 dark:text-gray-800 dark:border-gray-700 dark:bg-slate-100 dark:hover:bg-gray-400 dark:focus:ring-gray-800 mr-5 hover:!bg-yellow-500"
           >
             More Details <FiArrowRight className="ml-1" />
@@ -74,7 +74,7 @@ const Contact = () => {
         </div>
       </div>
       <div className="w-[90%] mx-auto lg:w-[40%] py-8 lg:pt-12 lg:pb-0">
-        <Image src={carImage2} className="rounded-md" />
+        <Image src={carImage2} alt="contact image" className="rounded-md" />
       </div>
     </div>
   )

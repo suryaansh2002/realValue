@@ -47,8 +47,8 @@ const EMICalculator = ({ indiPrincipal }) => {
       {
         label: 'Amount in rupees',
         data: [principalAmount, totalInterest],
-        backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)'],
-        borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)'],
+        backgroundColor: ['rgba(222, 207, 0, 0.4)', 'rgba(255, 157, 0, 0.4)'],
+        borderColor: ['rgba(255, 239, 0, 1)', 'rgba(255, 128, 0, 1)'],
         borderWidth: 1,
       },
     ],
@@ -132,6 +132,7 @@ const EMICalculator = ({ indiPrincipal }) => {
                   <input
                     id="rateOfInterest"
                     type="number"
+                    step={0.1}
                     value={rateOfInterest}
                     onChange={(e) => {
                       setRateOfInterest(e.target.value)
@@ -165,8 +166,8 @@ const EMICalculator = ({ indiPrincipal }) => {
                   />
                   <input
                     type="range"
-                    min="1"
-                    max="240"
+                    min="12"
+                    max="120"
                     step="1"
                     value={tenure}
                     onChange={(e) => {
@@ -190,6 +191,11 @@ const EMICalculator = ({ indiPrincipal }) => {
                 <div className="font-bold" style={{ fontSize: '20px' }}>
                   ₹{AmountWithCommas(emi)}/month
                 </div>
+              </div>
+              {/* Add principal amount also */}
+              <div className="flex justify-between mb-2">
+                <div>Principal Amt:</div>
+                <div>₹{AmountWithCommas(principalAmount)}</div>
               </div>
               <div className="flex justify-between mb-2">
                 <div>Total Interest:</div>

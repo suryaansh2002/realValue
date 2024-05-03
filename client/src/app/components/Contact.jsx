@@ -74,7 +74,11 @@ const Contact = () => {
         </div>
       </div>
       <div className="w-[90%] mx-auto lg:w-[40%] py-8 lg:pt-12 lg:pb-0">
-        <Image src={contactImage} alt="contact image" className="rounded-md w-[80%] h-[75%] mx-auto" />
+        <Image
+          src={contactImage}
+          alt="contact image"
+          className="rounded-md w-[80%] h-[75%] mx-auto"
+        />
       </div>
     </div>
   )

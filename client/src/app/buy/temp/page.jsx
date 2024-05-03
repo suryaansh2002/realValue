@@ -95,15 +95,15 @@ export default function Example({ allListings }) {
       ],
     },
     {
-        id: 'kmDriven',
-        name: 'KM Driven',
-        type: 'slider',
-        config: {
-          min: 1000,
-          max: 100000,
-          step: 1000,
-          value: [10000, 100000],
-        },
+      id: 'kmDriven',
+      name: 'KM Driven',
+      type: 'slider',
+      config: {
+        min: 1000,
+        max: 100000,
+        step: 1000,
+        value: [10000, 100000],
+      },
     },
     {
       id: 'seats',
@@ -226,7 +226,6 @@ export default function Example({ allListings }) {
     fetchAllTypes()
     fetchAllSeats()
   }, [])
-
 
   return (
     <div className="bg-white">

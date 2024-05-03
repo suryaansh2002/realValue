@@ -13,7 +13,7 @@ import kia from '../../images/brands/kia.png'
 import mahindra from '../../images/brands/mahindra.png'
 import tata from '../../images/brands/tata.png'
 import maruti from '../../images/brands/maruti.png'
-import marutisuzuki from '../../images/brands/suzuki.png'
+import suzuki from '../../images/brands/suzuki.png'
 import volkswagen from '../../images/brands/Volkswagen.png'
 import Image from 'next/image'
 
@@ -30,14 +30,36 @@ const ButtonRow = ({ items }) => (
   </div>
 )
 
-const ButtonCard = ({ item }) => (
-  <div className="bg-white shadow-md rounded-lg p-4 w-40 hover:bg-gray-300 cursor-pointer">
+const handleBtnClick = (item, type) => {
+  const tempObj = {
+    [type]: item,
+  }
+  localStorage.setItem('filters', JSON.stringify(tempObj))
+  // window.location.href = '/buy'
+}
+
+const handleBrandClick = (item) => {
+  const tempObj = {
+    brand: item,
+  }
+  localStorage.setItem('filters', JSON.stringify(tempObj))
+  // window.location.href = '/buy'
+}
+
+const ButtonCard = ({ item, type }) => (
+  <div
+    className="bg-white shadow-md rounded-lg p-4 w-40 hover:bg-gray-300 cursor-pointer"
+    onClick={() => handleBtnClick(item, type)}
+  >
     <div className="text-center ">{item}</div>
   </div>
 )
 
-const BrandCard = ({ logoUrl }) => (
-  <div className="flex flex-col items-center justify-center bg-white cursor-pointer shadow-md rounded-lg p-3 hover:bg-gray-300">
+const BrandCard = ({ logoUrl, name }) => (
+  <div
+    className="flex flex-col items-center justify-center bg-white cursor-pointer shadow-md rounded-lg p-3 hover:bg-gray-300"
+    onClick={() => handleBrandClick(name)}
+  >
     <Image
       src={logoUrl}
       alt="brand"
@@ -47,17 +69,15 @@ const BrandCard = ({ logoUrl }) => (
     />
   </div>
 )
-const BrandScrollContainer = () => {
+const BrandScrollContainer = ({ brands, brandsMapping }) => {
   return (
     <span className="md:flex overflow-x-auto py-2 gap-x-5 inline">
-      <BrandCard logoUrl={honda} />
-      <BrandCard logoUrl={hyundai} />
-      <BrandCard logoUrl={kia} />
-      <BrandCard logoUrl={mahindra} />
-      <BrandCard logoUrl={tata} />
-      <BrandCard logoUrl={maruti} />
-      <BrandCard logoUrl={marutisuzuki} />
-      <BrandCard logoUrl={volkswagen} />
+      {brands.map(
+        (brand) =>
+          brandsMapping[brand] && (
+            <BrandCard logoUrl={brandsMapping[brand]} name={brand} />
+          ),
+      )}
     </span>
   )
 }
@@ -65,6 +85,18 @@ const BrandScrollContainer = () => {
 const ButtonRows = () => {
   const [loading, setLoading] = useState(true)
   const [types, setTypes] = useState([])
+  const [brands, setBrands] = useState([])
+  const brandsMapping = {
+    Honda: honda,
+    Hyundai: hyundai,
+    Kia: kia,
+    Mahindra: mahindra,
+    Tata: tata,
+    Maruti: maruti,
+    Suzuki: suzuki,
+    Volkswagen: volkswagen,
+  }
+
   const url = 'https://real-value-server.vercel.app/'
   const [isDesktop, setDesktop] = useState(false)
 
@@ -95,12 +127,25 @@ const ButtonRows = () => {
     }
   }
 
+  const fetchAllBrands = async () => {
+    try {
+      const response = await axios.get(url + 'api/listings/brands')
+      if (response.data) {
+        setBrands(response.data)
+        setLoading(false)
+      }
+    } catch (e) {
+      console.log(e.message)
+    }
+  }
+
   useEffect(() => {
     fetchAllTypes()
+    fetchAllBrands()
   }, [])
 
   return (
-    <section className="pt-16 pb-14 bg-white text-gray-900">
+    <section className="pt-8 pb-8 bg-white text-gray-900">
       <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
         <div className="mb-6">
           <h2 className="text-4xl font-bold mb-5 text-gray-900">
@@ -117,7 +162,10 @@ const ButtonRows = () => {
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <h3 className="text-2xl font-bold mb-3 text-gray-600">Brands</h3>
             {isDesktop ? (
-              <BrandScrollContainer />
+              <BrandScrollContainer
+                brands={brands}
+                brandsMapping={brandsMapping}
+              />
             ) : (
               <Swiper
                 slidesPerView={3.5}
@@ -126,30 +174,17 @@ const ButtonRows = () => {
                 modules={[FreeMode]}
                 className="mySwiperCloudBrands"
               >
-                <SwiperSlide style={{ paddingBottom: '40px' }}>
-                  <BrandCard logoUrl={honda} />
-                </SwiperSlide>
-                <SwiperSlide style={{ paddingBottom: '40px' }}>
-                  <BrandCard logoUrl={hyundai} />
-                </SwiperSlide>
-                <SwiperSlide style={{ paddingBottom: '40px' }}>
-                  <BrandCard logoUrl={kia} />
-                </SwiperSlide>
-                <SwiperSlide style={{ paddingBottom: '40px' }}>
-                  <BrandCard logoUrl={mahindra} />
-                </SwiperSlide>
-                <SwiperSlide style={{ paddingBottom: '40px' }}>
-                  <BrandCard logoUrl={tata} />
-                </SwiperSlide>
-                <SwiperSlide style={{ paddingBottom: '40px' }}>
-                  <BrandCard logoUrl={maruti} />
-                </SwiperSlide>
-                <SwiperSlide style={{ paddingBottom: '40px' }}>
-                  <BrandCard logoUrl={marutisuzuki} />
-                </SwiperSlide>
-                <SwiperSlide style={{ paddingBottom: '40px' }}>
-                  <BrandCard logoUrl={volkswagen} />
-                </SwiperSlide>
+                {brands.map(
+                  (brand) =>
+                    brandsMapping[brand] && (
+                      <SwiperSlide style={{ paddingBottom: '40px' }}>
+                        <BrandCard
+                          logoUrl={brandsMapping[brand]}
+                          name={brand}
+                        />
+                      </SwiperSlide>
+                    ),
+                )}
               </Swiper>
             )}
             <h3 className="text-2xl font-bold mb-3 mt-8 text-gray-600">
@@ -158,7 +193,7 @@ const ButtonRows = () => {
             <div className="flex flex-wrap gap-4">
               {isDesktop ? (
                 types.map((type, index) => (
-                  <ButtonCard key={index} item={type} />
+                  <ButtonCard key={index} item={type} type={'type'} />
                 ))
               ) : (
                 <Swiper
@@ -170,7 +205,7 @@ const ButtonRows = () => {
                 >
                   {types.map((type, index) => (
                     <SwiperSlide key={index} style={{ paddingBottom: '40px' }}>
-                      <ButtonCard item={type} />
+                      <ButtonCard item={type} type={'type'} />
                     </SwiperSlide>
                   ))}
                 </Swiper>
@@ -182,9 +217,9 @@ const ButtonRows = () => {
             <div className="flex flex-wrap gap-4">
               {isDesktop ? (
                 <>
-                  <ButtonCard item="< 4 Lakh" />
-                  <ButtonCard item="4 - 8 Lakh" />
-                  <ButtonCard item="> 8 Lakh" />
+                  <ButtonCard item="< 4 Lakh" type={'budget'} />
+                  <ButtonCard item="4 - 8 Lakh" type={'budget'} />
+                  <ButtonCard item="> 8 Lakh" type={'budget'} />
                 </>
               ) : (
                 <Swiper
@@ -195,13 +230,13 @@ const ButtonRows = () => {
                   className="mySwiperCloudPrice"
                 >
                   <SwiperSlide style={{ paddingBottom: '40px' }}>
-                    <ButtonCard item="< 4 Lakh" />
+                    <ButtonCard item="< 4 Lakh" type={'budget'} />
                   </SwiperSlide>
                   <SwiperSlide style={{ paddingBottom: '40px' }}>
-                    <ButtonCard item="4 - 8 Lakh" />
+                    <ButtonCard item="4 - 8 Lakh" type={'budget'} />
                   </SwiperSlide>
                   <SwiperSlide style={{ paddingBottom: '40px' }}>
-                    <ButtonCard item="> 8 Lakh" />
+                    <ButtonCard item="> 8 Lakh" type={'budget'} />
                   </SwiperSlide>
                 </Swiper>
               )}

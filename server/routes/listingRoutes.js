@@ -20,6 +20,7 @@ router.get('/', listingController.getAllListings)
 router.get('/featured', listingController.geFeaturedListings)
 
 router.get('/brands', listingController.getAllBrands)
+router.get('/types', listingController.getAllTypes)
 
 router.get('/seats', listingController.getAllSeats)
 

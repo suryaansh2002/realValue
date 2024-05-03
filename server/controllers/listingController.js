@@ -47,6 +47,16 @@ exports.getAllBrands = async (req, res) => {
   }
 };
 
+exports.getAllTypes = async (req, res) => {
+  try {
+    const brands = await Listing.distinct("type");
+    res.json(brands);
+  } catch (error) {
+    res.status(500).json({ error: "Server error" });
+  }
+};
+
+
 exports.getAllSeats = async (req, res) => {
   try {
     const brands = await Listing.distinct("seats");

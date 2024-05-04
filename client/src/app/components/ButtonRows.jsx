@@ -194,7 +194,7 @@ const ButtonRows = () => {
                       <SwiperSlide style={{ paddingBottom: '40px' }}>
 
 <div
-        className="flex flex-col items-center py-8 justify-center bg-white cursor-pointer shadow-md rounded-lg p-3 hover:bg-gray-300"
+        className="flex flex-col w-max px-2 items-center py-8 justify-center bg-white cursor-pointer shadow-md rounded-lg p-3 hover:bg-gray-300"
         onClick={() => handleBrandClick('')}
       >
         View All

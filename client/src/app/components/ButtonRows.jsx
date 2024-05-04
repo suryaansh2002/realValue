@@ -78,12 +78,12 @@ const BrandScrollContainer = ({ brands, brandsMapping }) => {
             <BrandCard logoUrl={brandsMapping[brand]} name={brand} />
           ),
       )}
-        <div
-    className="flex flex-col items-center justify-center bg-white cursor-pointer shadow-md rounded-lg p-3 hover:bg-gray-300"
-    onClick={() => handleBrandClick('')}
-  >
-    View All
-  </div>
+      <div
+        className="flex flex-col items-center justify-center bg-white cursor-pointer shadow-md rounded-lg p-3 hover:bg-gray-300"
+        onClick={() => handleBrandClick('')}
+      >
+        View All
+      </div>
     </span>
   )
 }
@@ -198,9 +198,17 @@ const ButtonRows = () => {
             </h3>
             <div className="flex flex-wrap gap-4">
               {isDesktop ? (
-                types.map((type, index) => (
-                  <ButtonCard key={index} item={type} type={'type'} />
-                ))
+                <>
+                  {types.map((type, index) => (
+                    <ButtonCard key={index} item={type} type={'type'} />
+                  ))}
+                  <div
+                    className="bg-white shadow-md rounded-lg p-4 w-40 hover:bg-gray-300 cursor-pointer"
+                    onClick={() => handleBtnClick('', 'type')}
+                  >
+                    <div className="text-center ">View All</div>
+                  </div>
+                </>
               ) : (
                 <Swiper
                   slidesPerView={2.2}
@@ -214,6 +222,12 @@ const ButtonRows = () => {
                       <ButtonCard item={type} type={'type'} />
                     </SwiperSlide>
                   ))}
+                  <div
+                    className="bg-white shadow-md rounded-lg p-4 w-40 hover:bg-gray-300 cursor-pointer"
+                    onClick={() => handleBtnClick('', 'type')}
+                  >
+                    <div className="text-center ">View All</div>
+                  </div>
                 </Swiper>
               )}
             </div>

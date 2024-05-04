@@ -191,6 +191,16 @@ const ButtonRows = () => {
                       </SwiperSlide>
                     ),
                 )}
+                      <SwiperSlide style={{ paddingBottom: '40px' }}>
+
+<div
+        className="flex flex-col items-center py-8 justify-center bg-white cursor-pointer shadow-md rounded-lg p-3 hover:bg-gray-300"
+        onClick={() => handleBrandClick('')}
+      >
+        View All
+      </div>
+      </SwiperSlide>
+
               </Swiper>
             )}
             <h3 className="text-2xl font-bold mb-3 mt-8 text-gray-600">
@@ -222,12 +232,15 @@ const ButtonRows = () => {
                       <ButtonCard item={type} type={'type'} />
                     </SwiperSlide>
                   ))}
+                <SwiperSlide key={'all'} style={{ paddingBottom: '40px' }}>
+
                   <div
                     className="bg-white shadow-md rounded-lg p-4 w-40 hover:bg-gray-300 cursor-pointer"
                     onClick={() => handleBtnClick('', 'type')}
                   >
                     <div className="text-center ">View All</div>
                   </div>
+                  </SwiperSlide>
                 </Swiper>
               )}
             </div>

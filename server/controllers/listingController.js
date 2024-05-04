@@ -21,7 +21,6 @@ function bufferToDataUri(buffer, contentType) {
 
 exports.uploadImage = async (req, res) => {
   try {
-    console.log(req.file);
     res.status(201).json({ message: "Listing Image created successfully" });
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -56,7 +55,6 @@ exports.getAllTypes = async (req, res) => {
   }
 };
 
-
 exports.getAllSeats = async (req, res) => {
   try {
     const brands = await Listing.distinct("seats");
@@ -80,32 +78,37 @@ exports.getFilteredListings = async (req, res) => {
     const filters = req.body;
     let query = {};
 
-    // Iterate over the keys of the request body
     Object.keys(filters).forEach((key) => {
       switch (key) {
         case "brand":
         case "fuelType":
         case "transmissionType":
         case "seats":
+        case "ownership":
+        case "type":
           if (filters[key].length > 0) {
             query[key] = { $in: filters[key] };
           }
-            break;
+          break;
         case "budget":
-          // For budget, find listings where the price falls within the given range
-          query["price"] = { $gte: filters[key][0], $lte: filters[key][1] };
+          const budgetQueries = filters[key].map((range) => {
+            const [min, max] = range.split("-").map(Number);
+            if (!isNaN(min) && !isNaN(max)) {
+              return { price: { $gte: min, $lte: max } };
+            } else if (!isNaN(min)) {
+              return { price: { $gte: min } };
+            } else if (!isNaN(max)) {
+              return { price: { $lte: max } };
+            }
+            return null;
+          });
+          query["$or"] = budgetQueries.filter((q) => q !== null);
           break;
         case "modelYear":
-          // For model year, find listings where the year falls within the given range
           query["year"] = { $gte: filters[key][0], $lte: filters[key][1] };
           break;
-        case "kmsDriven":
-          // For kmsDriven, find listings where the kmsDriven falls within the given range
-          query["kmDriven"] = { $gte: filters[key][0], $lte: filters[key][1] };
-          break;
-        case "owners":
-          // For single value fields, find listings where the field matches the value
-          query[key] = filters[key];
+        case "kmDriven":
+          query[key] = { $gte: filters[key][0], $lte: filters[key][1] };
           break;
       }
     });
@@ -154,7 +157,6 @@ exports.updateListingById = async (req, res) => {
 exports.deleteListingById = async (req, res) => {
   try {
     const { id } = req.params;
-    console.log(req.params);
     const deletedListing = await Listing.findByIdAndDelete(id);
     if (!deletedListing) {
       return res.status(404).json({ error: "Listing not found" });

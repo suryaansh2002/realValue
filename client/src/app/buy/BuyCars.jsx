@@ -1,66 +1,171 @@
 'use client'
+import { Fragment, useState, useEffect } from 'react'
+import { Dialog, Disclosure, Menu, Transition } from '@headlessui/react'
+import { XMarkIcon } from '@heroicons/react/24/outline'
+import {
+  ChevronDownIcon,
+  FunnelIcon,
+  MinusIcon,
+  PlusIcon,
+  Squares2X2Icon,
+} from '@heroicons/react/20/solid'
 import axios from 'axios'
-import React, { useState, useEffect } from 'react'
-import FeaturedCard from '../components/FeaturedCard'
-import { FaChevronDown, FaChevronUp } from 'react-icons/fa'
-import { Checkbox, Slider, Select } from 'antd'
-import { FaFilter } from 'react-icons/fa'
-import { AmountWithCommas } from '../utils'
-// import { FaChevronUp, FaChevronDown } from "react-icons/fa";
+import { Button, Slider } from 'antd'
+import { AmountWithCommas } from '@/app/utils'
+import FeaturedCard from '@/app/components/FeaturedCard'
 
-import { Oval } from 'react-loader-spinner'
+const sortOptions = [
+  { name: 'Price: Low to High', href: '#', current: false, param: 'price_asc' },
+  { name: 'Price: High to Low', href: '#', current: false, param: 'price_desc' },
+  { name: 'KM Driven: Low to High', href: '#', current: false, param: 'kmDriven_asc' },
+  { name: 'KM Driven: High to Low', href: '#', current: false, param: 'kmDriven_desc' },
+  { name: 'Year: Low to High', href: '#', current: false, param: 'year_asc' },
+  { name: 'Year: High to Low', href: '#', current: false, param: 'year_desc' },
+]
+let url = 'https://real-value-server.vercel.app/'
+url = 'http://localhost:5000/'
 
-const { Option } = Select
+function classNames(...classes) {
+  return classes.filter(Boolean).join(' ')
+}
 
 export default function Buy({ allListings }) {
-  const [listings, setListings] = useState([])
+  const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
   const [brands, setBrands] = useState([])
-  const [filters, setFilters] = useState({})
-  const [loading, setLoading] = useState(false)
-  const [showFilters, setShowFilters] = useState(false)
+  const [types, setTypes] = useState([])
+  const [listings, setListings] = useState([])
   const [seatsCount, setSeatsCount] = useState([])
+  const [loading, setLoading] = useState(false)
+  const [filters, setFilters] = useState([
+    {
+      id: 'brand',
+      name: 'Brand',
+      options: [],
+    },
+    {
+      id: 'type',
+      name: 'Segment',
+      options: [],
+    },
+    {
+      id: 'budget',
+      name: 'Budget',
+      options: [
+        { value: '0-400000', label: '< 4lakhs', checked: false },
+        { value: '400000-800000', label: '4-8 Lakhs', checked: false },
+        { value: '800000-1200000', label: '8-12 Lakhs', checked: false },
+        { value: '1200000', label: '12 Lakhs +', checked: false },
+      ],
+    },
+    {
+      id: 'modelYear',
+      name: 'Year',
+      type: 'slider',
+      config: {
+        min: 2000,
+        max: new Date().getFullYear(),
+        step: 1,
+        value: [2000, new Date().getFullYear()],
+      },
+    },
+    {
+      id: 'fuelType',
+      name: 'Fuel Type',
+      options: [
+        { value: 'Petrol', label: 'Petrol', checked: false },
+        { value: 'Diesel', label: 'Diesel', checked: false },
+        { value: 'CNG', label: 'CNG', checked: false },
+      ],
+    },
+    {
+      id: 'transmissionType',
+      name: 'Transmission',
+      options: [
+        { value: 'automatic', label: 'Automatic', checked: false },
+        { value: 'manual', label: 'Manual', checked: false },
+      ],
+    },
+    {
+      id: 'ownership',
+      name: 'Owners',
+      options: [
+        { value: 1, label: '1', checked: false },
+        { value: 2, label: '2', checked: false },
+        { value: 3, label: '3', checked: false },
+        { value: 4, label: '4', checked: false },
+      ],
+    },
+    {
+      id: 'kmDriven',
+      name: 'KM Driven',
+      type: 'slider',
+      config: {
+        min: 1000,
+        max: 100000,
+        step: 1000,
+        value: [10000, 100000],
+      },
+    },
+    {
+      id: 'seats',
+      name: 'Seats',
+      options: [],
+    },
+  ])
 
-  useEffect(() => {
-    console.log(filters)
-  }, [filters])
-  const handleBrandChange = (checkedValues) => {
-    setFilters({ ...filters, brand: checkedValues })
+  const sortListings = (key, order) => {
+    const tempListings = [...listings]
+    tempListings.sort((a, b) => {
+      if (order === 'asc') {
+        return a[key] - b[key]
+      } else if (order === 'desc') {
+        return b[key] - a[key]
+      }
+      return 0
+    })
+    setListings(tempListings)
   }
 
-  const handleBudgetChange = (value) => {
-    setFilters({ ...filters, budget: value })
+  const handleSort = (value) => {
+    if (value.length) {
+      let params = value.split('_')
+      sortListings(params[0], params[1])
+    }
   }
 
-  const handleModelYearChange = (value) => {
-    setFilters({ ...filters, modelYear: value })
+
+  const clearFilters = () =>{
+    window.location.reload()
   }
 
-  const handleFuelTypeChange = (checkedValues) => {
-    setFilters({ ...filters, fuelType: checkedValues })
-  }
+  const updateFilters = async(inputFilters) => {
+    const obj = {}
+    filters.map((filter) => {
+      const key = filter['id']
+      let tempArr = []
+      if (filter['type'] == 'slider') {
+        tempArr = filter['config']['value']
+      } else {
+        filter['options'].map((opt) => {
+          if (opt['checked'] == true) {
+            tempArr.push(opt['value'])
+          }
+        })
+      }
+      if (tempArr.length) {
+        obj[key] = tempArr
+      }
+    })
+    try{
 
-  const handleTransmissionTypeChange = (checkedValues) => {
-    setFilters({ ...filters, transmissionType: checkedValues })
+    const response = await axios.post(url + 'api/listings/filtered', obj)
+    setListings(response.data)
   }
+catch(e){
+  console.log(e.message)
+}
 
-  const handleOwnersChange = (value) => {
-    setFilters({ ...filters, owners: value })
   }
-
-  const handleKmsDrivenChange = (value) => {
-    setFilters({ ...filters, kmsDriven: value })
-  }
-
-  const handleSeatsChange = (checkedValues) => {
-    setFilters({ ...filters, seats: checkedValues })
-  }
-  const sliderFormatter = (value) => {
-    if (value) return AmountWithCommas(value)
-  }
-
-  let url = 'https://real-value-server.vercel.app/'
-  // url = 'http://localhost:5000/'
-
   const fetchAllListings = async () => {
     try {
       setLoading(true)
@@ -80,7 +185,63 @@ export default function Buy({ allListings }) {
       const response = await axios.get(url + 'api/listings/brands')
       if (response.data) {
         response.data.sort()
+        const tempObj = [...filters]
+        const index = tempObj.findIndex((item) => item.id == 'brand')
+        tempObj[index]['options'] = response.data.map((item) => {
+          return {
+            value: item,
+            label: item,
+            checked: false,
+          }
+        })
+        setFilters(tempObj)
+
         setBrands(response.data)
+      }
+    } catch (e) {
+      console.log(e.message)
+    }
+  }
+  const sliderFormatter = (value) => {
+    if (value) return AmountWithCommas(value)
+  }
+  const handleSliderChange = (id, value) => {
+    const tempFilters = [...filters]
+    const index = tempFilters.findIndex((item) => item.id == id)
+    tempFilters[index]['config']['value'] = value
+    setFilters(tempFilters)
+  }
+  const handleCheckboxChange = (id, label, e) => {
+    const tempFilters = [...filters]
+
+    const index = tempFilters.findIndex((item) => item.id == id)
+    const options = tempFilters[index]['options']
+
+    const optionsIndex = options.findIndex((item) => item.label == label)
+    options[optionsIndex]['checked'] = e.target.checked
+
+    tempFilters[index]['options'] = options
+
+    setFilters(tempFilters)
+  }
+
+  const fetchAllTypes = async () => {
+    try {
+      const response = await axios.get(url + 'api/listings/types')
+      if (response.data) {
+        response.data.sort()
+        const tempObj = [...filters]
+        const index = tempObj.findIndex((item) => item.id == 'type')
+        tempObj[index]['options'] = response.data.map((item) => {
+          return {
+            value: item,
+            label: item,
+            checked: false,
+          }
+        })
+        setFilters(tempObj)
+
+        setTypes(response.data)
       }
     } catch (e) {
       console.log(e.message)
@@ -92,6 +253,16 @@ export default function Buy({ allListings }) {
       const response = await axios.get(url + 'api/listings/seats')
       if (response.data) {
         response.data.sort()
+        const tempObj = [...filters]
+        const index = tempObj.findIndex((item) => item.id == 'seats')
+        tempObj[index]['options'] = response.data.map((item) => {
+          return {
+            value: item,
+            label: item,
+            checked: false,
+          }
+        })
+        setFilters(tempObj)
         setSeatsCount(response.data)
       }
     } catch (e) {
@@ -99,272 +270,346 @@ export default function Buy({ allListings }) {
     }
   }
 
-  const handleSubmit = async () => {
-    console.log(filters)
-    setShowFilters(false)
-    let tempFilters = { ...filters }
-    if (tempFilters['owners']) {
-      if (tempFilters['owners'] == 'Any') {
-        delete tempFilters['owners']
-      } else {
-        tempFilters['owners'] = parseInt(tempFilters['owners'])
-      }
-    }
-    if (tempFilters['seats']) {
-      let seatsArr = []
-      tempFilters['seats'].map((count) => {
-        seatsArr.push(parseInt(count))
-      })
-      tempFilters['seats'] = seatsArr
-    }
-    console.log(tempFilters)
-    await fetchFilteredListings(tempFilters)
-  }
-
-  const fetchFilteredListings = async (filters) => {
-    try {
-      setLoading(true)
-      const response = await axios.post(url + 'api/listings/filtered', filters)
-      if (response.data) {
-        console.log(response.data)
-        setListings(response.data)
-      }
-      setLoading(false)
-    } catch (e) {
-      setLoading(false)
-      console.log(e.message)
-    }
-  }
-
   useEffect(() => {
-    if (localStorage.getItem('filters')) {
-    }
     if (allListings) {
       setListings(allListings)
     } else {
       fetchAllListings()
     }
     fetchAllBrands()
+    fetchAllTypes()
     fetchAllSeats()
   }, [])
 
-  const [selectedOption, setSelectedOption] = useState('')
-  const sortListings = (key, order) => {
-    const tempListings = [...listings]
-    tempListings.sort((a, b) => {
-      if (order === 'asc') {
-        return a[key] - b[key]
-      } else if (order === 'desc') {
-        return b[key] - a[key]
-      }
-      return 0
-    })
-    setListings(tempListings)
-  }
-
-  const handleSort = (value) => {
-    setSelectedOption(value)
-    console.log(value)
-    if (value.length) {
-      let params = value.split('_')
-      sortListings(params[0], params[1])
-      console.log(params)
-    }
-  }
-
-  const kmsDrivenRange = [0, 100000]
-  const budgetRange = [0, 1500000]
-  const yearRange = [2010, new Date().getFullYear()]
   return (
-    <div>
-      <div className="text-center flex md:flex-row flex-col justify-end mr-12 mt-8 ml-[10%]">
-        <button
-          onClick={() => setShowFilters(!showFilters)}
-          className="border border-gray-300 text-sm ml-4 md:mb-0 mb-8 md:ml-12 rounded md:px-8 py-1  md:w-auto w-[90%]"
-        >
-          <FaFilter className="inline-block text-sm mr-1" /> Filter
-          {showFilters ? (
-            <FaChevronUp className="inline-block ml-4 text-sm" />
-          ) : (
-            <FaChevronDown className="inline-block ml-4 text-sm" />
-          )}
-        </button>
-        <Select
-          className="border border-gray-300 ml-4 md:w-[12rem] w-[90%] text-lg md:ml-12 rounded px-16 w-[12rem] py-8 mt-4 md:translate-x-6 translate-x-4"
-          value={selectedOption}
-          onChange={handleSort}
-        >
-          <Option value="">
-            <span>Sort By...</span>
-            {/* <ArrowUpOutlined /> */}
-          </Option>
-          <Option value="price_asc">
-            <span>Price: Low to High</span>
-          </Option>
-          <Option value="price_desc">
-            <span>Price: High to Low</span>
-          </Option>
-          <Option value="kmDriven_asc">
-            <span>KM Driven: Low to High</span>
-          </Option>
-          <Option value="kmDriven_desc">
-            <span>KM Driven: High to Low</span>
-          </Option>
-          <Option value="year_asc">
-            <span>Year: Low to High</span>
-          </Option>
-          <Option value="year_desc">
-            <span>Year: High to Low</span>
-          </Option>
-        </Select>
-      </div>
-      {showFilters && (
-        <div className="w-[90vw] md:w-[40vw] p-4 border-2 border-gray-500  ml-[50%] -translate-x-[50%] rounded-md md:mt-2 -mt-12 !absolute z-10 md:right-4 md:ml-0 md:translate-x-0 bg-white">
-          <div className="space-y-4">
-            {/* Brand */}
-            <div>
-              <h3 className="font-bold">Brand:</h3>
-              <Checkbox.Group
-                defaultValue={filters['brand']}
-                onChange={handleBrandChange}
-              >
-                {brands.map((brand, i) => (
-                  <Checkbox key={i} value={brand}>
-                    {brand}
-                  </Checkbox>
-                ))}
-              </Checkbox.Group>
-            </div>
-
-            {/* Budget */}
-            <div>
-              <h3 className="font-bold">Budget:</h3>
-              <Slider
-                range
-                defaultValue={filters['budget'] || budgetRange}
-                min={0}
-                max={1500000}
-                step={1000}
-                tooltip={{
-                  formatter: sliderFormatter,
-                }}
-                onChange={handleBudgetChange}
-              />
-              {/* Adjust defaultValue and range as needed */}
-            </div>
-
-            {/* Model Year */}
-            <div>
-              <h3 className="font-bold">Model Year:</h3>
-              <Slider
-                range
-                defaultValue={filters['modelYear'] || yearRange}
-                min={2010}
-                max={new Date().getFullYear()}
-                step={1}
-                onChange={handleModelYearChange}
-              />
-            </div>
-
-            {/* Fuel Type */}
-            <div>
-              <h3 className="font-bold">Fuel Type:</h3>
-              <Checkbox.Group
-                onChange={handleFuelTypeChange}
-                defaultValue={filters['fuelType']}
-              >
-                <Checkbox value="Petrol">Petrol</Checkbox>
-                <Checkbox value="Diesel">Diesel</Checkbox>
-                <Checkbox value="CNG">CNG</Checkbox>
-              </Checkbox.Group>
-            </div>
-
-            {/* Transmission Type */}
-            <div>
-              <h3 className="font-bold">Transmission Type:</h3>
-              <Checkbox.Group
-                onChange={handleTransmissionTypeChange}
-                defaultValue={filters['transmissionType']}
-              >
-                <Checkbox value="automatic">Automatic</Checkbox>
-                <Checkbox value="manual">Manual</Checkbox>
-              </Checkbox.Group>
-            </div>
-
-            {/* Owners */}
-            <div>
-              <h3 className="font-bold">Owners:</h3>
-              <Select
-                defaultValue={filters['owners'] ? filters['owners'] : 'Any'}
-                onChange={handleOwnersChange}
-              >
-                <Option value="Any">Any</Option>
-                <Option value="1">1</Option>
-                <Option value="2">2</Option>
-                <Option value="3">3</Option>
-                <Option value="4">4</Option>
-              </Select>
-            </div>
-
-            {/* Kms Driven */}
-            <div>
-              <h3 className="font-bold">Kms Driven:</h3>
-              <Slider
-                range
-                defaultValue={filters['kmsDriven'] || kmsDrivenRange}
-                min={0}
-                max={100000}
-                step={100}
-                onChange={handleKmsDrivenChange}
-                tooltip={{
-                  formatter: sliderFormatter,
-                }}
-              />
-              {/* Adjust defaultValue and range as needed */}
-            </div>
-
-            {/* No. of Seats */}
-            <div>
-              <h3 className="font-bold">No. of Seats:</h3>
-              <Checkbox.Group
-                defaultValue={filters['seats']}
-                onChange={handleSeatsChange}
-              >
-                {seatsCount.map((count, i) => (
-                  <Checkbox key={i} value={count}>
-                    {count}
-                  </Checkbox>
-                ))}
-              </Checkbox.Group>
-            </div>
-            <button
-              onClick={() => handleSubmit()}
-              className="bg-blue-500 hover:bg-yellow-500 text-white px-6 py-2 rounded w-[100%]"
+    <div className="bg-white">
+      <div>
+        {/* Mobile filter dialog */}
+        <Transition.Root show={mobileFiltersOpen} as={Fragment}>
+          <Dialog
+            className="relative z-40 lg:hidden"
+            onClose={setMobileFiltersOpen}
+          >
+            <Transition.Child
+              as={Fragment}
+              enter="transition-opacity ease-linear duration-300"
+              enterFrom="opacity-0"
+              enterTo="opacity-100"
+              leave="transition-opacity ease-linear duration-300"
+              leaveFrom="opacity-100"
+              leaveTo="opacity-0"
             >
-              Submit
-            </button>
-          </div>
-        </div>
-      )}
+              <div className="fixed inset-0 bg-black bg-opacity-25" />
+            </Transition.Child>
 
-      <div className="font-semibold text-2xl pl-4 pt-4 -mb-2 md:-translate-y-2 md: pl-8">
-        Explore All Cars:
+            <div className="fixed inset-0 z-40 flex">
+              <Transition.Child
+                as={Fragment}
+                enter="transition ease-in-out duration-300 transform"
+                enterFrom="translate-x-full"
+                enterTo="translate-x-0"
+                leave="transition ease-in-out duration-300 transform"
+                leaveFrom="translate-x-0"
+                leaveTo="translate-x-full"
+              >
+                <Dialog.Panel className="relative ml-auto flex h-full w-full max-w-xs flex-col overflow-y-auto bg-white py-4 pb-12 shadow-xl">
+                  <div className="flex items-center justify-between px-4">
+                    <h2 className="text-lg font-medium text-gray-900">
+                      Filters
+                    </h2>
+                    <button
+                      type="button"
+                      className="-mr-2 flex h-10 w-10 items-center justify-center rounded-md bg-white p-2 text-gray-400"
+                      onClick={() => setMobileFiltersOpen(false)}
+                    >
+                      <span className="sr-only">Close menu</span>
+                      <XMarkIcon className="h-6 w-6" aria-hidden="true" />
+                    </button>
+                  </div>
+
+                  {/* Filters */}
+                  <form className="mt-4 border-t border-gray-200">
+                    <h3 className="sr-only">Categories</h3>
+                    {filters.map((section) => (
+                      <Disclosure
+                        as="div"
+                        key={section.id}
+                        className="border-t border-gray-200 px-4 py-6"
+                      >
+                        {({ open }) => (
+                          <>
+                            <h3 className="-mx-2 -my-3 flow-root">
+                              <Disclosure.Button className="flex w-full items-center justify-between bg-white px-2 py-3 text-gray-400 hover:text-gray-500">
+                                <span className="font-medium text-gray-900">
+                                  {section.name}
+                                </span>
+                                <span className="ml-6 flex items-center">
+                                  {open ? (
+                                    <MinusIcon
+                                      className="h-5 w-5"
+                                      aria-hidden="true"
+                                    />
+                                  ) : (
+                                    <PlusIcon
+                                      className="h-5 w-5"
+                                      aria-hidden="true"
+                                    />
+                                  )}
+                                </span>
+                              </Disclosure.Button>
+                            </h3>
+                            <Disclosure.Panel className="pt-6">
+                              {section.type == 'slider' ? (
+                                <div className="space-y-6">
+                                  <Slider
+                                    range
+                                    defaultValue={section.config.value}
+                                    min={section.config.min}
+                                    max={section.config.max}
+                                    step={section.config.step}
+                                    tooltip={{
+                                      formatter:
+                                        section.id != 'modelYear' && sliderFormatter,
+                                    }}
+                                    onChange={(val) =>
+                                      handleSliderChange(section.id, val)
+                                    }
+                                  />
+                                </div>
+                              ) : (
+                                <div className="space-y-6">
+                                  {section.options.map((option, optionIdx) => (
+                                    <div
+                                      key={option.value}
+                                      className="flex items-center"
+                                    >
+                                      <input
+                                        id={`filter-mobile-${section.id}-${optionIdx}`}
+                                        name={`${section.id}[]`}
+                                        defaultValue={option.value}
+                                        type="checkbox"
+                                        defaultChecked={option.checked}
+                                        onChange={(e) =>
+                                          handleCheckboxChange(
+                                            section.id,
+                                            option.label,
+                                            e,
+                                          )
+                                        }
+                                        className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                                      />
+                                      <label
+                                        htmlFor={`filter-mobile-${section.id}-${optionIdx}`}
+                                        className="ml-3 min-w-0 flex-1 text-gray-500"
+                                      >
+                                        {option.label}
+                                      </label>
+                                    </div>
+                                  ))}
+                                </div>
+                              )}
+                            </Disclosure.Panel>
+                          </>
+                        )}
+                      </Disclosure>
+                    ))}
+                  </form>
+                  <Button
+                    onClick={() => updateFilters()}
+                    className="w-[100%] !bg-yellow-500 mt-4 !hover:text-white"
+                  >
+                    Filter
+                  </Button>
+                  <Button
+                    onClick={() => clearFilters()}
+                    className="w-[100%]  mt-4 !hover:text-white"
+                  >
+                    Clear Filters
+                  </Button>
+                </Dialog.Panel>
+              </Transition.Child>
+            </div>
+          </Dialog>
+        </Transition.Root>
+
+        <main className="px-4 sm:px-6 lg:px-8 ">
+          <div className="flex items-baseline justify-between border-b border-gray-200 pb-6 pt-24">
+            <h1 className="text-4xl font-bold tracking-tight text-gray-900">
+              Explore all cars
+            </h1>
+
+            <div className="flex items-center">
+              <Menu as="div" className="relative inline-block text-left">
+                <div>
+                  <Menu.Button className="group inline-flex justify-center text-sm font-medium text-gray-700 hover:text-gray-900">
+                    Sort
+                    <ChevronDownIcon
+                      className="-mr-1 ml-1 h-5 w-5 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
+                      aria-hidden="true"
+                    />
+                  </Menu.Button>
+                </div>
+
+                <Transition
+                  as={Fragment}
+                  enter="transition ease-out duration-100"
+                  enterFrom="transform opacity-0 scale-95"
+                  enterTo="transform opacity-100 scale-100"
+                  leave="transition ease-in duration-75"
+                  leaveFrom="transform opacity-100 scale-100"
+                  leaveTo="transform opacity-0 scale-95"
+                >
+                  <Menu.Items className="absolute right-0 z-10 mt-2 w-40 origin-top-right rounded-md bg-white shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none">
+                    <div className="py-1">
+                      {sortOptions.map((option) => (
+                        <Menu.Item key={option.name}>
+                          {({ active }) => (
+                            <a
+                              onClick={()=>handleSort(option.param)}
+                              className={classNames(
+                                option.current
+                                  ? 'font-medium text-gray-900'
+                                  : 'text-gray-500',
+                                active ? 'bg-gray-100' : '',
+                                'block px-4 py-2 text-sm',
+                              )}
+                            >
+                              {option.name}
+                            </a>
+                          )}
+                        </Menu.Item>
+                      ))}
+                    </div>
+                  </Menu.Items>
+                </Transition>
+              </Menu>
+              <button
+                type="button"
+                className="-m-2 ml-4 p-2 text-gray-400 hover:text-gray-500 sm:ml-6 lg:hidden"
+                onClick={() => setMobileFiltersOpen(true)}
+              >
+                <span className="sr-only">Filters</span>
+                <FunnelIcon className="h-5 w-5" aria-hidden="true" />
+              </button>
+            </div>
+          </div>
+
+          <section aria-labelledby="products-heading" className="pb-24 pt-6">
+            <h2 id="products-heading" className="sr-only">
+              Products
+            </h2>
+
+            <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-5">
+              {/* Filters */}
+              <form className="hidden lg:block">
+                <h3 className="sr-only">Categories</h3>
+                {filters.map((section) => (
+                  <Disclosure
+                    as="div"
+                    key={section.id}
+                    className="border-b border-gray-200 py-6"
+                  >
+                    {({ open }) => (
+                      <>
+                        <h3 className="-my-3 flow-root">
+                          <Disclosure.Button className="flex w-full items-center justify-between bg-white py-3 text-sm text-gray-400 hover:text-gray-500">
+                            <span className="font-medium text-gray-900">
+                              {section.name}
+                            </span>
+                            <span className="ml-6 flex items-center">
+                              {open ? (
+                                <MinusIcon
+                                  className="h-5 w-5"
+                                  aria-hidden="true"
+                                />
+                              ) : (
+                                <PlusIcon
+                                  className="h-5 w-5"
+                                  aria-hidden="true"
+                                />
+                              )}
+                            </span>
+                          </Disclosure.Button>
+                        </h3>
+                        <Disclosure.Panel className="pt-6">
+                          <div className="space-y-4">
+                            {section.type == 'slider' ? (
+                              <div className="space-y-6">
+                                <Slider
+                                  range
+                                  defaultValue={section.config.value}
+                                  min={section.config.min}
+                                  max={section.config.max}
+                                  step={section.config.step}
+                                  tooltip={{
+                                    formatter:
+                                      section.id != 'modelYear' && sliderFormatter,
+                                  }}
+                                  onChange={(val) =>
+                                    handleSliderChange(section.id, val)
+                                  }
+                                />
+                              </div>
+                            ) : (
+                              section.options.map((option, optionIdx) => (
+                                <div
+                                  key={option.value}
+                                  className="flex items-center"
+                                >
+                                  <input
+                                    id={`filter-${section.id}-${optionIdx}`}
+                                    name={`${section.id}[]`}
+                                    defaultValue={option.value}
+                                    type="checkbox"
+                                    defaultChecked={option.checked}
+                                    onChange={(e) =>
+                                      handleCheckboxChange(
+                                        section.id,
+                                        option.label,
+                                        e,
+                                      )
+                                    }
+                                    className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                                  />
+                                  <label
+                                    htmlFor={`filter-${section.id}-${optionIdx}`}
+                                    className="ml-3 text-sm text-gray-600"
+                                  >
+                                    {option.label}
+                                  </label>
+                                </div>
+                              ))
+                            )}
+                          </div>
+                        </Disclosure.Panel>
+                      </>
+                    )}
+                  </Disclosure>
+                ))}
+                <Button
+                  onClick={() => updateFilters()}
+                  className="w-[100%] !bg-yellow-500 mt-4 !hover:text-white"
+                >
+                  Filter
+                </Button>
+                <Button
+                    onClick={() => clearFilters()}
+                    className="w-[100%]  mt-4 !hover:text-white"
+                  >
+                    Clear Filters
+                  </Button>
+              </form>
+
+              {/* Product grid */}
+              <div className="lg:col-span-4 space-x-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 mt-8 px-8 mb-12">
+                {listings.map((car) => (
+                  <FeaturedCard key={car._id} car={car} />
+                ))}
+              </div>
+            </div>
+          </section>
+        </main>
       </div>
-      {loading ? (
-        <div className="flex items-center justify-center p-10">
-          <Oval color="#000" height={50} width={50} />
-        </div>
-      ) : listings.length == 0 ? (
-        <div className="text-lg font-semibold text-left ml-8 h-[70vh] p-4">
-          No vehicles match these filters
-        </div>
-      ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 mt-8 px-8 mb-12">
-          {listings.map((car) => (
-            <FeaturedCard key={car._id} car={car} />
-          ))}
-        </div>
-      )}
     </div>
   )
 }

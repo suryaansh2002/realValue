@@ -78,6 +78,12 @@ const BrandScrollContainer = ({ brands, brandsMapping }) => {
             <BrandCard logoUrl={brandsMapping[brand]} name={brand} />
           ),
       )}
+        <div
+    className="flex flex-col items-center justify-center bg-white cursor-pointer shadow-md rounded-lg p-3 hover:bg-gray-300"
+    onClick={() => handleBrandClick('')}
+  >
+    View All
+  </div>
     </span>
   )
 }
@@ -163,7 +169,7 @@ const ButtonRows = () => {
             <h3 className="text-2xl font-bold mb-3 text-gray-600">Brands</h3>
             {isDesktop ? (
               <BrandScrollContainer
-                brands={brands}
+                brands={Object.keys(brandsMapping)}
                 brandsMapping={brandsMapping}
               />
             ) : (
@@ -174,7 +180,7 @@ const ButtonRows = () => {
                 modules={[FreeMode]}
                 className="mySwiperCloudBrands"
               >
-                {brands.map(
+                {Object.keys(brandsMapping).map(
                   (brand) =>
                     brandsMapping[brand] && (
                       <SwiperSlide style={{ paddingBottom: '40px' }}>

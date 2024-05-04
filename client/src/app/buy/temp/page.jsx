@@ -177,7 +177,7 @@ export default function Example({ allListings }) {
       if (response.data) {
         response.data.sort()
         const tempObj = [...filters]
-        const index = tempObj.findIndex((item) => item.id == 'type')
+        const index = tempObj.findIndex((item) => item.id == 'segment')
         tempObj[index]['options'] = response.data.map((item) => {
           return {
             value: item,

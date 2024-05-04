@@ -12,7 +12,7 @@ const ButtonCloud = ({ options, label }) => {
     }
     const obj = options.find((item) => item.key == e.key)
     if (label == 'Brand') {
-      setCurrentItem(obj.label.props.children[1].trim())
+      setCurrentItem(obj.label.props.children[2].trim())
     } else {
       setCurrentItem(obj.label)
     }

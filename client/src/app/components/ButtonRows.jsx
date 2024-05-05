@@ -17,7 +17,6 @@ import suzuki from '../../images/brands/suzuki.png'
 import volkswagen from '../../images/brands/Volkswagen.png'
 import Image from 'next/image'
 
-
 const budgetsMapping = {
   '<4 Lakh': '0-400000',
   '4-8 Lakh': '400000-800000',
@@ -188,9 +187,9 @@ const ButtonRows = () => {
                 className="mySwiperCloudBrands"
               >
                 {Object.keys(brandsMapping).map(
-                  (brand) =>
+                  (brand, i) =>
                     brandsMapping[brand] && (
-                      <SwiperSlide style={{ paddingBottom: '40px' }}>
+                      <SwiperSlide style={{ paddingBottom: '40px' }} key={i}>
                         <BrandCard
                           logoUrl={brandsMapping[brand]}
                           name={brand}

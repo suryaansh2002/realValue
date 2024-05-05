@@ -77,7 +77,6 @@ const BookingCard = ({ sendDataToParent }) => {
           }
           onCalendarChange={(value) => {
             const dateString = value.format('MMMM D, YYYY')
-            console.log(dateString)
           }}
         />
       </Form.Item>
@@ -103,7 +102,6 @@ const BookingCard = ({ sendDataToParent }) => {
           minuteStep={30}
           onCalendarChange={(value) => {
             const timeString = value ? value.format('HH:mm a') : ''
-            console.log(timeString)
           }}
         />
       </Form.Item>

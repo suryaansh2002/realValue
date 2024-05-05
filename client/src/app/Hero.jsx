@@ -104,14 +104,17 @@ const budgets = [
   {
     label: '<4 Lakh',
     key: '1',
+    range: '0-400000'
   },
   {
     label: '4-8 Lakh',
     key: '2',
+    range: '400000-800000'
   },
   {
     label: '>8 Lakh',
     key: '3',
+    range: '800000'
   },
 ]
 
@@ -142,7 +145,6 @@ const Hero = () => {
   const fetchAllBrands = async () => {
     try {
       const response = await axios.get(url + 'api/listings/brands')
-      console.log(response.data)
       if (response.data) {
         const arr = response.data.map((b, index) => {
           return {
@@ -154,9 +156,7 @@ const Hero = () => {
             key: `${index + 1}`,
           }
         })
-        console.log(arr)
         setBrands(arr)
-
         setLoading(false)
       }
     } catch (e) {
@@ -232,7 +232,7 @@ const Hero = () => {
             </span>
             <span className="button-wrapper mr-3 md:mt-9">
               <a
-                href="#"
+                href="/buy"
                 className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center border border-gray-300 rounded-lg text-white focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 hover:!bg-yellow-500 dark:hover:bg-gray-700 dark:focus:ring-gray-800 md:mt-10"
               >
                 Search

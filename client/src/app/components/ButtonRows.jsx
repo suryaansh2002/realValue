@@ -17,33 +17,40 @@ import suzuki from '../../images/brands/suzuki.png'
 import volkswagen from '../../images/brands/Volkswagen.png'
 import Image from 'next/image'
 
-const ButtonRow = ({ items }) => (
-  <div className="flex flex-wrap gap-4">
-    {items.map((item, index) => (
-      <div
-        key={index}
-        className="bg-blue-500 text-white rounded-md px-4 py-2 text-center cursor-pointer"
-      >
-        {item}
-      </div>
-    ))}
-  </div>
-)
 
+const budgetsMapping = {
+  '<4 Lakh': '0-400000',
+  '4-8 Lakh': '400000-800000',
+  '>8 Lakh': '800000',
+}
 const handleBtnClick = (item, type) => {
-  const tempObj = {
-    [type]: item,
+  let tempObj = {}
+  if (type == 'Budget') {
+    tempObj = {
+      [type]: budgetsMapping[item.trim()],
+    }
+  } else {
+    tempObj = {
+      [type]: item,
+    }
   }
   localStorage.setItem('filters', JSON.stringify(tempObj))
-  // window.location.href = '/buy'
+  if (item == '') {
+    localStorage.removeItem('filters')
+  }
+
+  window.location.href = '/buy'
 }
 
 const handleBrandClick = (item) => {
   const tempObj = {
-    brand: item,
+    Brand: item,
   }
   localStorage.setItem('filters', JSON.stringify(tempObj))
-  // window.location.href = '/buy'
+  if (item == '') {
+    localStorage.removeItem('filters')
+  }
+  window.location.href = '/buy'
 }
 
 const ButtonCard = ({ item, type }) => (
@@ -191,16 +198,14 @@ const ButtonRows = () => {
                       </SwiperSlide>
                     ),
                 )}
-                      <SwiperSlide style={{ paddingBottom: '40px' }}>
-
-<div
-        className="flex flex-col w-max px-2 items-center py-8 justify-center bg-white cursor-pointer shadow-md rounded-lg p-3 hover:bg-gray-300"
-        onClick={() => handleBrandClick('')}
-      >
-        View All
-      </div>
-      </SwiperSlide>
-
+                <SwiperSlide style={{ paddingBottom: '40px' }}>
+                  <div
+                    className="flex flex-col w-max px-2 items-center py-8 justify-center bg-white cursor-pointer shadow-md rounded-lg p-3 hover:bg-gray-300"
+                    onClick={() => handleBrandClick('')}
+                  >
+                    View All
+                  </div>
+                </SwiperSlide>
               </Swiper>
             )}
             <h3 className="text-2xl font-bold mb-3 mt-8 text-gray-600">
@@ -210,11 +215,11 @@ const ButtonRows = () => {
               {isDesktop ? (
                 <>
                   {types.map((type, index) => (
-                    <ButtonCard key={index} item={type} type={'type'} />
+                    <ButtonCard key={index} item={type} type={'Segment'} />
                   ))}
                   <div
                     className="bg-white shadow-md rounded-lg p-4 w-40 hover:bg-gray-300 cursor-pointer"
-                    onClick={() => handleBtnClick('', 'type')}
+                    onClick={() => handleBtnClick('', 'Segment')}
                   >
                     <div className="text-center ">View All</div>
                   </div>
@@ -229,17 +234,16 @@ const ButtonRows = () => {
                 >
                   {types.map((type, index) => (
                     <SwiperSlide key={index} style={{ paddingBottom: '40px' }}>
-                      <ButtonCard item={type} type={'type'} />
+                      <ButtonCard item={type} type={'Segment'} />
                     </SwiperSlide>
                   ))}
-                <SwiperSlide key={'all'} style={{ paddingBottom: '40px' }}>
-
-                  <div
-                    className="bg-white shadow-md rounded-lg p-4 w-40 hover:bg-gray-300 cursor-pointer"
-                    onClick={() => handleBtnClick('', 'type')}
-                  >
-                    <div className="text-center ">View All</div>
-                  </div>
+                  <SwiperSlide key={'all'} style={{ paddingBottom: '40px' }}>
+                    <div
+                      className="bg-white shadow-md rounded-lg p-4 w-40 hover:bg-gray-300 cursor-pointer"
+                      onClick={() => handleBtnClick('', 'type')}
+                    >
+                      <div className="text-center ">View All</div>
+                    </div>
                   </SwiperSlide>
                 </Swiper>
               )}
@@ -250,9 +254,9 @@ const ButtonRows = () => {
             <div className="flex flex-wrap gap-4">
               {isDesktop ? (
                 <>
-                  <ButtonCard item="< 4 Lakh" type={'budget'} />
-                  <ButtonCard item="4 - 8 Lakh" type={'budget'} />
-                  <ButtonCard item="> 8 Lakh" type={'budget'} />
+                  <ButtonCard item="<4 Lakh" type={'Budget'} />
+                  <ButtonCard item="4-8 Lakh" type={'Budget'} />
+                  <ButtonCard item=">8 Lakh" type={'Budget'} />
                 </>
               ) : (
                 <Swiper
@@ -263,13 +267,13 @@ const ButtonRows = () => {
                   className="mySwiperCloudPrice"
                 >
                   <SwiperSlide style={{ paddingBottom: '40px' }}>
-                    <ButtonCard item="< 4 Lakh" type={'budget'} />
+                    <ButtonCard item="< 4 Lakh" type={'Budget'} />
                   </SwiperSlide>
                   <SwiperSlide style={{ paddingBottom: '40px' }}>
-                    <ButtonCard item="4 - 8 Lakh" type={'budget'} />
+                    <ButtonCard item="4 - 8 Lakh" type={'Budget'} />
                   </SwiperSlide>
                   <SwiperSlide style={{ paddingBottom: '40px' }}>
-                    <ButtonCard item="> 8 Lakh" type={'budget'} />
+                    <ButtonCard item="> 8 Lakh" type={'Budget'} />
                   </SwiperSlide>
                 </Swiper>
               )}

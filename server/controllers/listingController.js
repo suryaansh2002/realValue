@@ -104,11 +104,22 @@ exports.getFilteredListings = async (req, res) => {
           });
           query["$or"] = budgetQueries.filter((q) => q !== null);
           break;
+        case "kmDriven":
+          const kmQueries = filters[key].map((range) => {
+            const [min, max] = range.split("-").map(Number);
+            if (!isNaN(min) && !isNaN(max)) {
+              return { kmDriven: { $gte: min, $lte: max } };
+            } else if (!isNaN(min)) {
+              return { kmDriven: { $gte: min } };
+            } else if (!isNaN(max)) {
+              return { kmDriven: { $lte: max } };
+            }
+            return null;
+          });
+          query["$or"] = kmQueries.filter((q) => q !== null);
+          break;
         case "modelYear":
           query["year"] = { $gte: filters[key][0], $lte: filters[key][1] };
-          break;
-        case "kmDriven":
-          query[key] = { $gte: filters[key][0], $lte: filters[key][1] };
           break;
       }
     });
@@ -118,7 +129,6 @@ exports.getFilteredListings = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
-
 
 // Read one listing by ID
 exports.getListingById = async (req, res) => {

@@ -75,9 +75,7 @@ const CreateListing = () => {
   const getSingleListing = async () => {
     const tempArr = window.location.href.split('/')
     const id = tempArr[tempArr.length - 1]
-    console.log(id)
     const response = await axios.get(url + `api/listings/${id}`)
-    console.log(response.data)
     setCurrListing(response.data)
   }
 
@@ -107,7 +105,6 @@ const CreateListing = () => {
       setImages(tempArr)
       console.log('Uploaded image:', img.secure_url)
     }
-    console.log(tempArr)
   }
 
   const handleImageChange = async (e) => {
@@ -152,7 +149,6 @@ const CreateListing = () => {
         }),
       )
 
-      console.log(extractedImages)
       const getFileName = (path) => {
         return path.split('/').pop()
       }
@@ -164,7 +160,6 @@ const CreateListing = () => {
         return fileNameA.localeCompare(fileNameB)
       })
 
-      console.log(extractedImages)
       setImagesLength(extractedImages.length)
       await uploadImagesToCloudinary(extractedImages)
 
@@ -220,7 +215,6 @@ const CreateListing = () => {
       if (images.length) {
         tempData['images'] = images
       }
-      console.log(tempData)
       setImages([])
       const tempArr = window.location.href.split('/')
       const id = tempArr[tempArr.length - 1]

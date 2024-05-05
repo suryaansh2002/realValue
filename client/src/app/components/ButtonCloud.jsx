@@ -17,6 +17,14 @@ const ButtonCloud = ({ options, label }) => {
       setCurrentItem(obj.label)
     }
   }
+
+  const budgetsMapping = 
+    {
+      '<4 Lakh': '0-400000',
+      '4-8 Lakh': '400000-800000',
+      '>8 Lakh': '800000',
+    }
+  
   useEffect(() => {
     if (currentItem) {
       let tempObj = localStorage.getItem('filters')
@@ -25,10 +33,13 @@ const ButtonCloud = ({ options, label }) => {
       } else {
         tempObj = JSON.parse(tempObj)
       }
-      if (label == 'Brand') {
-        tempObj[label] = currentItem.innerText
+    
+    if (label == 'Budget') {
+        tempObj[label] = budgetsMapping[currentItem.trim()]
       }
+    else{
       tempObj[label] = currentItem
+    }
       localStorage.setItem('filters', JSON.stringify(tempObj))
     }
   }, [currentItem])

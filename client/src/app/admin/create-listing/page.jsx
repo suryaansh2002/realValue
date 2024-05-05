@@ -67,7 +67,6 @@ const CreateListing = () => {
       setImages(tempArr)
       console.log('Uploaded image:', img.secure_url)
     }
-    console.log(tempArr)
   }
 
   const handleImageChange = async (e) => {
@@ -112,7 +111,6 @@ const CreateListing = () => {
         }),
       )
 
-      console.log(extractedImages)
       const getFileName = (path) => {
         return path.split('/').pop()
       }
@@ -124,7 +122,6 @@ const CreateListing = () => {
         return fileNameA.localeCompare(fileNameB)
       })
 
-      console.log(extractedImages)
       setImagesLength(extractedImages.length)
       await uploadImagesToCloudinary(extractedImages)
 

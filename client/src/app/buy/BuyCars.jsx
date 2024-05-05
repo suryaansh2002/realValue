@@ -16,9 +16,24 @@ import FeaturedCard from '@/app/components/FeaturedCard'
 
 const sortOptions = [
   { name: 'Price: Low to High', href: '#', current: false, param: 'price_asc' },
-  { name: 'Price: High to Low', href: '#', current: false, param: 'price_desc' },
-  { name: 'KM Driven: Low to High', href: '#', current: false, param: 'kmDriven_asc' },
-  { name: 'KM Driven: High to Low', href: '#', current: false, param: 'kmDriven_desc' },
+  {
+    name: 'Price: High to Low',
+    href: '#',
+    current: false,
+    param: 'price_desc',
+  },
+  {
+    name: 'KM Driven: Low to High',
+    href: '#',
+    current: false,
+    param: 'kmDriven_asc',
+  },
+  {
+    name: 'KM Driven: High to Low',
+    href: '#',
+    current: false,
+    param: 'kmDriven_desc',
+  },
   { name: 'Year: Low to High', href: '#', current: false, param: 'year_asc' },
   { name: 'Year: High to Low', href: '#', current: false, param: 'year_desc' },
 ]
@@ -98,13 +113,12 @@ export default function Buy({ allListings }) {
     {
       id: 'kmDriven',
       name: 'KM Driven',
-      type: 'slider',
-      config: {
-        min: 1000,
-        max: 100000,
-        step: 1000,
-        value: [10000, 100000],
-      },
+      options: [
+        { value: '0-10000', label: '< 10 Thousand', checked: false },
+        { value: '10000-20000', label: '10-20 Thousand', checked: false },
+        { value: '20000-50000', label: '20-50 Thousand', checked: false },
+        { value: '50000', label: '50 Thousand +', checked: false },
+      ],
     },
     {
       id: 'seats',
@@ -133,38 +147,39 @@ export default function Buy({ allListings }) {
     }
   }
 
-
-  const clearFilters = () =>{
+  const clearFilters = () => {
+    localStorage.removeItem('filters')
     window.location.reload()
   }
 
-  const updateFilters = async(inputFilters) => {
-    const obj = {}
-    filters.map((filter) => {
-      const key = filter['id']
-      let tempArr = []
-      if (filter['type'] == 'slider') {
-        tempArr = filter['config']['value']
-      } else {
-        filter['options'].map((opt) => {
-          if (opt['checked'] == true) {
-            tempArr.push(opt['value'])
-          }
-        })
-      }
-      if (tempArr.length) {
-        obj[key] = tempArr
-      }
-    })
-    try{
-
-    const response = await axios.post(url + 'api/listings/filtered', obj)
-    setListings(response.data)
-  }
-catch(e){
-  console.log(e.message)
-}
-
+  const updateFilters = async (inputFilters) => {
+    let obj = {}
+    if (inputFilters) {
+      obj = inputFilters
+    } else {
+      filters.map((filter) => {
+        const key = filter['id']
+        let tempArr = []
+        if (filter['type'] == 'slider') {
+          tempArr = filter['config']['value']
+        } else {
+          filter['options'].map((opt) => {
+            if (opt['checked'] == true) {
+              tempArr.push(opt['value'])
+            }
+          })
+        }
+        if (tempArr.length) {
+          obj[key] = tempArr
+        }
+      })
+    }
+    try {
+      const response = await axios.post(url + 'api/listings/filtered', obj)
+      setListings(response.data)
+    } catch (e) {
+      console.log(e.message)
+    }
   }
   const fetchAllListings = async () => {
     try {
@@ -186,12 +201,20 @@ catch(e){
       if (response.data) {
         response.data.sort()
         const tempObj = [...filters]
+        let checkedBrands = []
+        if (localStorage.getItem('filters')) {
+          const filtersObj = JSON.parse(localStorage.getItem('filters'))
+          const brand = filtersObj['Brand']
+          if (brand) {
+            checkedBrands.push(brand)
+          }
+        }
         const index = tempObj.findIndex((item) => item.id == 'brand')
         tempObj[index]['options'] = response.data.map((item) => {
           return {
             value: item,
             label: item,
-            checked: false,
+            checked: checkedBrands.includes(item),
           }
         })
         setFilters(tempObj)
@@ -211,18 +234,54 @@ catch(e){
     tempFilters[index]['config']['value'] = value
     setFilters(tempFilters)
   }
-  const handleCheckboxChange = (id, label, e) => {
+  const handleCheckboxChange = (id, label, checked) => {
     const tempFilters = [...filters]
 
     const index = tempFilters.findIndex((item) => item.id == id)
     const options = tempFilters[index]['options']
 
     const optionsIndex = options.findIndex((item) => item.label == label)
-    options[optionsIndex]['checked'] = e.target.checked
+    options[optionsIndex]['checked'] = checked
 
     tempFilters[index]['options'] = options
 
     setFilters(tempFilters)
+  }
+
+  const updateCheckedPrices = () => {
+    if (localStorage.getItem('filters')) {
+      const filtersObj = JSON.parse(localStorage.getItem('filters'))
+      const price = filtersObj['Budget']
+
+      const tempFilters = [...filters]
+      const priceIndex = tempFilters.findIndex((item) => item.id == 'budget')
+
+      let newOptions = []
+      if (price) {
+        let priceObj = tempFilters[priceIndex]['options'].find(
+          (item) => item.value == price,
+        )
+        if (priceObj) {
+          newOptions = tempFilters[priceIndex]['options'].map((item) => {
+            let tempItem = { ...item }
+            if (item['value'] == price) {
+              tempItem['checked'] = true
+            }
+            return tempItem
+          })
+        } else {
+          newOptions = tempFilters[priceIndex]['options'].map((item, index) => {
+            let tempItem = { ...item }
+            if (index >= 2) {
+              tempItem['checked'] = true
+            }
+            return tempItem
+          })
+        }
+        tempFilters[priceIndex]['options'] = newOptions
+        setFilters(tempFilters)
+      }
+    }
   }
 
   const fetchAllTypes = async () => {
@@ -232,11 +291,19 @@ catch(e){
         response.data.sort()
         const tempObj = [...filters]
         const index = tempObj.findIndex((item) => item.id == 'type')
+        let checkedSegments = []
+        if (localStorage.getItem('filters')) {
+          const filtersObj = JSON.parse(localStorage.getItem('filters'))
+          const type = filtersObj['Segment']
+          if (type) {
+            checkedSegments.push(type)
+          }
+        }
         tempObj[index]['options'] = response.data.map((item) => {
           return {
             value: item,
             label: item,
-            checked: false,
+            checked: checkedSegments.includes(item),
           }
         })
         setFilters(tempObj)
@@ -270,15 +337,37 @@ catch(e){
     }
   }
 
+  const fetchInitialFilteredListings = () => {
+    const filtersObj = JSON.parse(localStorage.getItem('filters'))
+    const brand = filtersObj['Brand']
+    const type = filtersObj['Segment']
+    const budget = filtersObj['Budget']
+    let newFiltersObj = {}
+    if (brand) {
+      newFiltersObj['brand'] = [brand]
+    }
+    if (type) {
+      newFiltersObj['type'] = [type]
+    }
+    if (budget) {
+      newFiltersObj['budget'] = [budget]
+    }
+    updateFilters(newFiltersObj)
+  }
   useEffect(() => {
-    if (allListings) {
-      setListings(allListings)
+    if (localStorage.getItem('filters')) {
+      fetchInitialFilteredListings()
     } else {
-      fetchAllListings()
+      if (allListings) {
+        setListings(allListings)
+      } else {
+        fetchAllListings()
+      }
     }
     fetchAllBrands()
     fetchAllTypes()
     fetchAllSeats()
+    updateCheckedPrices()
   }, [])
 
   return (
@@ -369,7 +458,8 @@ catch(e){
                                     step={section.config.step}
                                     tooltip={{
                                       formatter:
-                                        section.id != 'modelYear' && sliderFormatter,
+                                        section.id != 'modelYear' &&
+                                        sliderFormatter,
                                     }}
                                     onChange={(val) =>
                                       handleSliderChange(section.id, val)
@@ -393,7 +483,7 @@ catch(e){
                                           handleCheckboxChange(
                                             section.id,
                                             option.label,
-                                            e,
+                                            e.target.checked,
                                           )
                                         }
                                         className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
@@ -465,7 +555,7 @@ catch(e){
                         <Menu.Item key={option.name}>
                           {({ active }) => (
                             <a
-                              onClick={()=>handleSort(option.param)}
+                              onClick={() => handleSort(option.param)}
                               className={classNames(
                                 option.current
                                   ? 'font-medium text-gray-900'
@@ -543,7 +633,8 @@ catch(e){
                                   step={section.config.step}
                                   tooltip={{
                                     formatter:
-                                      section.id != 'modelYear' && sliderFormatter,
+                                      section.id != 'modelYear' &&
+                                      sliderFormatter,
                                   }}
                                   onChange={(val) =>
                                     handleSliderChange(section.id, val)
@@ -566,7 +657,7 @@ catch(e){
                                       handleCheckboxChange(
                                         section.id,
                                         option.label,
-                                        e,
+                                        e.target.checked,
                                       )
                                     }
                                     className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
@@ -593,18 +684,24 @@ catch(e){
                   Filter
                 </Button>
                 <Button
-                    onClick={() => clearFilters()}
-                    className="w-[100%]  mt-4 !hover:text-white"
-                  >
-                    Clear Filters
-                  </Button>
+                  onClick={() => clearFilters()}
+                  className="w-[100%]  mt-4 !hover:text-white"
+                >
+                  Clear Filters
+                </Button>
               </form>
 
               {/* Product grid */}
               <div className="lg:col-span-4 space-x-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 mt-8 px-8 mb-12">
-                {listings.map((car) => (
+                {listings.length? listings.map((car) => (
                   <FeaturedCard key={car._id} car={car} />
-                ))}
+                ))
+              :
+              <div className='text-center font-semibold p-4 lg:col-span-4'>
+                Sorry, no vehicles match the filters set...
+                </div>
+              
+              }
               </div>
             </div>
           </section>

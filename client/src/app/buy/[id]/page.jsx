@@ -49,7 +49,6 @@ const page = ({ params: { id } }) => {
   }
 
   const handleCancel = () => {
-    console.log('Clicked cancel button')
     setOpen(false)
   }
 
@@ -65,7 +64,6 @@ const page = ({ params: { id } }) => {
         email: data.email,
       })
       .then((res) => {
-        console.log(res)
         setSuccess(true)
         setConfirmLoading(false)
         setTimeout(() => {
@@ -84,7 +82,6 @@ const page = ({ params: { id } }) => {
     axios
       .get(getListingURL)
       .then((res) => {
-        console.log(res.data)
         setCarData(res.data)
       })
       .catch((err) => {
@@ -92,7 +89,6 @@ const page = ({ params: { id } }) => {
         setLoading(false)
       })
       .finally(() => {
-        console.log('API call completed')
         setLoading(false)
       })
   }, [])

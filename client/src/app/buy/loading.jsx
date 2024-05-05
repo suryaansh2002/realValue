@@ -2,7 +2,7 @@ import React from 'react'
 
 const loading = () => {
   return (
-    <div className="flex flex-col lg:flex-row lg:max-w-6xl mx-auto p-4 sm:p-6 lg:p-8">
+    <div className="flex flex-col lg:flex-row lg:max-w-6xl mx-auto p-4 sm:p-6 lg:p-8 lg:gap-x-10 gap-5">
       {[1, 2, 3, 4].map((_, i) => (
         <div
           role="status"

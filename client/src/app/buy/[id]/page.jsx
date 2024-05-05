@@ -210,19 +210,22 @@ const page = ({ params: { id } }) => {
                 gridTemplateColumns: 'repeat(auto-fit, minmax(100px, 1fr)',
               }}
             >
-              <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
+              <span className="flex items-center justify-center bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
                 {carData.fuelType}
               </span>
-              <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
+              <span className="flex items-center justify-center bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
                 {carData.vehicleNumber}
               </span>
-              <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
+              <span className="flex items-center justify-center bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
                 {toTitleCase(carData.transmissionType)}
               </span>
-              <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
+              <span className="flex items-center justify-center bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
                 {getOwnerShipSuffix(carData.ownership)}
               </span>
-              <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
+              <span className="flex items-center justify-center bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 w-full">
+                {`${carData.type}`}
+              </span>
+              <span className="flex items-center justify-center bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
                 {`${carData.kmDriven}km`}
               </span>
             </div>

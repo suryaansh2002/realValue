@@ -68,7 +68,7 @@ const AboutUs = () => {
           <div>{/* Vision */}</div>
         </div>
         <Features />
-        <div className="w-[100vw] block md:inline-block md:pl-8 align-top py-8 dark:bg-gray-900 text-white">
+        <div className="w-[100vw] block md:inline-block md:pl-8 align-top py-8 bg-gray-900 text-white">
           <div className="font-semibold text-3xl my-8 ml-4 md:ml-12">
             Why Sell Your Car To Us?
           </div>

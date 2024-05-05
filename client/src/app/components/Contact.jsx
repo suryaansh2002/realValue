@@ -67,7 +67,7 @@ const Contact = () => {
         <div className="mt-8">
           <a
             href="/contact"
-            className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-900 border rounded-lg focus:ring-4 focus:ring-gray-100 dark:text-gray-800 dark:border-gray-700 dark:bg-slate-100 dark:hover:bg-gray-400 dark:focus:ring-gray-800 mr-5 hover:!bg-yellow-500"
+            className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-900 border rounded-lg focus:ring-4   border-gray-700 bg-slate-100 focus:ring-gray-800 mr-5 hover:!bg-yellow-500"
           >
             More Details <FiArrowRight className="ml-1" />
           </a>

@@ -22,7 +22,7 @@ const Brands = () => {
         <h3 className="mb-6 lg:mb-6 text-xl tracking-tight leading-tight text-gray-500 md:text-2xl">
           Backed by the best,
         </h3>
-        <div className="grid grid-cols-2 gap-8 text-gray-500 sm:gap-12 md:grid-cols-3 lg:grid-cols-6 dark:text-gray-400">
+        <div className="grid grid-cols-2 gap-8 sm:gap-12 md:grid-cols-3 lg:grid-cols-6 text-gray-400">
           <div className="flex justify-center items-center">
             <Image src={poona} alt="Poona" width={250} height={250} />
           </div>

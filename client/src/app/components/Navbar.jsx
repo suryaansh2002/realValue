@@ -37,7 +37,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="dark:bg-gray-900 py-4">
+      <div className="bg-gray-900 py-4">
         <div className="flex items-center justify-center gap-x-60 lg:justify-around lg:gap-x-96">
           <div className="mx-auto">
             <Link href="/">
@@ -73,7 +73,7 @@ const Navbar = () => {
         closable={false}
         onClose={onClose}
         open={visible}
-        className="dark:bg-gray-900 text-white"
+        className="bg-gray-900 text-white"
         style={{ backgroundColor: '#111827', color: 'white' }}
         extra={
           <Space>

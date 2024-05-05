@@ -88,7 +88,7 @@ const SellRequestForm = () => {
   }
 
   return (
-    <div className="text-left pt-4 dark:bg-gray-900 text-white overflow-x-hidden">
+    <div className="text-left pt-4 bg-gray-900 text-white overflow-x-hidden">
       <div className="font-semibold text-3xl mb-8 ml-4 md:ml-10">
         Sell Your Vehicle
       </div>
@@ -290,7 +290,7 @@ const SellRequestForm = () => {
       </div>
 
       <div className="font-semibold text-2xl mt-8 pl-6 lg:pl-12">FAQs</div>
-      <p className="text-gray-500 text-sm ml-6 md:text-lg md:ml-10 my-4 dark:text-gray-400">
+      <p className=" text-sm ml-6 md:text-lg md:ml-10 my-4 text-gray-400">
         Please reach out to us if your queries are not answered below.
       </p>
       <div className="ml-6 md:ml-10 pb-4">

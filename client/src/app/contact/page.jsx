@@ -6,14 +6,14 @@ import Link from 'next/link'
 
 const ContactUsPage = () => {
   return (
-    <section className="bg-white dark:bg-gray-900 max-w-9xl">
+    <section className="bg-gray-900 max-w-9xl">
       <div className="container px-4 py-8 lg:px-12">
         <div>
-          <h1 className="mt-2 text-3xl font-semibold text-gray-800 md:text-4xl dark:text-white">
+          <h1 className="mt-2 text-3xl font-semibold  md:text-4xl text-white">
             Get in touch
           </h1>
 
-          <p className="mt-3 text-lg text-gray-500 dark:text-gray-400">
+          <p className="mt-3 text-lg  text-gray-400">
             We would love to hear from you.
           </p>
         </div>
@@ -26,7 +26,7 @@ const ContactUsPage = () => {
         >
           <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-1">
             <div>
-              <span className="inline-block p-3 text-yellow-500 rounded-full bg-blue-100/80 dark:bg-gray-800">
+              <span className="inline-block p-3 text-yellow-500 rounded-full bg-gray-800">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -43,10 +43,8 @@ const ContactUsPage = () => {
                 </svg>
               </span>
 
-              <h2 className="mt-4 text-xl font-medium text-gray-800 dark:text-white">
-                Email
-              </h2>
-              <p className="mt-2 text-base text-gray-500 dark:text-gray-400">
+              <h2 className="mt-4 text-xl font-medium  text-white">Email</h2>
+              <p className="mt-2 text-base  text-gray-400">
                 Drop a mail for any queries.
               </p>
               <div className="space-y-2">
@@ -63,7 +61,7 @@ const ContactUsPage = () => {
             </div>
 
             <div>
-              <span className="inline-block p-3 text-yellow-500 rounded-full bg-blue-100/80 dark:bg-gray-800">
+              <span className="inline-block p-3 text-yellow-500 rounded-full bg-gray-800">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -80,10 +78,8 @@ const ContactUsPage = () => {
                 </svg>
               </span>
 
-              <h2 className="mt-4 text-xl font-medium text-gray-800 dark:text-white">
-                Phone
-              </h2>
-              <p className="mt-2 text-base text-gray-500 dark:text-gray-400">
+              <h2 className="mt-4 text-xl font-medium  text-white">Phone</h2>
+              <p className="mt-2 text-base  text-gray-400">
                 Everyday from 9:30am to 7pm.
               </p>
               <div className="space-y-2">
@@ -109,16 +105,12 @@ const ContactUsPage = () => {
             </div>
 
             <div>
-              <span className="inline-block p-3 text-yellow-500 rounded-full bg-blue-100/80 dark:bg-gray-800 mx-auto">
+              <span className="inline-block p-3 text-yellow-500 rounded-full bg-gray-800 mx-auto">
                 <FaUsers className="text-yellow-500 text-2xl" size={20} />
               </span>
 
-              <h2 className="mt-4 text-xl font-medium text-gray-800 dark:text-white">
-                Socials
-              </h2>
-              <p className="mt-2 text-base text-gray-500 dark:text-gray-400">
-                Follow us!
-              </p>
+              <h2 className="mt-4 text-xl font-medium  text-white">Socials</h2>
+              <p className="mt-2 text-base  text-gray-400">Follow us!</p>
               <div className="flex items-center justify-start space-x-6 mt-3">
                 <Link
                   href="https://www.facebook.com/RealValueRanchi/"
@@ -139,7 +131,7 @@ const ContactUsPage = () => {
           </div>
 
           <div>
-            <span className="inline-block p-3 text-yellow-500 rounded-full bg-blue-100/80 dark:bg-gray-800">
+            <span className="inline-block p-3 text-yellow-500 rounded-full bg-gray-800">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -161,10 +153,8 @@ const ContactUsPage = () => {
               </svg>
             </span>
 
-            <h2 className="mt-4 text-xl font-medium text-gray-800 dark:text-white">
-              Showrooms
-            </h2>
-            <p className="mt-2 text-base text-gray-500 dark:text-gray-400">
+            <h2 className="mt-4 text-xl font-medium  text-white">Showrooms</h2>
+            <p className="mt-2 text-base  text-gray-400">
               Browse our exquisite collection of cars.
             </p>
             <div className="space-y-2">

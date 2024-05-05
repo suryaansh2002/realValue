@@ -2,7 +2,13 @@ import React from 'react'
 import Image from 'next/image'
 import logo from '../../images/logo.png'
 import { MdCopyright } from 'react-icons/md'
-import { FaFacebook, FaInstagram, FaClock, FaCalendarAlt } from 'react-icons/fa'
+import {
+  FaFacebook,
+  FaInstagram,
+  FaClock,
+  FaCalendarAlt,
+  FaWhatsapp,
+} from 'react-icons/fa'
 
 const Footer = () => {
   return (
@@ -24,6 +30,14 @@ const Footer = () => {
             <a href="mailto:aman@poddarmotors.com">aman@poddarmotors.com</a>
           </p>
           <div className="flex mr-0 my-2  lg:my-0 lg:mr-4 font-semibold">
+            <a
+              href="https://wa.me/+918873002702?text=Hi there looking forward to connecting with you."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-900 hover:underline mx-2"
+            >
+              <FaWhatsapp className="text-green-500 text-2xl" />
+            </a>
             <a
               href="https://www.facebook.com/RealValueRanchi/"
               target="_blank"

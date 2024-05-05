@@ -68,7 +68,7 @@ const Offers = () => {
           >
             {offers.map((offer) => (
               <SwiperSlide key={offer._id} style={{ paddingBottom: '40px' }}>
-                <div className="max-w-sm bg-white  rounded-lg shadow dark:bg-gray-800">
+                <div className="max-w-sm rounded-lg shadow">
                   <Image
                     className="rounded-t-lg object-cover w-full"
                     src={offer.image}

@@ -14,6 +14,7 @@ import { Button, Slider } from 'antd'
 import { AmountWithCommas } from '@/app/utils'
 import FeaturedCard from '@/app/components/FeaturedCard'
 
+
 const sortOptions = [
   { name: 'Price: Low to High', href: '#', current: false, param: 'price_asc' },
   {

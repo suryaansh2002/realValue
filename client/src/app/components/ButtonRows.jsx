@@ -105,7 +105,7 @@ const ButtonRows = () => {
     Mahindra: mahindra,
     Tata: tata,
     Maruti: maruti,
-    Suzuki: suzuki,
+    // Suzuki: suzuki,
     Volkswagen: volkswagen,
   }
 

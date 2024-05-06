@@ -154,6 +154,7 @@ export default function Buy({ allListings }) {
   }
 
   const updateFilters = async (inputFilters) => {
+    setMobileFiltersOpen(false)
     let obj = {}
     if (inputFilters) {
       obj = inputFilters
@@ -458,6 +459,7 @@ export default function Buy({ allListings }) {
                                     max={section.config.max}
                                     step={section.config.step}
                                     tooltip={{
+                                      open: true,
                                       formatter:
                                         section.id != 'modelYear' &&
                                         sliderFormatter,
@@ -633,6 +635,7 @@ export default function Buy({ allListings }) {
                                   max={section.config.max}
                                   step={section.config.step}
                                   tooltip={{
+                                    open: true,
                                     formatter:
                                       section.id != 'modelYear' &&
                                       sliderFormatter,

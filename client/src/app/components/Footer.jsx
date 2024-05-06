@@ -18,17 +18,17 @@ const Footer = () => {
           <Image src={logo} alt="Logo" className="w-20 h-20 mr-2" />
           <div>
             <p className="font-bold">Real Value</p>
-            <p>Poddar Motors, Ranchi, Jharkhand</p>
-            <p>India</p>
+            {/* <p>Poddar Motors, Ranchi, Jharkhand</p>
+            <p>India</p> */}
           </div>
         </div>
         <div className="flex flex-col lg:flex-row items-center">
-          <p className="mr-0 lg:mr-4 font-semibold mb-2 lg:mb-0">
+          {/* <p className="mr-0 lg:mr-4 font-semibold mb-2 lg:mb-0">
             <a href="tel:8873002702">+91 8873002702</a>
           </p>
           <p className="mr-0 lg:mr-4 font-semibold ">
             <a href="mailto:aman@poddarmotors.com">aman@poddarmotors.com</a>
-          </p>
+          </p> */}
           <div className="flex mr-0 my-2  lg:my-0 lg:mr-4 font-semibold">
             <a
               href="https://wa.me/+918873002702?text=Hi there looking forward to connecting with you."
@@ -57,9 +57,11 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="container w-[100vw] text-center text-sm mt-2">
-        <MdCopyright className="inline text-lg" /> Copyright{' '}
-        {new Date().getFullYear()}
+      <div className="w-[100vw] text-sm mt-2">
+        <div className="ml-[50%] w-max -translate-x-[50%] ">
+          <MdCopyright className="inline text-lg" /> Copyright{' '}
+          {new Date().getFullYear()} Poddar Motors Pvt. Ltd. All rights reserved
+        </div>
       </div>
     </footer>
   )

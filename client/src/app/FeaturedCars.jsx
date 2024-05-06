@@ -68,7 +68,7 @@ const FeaturedCars = ({ featuredCarData }) => {
             loop={true}
             centeredSlides={true}
             pagination={{ clickable: true }}
-            autoplay={{ delay: 2000, disableOnInteraction: false }}
+            autoplay={{ delay: 2000, disableOnInteraction: true, pauseOnMouseEnter: true }}
             breakpoints={{
               640: { slidesPerView: 1, spaceBetween: 32 },
               768: { slidesPerView: 2, spaceBetween: 32 },

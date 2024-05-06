@@ -7,9 +7,9 @@ import { toTitleCase } from '@/app/utils'
 const FeaturedCard = ({ car }) => {
   return (
     <a href={`/buy/${car._id}`}>
-      <div className="max-w-sm rounded overflow-hidden shadow-lg">
+      <div className="max-w-sm rounded align-top  overflow-hidden shadow-lg  hover:scale-105 hover:border-yellow-500 transition-transform duration-300 border-2 border-transparent">
         <Image
-          className="w-full"
+          className="w-full h-[20rem]"
           src={car.images[0]}
           width={300}
           height={300}

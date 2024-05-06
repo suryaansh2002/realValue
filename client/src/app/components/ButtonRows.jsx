@@ -79,9 +79,9 @@ const BrandScrollContainer = ({ brands, brandsMapping }) => {
   return (
     <span className="md:flex overflow-x-auto py-2 gap-x-5 inline">
       {brands.map(
-        (brand) =>
+        (brand, i) =>
           brandsMapping[brand] && (
-            <BrandCard logoUrl={brandsMapping[brand]} name={brand} />
+            <BrandCard logoUrl={brandsMapping[brand]} key={i} name={brand} />
           ),
       )}
       <div

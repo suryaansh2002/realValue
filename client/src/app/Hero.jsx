@@ -5,8 +5,12 @@ import Image from 'next/image'
 import ButtonCloud from './components/ButtonCloud'
 
 import audi from '@/images/brands/audi.png'
+import bmw from '@/images/brands/bmw.png'
+import fiat from '@/images/brands/fiat.png'
+import ford from '@/images/brands/ford.png'
 import honda from '@/images/brands/honda.png'
 import hyundai from '@/images/brands/hyundai.png'
+import jeep from '@/images/brands/jeep.png'
 import kia from '@/images/brands/kia.png'
 import mahindra from '@/images/brands/mahindra.png'
 import suzuki from '@/images/brands/suzuki.png'
@@ -22,8 +26,12 @@ const imageStyles = {
 
 const brandsMapping = {
   Audi: audi,
+  BMW: bmw,
+  Fiat: fiat,
+  Ford: ford,
   Honda: honda,
   Hyundai: hyundai,
+  Jeep: jeep,
   Kia: kia,
   Mahindra: mahindra,
   Tata: tata,

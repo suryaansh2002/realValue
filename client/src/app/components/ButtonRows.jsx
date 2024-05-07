@@ -9,8 +9,12 @@ import 'swiper/css'
 
 
 import audi from '@/images/brands/audi.png'
+import bmw from '@/images/brands/bmw.png'
+import fiat from '@/images/brands/fiat.png'
+import ford from '@/images/brands/ford.png'
 import honda from '@/images/brands/honda.png'
 import hyundai from '@/images/brands/hyundai.png'
+import jeep from '@/images/brands/jeep.png'
 import kia from '@/images/brands/kia.png'
 import mahindra from '@/images/brands/mahindra.png'
 import suzuki from '@/images/brands/suzuki.png'
@@ -64,7 +68,7 @@ const ButtonCard = ({ item, type }) => (
 
 const BrandCard = ({ logoUrl, name }) => (
   <div
-    className="flex flex-col items-center justify-center bg-white cursor-pointer shadow-md rounded-lg p-3 hover:bg-gray-300"
+    className="flex flex-col md:inline-block md:mx-4 items-center justify-center bg-white cursor-pointer shadow-md rounded-lg p-3 hover:bg-gray-300"
     onClick={() => handleBrandClick(name)}
   >
     <Image
@@ -78,7 +82,7 @@ const BrandCard = ({ logoUrl, name }) => (
 )
 const BrandScrollContainer = ({ brands, brandsMapping }) => {
   return (
-    <span className="md:flex overflow-x-auto py-2 gap-x-5 inline">
+    <span className="flex md:block overflow-x-auto py-2 gap-x-5 inline">
       {brands.map(
         (brand) =>
           brandsMapping[brand] && (
@@ -86,7 +90,7 @@ const BrandScrollContainer = ({ brands, brandsMapping }) => {
           ),
       )}
       <div
-        className="flex flex-col items-center justify-center bg-white cursor-pointer shadow-md rounded-lg p-3 hover:bg-gray-300"
+        className="flex flex-col md:inline-block align-top md:py-8 md:mx-4 items-center justify-center bg-white cursor-pointer shadow-md rounded-lg p-3 hover:bg-gray-300"
         onClick={() => handleBrandClick('')}
       >
         View All
@@ -99,16 +103,21 @@ const ButtonRows = () => {
   const [loading, setLoading] = useState(true)
   const [types, setTypes] = useState([])
   const [brands, setBrands] = useState([])
+
   const brandsMapping = {
     Audi: audi,
+    BMW: bmw,
+    Fiat: fiat,
+    Ford: ford,
     Honda: honda,
     Hyundai: hyundai,
+    Jeep: jeep,
     Kia: kia,
     Mahindra: mahindra,
     Tata: tata,
     Maruti: suzuki,
   }
-
+  
   const url = 'https://real-value-server.vercel.app/'
   const [isDesktop, setDesktop] = useState(false)
 

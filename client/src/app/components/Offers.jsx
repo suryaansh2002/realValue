@@ -53,13 +53,12 @@ const Offers = () => {
             modules={[Navigation, Pagination]}
             className="myOfferSwiper"
             slidesPerView={1}
-            spaceBetween={32}
+            spaceBetween={10}
             navigation
             scrollbar={{ draggable: true }}
-            loop={true}
-            centeredSlides={true}
+            loop={false}
+            centeredSlides={false}
             pagination={{ clickable: true }}
-            autoplay={{ delay: 2000, disableOnInteraction: false }}
             breakpoints={{
               640: { slidesPerView: 1, spaceBetween: 32 },
               768: { slidesPerView: 2, spaceBetween: 32 },
@@ -68,13 +67,13 @@ const Offers = () => {
           >
             {offers.map((offer) => (
               <SwiperSlide key={offer._id} style={{ paddingBottom: '40px' }}>
-                <div className="max-w-sm rounded-lg shadow">
+                <div className="max-w-s rounded-lg shadow">
                   <Image
                     className="rounded-t-lg object-cover w-full"
                     src={offer.image}
                     alt="Offer image"
-                    width={300}
-                    height={300}
+                    width={200}
+                    height={200}
                   />
                 </div>
               </SwiperSlide>

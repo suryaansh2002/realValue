@@ -11,11 +11,18 @@ import { homeFAQ } from './data/homeFAQs'
 import ButtonRows from './components/ButtonRows'
 
 export default async function Home() {
-  const data = await fetch(
+let data
+  try{
+
+ data = await fetch(
     `https://real-value-server.vercel.app/api/listings/featured`,
     { cache: 'no-store' },
   ).then((res) => res.json())
-
+}
+catch(e){
+  console.log(e.message)
+   data = []
+}
   return (
     <div>
       <Hero />

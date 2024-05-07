@@ -7,14 +7,15 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { FreeMode } from 'swiper/modules'
 import 'swiper/css'
 
-import honda from '../../images/brands/Honda.png'
-import hyundai from '../../images/brands/hyundai.png'
-import kia from '../../images/brands/kia.png'
-import mahindra from '../../images/brands/mahindra.png'
-import tata from '../../images/brands/tata.png'
-import maruti from '../../images/brands/maruti.png'
-import suzuki from '../../images/brands/suzuki.png'
-import volkswagen from '../../images/brands/Volkswagen.png'
+
+import audi from '@/images/brands/audi.png'
+import honda from '@/images/brands/honda.png'
+import hyundai from '@/images/brands/hyundai.png'
+import kia from '@/images/brands/kia.png'
+import mahindra from '@/images/brands/mahindra.png'
+import suzuki from '@/images/brands/suzuki.png'
+import tata from '@/images/brands/tata.png'
+
 import Image from 'next/image'
 
 const budgetsMapping = {
@@ -99,14 +100,13 @@ const ButtonRows = () => {
   const [types, setTypes] = useState([])
   const [brands, setBrands] = useState([])
   const brandsMapping = {
+    Audi: audi,
     Honda: honda,
     Hyundai: hyundai,
     Kia: kia,
     Mahindra: mahindra,
     Tata: tata,
-    Maruti: maruti,
-    // Suzuki: suzuki,
-    Volkswagen: volkswagen,
+    Maruti: suzuki,
   }
 
   const url = 'https://real-value-server.vercel.app/'

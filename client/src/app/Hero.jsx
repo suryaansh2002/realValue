@@ -3,84 +3,31 @@ import React, { useEffect, useState } from 'react'
 import carImage2 from '../images/car-image-2.jpg'
 import Image from 'next/image'
 import ButtonCloud from './components/ButtonCloud'
-import honda from '../images/brands/Honda.png'
-import hyundai from '../images/brands/hyundai.png'
-import kia from '../images/brands/kia.png'
-import mahindra from '../images/brands/mahindra.png'
-import tata from '../images/brands/tata.png'
-import maruti from '../images/brands/maruti.png'
-import suzuki from '../images/brands/suzuki.png'
-import volkswagen from '../images/brands/Volkswagen.png'
+
+import audi from '@/images/brands/audi.png'
+import honda from '@/images/brands/honda.png'
+import hyundai from '@/images/brands/hyundai.png'
+import kia from '@/images/brands/kia.png'
+import mahindra from '@/images/brands/mahindra.png'
+import suzuki from '@/images/brands/suzuki.png'
+import tata from '@/images/brands/tata.png'
+
 import axios from 'axios'
 import { TypewriterEffectSmooth } from "@/app/components/ui/typewriter-effect"
 const imageStyles = {
-  width: '3rem',
-  height: '2rem',
+  width: '2.5rem',
+  height: '2.5rem',
   display: 'inline',
 }
-// const brands = [
-//   {
-//     label: (
-//       <div>
-//         <Image style={imageStyles} src={maruti} alt="maruti" /> Maruti Suzuki
-//       </div>
-//     ),
-//     key: '1',
-//   },
-//   {
-//     label: (
-//       <div>
-//         <Image style={imageStyles} src={hyundai} alt="hyundai" /> Hyundai
-//       </div>
-//     ),
-//     key: '2',
-//   },
-//   {
-//     label: (
-//       <div>
-//         <Image style={imageStyles} src={tata} alt="tata" /> Tata
-//       </div>
-//     ),
-//     key: '3',
-//   },
-//   {
-//     label: (
-//       <div>
-//         <Image style={imageStyles} src={mahindra} alt="mahindra" /> Mahindra
-//       </div>
-//     ),
-//     key: '4',
-//   },
-//   {
-//     label: (
-//       <div>
-//         <Image style={imageStyles} src={honda} alt="honda" /> Honda
-//       </div>
-//     ),
-//     key: '5',
-//   },
-//   {
-//     label: (
-//       <div>
-//         <Image style={imageStyles} src={kia} alt="kia" /> Kia
-//       </div>
-//     ),
-//     key: '6',
-//   },
-//   {
-//     label: <a href="/buy">Checkout all cars</a>,
-//     key: '7',
-//   },
-// ]
+
 const brandsMapping = {
+  Audi: audi,
   Honda: honda,
   Hyundai: hyundai,
   Kia: kia,
   Mahindra: mahindra,
   Tata: tata,
-  Maruti: maruti,
-  Suzuki: suzuki,
-  Volkswagen: volkswagen,
+  Maruti: suzuki,
 }
 const segments = [
   {
@@ -145,9 +92,19 @@ const Hero = () => {
 
   const fetchAllBrands = async () => {
     try {
-      const response = await axios.get(url + 'api/listings/brands')
-      if (response.data) {
-        const arr = response.data.map((b, index) => {
+      // const response = await axios.get(url + 'api/listings/brands')
+      // if (response.data) {
+        // const arr = response.data.map((b, index) => {
+        //   return {
+        //     label: (
+        //       <div>
+        //         <Image style={imageStyles} src={brandsMapping[b]} alt={b} /> {b}
+        //       </div>
+        //     ),
+        //     key: `${index + 1}`,
+        //   }
+        // })
+        const arr = Object.keys(brandsMapping).map((b, index) => {
           return {
             label: (
               <div>
@@ -157,9 +114,10 @@ const Hero = () => {
             key: `${index + 1}`,
           }
         })
+        console.log(arr)
         setBrands(arr)
         setLoading(false)
-      }
+      // }
     } catch (e) {
       console.log(e.message)
     }

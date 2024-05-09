@@ -12,9 +12,17 @@ import honda from '@/images/brands/honda.png'
 import hyundai from '@/images/brands/hyundai.png'
 import jeep from '@/images/brands/jeep.png'
 import kia from '@/images/brands/kia.png'
+import land_rover from '@/images/brands/land_rover.png'
 import mahindra from '@/images/brands/mahindra.png'
+import mercedes from '@/images/brands/mercedes.png'
+import mg from '@/images/brands/mg.png'
+import nissan from '@/images/brands/nissan.png'
+import renault from '@/images/brands/renault.png'
+import skoda from '@/images/brands/skoda.png'
 import suzuki from '@/images/brands/suzuki.png'
 import tata from '@/images/brands/tata.png'
+import volkswagen from '@/images/brands/volkswagen.png'
+import volvo from '@/images/brands/volvo.png'
 
 import axios from 'axios'
 import { TypewriterEffectSmooth } from '@/app/components/ui/typewriter-effect'
@@ -34,8 +42,15 @@ const brandsMapping = {
   Jeep: jeep,
   Kia: kia,
   Mahindra: mahindra,
+  Mercedes: mercedes,
+  MG: mg,
+  Nissan: nissan,
+  Renault: renault,
+  Skoda: skoda,
   Tata: tata,
   Maruti: suzuki,
+  Volkswagen: volkswagen,
+  Volvo: volvo,
 }
 const segments = [
   {
@@ -126,6 +141,32 @@ const Hero = () => {
       setBrands(arr)
       setLoading(false)
       // }
+      const response = await axios.get(url + 'api/listings/brands')
+      if (response.data) {
+        const arr = response.data.map((b, index) => {
+          return {
+            label: (
+              <div>
+                <Image style={imageStyles} src={brandsMapping[b]} alt={b} /> {b}
+              </div>
+            ),
+            key: `${index + 1}`,
+          }
+        })
+        // const arr = Object.keys(brandsMapping).map((b, index) => {
+        //   return {
+        //     label: (
+        //       <div>
+        //         <Image style={imageStyles} src={brandsMapping[b]} alt={b} /> {b}
+        //       </div>
+        //     ),
+        //     key: `${index + 1}`,
+        //   }
+        // })
+        // console.log(arr)
+        setBrands(arr)
+        setLoading(false)
+      }
     } catch (e) {
       console.log(e.message)
     }
@@ -152,7 +193,7 @@ const Hero = () => {
               })}
             />
           </h1>
-          <p className="max-w-2xl mb-6 font-light lg:mb-8 md:text-lg lg:text-xl text-gray-400">
+          <p className="max-w-2xl mb-6 font-light lg:mb-8 text-sm md:text-lg lg:text-xl text-gray-400">
             Your one-stop-shop for buying, selling, and financing cars. We offer
             the best prices and the best deals on all types of cars.
           </p>
@@ -184,7 +225,7 @@ const Hero = () => {
         </div>
       </div>
 
-      <div className="max-w-screen-xl py-10 mx-auto lg:pb-24 lg:pt-0">
+      <div className="max-w-screen-xl pt-10 mx-auto lg:pb-24 lg:pt-0 lg:pb-0">
         <div className="mr-auto place-self-center lg:col-span-7">
           <p className="max-w-2xl mb-6 font-light text-gray-400 md:text-lg lg:mb-0 lg:text-xl ">
             Or get started directly by...
@@ -202,7 +243,11 @@ const Hero = () => {
             <span className="button-wrapper mr-3">
               <a
                 href="/buy"
-                className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center border rounded-lg text-white focus:ring-4  border-gray-700 hover:!bg-yellow-500 focus:ring-gray-700 md:mt-10"
+                className="inline-flex items-center 
+                justify-center px-5 py-3 text-base
+                 font-medium text-center border rounded-lg 
+                 text-white focus:ring-4  border-gray-700 hover:!bg-yellow-500 focus:ring-gray-700 md:mt-10
+                 "
               >
                 Search
               </a>

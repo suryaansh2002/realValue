@@ -3,6 +3,8 @@ import React from 'react'
 import FaqCard from './FaqCard'
 
 const Faq = ({ FAQs, title }) => {
+  const [showIndex, setShowIndex] = useState(null)
+
   return (
     <section className="py-14 bg-gray-900">
       <div className="px-8 mx-auto max-w-screen-xl sm:py-16 lg:px-8">
@@ -15,11 +17,14 @@ const Faq = ({ FAQs, title }) => {
           </p>
         </div>
         <div className="text-left">
-          {FAQs.map((item) => (
+          {FAQs.map((item, index) => (
             <FaqCard
               key={item.id}
               question={item.question}
               answer={item.answer}
+              index={index}
+              showIndex={showIndex}
+              setShowIndex={setShowIndex}
             />
           ))}
         </div>

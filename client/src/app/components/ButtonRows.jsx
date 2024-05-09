@@ -15,9 +15,17 @@ import honda from '@/images/brands/honda.png'
 import hyundai from '@/images/brands/hyundai.png'
 import jeep from '@/images/brands/jeep.png'
 import kia from '@/images/brands/kia.png'
+import land_rover from '@/images/brands/land_rover.png'
 import mahindra from '@/images/brands/mahindra.png'
+import mercedes from '@/images/brands/mercedes.png'
+import mg from '@/images/brands/mg.png'
+import nissan from '@/images/brands/nissan.png'
+import renault from '@/images/brands/renault.png'
+import skoda from '@/images/brands/skoda.png'
 import suzuki from '@/images/brands/suzuki.png'
 import tata from '@/images/brands/tata.png'
+import volkswagen from '@/images/brands/volkswagen.png'
+import volvo from '@/images/brands/volvo.png'
 
 import Image from 'next/image'
 
@@ -89,7 +97,7 @@ const BrandScrollContainer = ({ brands, brandsMapping }) => {
           ),
       )}
       <div
-        className="flex flex-col md:inline-block align-top md:py-8 md:mx-4 items-center justify-center bg-white cursor-pointer shadow-md rounded-lg p-3 hover:bg-gray-300"
+        className="flex flex-col md:inline-block align-top bg-yellow-400 md:py-8 md:mx-4 items-center justify-center  cursor-pointer shadow-md rounded-lg p-3 hover:bg-yellow-500"
         onClick={() => handleBrandClick('')}
       >
         View All
@@ -104,17 +112,13 @@ const ButtonRows = () => {
   const [brands, setBrands] = useState([])
 
   const brandsMapping = {
-    Audi: audi,
-    BMW: bmw,
-    Fiat: fiat,
-    Ford: ford,
-    Honda: honda,
-    Hyundai: hyundai,
-    Jeep: jeep,
-    Kia: kia,
-    Mahindra: mahindra,
-    Tata: tata,
     Maruti: suzuki,
+    Mahindra: mahindra,
+    Hyundai: hyundai,
+    Tata: tata,
+    Honda: honda,
+    Volkswagen: volkswagen,
+    Audi: audi,
   }
 
   const url = 'https://real-value-server.vercel.app/'
@@ -207,7 +211,7 @@ const ButtonRows = () => {
                 )}
                 <SwiperSlide style={{ paddingBottom: '40px' }}>
                   <div
-                    className="flex flex-col w-max px-2 items-center py-8 justify-center bg-white cursor-pointer shadow-md rounded-lg p-3 hover:bg-gray-300"
+                    className="flex flex-col w-max px-2 items-center py-8 justify-center  cursor-pointer shadow-md rounded-lg p-3 bg-yellow-400 hover:bg-yellow-500"
                     onClick={() => handleBrandClick('')}
                   >
                     View All
@@ -225,7 +229,7 @@ const ButtonRows = () => {
                     <ButtonCard key={index} item={type} type={'Segment'} />
                   ))}
                   <div
-                    className="bg-white shadow-md rounded-lg p-4 w-40 hover:bg-gray-300 cursor-pointer"
+                    className="bg-yellow-400 shadow-md rounded-lg p-4 w-40 hover:bg-yellow-500 cursor-pointer"
                     onClick={() => handleBtnClick('', 'Segment')}
                   >
                     <div className="text-center ">View All</div>
@@ -246,7 +250,7 @@ const ButtonRows = () => {
                   ))}
                   <SwiperSlide key={'all'} style={{ paddingBottom: '40px' }}>
                     <div
-                      className="bg-white shadow-md rounded-lg p-4 w-40 hover:bg-gray-300 cursor-pointer"
+                      className="bg-yellow-400 shadow-md rounded-lg p-4 w-40 hover:bg-yellow-500 cursor-pointer"
                       onClick={() => handleBtnClick('', 'type')}
                     >
                       <div className="text-center ">View All</div>

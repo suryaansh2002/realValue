@@ -17,6 +17,7 @@ import { FaCoins, FaClipboardCheck, FaMoneyCheckAlt } from 'react-icons/fa'
 import FeaturedCars from '../FeaturedCars'
 import { sellFAQData } from '../data/sellFAQs'
 import Faq from '../components/Faq'
+import Faq from '../components/Faq'
 
 const SellRequestForm = () => {
   let url = 'https://real-value-server.vercel.app/'
@@ -130,17 +131,17 @@ const SellRequestForm = () => {
 
   return (
     <div className="text-left pt-4 bg-gray-900 text-white overflow-x-hidden">
-      <div className="text-center pt-4 md:text-3xl text-2xl font-bold">
+      <div className="text-left ml-8 mb-4 pt-4 md:text-3xl text-2xl font-bold">
         Sell Quick With Real Value
       </div>
-      <div className="h-[75vh] border-2 border-white rounded-md relative md:w-[50%] w-[90%] mt-4 ml-4">
+      <div className="h-[70vh] border-2 border-white rounded-md relative md:w-[50%] w-[80%] mt-8 ml-8">
         <div className="">
-          <div className="text-2xl font-bold p-4">
+          <div className="md:text-2xl text-xl font-bold p-4">
             Sell Your Car Within 30 Minutes!
           </div>
           <button
             onClick={() => setShowForm(!showForm)}
-            className="hover:bg-yellow-500 hover:text-gray-900 text-xl  border border-white-900  text-whitew-max rounded px-16 py-4 rounded-lg absolute bottom-4 left-4"
+            className="hover:bg-yellow-500 hover:text-gray-900 text-xl  border border-white-900  text-whitew-max rounded md:px-16 md:py-4 px-10 py-2 w-max rounded-lg md:mx-0 ml-[50%] -translate-x-[50%] md:translate-x-0 md:absolute bottom-4 left-4"
           >
             Get Valuation!
             {/* {showForm ? (
@@ -306,11 +307,11 @@ const SellRequestForm = () => {
         </div>
       )}
 
-      <div className="my-4">
-        <div className="font-semibold text-2xl my-8 ml-4 md:ml-10">
+      <div className="">
+        <div className="font-semibold text-2xl my-8 ml-4 md:ml-8 mt-20">
           4 Steps To Sell Your Car
         </div>
-        <div className="mx-4 md:ml-8">
+        <div className="mx-4 ml-0 md:ml-4">
           {stepsToSell.map((step, index) => (
             <div className="md:inline-block block w-[20rem] bg-white p-4 rounded-lg shadow-md align-top mx-4 md:my-0 my-4">
               <div className="h-[10rem]">{/* Image */}</div>
@@ -333,7 +334,7 @@ const SellRequestForm = () => {
         <div className="font-semibold text-2xl my-8 ml-4 md:ml-10">
           Why Sell Your Car To Us
         </div>
-        <div className="mx-4 md:ml-8">
+        <div className="mx-4 ml-0 md:ml-4">
           {whySellToUs.map((step, index) => (
             <div className="md:inline-block block md:w-[25rem] w-[20rem] bg-white p-4 rounded-lg shadow-md align-top mx-4 md:my-0 my-4">
               <div className="p-2 text-xl font-semibold text-gray-900 w-max">

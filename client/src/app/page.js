@@ -32,6 +32,9 @@ export default async function Home() {
       <Faq FAQs={homeFAQ} title="Buy related" />
       <Testimonials />
       <Contact />
+      <Testimonials />
+      <Faq FAQs={homeFAQ} title="Buy" />
+      {/* <Contact /> */}
     </div>
   )
 }

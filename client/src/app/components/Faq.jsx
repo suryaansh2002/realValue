@@ -7,7 +7,7 @@ const Faq = ({ FAQs, title }) => {
 
   return (
     <section className="bg-gray-900">
-      <div className="py-8 px-8  md:ml-10 ml-0 mx-auto  max-w-screen-xl sm:py-16 lg:px-6">
+      <div className="py-8  ml-4 md:ml-8 ml-0 mx-auto  max-w-screen-xl sm:py-16">
         <div className="max-w-screen-md mb-8 lg:mb-16">
           <h2 className="mb-4 text-4xl lg:text-4xl tracking-tight font-extrabold text-white">
             {title} FAQ's

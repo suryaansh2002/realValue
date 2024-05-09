@@ -131,24 +131,20 @@ const SellRequestForm = () => {
 
   return (
     <div className="text-left pt-4 bg-gray-900 text-white overflow-x-hidden">
-      <div className="text-center pt-4 md:text-3xl text-2xl font-bold">
+      <div className="text-left ml-8 mb-4 pt-4 md:text-3xl text-2xl font-bold">
         Sell Quick With Real Value
       </div>
-      <div className="h-[75vh] border-2 border-white rounded-md relative md:w-[50%] w-[90%] mt-4 ml-4">
+      <div className="h-[70vh] border-2 border-white rounded-md relative md:w-[50%] w-[80%] mt-8 ml-8">
         <div className="">
-          <div className="text-2xl font-bold p-4">
+          <div className="md:text-2xl text-xl font-bold p-4">
             Sell Your Car Within 30 Minutes!
           </div>
           <button
             onClick={() => setShowForm(!showForm)}
-            className="hover:bg-yellow-500 hover:text-gray-900 text-xl  border border-white-900  text-whitew-max rounded px-16 py-4 rounded-lg absolute bottom-4 left-4"
+            className="hover:bg-yellow-500 hover:text-gray-900 text-xl  border border-white-900  text-whitew-max rounded md:px-16 md:py-4 px-10 py-2 w-max rounded-lg md:mx-0 ml-[50%] -translate-x-[50%] md:translate-x-0 md:absolute bottom-4 left-4"
           >
             Get Valuation!
-            {/* {showForm ? (
-            <FaChevronUp className="inline-block align-text-top translate-y-05" />
-          ) : (
-            <FaChevronDown className="inline-block align-text-top translate-y-0.5" />
-          )} */}
+      
           </button>
         </div>
       </div>
@@ -307,11 +303,11 @@ const SellRequestForm = () => {
         </div>
       )}
 
-      <div className="my-4">
-        <div className="font-semibold text-2xl my-8 ml-4 md:ml-10">
+      <div className="">
+        <div className="font-semibold text-2xl my-8 ml-4 md:ml-8 mt-20">
           4 Steps To Sell Your Car
         </div>
-        <div className="mx-4 md:ml-8">
+        <div className="mx-4 ml-0 md:ml-4">
           {stepsToSell.map((step, index) => (
             <div className="md:inline-block block w-[20rem] bg-white p-4 rounded-lg shadow-md align-top mx-4 md:my-0 my-4">
               <div className="h-[10rem]">{/* Image */}</div>
@@ -331,10 +327,10 @@ const SellRequestForm = () => {
       </div>
 
       <div className="my-4">
-        <div className="font-semibold text-2xl my-8 ml-4 md:ml-10">
+      <div className="font-semibold text-2xl my-8 ml-4 md:ml-8 mt-20">
           Why Sell Your Car To Us
         </div>
-        <div className="mx-4 md:ml-8">
+        <div className="mx-4 ml-0 md:ml-4">
           {whySellToUs.map((step, index) => (
             <div className="md:inline-block block md:w-[25rem] w-[20rem] bg-white p-4 rounded-lg shadow-md align-top mx-4 md:my-0 my-4">
               <div className="p-2 text-xl font-semibold text-gray-900 w-max">
@@ -346,84 +342,8 @@ const SellRequestForm = () => {
         </div>
       </div>
 
-      {/* <div className="my-4">
-        <div className="w-[100vw] block md:w-[50vw] md:inline-block">
-          <div className="font-semibold text-2xl my-8 ml-4 md:ml-10">
-            Steps To Sell
-          </div>
-          <ul className="space-y-4 ml-6 md:ml-14">
-            <li className="flex items-center py-2">
-              <span className="flex-shrink-0 mr-4">
-                <FaCheckCircle className="text-green-500 text-xl" />
-              </span>
-              <span className="text-lg">Digital Verification</span>
-            </li>
-            <li className="flex items-center py-2">
-              <span className="flex-shrink-0 mr-4">
-                <FaPhone className="text-blue-500 text-xl" />
-              </span>
-              <span className="text-lg">Call with our team</span>
-            </li>
-            <li className="flex items-center py-2">
-              <span className="flex-shrink-0 mr-4">
-                <FaMapMarkerAlt className="text-red-500 text-xl" />
-              </span>
-              <span className="text-lg">
-                Physical inspection (home and showroom)
-              </span>
-            </li>
-            <li className="flex items-center py-2">
-              <span className="flex-shrink-0 mr-4">
-                <FaCarSide className="text-yellow-500 text-xl" />
-              </span>
-              <span className="text-lg">Car condition</span>
-            </li>
-            <li className="flex items-center py-2">
-              <span className="flex-shrink-0 mr-4">
-                <FaFileAlt className="text-indigo-500 text-xl" />
-              </span>
-              <span className="text-lg">Papers</span>
-            </li>
-            <li className="flex items-center py-2">
-              <span className="flex-shrink-0 mr-4">
-                <FaHandshake className="text-purple-500 text-xl" />
-              </span>
-              <span className="text-lg">Car pickup and payment</span>
-            </li>
-          </ul>
-        </div>
-
-        <div className="w-[100vw] block md:w-[40vw] md:inline-block align-top">
-          <div className="font-semibold text-2xl my-8 ml-4 md:ml-10">
-            Why Sell Your Car To Us?
-          </div>
-          <ul className="space-y-4 ml-6 md:ml-14">
-            <li className="flex items-center py-2">
-              <span className="flex-shrink-0 mr-4">
-                <FaCoins className="text-green-500 text-lg" />
-              </span>
-              <span className="text-lg">Best price</span>
-            </li>
-            <li className="flex items-center py-2">
-              <span className="flex-shrink-0 mr-4">
-                <FaClipboardCheck className="text-blue-500 text-lg" />
-              </span>
-              <span className="text-lg">Hassle-free documentation</span>
-            </li>
-            <li className="flex items-center py-2">
-              <span className="flex-shrink-0 mr-4">
-                <FaMoneyCheckAlt className="text-yellow-500 text-lg" />
-              </span>
-              <span className="text-lg">Instant Payment</span>
-            </li>
-          </ul>
-        </div>
-      </div> */}
-
 <Faq FAQs={sellFAQData} title="Sell" />
-      <div>
-        <FeaturedCars />
-      </div>
+    
       {(showForm || showModal) && (
         <div className="fixed inset-0 text-lg bg-black bg-opacity-50 z-10"></div>
       )}

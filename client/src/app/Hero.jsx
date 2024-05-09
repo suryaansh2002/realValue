@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import carImage2 from '../images/car-image-2.jpg'
 import Image from 'next/image'
 import ButtonCloud from './components/ButtonCloud'
+import { FaChevronRight, FaSearch } from "react-icons/fa";
 
 import audi from '@/images/brands/audi.png'
 import bmw from '@/images/brands/bmw.png'
@@ -158,15 +159,22 @@ const Hero = () => {
       <div className="grid max-w-screen-xl px-4 py-12 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
         <div className="mr-auto place-self-center lg:col-span-7">
           <h1 className="max-w-2xl">
-          <TypewriterEffectSmooth words={"Real Value by Poddar Motors".split(' ').map((word)=>{
+          <TypewriterEffectSmooth words={"Buy Smart With Real Value".split(' ').map((word, index)=>{
+            if(index<=2){
+
               return {
                 text: word,
                 className: "mb-4 text-2xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-5xl text-white"
               }
+            }
+            return {
+              text: word,
+              className: "mb-4 text-2xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-5xl !text-yellow-400"
+            }
             })}/>
            
           </h1>
-          <p className="max-w-2xl mb-6 font-light lg:mb-8 md:text-lg lg:text-xl text-gray-400">
+          <p className="max-w-2xl mb-6 font-light lg:mb-8 text-sm md:text-lg lg:text-xl text-gray-400">
             Your one-stop-shop for buying, selling, and financing cars. We offer
             the best prices and the best deals on all types of cars.
           </p>
@@ -178,29 +186,21 @@ const Hero = () => {
           </a>
           <a
             href="/sell"
-            className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center  rounded-lg hover:!text-yellow-500 text-white  focus:ring-gray-800 hover:!border-transparent border-gray-700"
-            style={{
-              textDecoration: 'underline',
-              textDecorationColor: 'transparent',
-            }}
+            className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center border rounded-lg focus:ring-4 focus:ring-gray-800 text-gray-800 border-gray-700 bg-slate-300 mr-5 hover:!bg-yellow-500"
           >
-            Sell Car
-            <span
-              className="ml-2"
-              style={{ textDecoration: 'none', fontSize: '1.2rem' }}
-            >
-              &#8594; {/* Unicode arrow character pointing right */}
-            </span>
+           Sell Car <FaChevronRight className='text-sm ml-2'/>
           </a>
+       
         </div>
+     
         <div className="mt-10 lg:mt-0 lg:col-span-5 lg:flex">
-          <Image src={carImage2} alt="Hero car image" priority />
+          <Image src={carImage2} className='opacity-60' alt="Hero car image" priority />
         </div>
       </div>
 
-      <div className="max-w-screen-xl px-4 py-10 mx-auto lg:pb-32 lg:pt-0">
+      <div className="max-w-screen-xl px-4 pt-10 mx-auto lg:pb-32 lg:pt-0 lg:pb-0">
         <div className="mr-auto place-self-center lg:col-span-7">
-          <p className="max-w-2xl mb-6 font-light text-gray-400 lg:mb-8 md:text-lg lg:text-xl ">
+          <p className="max-w-2xl mb-6 font-light text-gray-400 lg:mb-0 md:text-lg lg:text-xl lg:translate-y-2 ">
             Or get started directly by...
           </p>
           <div className="button-container">
@@ -216,9 +216,13 @@ const Hero = () => {
             <span className="button-wrapper mr-3 md:mt-9">
               <a
                 href="/buy"
-                className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center border rounded-lg text-white focus:ring-4  border-gray-700 hover:!bg-yellow-500 focus:ring-gray-700 md:mt-10"
+                className="inline-flex items-center 
+                justify-center px-5 py-3 text-base
+                 font-medium text-center border rounded-lg 
+                 text-white focus:ring-4  border-gray-700 hover:!bg-yellow-500 focus:ring-gray-700 md:mt-10
+                 "
               >
-                Search
+                <FaSearch/>
               </a>
             </span>
           </div>

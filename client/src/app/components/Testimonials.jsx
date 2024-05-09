@@ -34,7 +34,7 @@ const Testimonials = () => {
   }, [])
 
   return (
-    <section className="py-24 bg-gray-900 text-white">
+    <section className="py-6 bg-gray-900 text-white">
       <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
         <div className="mb-16">
           <h2 className="text-4xl font-bold text-white mb-5">

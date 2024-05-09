@@ -8,15 +8,15 @@ import {
 
 const FinanceSteps = () => {
   return (
-    <section className="py-16 bg-gray-900">
+    <section className="py-12 bg-gray-900 lg:-mb-12 -mb-2">
       <div className="py-8 lg:py-16 mx-auto max-w-screen-xl px-8">
         <h2 className="mb-4 lg:mb-8 text-3xl font-extrabold tracking-tight leading-tight text-white md:text-4xl">
-          Steps to Sell your Car
+          4-Step Loan Process
         </h2>
         <h3 className="mb-8 lg:mb-16 text-xl tracking-tight leading-tight text-gray-400 md:text-2xl">
           Simple, easy and intuitive.
         </h3>
-        <div className="grid grid-cols-1 gap-10 sm:gap-12 md:grid-cols-3 lg:grid-cols-3 text-gray-400">
+        <div className="grid grid-cols-1 gap-10 sm:gap-12 md:grid-cols-3 lg:grid-cols-4 text-gray-400">
           <div className="flex flex-col">
             <div className="flex items-center justify-center w-16 h-16 rounded-full bg-white text-gray-900">
               <FaAddressCard size={30} />

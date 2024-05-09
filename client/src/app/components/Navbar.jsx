@@ -37,7 +37,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="bg-black py-4">
+      <div className="bg-black py-4 sticky top-0 z-50">
         <div className="flex items-center justify-center gap-x-60 lg:justify-around lg:gap-x-96">
           <div className="mx-auto">
             <Link href="/">
@@ -68,7 +68,7 @@ const Navbar = () => {
         </div>
       </div>
       <Drawer
-        title={<span style={{ color: 'white' }}>Menu</span>}
+        title={<span style={{ color: 'white' }}></span>}
         placement="right"
         closable={false}
         onClose={onClose}
@@ -91,32 +91,50 @@ const Navbar = () => {
           style={{ fontSize: '20px' }}
         >
           <Link legacyBehavior href="/">
-            <a className="text-white font-bold" onClick={onClose}>
+            <a
+              className="text-white font-bold focus:text-yellow-400"
+              onClick={onClose}
+            >
               Home
             </a>
           </Link>
           <Link legacyBehavior href="/buy">
-            <a className="text-white font-bold" onClick={onClose}>
+            <a
+              className="text-white font-bold focus:text-yellow-400"
+              onClick={onClose}
+            >
               Buy Car
             </a>
           </Link>
           <Link legacyBehavior href="/sell">
-            <a className="text-white font-bold" onClick={onClose}>
+            <a
+              className="text-white font-bold focus:text-yellow-400"
+              onClick={onClose}
+            >
               Sell Car
             </a>
           </Link>
           <Link legacyBehavior href="/finance">
-            <a className="text-white font-bold" onClick={onClose}>
+            <a
+              className="text-white font-bold focus:text-yellow-400"
+              onClick={onClose}
+            >
               Finance
             </a>
           </Link>
           <Link legacyBehavior href="/about">
-            <a className="text-white font-bold" onClick={onClose}>
+            <a
+              className="text-white font-bold focus:text-yellow-400"
+              onClick={onClose}
+            >
               About Us
             </a>
           </Link>
           <Link legacyBehavior href="/contact">
-            <a className="text-white font-bold" onClick={onClose}>
+            <a
+              className="text-white font-bold focus:text-yellow-400"
+              onClick={onClose}
+            >
               Contact Us
             </a>
           </Link>

@@ -17,7 +17,7 @@ import suzuki from '@/images/brands/suzuki.png'
 import tata from '@/images/brands/tata.png'
 
 import axios from 'axios'
-import { TypewriterEffectSmooth } from "@/app/components/ui/typewriter-effect"
+import { TypewriterEffectSmooth } from '@/app/components/ui/typewriter-effect'
 const imageStyles = {
   width: '2.5rem',
   height: '2.5rem',
@@ -102,29 +102,29 @@ const Hero = () => {
     try {
       // const response = await axios.get(url + 'api/listings/brands')
       // if (response.data) {
-        // const arr = response.data.map((b, index) => {
-        //   return {
-        //     label: (
-        //       <div>
-        //         <Image style={imageStyles} src={brandsMapping[b]} alt={b} /> {b}
-        //       </div>
-        //     ),
-        //     key: `${index + 1}`,
-        //   }
-        // })
-        const arr = Object.keys(brandsMapping).map((b, index) => {
-          return {
-            label: (
-              <div>
-                <Image style={imageStyles} src={brandsMapping[b]} alt={b} /> {b}
-              </div>
-            ),
-            key: `${index + 1}`,
-          }
-        })
-        console.log(arr)
-        setBrands(arr)
-        setLoading(false)
+      // const arr = response.data.map((b, index) => {
+      //   return {
+      //     label: (
+      //       <div>
+      //         <Image style={imageStyles} src={brandsMapping[b]} alt={b} /> {b}
+      //       </div>
+      //     ),
+      //     key: `${index + 1}`,
+      //   }
+      // })
+      const arr = Object.keys(brandsMapping).map((b, index) => {
+        return {
+          label: (
+            <div>
+              <Image style={imageStyles} src={brandsMapping[b]} alt={b} /> {b}
+            </div>
+          ),
+          key: `${index + 1}`,
+        }
+      })
+      console.log(arr)
+      setBrands(arr)
+      setLoading(false)
       // }
     } catch (e) {
       console.log(e.message)
@@ -139,16 +139,18 @@ const Hero = () => {
 
   return (
     <section className="bg-black">
-      <div className="grid max-w-screen-xl px-4 py-12 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
+      <div className="grid max-w-screen-xl py-12 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
         <div className="mr-auto place-self-center lg:col-span-7">
           <h1 className="max-w-2xl">
-          <TypewriterEffectSmooth words={"Real Value by Poddar Motors".split(' ').map((word)=>{
-              return {
-                text: word,
-                className: "mb-4 text-2xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-5xl text-white"
-              }
-            })}/>
-           
+            <TypewriterEffectSmooth
+              words={'Real Value by Poddar Motors'.split(' ').map((word) => {
+                return {
+                  text: word,
+                  className:
+                    'mb-4 text-2xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-5xl text-white',
+                }
+              })}
+            />
           </h1>
           <p className="max-w-2xl mb-6 font-light lg:mb-8 md:text-lg lg:text-xl text-gray-400">
             Your one-stop-shop for buying, selling, and financing cars. We offer
@@ -182,22 +184,22 @@ const Hero = () => {
         </div>
       </div>
 
-      <div className="max-w-screen-xl px-4 py-10 mx-auto lg:pb-32 lg:pt-0">
+      <div className="max-w-screen-xl py-10 mx-auto lg:pb-24 lg:pt-0">
         <div className="mr-auto place-self-center lg:col-span-7">
-          <p className="max-w-2xl mb-6 font-light text-gray-400 lg:mb-8 md:text-lg lg:text-xl ">
+          <p className="max-w-2xl mb-6 font-light text-gray-400 md:text-lg lg:mb-0 lg:text-xl ">
             Or get started directly by...
           </p>
-          <div className="button-container">
+          <div className="button-container -mt-4">
             <span className="button-wrapper mr-3">
               <ButtonCloud options={brands} label="Brand" />
             </span>
             <span className="button-wrapper mr-3">
               <ButtonCloud options={types} label="Segment" />
             </span>
-            <span className="button-wrapper mr-3 md:mt-9">
+            <span className="button-wrapper mr-3">
               <ButtonCloud options={budgets} label="Budget" />
             </span>
-            <span className="button-wrapper mr-3 md:mt-9">
+            <span className="button-wrapper mr-3">
               <a
                 href="/buy"
                 className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center border rounded-lg text-white focus:ring-4  border-gray-700 hover:!bg-yellow-500 focus:ring-gray-700 md:mt-10"

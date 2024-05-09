@@ -7,7 +7,6 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { FreeMode } from 'swiper/modules'
 import 'swiper/css'
 
-
 import audi from '@/images/brands/audi.png'
 import bmw from '@/images/brands/bmw.png'
 import fiat from '@/images/brands/fiat.png'
@@ -82,7 +81,7 @@ const BrandCard = ({ logoUrl, name }) => (
 )
 const BrandScrollContainer = ({ brands, brandsMapping }) => {
   return (
-    <span className="flex md:block overflow-x-auto py-2 gap-x-5 inline">
+    <span className="flex md:block overflow-x-auto py-2 gap-x-5">
       {brands.map(
         (brand, i) =>
           brandsMapping[brand] && (
@@ -117,7 +116,7 @@ const ButtonRows = () => {
     Tata: tata,
     Maruti: suzuki,
   }
-  
+
   const url = 'https://real-value-server.vercel.app/'
   const [isDesktop, setDesktop] = useState(false)
 

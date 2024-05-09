@@ -16,6 +16,7 @@ import {
 import { FaCoins, FaClipboardCheck, FaMoneyCheckAlt } from 'react-icons/fa'
 import FeaturedCars from '../FeaturedCars'
 import { sellFAQData } from '../data/sellFAQs'
+import Faq from '../components/Faq'
 
 const SellRequestForm = () => {
   let url = 'https://real-value-server.vercel.app/'
@@ -125,7 +126,6 @@ const SellRequestForm = () => {
       subTitle: '',
       image: '',
     },
-   
   ]
 
   return (
@@ -337,7 +337,11 @@ const SellRequestForm = () => {
           {whySellToUs.map((step, index) => (
             <div className="md:inline-block block md:w-[25rem] w-[20rem] bg-white p-4 rounded-lg shadow-md align-top mx-4 md:my-0 my-4">
               <div className="p-2 text-xl font-semibold text-gray-900 w-max">
-               <span className='bg-gray-900 text-white rounded-full px-5 py-4 h-6 mr-2'> {index + 1} </span> {step.title}
+                <span className="bg-gray-900 text-white rounded-full px-5 py-4 h-6 mr-2">
+                  {' '}
+                  {index + 1}{' '}
+                </span>{' '}
+                {step.title}
               </div>
               <div className="h-[10rem]">{/* Image */}</div>
             </div>
@@ -419,19 +423,7 @@ const SellRequestForm = () => {
         </div>
       </div> */}
 
-      <div className="font-semibold text-2xl mt-8 pl-6 lg:pl-12">FAQs</div>
-      <p className=" text-sm ml-6 md:text-lg md:ml-10 my-4 text-gray-400">
-        Please reach out to us if your queries are not answered below.
-      </p>
-      <div className="ml-6 md:ml-10 pb-4">
-        {sellFAQData.map((item) => (
-          <FaqCard
-            key={item.id}
-            question={item.question}
-            answer={item.answer}
-          />
-        ))}
-      </div>
+      <Faq FAQs={sellFAQData} title="Sell related" />
       <div>
         <FeaturedCars />
       </div>

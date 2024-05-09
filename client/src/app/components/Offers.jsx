@@ -33,14 +33,14 @@ const Offers = () => {
     fetchOffers()
   }, [])
   return (
-    <section className="py-24 bg-white-50 text-black relative">
-      <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+    <section className="py-20 bg-white-50 text-black relative">
+      <div className="mx-auto max-w-7xl sm:px-6 lg:px-7">
         <div className="mb-16">
           <h2
             className="text-4xl font-bold text-gray-900 mb-5 z-10"
             style={{ zIndex: 20 }}
           >
-            Our Current Offers
+            Offers
           </h2>
         </div>
 
@@ -60,7 +60,16 @@ const Offers = () => {
             centeredSlides={false}
             pagination={{ clickable: true }}
             breakpoints={{
-              640: { slidesPerView: 1, spaceBetween: 32 },
+              640: {
+                slidesPerView: 1,
+                spaceBetween: 32,
+                loop: true,
+                autoplay: {
+                  delay: 2500,
+                  disableOnInteraction: false,
+                  pauseOnMouseEnter: true,
+                },
+              },
               768: { slidesPerView: 2, spaceBetween: 32 },
               1024: { slidesPerView: 3, spaceBetween: 32 },
             }}

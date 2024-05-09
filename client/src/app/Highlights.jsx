@@ -2,8 +2,8 @@ import React from 'react'
 
 const Highlights = () => {
   return (
-    <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-      <h2 className="text-4xl font-bold text-gray-900 mb-5 mt-12">
+    <div className="pb-7 mx-auto max-w-7xl sm:px-6 lg:px-8">
+      <h2 className="text-4xl font-bold text-gray-900 mb-5 mt-7">
         Why Choose Us?
       </h2>
 

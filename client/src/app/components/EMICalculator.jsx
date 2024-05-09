@@ -206,7 +206,7 @@ const EMICalculator = ({ indiPrincipal }) => {
                 <div className="text-xl font-bold mb-2">
                   Interest vs Principal:
                 </div>
-                <div style={{ height: '367px' }}>
+                <div style={{ height: '27.8rem' }}>
                   <Doughnut
                     data={doughnutChartData}
                     options={doughnutOptions}

@@ -47,8 +47,8 @@ const ButtonCloud = ({ options, label }) => {
   return (
     <Space wrap>
       <Dropdown menu={menuProps} trigger={['click']} placement="bottom">
-        <Button size="large">
-          <Space className="button-cloud">
+        <Button size="large" className='hover:border-yellow-500'>
+          <Space className="button-cloud hover:text-yellow-500">
             {currentItem ? currentItem : label}
             <DownOutlined />
           </Space>

@@ -16,10 +16,10 @@ const Footer = () => {
   return (
     <footer className="bg-gray-900 text-white py-4">
       <div className="container mx-auto flex flex-col lg:flex-row justify-between items-center">
-        <div className="flex flex-col items-center mb-4 lg:mb-0">
+        <div className="flex flex-col md:text-left !text-center !itenm-center mb-4 lg:mb-0">
           <Image src={logo} alt="Logo" className="w-[8rem]  mr-2" />
           <div className='pl-2 mt-2'>
-            <p>Ranchi, Jharkhand</p>
+            <p className='text-sm sm:text-xs'>Kokar Industrial Area, Kokar, Ranchi - 834001</p>
           </div>
         </div>
         <div className="flex flex-col lg:flex-row items-center">

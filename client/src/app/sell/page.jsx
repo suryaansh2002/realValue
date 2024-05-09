@@ -16,6 +16,7 @@ import {
 import { FaCoins, FaClipboardCheck, FaMoneyCheckAlt } from 'react-icons/fa'
 import FeaturedCars from '../FeaturedCars'
 import { sellFAQData } from '../data/sellFAQs'
+import Faq from '../components/Faq'
 
 const SellRequestForm = () => {
   let url = 'https://real-value-server.vercel.app/'
@@ -419,19 +420,7 @@ const SellRequestForm = () => {
         </div>
       </div> */}
 
-      <div className="font-semibold text-2xl mt-8 pl-6 lg:pl-12">FAQs</div>
-      <p className=" text-sm ml-6 md:text-lg md:ml-10 my-4 text-gray-400">
-        Please reach out to us if your queries are not answered below.
-      </p>
-      <div className="ml-6 md:ml-10 pb-4">
-        {sellFAQData.map((item) => (
-          <FaqCard
-            key={item.id}
-            question={item.question}
-            answer={item.answer}
-          />
-        ))}
-      </div>
+<Faq FAQs={sellFAQData} title="Sell" />
       <div>
         <FeaturedCars />
       </div>

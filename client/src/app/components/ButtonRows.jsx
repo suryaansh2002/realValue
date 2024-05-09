@@ -98,7 +98,7 @@ const BrandScrollContainer = ({ brands, brandsMapping }) => {
           ),
       )}
       <div
-        className="flex flex-col md:inline-block align-top md:py-8 md:mx-4 items-center justify-center bg-white cursor-pointer shadow-md rounded-lg p-3 hover:bg-gray-300"
+        className="flex flex-col md:inline-block align-top bg-yellow-400 md:py-8 md:mx-4 items-center justify-center  cursor-pointer shadow-md rounded-lg p-3 hover:bg-yellow-500"
         onClick={() => handleBrandClick('')}
       >
         View All
@@ -212,7 +212,7 @@ const ButtonRows = () => {
                 )}
                 <SwiperSlide style={{ paddingBottom: '40px' }}>
                   <div
-                    className="flex flex-col w-max px-2 items-center py-8 justify-center bg-white cursor-pointer shadow-md rounded-lg p-3 hover:bg-gray-300"
+                    className="flex flex-col w-max px-2 items-center py-8 justify-center  cursor-pointer shadow-md rounded-lg p-3 bg-yellow-400 hover:bg-yellow-500"
                     onClick={() => handleBrandClick('')}
                   >
                     View All
@@ -230,7 +230,7 @@ const ButtonRows = () => {
                     <ButtonCard key={index} item={type} type={'Segment'} />
                   ))}
                   <div
-                    className="bg-white shadow-md rounded-lg p-4 w-40 hover:bg-gray-300 cursor-pointer"
+                    className="bg-yellow-400 shadow-md rounded-lg p-4 w-40 hover:bg-yellow-500 cursor-pointer"
                     onClick={() => handleBtnClick('', 'Segment')}
                   >
                     <div className="text-center ">View All</div>
@@ -251,7 +251,7 @@ const ButtonRows = () => {
                   ))}
                   <SwiperSlide key={'all'} style={{ paddingBottom: '40px' }}>
                     <div
-                      className="bg-white shadow-md rounded-lg p-4 w-40 hover:bg-gray-300 cursor-pointer"
+                      className="bg-yellow-400 shadow-md rounded-lg p-4 w-40 hover:bg-yellow-500 cursor-pointer"
                       onClick={() => handleBtnClick('', 'type')}
                     >
                       <div className="text-center ">View All</div>

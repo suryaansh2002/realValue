@@ -31,8 +31,8 @@ catch(e){
       <Features />
       <Offers />
       <Highlights />
-      <Faq FAQs={homeFAQ} title="Buy" />
       <Testimonials />
+      <Faq FAQs={homeFAQ} title="Buy" />
       {/* <Contact /> */}
     </div>
   )

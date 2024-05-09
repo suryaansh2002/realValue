@@ -16,9 +16,17 @@ import honda from '@/images/brands/honda.png'
 import hyundai from '@/images/brands/hyundai.png'
 import jeep from '@/images/brands/jeep.png'
 import kia from '@/images/brands/kia.png'
+import land_rover from '@/images/brands/land_rover.png'
 import mahindra from '@/images/brands/mahindra.png'
+import mercedes from '@/images/brands/mercedes.png'
+import mg from '@/images/brands/mg.png'
+import nissan from '@/images/brands/nissan.png'
+import renault from '@/images/brands/renault.png'
+import skoda from '@/images/brands/skoda.png'
 import suzuki from '@/images/brands/suzuki.png'
 import tata from '@/images/brands/tata.png'
+import volkswagen from '@/images/brands/volkswagen.png'
+import volvo from '@/images/brands/volvo.png'
 
 import Image from 'next/image'
 
@@ -105,17 +113,13 @@ const ButtonRows = () => {
   const [brands, setBrands] = useState([])
 
   const brandsMapping = {
-    Audi: audi,
-    BMW: bmw,
-    Fiat: fiat,
-    Ford: ford,
-    Honda: honda,
-    Hyundai: hyundai,
-    Jeep: jeep,
-    Kia: kia,
-    Mahindra: mahindra,
-    Tata: tata,
     Maruti: suzuki,
+    Mahindra: mahindra,
+    Hyundai: hyundai,
+    Tata: tata,
+    Honda: honda,
+    Volkswagen: volkswagen,
+    Audi: audi,
   }
   
   const url = 'https://real-value-server.vercel.app/'

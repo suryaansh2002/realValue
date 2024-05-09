@@ -33,7 +33,7 @@ catch(e){
       <Highlights />
       <Faq FAQs={homeFAQ} title="Buy" />
       <Testimonials />
-      <Contact />
+      {/* <Contact /> */}
     </div>
   )
 }

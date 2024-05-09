@@ -101,7 +101,7 @@ const Testimonials = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <button className="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-full">
+            <button className="bg-white hover:bg-yellow-400 text-gray-900 font-semibold py-2 px-4 rounded-md">
               View All
             </button>
           </Link>

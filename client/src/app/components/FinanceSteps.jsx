@@ -9,7 +9,7 @@ import {
 const FinanceSteps = () => {
   return (
     <section className="py-12 bg-gray-900 lg:-mb-12 -mb-2">
-      <div className="py-8 lg:py-16 mx-auto max-w-screen-xl px-8">
+      <div className="py-8 lg:py-16 mx-auto max-w-screen-xl px-6">
         <h2 className="mb-4 lg:mb-8 text-3xl font-extrabold tracking-tight leading-tight text-white md:text-4xl">
           4-Step Loan Process
         </h2>

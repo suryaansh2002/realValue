@@ -16,7 +16,7 @@ html {
 
 body {
   width: 100vw !important;
-  overflow-x: hidden !important;
+  /* overflow-x: hidden !important; */
 }
 
 .button-cloud {
@@ -68,3 +68,14 @@ body {
     font-size: 1rem !important;
   }
 }
+
+/* .navbar-container {
+  gap: '590px';
+}
+
+@media screen and (max-width: 768px) {
+  .navbar-container {
+    gap: 0;
+    margin: auto;
+  }
+} */

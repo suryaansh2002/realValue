@@ -179,8 +179,8 @@ const Hero = () => {
   }, [])
 
   return (
-    <section className="bg-black">
-      <div className="grid max-w-screen-xl py-12 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
+    <section className="bg-black mx-auto">
+      <div className="grid max-w-screen-xl py-12 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12 lg:px-6 px-4">
         <div className="mr-auto place-self-center lg:col-span-7">
           <h1 className="max-w-2xl">
             <TypewriterEffectSmooth
@@ -205,10 +205,11 @@ const Hero = () => {
           </a>
           <a
             href="/sell"
-            className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center  rounded-lg hover:!text-yellow-500 text-white  focus:ring-gray-800 hover:!border-transparent border-gray-700"
+            className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center  rounded-lg hover:!text-yellow-500 text-white  focus:ring-gray-800  !border-yellow-500"
             style={{
               textDecoration: 'underline',
               textDecorationColor: 'transparent',
+              border: '1px solid #f6e05e',
             }}
           >
             Sell Car
@@ -225,9 +226,9 @@ const Hero = () => {
         </div>
       </div>
 
-      <div className="max-w-screen-xl pt-10 mx-auto lg:pb-24 lg:pt-0 lg:pb-0">
+      <div className="max-w-screen-xl pt-10 mx-auto lg:pb-24 lg:pt-0 lg:px-6 px-4">
         <div className="mr-auto place-self-center lg:col-span-7">
-          <p className="max-w-2xl mb-6 font-light text-gray-400 md:text-lg lg:mb-0 lg:text-xl ">
+          <p className="max-w-2xl mb-12 font-light text-gray-400 md:text-lg lg:mb-0 lg:text-xl ">
             Or get started directly by...
           </p>
           <div className="button-container -mt-4">

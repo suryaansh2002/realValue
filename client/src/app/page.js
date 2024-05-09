@@ -22,18 +22,15 @@ export default async function Home() {
     data = []
   }
   return (
-    <div style={{ overflowX: 'hidden !important' }}>
+    <div style={{ overflow: 'hidden !important' }}>
       <Hero />
       <ButtonRows />
       <FeaturedCars featuredCarData={data} />
       <Features />
       <Offers />
       <Highlights />
+      <Testimonials />
       <Faq FAQs={homeFAQ} title="Buy related" />
-      <Testimonials />
-      <Contact />
-      <Testimonials />
-      <Faq FAQs={homeFAQ} title="Buy" />
       {/* <Contact /> */}
     </div>
   )

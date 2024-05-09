@@ -15,7 +15,7 @@ import Image from 'next/image'
 const Brands = () => {
   return (
     <section className="bg-white">
-      <div className="py-8 lg:py-16 mx-auto max-w-screen-xl px-8">
+      <div className="py-8 lg:py-16 mx-auto max-w-screen-xl px-6">
         <h2 className="mb-4 text-3xl font-extrabold tracking-tight leading-tight text-gray-900 md:text-4xl">
           Our Finance Partners
         </h2>

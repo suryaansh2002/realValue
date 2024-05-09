@@ -75,7 +75,7 @@ const ButtonCard = ({ item, type }) => (
 
 const BrandCard = ({ logoUrl, name }) => (
   <div
-    className="flex flex-col md:inline-block md:mx-4 items-center justify-center bg-white cursor-pointer shadow-md rounded-lg p-3 hover:bg-gray-300"
+    className="flex flex-col md:inline-block items-center justify-center bg-white cursor-pointer shadow-md rounded-lg p-3 hover:bg-gray-300"
     onClick={() => handleBrandClick(name)}
   >
     <Image
@@ -89,7 +89,7 @@ const BrandCard = ({ logoUrl, name }) => (
 )
 const BrandScrollContainer = ({ brands, brandsMapping }) => {
   return (
-    <span className="flex md:block overflow-x-auto py-2 gap-x-5">
+    <span className="flex overflow-x-auto py-2 gap-x-5">
       {brands.map(
         (brand, i) =>
           brandsMapping[brand] && (
@@ -170,7 +170,7 @@ const ButtonRows = () => {
 
   return (
     <section className="pt-8 pb-8 bg-white text-gray-900">
-      <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-6">
         <div className="mb-6">
           <h2 className="text-4xl font-bold mb-5 text-gray-900">
             Find your dream car.
@@ -183,7 +183,7 @@ const ButtonRows = () => {
         </div>
       ) : (
         <>
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-6">
             <h3 className="text-2xl font-bold mb-3 text-gray-600">Brands</h3>
             {isDesktop ? (
               <BrandScrollContainer

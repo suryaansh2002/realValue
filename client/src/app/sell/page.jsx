@@ -17,7 +17,6 @@ import { FaCoins, FaClipboardCheck, FaMoneyCheckAlt } from 'react-icons/fa'
 import FeaturedCars from '../FeaturedCars'
 import { sellFAQData } from '../data/sellFAQs'
 import Faq from '../components/Faq'
-import Faq from '../components/Faq'
 
 const SellRequestForm = () => {
   let url = 'https://real-value-server.vercel.app/'
@@ -141,7 +140,7 @@ const SellRequestForm = () => {
           </div>
           <button
             onClick={() => setShowForm(!showForm)}
-            className="hover:bg-yellow-500 hover:text-gray-900 text-xl  border border-white-900  text-whitew-max rounded md:px-16 md:py-4 px-10 py-2 w-max rounded-lg md:mx-0 ml-[50%] -translate-x-[50%] md:translate-x-0 md:absolute bottom-4 left-4"
+            className="hover:bg-yellow-500 hover:text-gray-900 text-xl  border border-white-900  text-whitew-max md:px-16 md:py-4 px-10 py-2 w-max rounded-lg md:mx-0 ml-[50%] -translate-x-[50%] md:translate-x-0 md:absolute bottom-4 left-4"
           >
             Get Valuation!
             {/* {showForm ? (

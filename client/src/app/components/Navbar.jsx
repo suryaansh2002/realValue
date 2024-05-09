@@ -7,7 +7,7 @@ import { MenuOutlined } from '@ant-design/icons'
 import { Space } from 'antd'
 
 // logo
-import Logo from '../../images/logo.png'
+import Logo from '../../images/logo_text.png'
 import Image from 'next/image'
 import { IoMdClose } from 'react-icons/io'
 
@@ -23,11 +23,25 @@ const Navbar = () => {
   }
 
   const NavLink = ({ href, text }) => (
-    <div className="h-full hover:border-b-2 hover:border-yellow-400">
+    <div className="h-full">
       <Link legacyBehavior href={href}>
         <a
           className="text-white text-md"
-          style={{ fontSize: '20px', fontWeight: 'bold' }}
+          style={{
+            fontSize: '20px',
+            fontWeight: 'bold',
+            borderBottom: '3px solid transparent',
+            paddingBottom: '15px',
+            paddingTop: '15px',
+            display: 'inline-block',
+            transition: 'border-color 0.3s',
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.borderColor = 'yellow'
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.borderColor = 'transparent'
+          }}
         >
           {text}
         </a>
@@ -36,15 +50,15 @@ const Navbar = () => {
   )
 
   return (
-    <>
-      <div className="bg-black py-4 sticky top-0 z-50">
-        <div className="flex items-center justify-center gap-x-60 lg:justify-around lg:gap-x-96">
-          <div className="mx-auto">
+    <div className="bg-black sticky top-0 z-50 py-4 md:py-0">
+      <div className="mx-auto max-w-screen-xl">
+        <div className="flex items-center justify-evenly gap-x-60 lg:justify-between lg:gap-x-96 navbar-container lg:px-4 lg:pr-8">
+          <div className="mx-auto lg:mx-0 pl-2">
             <Link href="/">
-              <Image src={Logo} alt="logo" width={80} height={80} priority />
+              <Image src={Logo} alt="logo" width={120} priority />
             </Link>
           </div>
-          <div className="hidden md:flex justify-evenly items-center space-x-4 mx-auto flex-grow-1">
+          <div className="hidden md:flex justify-evenly items-center space-x-4 mx-auto lg:mx-0 flex-grow-1">
             <NavLink href="/buy" text="Buy" />
             <NavLink href="/sell" text="Sell" />
             <NavLink href="/finance" text="Finance" />
@@ -74,7 +88,12 @@ const Navbar = () => {
         onClose={onClose}
         open={visible}
         className="bg-black text-white"
-        style={{ backgroundColor: '#111827', color: 'white' }}
+        style={{
+          backgroundColor: '#111827',
+          color: 'white',
+          paddingTop: 10,
+          paddingBottom: 10,
+        }}
         extra={
           <Space>
             <IoMdClose
@@ -140,7 +159,7 @@ const Navbar = () => {
           </Link>
         </div>
       </Drawer>
-    </>
+    </div>
   )
 }
 

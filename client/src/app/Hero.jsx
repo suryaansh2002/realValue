@@ -26,6 +26,7 @@ import volvo from '@/images/brands/volvo.png'
 
 import axios from 'axios'
 import { TypewriterEffectSmooth } from '@/app/components/ui/typewriter-effect'
+import { FaSearch } from 'react-icons/fa'
 const imageStyles = {
   width: '2.5rem',
   height: '2.5rem',
@@ -183,15 +184,19 @@ const Hero = () => {
       <div className="grid max-w-screen-xl py-12 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12 lg:px-6 px-4">
         <div className="mr-auto place-self-center lg:col-span-7">
           <h1 className="max-w-2xl">
-            <TypewriterEffectSmooth
-              words={'Real Value by Poddar Motors'.split(' ').map((word) => {
-                return {
-                  text: word,
-                  className:
-                    'mb-4 text-2xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-5xl text-white',
-                }
-              })}
-            />
+          <TypewriterEffectSmooth words={"Buy Smart With Real Value".split(' ').map((word, index)=>{
+            if(index<=2){
+
+              return {
+                text: word,
+                className: "mb-4 text-2xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-5xl text-white"
+              }
+            }
+            return {
+              text: word,
+              className: "mb-4 text-2xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-5xl !text-yellow-400"
+            }
+            })}/>
           </h1>
           <p className="max-w-2xl mb-6 font-light lg:mb-8 text-sm md:text-lg lg:text-xl text-gray-400">
             Your one-stop-shop for buying, selling, and financing cars. We offer
@@ -241,7 +246,7 @@ const Hero = () => {
             <span className="button-wrapper mr-3">
               <ButtonCloud options={budgets} label="Budget" />
             </span>
-            <span className="button-wrapper mr-3">
+            <span className="button-wrapper mr-3 md:mt-9">
               <a
                 href="/buy"
                 className="inline-flex items-center 
@@ -250,7 +255,7 @@ const Hero = () => {
                  text-white focus:ring-4  border-gray-700 hover:!bg-yellow-500 focus:ring-gray-700 md:mt-10
                  "
               >
-                Search
+                <FaSearch/>
               </a>
             </span>
           </div>

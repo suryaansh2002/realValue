@@ -3,10 +3,11 @@ import React, { useState, useEffect, useRef } from 'react'
 import axios from 'axios'
 import { AmountWithCommas } from '@/app/utils'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { Autoplay, Navigation, Pagination } from 'swiper/modules'
+import { Autoplay, Navigation, Pagination, Thumbs } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
+import 'swiper/css/thumbs'
 import Image from 'next/image'
 
 // Icons
@@ -38,6 +39,9 @@ const page = ({ params: { id } }) => {
   const [carData, setCarData] = useState(null)
   const [open, setOpen] = useState(false)
   const [error, setError] = useState(null)
+  const [isDesktop, setDesktop] = useState(false)
+
+  const [thumbsSwiper, setThumbsSwiper] = useState(null)
 
   const bookingPOSTURL = 'https://real-value-server.vercel.app/api/bookings'
   const [confirmLoading, setConfirmLoading] = useState(false)
@@ -51,6 +55,21 @@ const page = ({ params: { id } }) => {
   const handleCancel = () => {
     setOpen(false)
   }
+
+  const updateComponent = () => {
+    setDesktop(window.innerWidth > 1024)
+  }
+
+  useEffect(() => {
+    if (window.innerWidth > 1024) {
+      setDesktop(true)
+    }
+  }, [])
+
+  useEffect(() => {
+    window.addEventListener('resize', updateComponent)
+    return () => window.removeEventListener('resize', updateComponent)
+  })
 
   const handleChildData = (data) => {
     setConfirmLoading(true)
@@ -164,14 +183,15 @@ const page = ({ params: { id } }) => {
         </nav>
 
         <Swiper
-          modules={[Navigation, Pagination, Autoplay]}
+          modules={[Navigation, Pagination, Autoplay, Thumbs]}
           className="myIndividualCarSwiper"
           slidesPerView={1}
           spaceBetween={5}
+          thumbs={{ swiper: thumbsSwiper }}
+          pagination={isDesktop && { clickable: true }}
           navigation
           loop={true}
           centeredSlides={true}
-          pagination={{ clickable: true }}
           autoplay={{ delay: 2000, disableOnInteraction: false }}
           breakpoints={{
             640: { slidesPerView: 1, spaceBetween: 5 },
@@ -192,6 +212,38 @@ const page = ({ params: { id } }) => {
               </SwiperSlide>
             ))}
         </Swiper>
+        {!isDesktop && (
+          <Swiper
+            onSwiper={setThumbsSwiper}
+            modules={[Navigation, Pagination, Autoplay, Thumbs]}
+            className="thumbsSwiperDown"
+            slidesPerView={4}
+            spaceBetween={5}
+            watchSlidesProgress={true}
+            pagination={{ clickable: true }}
+            loop={true}
+            centeredSlides={true}
+            autoplay={{ delay: 2000, disableOnInteraction: false }}
+            breakpoints={{
+              640: { slidesPerView: 4, spaceBetween: 5 },
+              768: { slidesPerView: 4, spaceBetween: 5 },
+              1024: { slidesPerView: 4, spaceBetween: 5 },
+            }}
+          >
+            {carData.images &&
+              carData.images.map((carImage, i) => (
+                <SwiperSlide key={i} style={{ paddingBottom: '40px' }}>
+                  <Image
+                    src={carImage}
+                    alt="car-img"
+                    width={600}
+                    height={400}
+                    style={{ borderRadius: '15px' }}
+                  />
+                </SwiperSlide>
+              ))}
+          </Swiper>
+        )}
 
         {/* <!-- Product info --> */}
         <div className="mx-auto max-w-2xl px-4 pb-16 pt-10 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8 lg:px-8 lg:pb-24 lg:pt-16">

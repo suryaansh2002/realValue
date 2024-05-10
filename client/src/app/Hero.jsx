@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react'
 import carImage2 from '../images/car-image-2.jpg'
 import Image from 'next/image'
 import ButtonCloud from './components/ButtonCloud'
-import { FaChevronRight, FaSearch } from "react-icons/fa";
 
 import audi from '@/images/brands/audi.png'
 import bmw from '@/images/brands/bmw.png'
@@ -26,7 +25,7 @@ import volkswagen from '@/images/brands/volkswagen.png'
 import volvo from '@/images/brands/volvo.png'
 
 import axios from 'axios'
-import { TypewriterEffectSmooth } from "@/app/components/ui/typewriter-effect"
+import { TypewriterEffectSmooth } from '@/app/components/ui/typewriter-effect'
 const imageStyles = {
   width: '2.5rem',
   height: '2.5rem',
@@ -42,7 +41,6 @@ const brandsMapping = {
   Hyundai: hyundai,
   Jeep: jeep,
   Kia: kia,
-  'Land Rover':land_rover,
   Mahindra: mahindra,
   Mercedes: mercedes,
   MG: mg,
@@ -117,6 +115,32 @@ const Hero = () => {
 
   const fetchAllBrands = async () => {
     try {
+      // const response = await axios.get(url + 'api/listings/brands')
+      // if (response.data) {
+      // const arr = response.data.map((b, index) => {
+      //   return {
+      //     label: (
+      //       <div>
+      //         <Image style={imageStyles} src={brandsMapping[b]} alt={b} /> {b}
+      //       </div>
+      //     ),
+      //     key: `${index + 1}`,
+      //   }
+      // })
+      const arr = Object.keys(brandsMapping).map((b, index) => {
+        return {
+          label: (
+            <div>
+              <Image style={imageStyles} src={brandsMapping[b]} alt={b} /> {b}
+            </div>
+          ),
+          key: `${index + 1}`,
+        }
+      })
+      console.log(arr)
+      setBrands(arr)
+      setLoading(false)
+      // }
       const response = await axios.get(url + 'api/listings/brands')
       if (response.data) {
         const arr = response.data.map((b, index) => {
@@ -155,24 +179,19 @@ const Hero = () => {
   }, [])
 
   return (
-    <section className="bg-black">
-      <div className="grid max-w-screen-xl px-4 py-12 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
+    <section className="bg-black mx-auto">
+      <div className="grid max-w-screen-xl py-12 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12 lg:px-6 px-4">
         <div className="mr-auto place-self-center lg:col-span-7">
           <h1 className="max-w-2xl">
-          <TypewriterEffectSmooth words={"Buy Smart With Real Value".split(' ').map((word, index)=>{
-            if(index<=2){
-
-              return {
-                text: word,
-                className: "mb-4 text-2xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-5xl text-white"
-              }
-            }
-            return {
-              text: word,
-              className: "mb-4 text-2xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-5xl !text-yellow-400"
-            }
-            })}/>
-           
+            <TypewriterEffectSmooth
+              words={'Real Value by Poddar Motors'.split(' ').map((word) => {
+                return {
+                  text: word,
+                  className:
+                    'mb-4 text-2xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-5xl text-white',
+                }
+              })}
+            />
           </h1>
           <p className="max-w-2xl mb-6 font-light lg:mb-8 text-sm md:text-lg lg:text-xl text-gray-400">
             Your one-stop-shop for buying, selling, and financing cars. We offer
@@ -186,34 +205,43 @@ const Hero = () => {
           </a>
           <a
             href="/sell"
-            className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center border rounded-lg focus:ring-4 focus:ring-gray-800 text-gray-800 border-gray-700 bg-slate-300 mr-5 hover:!bg-yellow-500"
+            className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center  rounded-lg hover:!text-yellow-500 text-white  focus:ring-gray-800  !border-yellow-500"
+            style={{
+              textDecoration: 'underline',
+              textDecorationColor: 'transparent',
+              border: '1px solid #f6e05e',
+            }}
           >
-           Sell Car <FaChevronRight className='text-sm ml-2'/>
+            Sell Car
+            <span
+              className="ml-2"
+              style={{ textDecoration: 'none', fontSize: '1.2rem' }}
+            >
+              &#8594; {/* Unicode arrow character pointing right */}
+            </span>
           </a>
-       
         </div>
-     
         <div className="mt-10 lg:mt-0 lg:col-span-5 lg:flex">
-          <Image src={carImage2} className='opacity-60' alt="Hero car image" priority />
+          <Image src={carImage2} alt="Hero car image" priority />
         </div>
       </div>
 
-      <div className="max-w-screen-xl px-4 pt-10 mx-auto lg:pb-32 lg:pt-0 lg:pb-0">
+      <div className="max-w-screen-xl pt-10 mx-auto lg:pb-24 lg:pt-0 lg:px-6 px-4">
         <div className="mr-auto place-self-center lg:col-span-7">
-          <p className="max-w-2xl mb-6 font-light text-gray-400 lg:mb-0 md:text-lg lg:text-xl lg:translate-y-2 ">
+          <p className="max-w-2xl mb-12 font-light text-gray-400 md:text-lg lg:mb-0 lg:text-xl ">
             Or get started directly by...
           </p>
-          <div className="button-container">
+          <div className="button-container -mt-4">
             <span className="button-wrapper mr-3">
               <ButtonCloud options={brands} label="Brand" />
             </span>
             <span className="button-wrapper mr-3">
               <ButtonCloud options={types} label="Segment" />
             </span>
-            <span className="button-wrapper mr-3 md:mt-9">
+            <span className="button-wrapper mr-3">
               <ButtonCloud options={budgets} label="Budget" />
             </span>
-            <span className="button-wrapper mr-3 md:mt-9">
+            <span className="button-wrapper mr-3">
               <a
                 href="/buy"
                 className="inline-flex items-center 
@@ -222,7 +250,7 @@ const Hero = () => {
                  text-white focus:ring-4  border-gray-700 hover:!bg-yellow-500 focus:ring-gray-700 md:mt-10
                  "
               >
-                <FaSearch/>
+                Search
               </a>
             </span>
           </div>

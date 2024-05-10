@@ -7,7 +7,7 @@ import Link from 'next/link'
 const ContactUsPage = () => {
   return (
     <section className="bg-gray-900 max-w-9xl">
-      <div className="container px-4 py-8 lg:px-12">
+      <div className="container px-4 py-16 lg:px-6">
         <div>
           <h1 className="mt-2 text-3xl font-semibold  md:text-4xl text-white">
             Get in touch

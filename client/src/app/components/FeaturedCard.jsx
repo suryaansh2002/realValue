@@ -7,7 +7,7 @@ import { toTitleCase } from '@/app/utils'
 const FeaturedCard = ({ car }) => {
   return (
     <a href={`/buy/${car._id}`}>
-      <div className="max-w-sm rounded align-top  overflow-hidden shadow-lg  hover:scale-105 hover:border-yellow-500 transition-transform duration-200 border-2 border-transparent">
+      <div className="max-w-sm rounded-lg align-top overflow-hidden shadow-md  hover:scale-105  hover:shadow-xl  transition-transform duration-200 border-2 border-transparent">
         <Image
           className="w-full h-[20rem]"
           src={car.images[0]}
@@ -28,25 +28,26 @@ const FeaturedCard = ({ car }) => {
           </div>
         </div>
 
-        <div className="mt-2 ml-6 ">
-          <div className="text-gray-800 font-bold text-lg mb-2 inline-block w-[65%]">
-            {formatAmount(car.price)}
-          </div>
-          <div className="text-green-600 text-basetranslate-0  inline-block">
-            EMI ₹{AmountWithCommas(EMICalcLite(car.price, 10, 36))}
-          </div>
-        </div>
-
         <div className="px-6 pt-2 pb-4 flex flex-wrap">
-          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+          <span className="inline-block bg-gray-200 rounded-full px-3 text-sm font-semibold text-gray-700 mr-2">
             {car.kmDriven}km
           </span>
-          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+          <span className="inline-block bg-gray-200 rounded-full px-3 text-sm font-semibold text-gray-700 mr-2">
             {car.fuelType}
           </span>
-          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+          <span className="inline-block bg-gray-200 rounded-full px-3 text-sm font-semibold text-gray-700 mr-2">
             {toTitleCase(car.transmissionType)}
           </span>
+        </div>
+
+        <div className="mb-2 flex justify-between mx-7">
+          <div className="text-gray-800 font-black text-xl mb-2">
+            {formatAmount(car.price)}
+          </div>
+          <div className="text-green-600 translate-0 text-lg  inline-block">
+            ₹{AmountWithCommas(EMICalcLite(car.price, 10, 36))}
+            /month
+          </div>
         </div>
       </div>
     </a>

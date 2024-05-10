@@ -34,8 +34,8 @@ const Testimonials = () => {
   }, [])
 
   return (
-    <section className="py-24 bg-gray-900 text-white">
-      <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+    <section className="bg-gray-900 text-white pt-16">
+      <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-6">
         <div className="mb-16">
           <h2 className="text-4xl font-bold text-white mb-5">
             Don't believe us?

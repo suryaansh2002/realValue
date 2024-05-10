@@ -69,7 +69,7 @@ const EMICalculator = ({ indiPrincipal }) => {
     <section className={`${indiPrincipal ? 'py-0' : 'py-16'}`}>
       {/* Heading on the left */}
       <div
-        className={`mx-auto max-w-7xl ${indiPrincipal ? 'py-8' : 'px-4 py-8 sm:px-6 lg:px-8'}`}
+        className={`mx-auto max-w-7xl ${indiPrincipal ? 'py-8' : 'px-4 py-8 sm:px-6 lg:px-6'}`}
       >
         {indiPrincipal ? (
           <></>
@@ -206,7 +206,7 @@ const EMICalculator = ({ indiPrincipal }) => {
                 <div className="text-xl font-bold mb-2">
                   Interest vs Principal:
                 </div>
-                <div style={{ height: '367px' }}>
+                <div style={{ height: '27.8rem' }}>
                   <Doughnut
                     data={doughnutChartData}
                     options={doughnutOptions}

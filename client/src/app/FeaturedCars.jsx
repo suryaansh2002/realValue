@@ -40,14 +40,11 @@ const FeaturedCars = ({ featuredCarData }) => {
 
   return (
     <section className="py-10 !bg-white">
-      <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-        <div className="mb-8">
+      <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-6">
+        <div className="mb-14">
           <h2 className="text-4xl font-bold text-gray-900 mb-5">
             Featured Cars
           </h2>
-          <span className="text-lg text-gray-500 font-medium block mb-2">
-            Check out our best!
-          </span>
         </div>
 
         {error && <p>Error, please try again...</p>}
@@ -81,7 +78,12 @@ const FeaturedCars = ({ featuredCarData }) => {
           >
             {carData &&
               carData.map((car) => (
-                <SwiperSlide key={car._id} style={{ paddingBottom: '40px' }}>
+                <SwiperSlide
+                  key={car._id}
+                  style={{
+                    paddingBottom: '60px',
+                  }}
+                >
                   <FeaturedCard car={car} />
                 </SwiperSlide>
               ))}

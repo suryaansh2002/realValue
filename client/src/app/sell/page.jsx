@@ -17,6 +17,17 @@ import { FaCoins, FaClipboardCheck, FaMoneyCheckAlt } from 'react-icons/fa'
 import FeaturedCars from '../FeaturedCars'
 import { sellFAQData } from '../data/sellFAQs'
 import Faq from '../components/Faq'
+import steps1 from '@/images/sell/steps1.jpeg'
+import steps2 from '@/images/sell/steps2.jpeg'
+import steps3 from '@/images/sell/steps3.jpeg'
+import steps4 from '@/images/sell/steps4.jpeg'
+import why1 from '@/images/sell/why1.jpeg'
+import why2 from '@/images/sell/why2.jpeg'
+import why3 from '@/images/sell/why3.jpeg'
+import Image from 'next/image'
+
+
+
 
 const SellRequestForm = () => {
   let url = 'https://real-value-server.vercel.app/'
@@ -93,38 +104,37 @@ const SellRequestForm = () => {
     {
       title: 'Digital Verification',
       subTitle: 'Submit the above form',
-      image: '',
+      image: steps1,
     },
     {
       title: 'Call Our Purchase Expert',
       subTitle: 'Get valuation instantly',
-      image: '',
+      image: steps2,
     },
     {
       title: 'Physical Inspection',
       subTitle: '',
-      image: '',
+      image: steps3,
     },
     {
       title: 'Car Pickup and Payment',
       subTitle: '',
-      image: '',
+      image: steps4,
     },
   ]
 
   const whySellToUs = [
     {
       title: 'Best Price',
-      image: '',
+      image: why1,
     },
     {
       title: 'Hassle Free',
-      image: '',
+      image: why2,
     },
     {
       title: 'Instant Payment',
-      subTitle: '',
-      image: '',
+      image: why3,
     },
   ]
 
@@ -312,9 +322,11 @@ const SellRequestForm = () => {
         </div>
         <div className="mx-4 ml-0 md:ml-4">
           {stepsToSell.map((step, index) => (
-            <div className="md:inline-block block w-[20rem] bg-white p-4 rounded-lg shadow-md align-top mx-4 md:my-0 my-4">
-              <div className="h-[10rem]">{/* Image */}</div>
-              <div className="p-2 text-xl font-semibold text-gray-900">
+            <div className="md:inline-block block w-[20rem] bg-white p-4 rounded-lg shadow-md align-top mx-4 md:my-0 my-4 hover:scale-105  hover:shadow-xl  transition-transform duration-200">
+              <div className="">
+                <Image src={step.image}/>
+              </div>
+              {/* <div className="p-2 text-xl font-semibold text-gray-900">
                 {index + 1} {step.title}
               </div>
               {step.subTitle.length ? (
@@ -323,7 +335,7 @@ const SellRequestForm = () => {
                 </div>
               ) : (
                 <div className="h-[1.5rem]"></div>
-              )}
+              )} */}
             </div>
           ))}
         </div>
@@ -335,98 +347,23 @@ const SellRequestForm = () => {
         </div>
         <div className="mx-4 ml-0 md:ml-4">
           {whySellToUs.map((step, index) => (
-            <div className="md:inline-block block md:w-[25rem] w-[20rem] bg-white p-4 rounded-lg shadow-md align-top mx-4 md:my-0 my-4">
-              <div className="p-2 text-xl font-semibold text-gray-900 w-max">
-                <span className="bg-gray-900 text-white rounded-full px-5 py-4 h-6 mr-2">
+            <div className="md:inline-block block md:w-[25rem] w-[20rem] bg-white p-4 rounded-lg shadow-md align-top mx-4 md:my-0 my-4 hover:scale-105  hover:shadow-xl  transition-transform duration-200">
+              <Image src={step.image}/>
+              {/* <div className="p-2 text-xl font-semibold text-gray-900 w-max">
+                {/* <span className="bg-gray-900 text-white rounded-full px-5 py-4 h-6 mr-2">
                   {' '}
                   {index + 1}{' '}
-                </span>{' '}
-                {step.title}
-              </div>
-              <div className="h-[10rem]">{/* Image */}</div>
+                </span>{' '} *
+                {/* {step.title} 
+              </div> */}
             </div>
           ))}
         </div>
       </div>
 
-      {/* <div className="my-4">
-        <div className="w-[100vw] block md:w-[50vw] md:inline-block">
-          <div className="font-semibold text-2xl my-8 ml-4 md:ml-10">
-            Steps To Sell
-          </div>
-          <ul className="space-y-4 ml-6 md:ml-14">
-            <li className="flex items-center py-2">
-              <span className="flex-shrink-0 mr-4">
-                <FaCheckCircle className="text-green-500 text-xl" />
-              </span>
-              <span className="text-lg">Digital Verification</span>
-            </li>
-            <li className="flex items-center py-2">
-              <span className="flex-shrink-0 mr-4">
-                <FaPhone className="text-blue-500 text-xl" />
-              </span>
-              <span className="text-lg">Call with our team</span>
-            </li>
-            <li className="flex items-center py-2">
-              <span className="flex-shrink-0 mr-4">
-                <FaMapMarkerAlt className="text-red-500 text-xl" />
-              </span>
-              <span className="text-lg">
-                Physical inspection (home and showroom)
-              </span>
-            </li>
-            <li className="flex items-center py-2">
-              <span className="flex-shrink-0 mr-4">
-                <FaCarSide className="text-yellow-500 text-xl" />
-              </span>
-              <span className="text-lg">Car condition</span>
-            </li>
-            <li className="flex items-center py-2">
-              <span className="flex-shrink-0 mr-4">
-                <FaFileAlt className="text-indigo-500 text-xl" />
-              </span>
-              <span className="text-lg">Papers</span>
-            </li>
-            <li className="flex items-center py-2">
-              <span className="flex-shrink-0 mr-4">
-                <FaHandshake className="text-purple-500 text-xl" />
-              </span>
-              <span className="text-lg">Car pickup and payment</span>
-            </li>
-          </ul>
-        </div>
-
-        <div className="w-[100vw] block md:w-[40vw] md:inline-block align-top">
-          <div className="font-semibold text-2xl my-8 ml-4 md:ml-10">
-            Why Sell Your Car To Us?
-          </div>
-          <ul className="space-y-4 ml-6 md:ml-14">
-            <li className="flex items-center py-2">
-              <span className="flex-shrink-0 mr-4">
-                <FaCoins className="text-green-500 text-lg" />
-              </span>
-              <span className="text-lg">Best price</span>
-            </li>
-            <li className="flex items-center py-2">
-              <span className="flex-shrink-0 mr-4">
-                <FaClipboardCheck className="text-blue-500 text-lg" />
-              </span>
-              <span className="text-lg">Hassle-free documentation</span>
-            </li>
-            <li className="flex items-center py-2">
-              <span className="flex-shrink-0 mr-4">
-                <FaMoneyCheckAlt className="text-yellow-500 text-lg" />
-              </span>
-              <span className="text-lg">Instant Payment</span>
-            </li>
-          </ul>
-        </div>
-      </div> */}
-
+     
       <Faq FAQs={sellFAQData} title="Sell related" />
-      <div>
-        <FeaturedCars />
-      </div>
+    
       {(showForm || showModal) && (
         <div className="fixed inset-0 text-lg bg-black bg-opacity-50 z-10"></div>
       )}

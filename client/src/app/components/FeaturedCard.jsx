@@ -41,10 +41,10 @@ const FeaturedCard = ({ car }) => {
         </div>
 
         <div className="mb-2 flex justify-between mx-7">
-          <div className="text-gray-800 font-black text-xl mb-2">
+          <div className="text-gray-800 font-black text-lg mb-2">
             {formatAmount(car.price)}
           </div>
-          <div className="text-green-600 translate-0 text-lg  inline-block">
+          <div className="text-green-600 translate-0 text-md  inline-block">
             ₹{AmountWithCommas(EMICalcLite(car.price, 10, 36))}
             /month
           </div>

@@ -42,6 +42,13 @@ body {
   opacity: 0.6;
 }
 
+.swiper-button-next::after {
+  /* color: #facc15; */
+}
+.swiper-button-prev::after {
+  /* color: #facc15; */
+}
+
 @media (max-width: 768px) {
   .button-container {
     display: flex;

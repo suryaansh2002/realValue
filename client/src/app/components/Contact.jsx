@@ -10,7 +10,7 @@ import Image from 'next/image'
 const Contact = () => {
   return (
     <div className="flex flex-col lg:flex-row">
-      <div className="max-w-7xl px-4 py-8 sm:px-6 lg:px-8 lg:w-[40%] lg:ml-16 ml-4">
+      <div className="px-4 py-8 sm:px-6 lg:px-8 lg:ml-16 ml-4 mx-auto max-w-screen-xl">
         <h2 className="text-4xl font-bold text-gray-900 mb-5 mt-12">
           Contact Us
         </h2>
@@ -73,11 +73,11 @@ const Contact = () => {
           </a>
         </div>
       </div>
-      <div className="w-[90%] mx-auto lg:w-[40%] py-8 lg:pt-12 lg:pb-0">
+      <div className="mx-auto py-8 lg:pt-12 lg:pb-0">
         <Image
           src={contactImage}
           alt="contact image"
-          className="rounded-md w-[80%] h-[75%] mx-auto"
+          className="rounded-md mx-auto"
         />
       </div>
     </div>

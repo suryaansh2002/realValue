@@ -525,8 +525,8 @@ export default function Buy({ allListings }) {
           </Dialog>
         </Transition.Root>
 
-        <main className="px-4 sm:px-6 lg:px-8 ">
-          <div className="flex items-baseline justify-between border-b border-gray-200 pb-6 pt-24">
+        <main className="px-4 sm:px-6 lg:px-8">
+          <div className="flex items-baseline justify-between border-b border-gray-200 pb-6 pt-12 mx-auto px-4 max-w-screen-xl">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900">
               Explore all cars
             </h1>

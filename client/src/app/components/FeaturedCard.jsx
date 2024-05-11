@@ -9,7 +9,7 @@ const FeaturedCard = ({ car }) => {
     <a href={`/buy/${car._id}`}>
       <div className="max-w-sm rounded-lg align-top overflow-hidden shadow-md  hover:scale-105  hover:shadow-xl  transition-transform duration-200 border-2 border-transparent">
         <Image
-          className="w-full h-[20rem]"
+          className="w-full h-[20rem] object-contain"
           src={car.images[0]}
           width={300}
           height={300}
@@ -29,13 +29,13 @@ const FeaturedCard = ({ car }) => {
         </div>
 
         <div className="px-6 pt-2 pb-4 flex flex-wrap">
-          <span className="inline-block bg-gray-200 rounded-full px-3 text-sm font-semibold text-gray-700 mr-2">
+          <span className="inline-block bg-gray-200 rounded-full px-3 text-sm font-semibold text-gray-700 mr-2 mb-2">
             {car.kmDriven}km
           </span>
-          <span className="inline-block bg-gray-200 rounded-full px-3 text-sm font-semibold text-gray-700 mr-2">
+          <span className="inline-block bg-gray-200 rounded-full px-3 text-sm font-semibold text-gray-700 mr-2 mb-2">
             {car.fuelType}
           </span>
-          <span className="inline-block bg-gray-200 rounded-full px-3 text-sm font-semibold text-gray-700 mr-2">
+          <span className="inline-block bg-gray-200 rounded-full px-3 text-sm font-semibold text-gray-700 mr-2 mb-2">
             {toTitleCase(car.transmissionType)}
           </span>
         </div>

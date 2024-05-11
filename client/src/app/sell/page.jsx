@@ -17,6 +17,7 @@ import { FaCoins, FaClipboardCheck, FaMoneyCheckAlt } from 'react-icons/fa'
 import FeaturedCars from '../FeaturedCars'
 import { sellFAQData } from '../data/sellFAQs'
 import Faq from '../components/Faq'
+import landing from '@/images/sell/landing.jpeg'
 import steps1 from '@/images/sell/steps1.jpeg'
 import steps2 from '@/images/sell/steps2.jpeg'
 import steps3 from '@/images/sell/steps3.jpeg'
@@ -140,30 +141,26 @@ const SellRequestForm = () => {
 
   return (
     <div className="text-left pt-4 bg-gray-900 text-white overflow-x-hidden">
-      <div className="text-left ml-8 mb-4 pt-4 md:text-3xl text-2xl font-bold">
+      <div className="text-left max-w-screen-xl mx-auto mb-4 pt-4 md:text-3xl text-3xl font-bold md:px-0 px-4">
         Sell Quick With Real Value
       </div>
-      <div className="h-[70vh] border-2 border-white rounded-md relative md:w-[50%] w-[80%] mt-8 ml-8">
-        <div className="">
-          <div className="md:text-2xl text-xl font-bold p-4">
-            Sell Your Car Within 30 Minutes!
-          </div>
+      <div className="max-w-screen-xl mx-auto md:px-0 pl-[5vw]">
+        <div className="border-2 border-white rounded-md relative  mt-8 w-max">
+          <Image src={landing} className='md:h-[60vh] md:w-auto w-[90vw] h-auto'/>
           <button
             onClick={() => setShowForm(!showForm)}
-            className="hover:bg-yellow-500 hover:text-gray-900 text-xl  border border-white-900  text-whitew-max md:px-16 md:py-4 px-10 py-2 w-max rounded-lg md:mx-0 ml-[50%] -translate-x-[50%] md:translate-x-0 md:absolute bottom-4 left-4"
+            className="
+            hover:bg-yellow-500 hover:text-gray-900 text-xl  
+            border border-white-900  text-whitew-max md:px-16 md:py-4 px-10 py-2 w-max 
+            rounded-lg my-4 ml-[50%] -translate-x-[50%]"
           >
             Get Valuation!
-            {/* {showForm ? (
-            <FaChevronUp className="inline-block align-text-top translate-y-05" />
-          ) : (
-            <FaChevronDown className="inline-block align-text-top translate-y-0.5" />
-          )} */}
           </button>
         </div>
       </div>
 
       {showForm && (
-        <div className="border-white border-2 p-4 rounded-md mt-4  md:max-w-screen-md absolute top-[20vh] bg-gray-900 ml-[50%] -translate-x-[50%]  w-[90vw] z-20">
+        <div className="border-white border-2 p-4 rounded-md mt-4  md:max-w-screen-md md:fixed absolute top-[10vh] bg-gray-900 ml-[50%] -translate-x-[50%]  w-[90vw] z-20">
           <form className="grid grid-cols-1 gap-4" onSubmit={handleSubmit}>
             <div className="text-right pr-4">
               <button onClick={() => setShowForm(false)}>
@@ -316,46 +313,43 @@ const SellRequestForm = () => {
         </div>
       )}
 
-      <div className="">
-        <div className="font-semibold text-2xl my-8 ml-4 md:ml-8 mt-20">
+      <div className="max-w-screen-xl mx-auto">
+        <div className="font-semibold text-3xl my-8  mt-20 md:px-0 px-4">
           4 Steps To Sell Your Car
         </div>
-        <div className="mx-4 ml-0 md:ml-4">
+        <div className="">
           {stepsToSell.map((step, index) => (
-            <div className="md:inline-block block w-[20rem] bg-white p-4 rounded-lg shadow-md align-top mx-4 md:my-0 my-4 hover:scale-105  hover:shadow-xl  transition-transform duration-200">
+            <div className="
+            md:inline-block 
+            block w-[17rem] bg-white p-4 rounded-lg 
+            shadow-md align-top mr-8 md:my-2 my-4 hover:scale-105  
+            hover:shadow-xl  transition-transform duration-200
+            md:ml-0 md:translate-x-0 
+            ml-[50%] -translate-x-[50%]
+            ">
               <div className="">
                 <Image src={step.image}/>
               </div>
-              {/* <div className="p-2 text-xl font-semibold text-gray-900">
-                {index + 1} {step.title}
-              </div>
-              {step.subTitle.length ? (
-                <div className="text-md pl-2 text-gray-500">
-                  {step.subTitle}
-                </div>
-              ) : (
-                <div className="h-[1.5rem]"></div>
-              )} */}
             </div>
           ))}
         </div>
       </div>
 
-      <div className="my-4">
-        <div className="font-semibold text-2xl my-8 ml-4 md:ml-10">
+      <div className="mt-20 max-w-screen-xl mx-auto">
+        <div className="font-semibold text-3xl my-8 md:px-0 px-4">
           Why Sell Your Car To Us
         </div>
-        <div className="mx-4 ml-0 md:ml-4">
+        <div className="">
           {whySellToUs.map((step, index) => (
-            <div className="md:inline-block block md:w-[25rem] w-[20rem] bg-white p-4 rounded-lg shadow-md align-top mx-4 md:my-0 my-4 hover:scale-105  hover:shadow-xl  transition-transform duration-200">
+            <div className="
+            md:inline-block block  w-[20rem]
+             bg-white p-4 rounded-lg shadow-md 
+             align-top mr-8 md:my-2 my-4 
+             hover:scale-105  hover:shadow-xl  transition-transform duration-200 
+            md:ml-0 md:translate-x-0 
+            ml-[50%] -translate-x-[50%]
+            ">
               <Image src={step.image}/>
-              {/* <div className="p-2 text-xl font-semibold text-gray-900 w-max">
-                {/* <span className="bg-gray-900 text-white rounded-full px-5 py-4 h-6 mr-2">
-                  {' '}
-                  {index + 1}{' '}
-                </span>{' '} *
-                {/* {step.title} 
-              </div> */}
             </div>
           ))}
         </div>

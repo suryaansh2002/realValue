@@ -137,7 +137,7 @@ const SellRequestForm = () => {
   ]
 
   return (
-    <div className="text-left pt-4 px-6 bg-gray-900 text-white overflow-x-hidden">
+    <div className="text-left pt-4 md:px-6 bg-gray-900 text-white overflow-x-hidden">
       <div>
         <div className="text-left max-w-screen-xl mx-auto mb-4 pt-4 md:text-3xl text-3xl font-bold md:px-0 px-4">
           Sell Quick With Real Value

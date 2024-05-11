@@ -14,7 +14,6 @@ import { Button, Slider } from 'antd'
 import { AmountWithCommas } from '@/app/utils'
 import FeaturedCard from '@/app/components/FeaturedCard'
 
-
 const sortOptions = [
   { name: 'Price: Low to High', href: '#', current: false, param: 'price_asc' },
   {
@@ -374,7 +373,7 @@ export default function Buy({ allListings }) {
 
   return (
     <div className="bg-white">
-      <div>
+      <div className="mx-auto max-w-screen-xl">
         {/* Mobile filter dialog */}
         <Transition.Root show={mobileFiltersOpen} as={Fragment}>
           <Dialog
@@ -526,7 +525,7 @@ export default function Buy({ allListings }) {
         </Transition.Root>
 
         <main className="px-4 sm:px-6 lg:px-8">
-          <div className="flex items-baseline justify-between border-b border-gray-200 pb-6 pt-12 mx-auto px-4 max-w-screen-xl">
+          <div className="flex items-baseline justify-between border-b border-gray-200 pb-6 pt-12">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900">
               Explore all cars
             </h1>
@@ -592,9 +591,12 @@ export default function Buy({ allListings }) {
               Products
             </h2>
 
-            <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-5">
+            <div
+              className="flex flex-col md:flex-row lg:gap-x-12 justify-center"
+              style={{ alignSelf: 'center' }}
+            >
               {/* Filters */}
-              <form className="hidden lg:block">
+              <form className="hidden lg:block" style={{ flexGrow: 2 }}>
                 <h3 className="sr-only">Categories</h3>
                 {filters.map((section) => (
                   <Disclosure
@@ -696,16 +698,22 @@ export default function Buy({ allListings }) {
               </form>
 
               {/* Product grid */}
-              <div className="lg:col-span-4 space-x-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 mt-8 px-8 mb-12">
-                {listings.length? listings.map((car) => (
-                  <FeaturedCard key={car._id} car={car} />
-                ))
-              :
-              <div className='text-center font-semibold p-4 lg:col-span-4'>
-                Sorry, no vehicles match the filters set...
-                </div>
-              
-              }
+              <div
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+                }}
+                className="lg:gap-x-4 gap-y-10 lg:w-[75%] w-[100%]"
+              >
+                {listings.length ? (
+                  listings.map((car) => (
+                    <FeaturedCard key={car._id} car={car} />
+                  ))
+                ) : (
+                  <div className="text-center font-semibold p-4 lg:col-span-4">
+                    Sorry, no vehicles match the filters set...
+                  </div>
+                )}
               </div>
             </div>
           </section>

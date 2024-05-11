@@ -1,9 +1,19 @@
+'use client'
 import React from 'react'
 import { FaPhone, FaPhoneAlt } from 'react-icons/fa'
 import Link from 'next/link'
+import { usePathname, useSearchParams } from 'next/navigation'
 
 const PhoneButton = () => {
   const phoneNumber = '8873002702'
+
+  const pathname = usePathname()
+  const isBuyPage = /^\/buy\/[a-zA-Z0-9-_]+$/.test(pathname)
+
+  if (isBuyPage) {
+    return null
+  }
+
   return (
     <Link
       href={`tel:${phoneNumber}`}

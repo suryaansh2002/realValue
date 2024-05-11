@@ -126,7 +126,7 @@ const page = ({ params: { id } }) => {
 
   return (
     <div className="bg-white overflow-x-hidden">
-      <div className="pt-6">
+      <div className="pt-6 mx-auto max-w-screen-xl">
         <nav aria-label="Breadcrumb" className="mb-5">
           <ol
             role="list"
@@ -248,7 +248,7 @@ const page = ({ params: { id } }) => {
         {/* <!-- Product info --> */}
         <div className="mx-auto max-w-2xl px-4 pb-16 pt-10 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8 lg:px-8 lg:pb-24 lg:pt-16">
           <div className="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
-            <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
+            <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl mb-5">
               {`${carData.year}
                 ${carData.brand} 
                 ${carData.model}
@@ -291,10 +291,18 @@ const page = ({ params: { id } }) => {
               </span>
             </p>
 
-            <p className="text-lg font-bold text-gray-900 mt-8">
-              EMI starts at ₹
-              {AmountWithCommas(EMICalcLite(carData.price, 11, 36))}/month
-            </p>
+            <div className="flex justify-between text-base mt-8">
+              <p className="text-lg font-bold text-gray-900">
+                EMI starts at ₹
+                {AmountWithCommas(EMICalcLite(carData.price, 11, 36))}/month
+              </p>
+              <a
+                href="#emiSection"
+                className="text-md font-light text-yellow-700 underline pb-1"
+              >
+                Learn More
+              </a>
+            </div>
 
             {/* Zero downpayment with yelllow underline */}
             <p className="text-lg font-semibold text-gray-500">
@@ -302,11 +310,12 @@ const page = ({ params: { id } }) => {
             </p>
 
             <button
-              className="mt-10 flex w-full items-center justify-center rounded-md border border-yellow-500 text-white bg-yellow-500 px-8 py-3 text-base font-medium  hover:bg-yellow-600 hover:text-white hover:border-transparent focus:outline-none focus:ring-2 focus:!ring-yellow-500 focus:ring-offset-1"
+              className="mt-10 flex w-full items-center justify-center md:rounded-md border border-yellow-500 text-white bg-yellow-500 px-8 py-3 text-base font-medium  hover:bg-yellow-600 hover:text-white hover:border-transparent focus:outline-none focus:ring-2 focus:!ring-yellow-500 focus:ring-offset-1 fixed bottom-0 left-0 right-0 z-50 md:static rounded-none"
               onClick={showModal}
             >
               Book Test Drive
             </button>
+
             <Modal
               title="Book Test Drive"
               open={open}
@@ -548,8 +557,9 @@ const page = ({ params: { id } }) => {
                 })}
               />
             </div> */}
-
-            <EMICalculator indiPrincipal={carData.price} />
+            <div id="emiSection">
+              <EMICalculator indiPrincipal={carData.price} />
+            </div>
           </div>
         </div>
       </div>

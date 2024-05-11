@@ -557,7 +557,7 @@ const page = ({ params: { id } }) => {
                 })}
               />
             </div> */}
-            <div id="emiSection">
+            <div id="emiSection" className="w-[100%]">
               <EMICalculator indiPrincipal={carData.price} />
             </div>
           </div>

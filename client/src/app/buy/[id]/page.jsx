@@ -384,7 +384,7 @@ const page = ({ params: { id } }) => {
                 </h2>
                 <div>
                   {carData.displacement && (
-                    <div className="inline-block my-3 md:w-[45%] ">
+                    <div className="items-center block lg:inline-block my-3 md:w-[45%] ">
                       <div className="px-2 inline">
                         <Image
                           src={disp}
@@ -393,61 +393,70 @@ const page = ({ params: { id } }) => {
                           height={30}
                           className="inline  mr-2"
                         />
-                        <span className="text-gray-700 inline">
+                        <span className="text-gray-800 inline text-md">
                           <span className="font-bold">Displacement</span>:{' '}
-                          {carData.displacement} cc
+                          <span className="text-gray-700 font-semibold">
+                            {carData.displacement} cc
+                          </span>
                         </span>
                       </div>
                     </div>
                   )}
 
                   {carData.cylinders && (
-                    <div className="items-center inline-block my-3 md:w-[45%] ">
+                    <div className="items-center block lg:inline-block my-3 md:w-[45%] ">
                       <div className="px-2 inline">
                         <BiCylinder
                           size={20}
                           className="text-gray-600 mx-1 mr-4 inline"
                         />
-                        <span className="text-gray-700 inline">
-                          <span className="font-bold">No. of cylinders</span>:
-                          {carData.cylinders}
+                        <span className="text-gray-800 inline text-md">
+                          <span className="font-bold">No. of cylinders: </span>
+                          <span className="text-gray-700 font-semibold">
+                            {carData.cylinders}
+                          </span>
                         </span>
                       </div>
                     </div>
                   )}
 
                   {carData.maxPower && (
-                    <div className="items-center inline-block my-3 md:w-[45%] ">
+                    <div className="items-center block lg:inline-block my-3 md:w-[45%] ">
                       <div className="px-2 inline">
                         <FaBoltLightning
                           size={20}
                           className="text-gray-600 mx-1 mr-4 inline"
                         />
-                        <span className="text-gray-700 inline">
+                        <span className="text-gray-800 inline text-md">
                           <span className="font-bold">Max Power</span>:{' '}
-                          {carData.maxPower} BHP
+                          <span className="text-gray-700 font-semibold">
+                            {' '}
+                            {carData.maxPower} BHP
+                          </span>
                         </span>
                       </div>
                     </div>
                   )}
 
                   {carData.seats && (
-                    <div className="items-center inline-block my-3 md:w-[45%] ">
+                    <div className="items-center block lg:inline-block my-3 md:w-[45%] ">
                       <div className="px-2 inline">
                         <MdAirlineSeatReclineNormal
                           size={30}
                           className="text-gray-600 mx-1 mr-2 inline"
                         />
-                        <span className="text-gray-700 inline">
+                        <span className="text-gray-800 inline text-md">
                           <span className="font-bold">Seats</span>:{' '}
-                          {carData.seats}
+                          <span className="text-gray-700 font-semibold">
+                            {carData.seats}
+                          </span>
                         </span>
                       </div>
                     </div>
                   )}
 
                   {carData.bootspace && (
-                    <div className="items-center inline-block my-3 md:w-[45%] ">
+                    <div className="items-center block lg:inline-block my-3 md:w-[45%] ">
                       <div className="px-2 inline">
                         <Image
                           src={trunk}
@@ -456,46 +465,53 @@ const page = ({ params: { id } }) => {
                           width={20}
                           height={20}
                         />
-                        <span className="text-gray-700 inline">
+                        <span className="text-gray-800 inline text-md">
                           <span className="font-bold">Bootspace</span>:{' '}
-                          {carData.bootspace} L
+                          <span className="text-gray-700 font-semibold">
+                            {' '}
+                            {carData.bootspace} L
+                          </span>
                         </span>
                       </div>
                     </div>
                   )}
 
                   {carData.fuelTank && (
-                    <div className="items-center inline-block my-3 md:w-[45%] ">
+                    <div className="items-center block lg:inline-block my-3 md:w-[45%] ">
                       <div className="px-2 inline">
                         <BsFuelPumpFill
                           size={20}
                           className="text-gray-600 mx-2 mr-4 inline"
                         />
-                        <span className="text-gray-700 inline">
+                        <span className="text-gray-800 inline text-md">
                           <span className="font-bold">Fuel-Tank</span>:{' '}
-                          {carData.fuelTank} L
+                          <span className="text-gray-700 font-semibold">
+                            {carData.fuelTank} L
+                          </span>
                         </span>
                       </div>
                     </div>
                   )}
 
                   {carData.gears && (
-                    <div className="items-center inline-block my-3 md:w-[45%] ">
+                    <div className="items-center block lg:inline-block my-3 md:w-[45%] ">
                       <div className="px-2 inline">
                         <PiGearSixFill
                           size={20}
                           className="text-gray-600 inline mx-2 mr-4"
                         />
-                        <span className="text-gray-700 inline">
+                        <span className="text-gray-800 inline text-md">
                           <span className="font-bold">No. of Gears</span>:{' '}
-                          {carData.gears}
+                          <span className="text-gray-700 font-semibold">
+                            {carData.gears}
+                          </span>
                         </span>
                       </div>
                     </div>
                   )}
 
                   {carData.mileage && (
-                    <div className="items-center inline-block my-3 md:w-[45%] ">
+                    <div className="items-center block lg:inline-block my-3 md:w-[45%] ">
                       <div className="px-2 inline">
                         <Image
                           src={mileage}
@@ -504,9 +520,11 @@ const page = ({ params: { id } }) => {
                           height={30}
                           className="inline mx-1 mr-2"
                         />
-                        <span className="text-gray-700 inline">
+                        <span className="text-gray-800 inline text-md">
                           <span className="font-bold">Mileage</span>:{' '}
-                          {carData.mileage} kmpl
+                          <span className="text-gray-700 font-semibold">
+                            {carData.mileage} kmpl
+                          </span>
                         </span>
                       </div>
                     </div>

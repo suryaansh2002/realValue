@@ -82,6 +82,8 @@ const FeaturedCars = ({ featuredCarData }) => {
                   key={car._id}
                   style={{
                     paddingBottom: '60px',
+                    paddingLeft: '7px',
+                    paddingRight: '7px',
                   }}
                 >
                   <FeaturedCard car={car} />

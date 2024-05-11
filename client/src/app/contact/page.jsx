@@ -6,8 +6,8 @@ import Link from 'next/link'
 
 const ContactUsPage = () => {
   return (
-    <section className="bg-gray-900 max-w-9xl">
-      <div className="container px-4 py-16 lg:px-6">
+    <section className="bg-gray-900 ">
+      <div className="container px-4 py-16 lg:px-6 max-w-screen-xl mx-auto">
         <div>
           <h1 className="mt-2 text-3xl font-semibold  md:text-4xl text-white">
             Get in touch
@@ -22,7 +22,7 @@ const ContactUsPage = () => {
           style={{
             gridTemplateColumns: 'repeat(auto-fit, minmax(100px, 1fr))',
           }}
-          className="lg:grid flex flex-col gap-12 mt-12"
+          className="lg:grid flex gap-x-0 flex-col mt-12"
         >
           <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-1">
             <div>

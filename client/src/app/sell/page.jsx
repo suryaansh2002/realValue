@@ -27,9 +27,6 @@ import why2 from '@/images/sell/why2.jpeg'
 import why3 from '@/images/sell/why3.jpeg'
 import Image from 'next/image'
 
-
-
-
 const SellRequestForm = () => {
   let url = 'https://real-value-server.vercel.app/'
   // url = "http://localhost:5000/";
@@ -140,22 +137,27 @@ const SellRequestForm = () => {
   ]
 
   return (
-    <div className="text-left pt-4 bg-gray-900 text-white overflow-x-hidden">
-      <div className="text-left max-w-screen-xl mx-auto mb-4 pt-4 md:text-3xl text-3xl font-bold md:px-0 px-4">
-        Sell Quick With Real Value
-      </div>
-      <div className="max-w-screen-xl mx-auto md:px-0 pl-[5vw]">
-        <div className="border-2 border-white rounded-md relative  mt-8 w-max">
-          <Image src={landing} className='md:h-[60vh] md:w-auto w-[90vw] h-auto'/>
-          <button
-            onClick={() => setShowForm(!showForm)}
-            className="
+    <div className="text-left pt-4 px-6 bg-gray-900 text-white overflow-x-hidden">
+      <div>
+        <div className="text-left max-w-screen-xl mx-auto mb-4 pt-4 md:text-3xl text-3xl font-bold md:px-0 px-4">
+          Sell Quick With Real Value
+        </div>
+        <div className="max-w-screen-xl mx-auto md:px-0 pl-[5vw]">
+          <div className="border-2 border-white rounded-md relative  mt-8 w-max">
+            <Image
+              src={landing}
+              className="md:h-[60vh] md:w-auto w-[90vw] h-auto"
+            />
+            <button
+              onClick={() => setShowForm(!showForm)}
+              className="
             hover:bg-yellow-500 hover:text-gray-900 text-xl  
             border border-white-900  text-whitew-max md:px-16 md:py-4 px-10 py-2 w-max 
             rounded-lg my-4 ml-[50%] -translate-x-[50%]"
-          >
-            Get Valuation!
-          </button>
+            >
+              Get Valuation!
+            </button>
+          </div>
         </div>
       </div>
 
@@ -319,16 +321,19 @@ const SellRequestForm = () => {
         </div>
         <div className="">
           {stepsToSell.map((step, index) => (
-            <div className="
+            <div
+              key={index}
+              className="
             md:inline-block 
             block w-[17rem] bg-white p-4 rounded-lg 
             shadow-md align-top mr-8 md:my-2 my-4 hover:scale-105  
             hover:shadow-xl  transition-transform duration-200
             md:ml-0 md:translate-x-0 
             ml-[50%] -translate-x-[50%]
-            ">
+            "
+            >
               <div className="">
-                <Image src={step.image}/>
+                <Image src={step.image} />
               </div>
             </div>
           ))}
@@ -341,23 +346,25 @@ const SellRequestForm = () => {
         </div>
         <div className="">
           {whySellToUs.map((step, index) => (
-            <div className="
+            <div
+              key={index}
+              className="
             md:inline-block block  w-[20rem]
              bg-white p-4 rounded-lg shadow-md 
              align-top mr-8 md:my-2 my-4 
              hover:scale-105  hover:shadow-xl  transition-transform duration-200 
             md:ml-0 md:translate-x-0 
             ml-[50%] -translate-x-[50%]
-            ">
-              <Image src={step.image}/>
+            "
+            >
+              <Image src={step.image} />
             </div>
           ))}
         </div>
       </div>
 
-     
       <Faq FAQs={sellFAQData} title="Sell related" />
-    
+
       {(showForm || showModal) && (
         <div className="fixed inset-0 text-lg bg-black bg-opacity-50 z-10"></div>
       )}

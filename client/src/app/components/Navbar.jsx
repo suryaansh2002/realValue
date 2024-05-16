@@ -50,7 +50,7 @@ const Navbar = () => {
   )
 
   return (
-    <div className="bg-black fixed top-0 z-50 py-4 md:pt-1 md:pb-0 w-[100vw]">
+    <div className="bg-gray-900 fixed top-0 z-50 py-4 md:pt-1 md:pb-0 w-[100vw]">
       <div className="mx-auto max-w-screen-xl">
         <div className="flex items-center justify-evenly gap-x-60 lg:justify-between lg:gap-x-96 navbar-container lg:px-4 lg:pr-8">
           <div className="mx-auto lg:mx-0 pl-2">

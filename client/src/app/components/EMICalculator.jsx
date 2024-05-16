@@ -88,7 +88,9 @@ const EMICalculator = ({ indiPrincipal }) => {
             <div className="bg-white p-4 rounded-lg shadow-lg mb-4">
               <div className="text-2xl font-bold mb-4">EMI Calculator</div>
               <div className="flex flex-col space-y-4">
-                <div className="flex flex-col space-x-0 lg:space-x-4 lg:flex-row items-center justify-start lg:justify-between">
+                <div
+                  className={`flex flex-col space-x-0 lg:space-x-4 lg:flex-row items-center justify-start lg:justify-between`}
+                >
                   <label
                     htmlFor="principalAmount"
                     className="flex-1 mb-2 w-full"

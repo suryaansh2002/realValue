@@ -181,7 +181,7 @@ const Hero = () => {
 
   return (
     <section className="bg-custom-black mx-auto">
-      <div className="grid max-w-screen-xl py-12 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12 lg:px-6 px-4">
+      <div className="grid max-w-screen-xl pb-10 pt-9 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12 lg:px-6 px-4">
         <div className="mr-auto place-self-center lg:col-span-7">
           <h1 className="max-w-2xl">
             <TypewriterEffectSmooth
@@ -192,13 +192,13 @@ const Hero = () => {
                     return {
                       text: word,
                       className:
-                        'mb-4 text-2xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-5xl text-custom-seasalt',
+                        'mb-4 text-3xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-5xl text-custom-seasalt',
                     }
                   }
                   return {
                     text: word,
                     className:
-                      'mb-4 text-2xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-5xl !text-custom-yellow',
+                      'mb-4 text-3xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-5xl !text-custom-yellow',
                   }
                 })}
             />
@@ -236,7 +236,7 @@ const Hero = () => {
         </div>
       </div>
 
-      <div className="max-w-screen-xl pt-10 mx-auto lg:pb-24 lg:pt-0 lg:px-6 px-4">
+      <div className="max-w-screen-xl pt-10 mx-auto pb-16 lg:pb-24 lg:pt-0 lg:px-6 px-4">
         <div className="mr-auto place-self-center lg:col-span-7">
           <p className="max-w-2xl mb-12 font-light text-custom-platinum md:text-lg lg:mb-0 lg:text-xl ">
             Or get started directly by...

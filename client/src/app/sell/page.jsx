@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import styles from '../styles/Sell.module.css'
 import axios from 'axios'
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa'
@@ -45,6 +45,18 @@ const SellRequestForm = () => {
     kilometers: '',
     price: '',
   })
+
+  useEffect(() => {
+    if (showForm) {
+      document.body.classList.add('no-scroll')
+    } else {
+      document.body.classList.remove('no-scroll')
+    }
+
+    return () => {
+      document.body.classList.remove('no-scroll')
+    }
+  }, [showForm])
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
@@ -137,193 +149,199 @@ const SellRequestForm = () => {
   ]
 
   return (
-    <div className="text-left pt-4 md:px-6 bg-custom-black text-custom-seasalt overflow-x-hidden">
-      <div>
-        <div className="text-left max-w-screen-xl mx-auto mb-4 pt-4 md:text-3xl text-3xl font-bold md:px-0 px-4">
-          Sell Quick With Real Value
-        </div>
-        <div className="max-w-screen-xl mx-auto md:px-0 pl-[5vw]">
-          <div className="border-2 border-custom-seasalt rounded-md relative  mt-8 w-max">
-            <Image
-              src={landing}
-              className="md:h-[60vh] md:w-auto w-[90vw] h-auto"
-            />
-            <button
-              onClick={() => setShowForm(!showForm)}
-              className="
-            hover:bg-custom-yellow hover:text-custom-black text-xl  
-            border border-custom-seasalt  text-custom-seasalt w-max md:px-16 md:py-4 px-10 py-2 w-max 
-            rounded-lg my-4 ml-[50%] -translate-x-[50%]"
-            >
-              Get Valuation!
-            </button>
+    <>
+      <div className="text-left md:px-6 bg-custom-black text-custom-seasalt overflow-x-hidden py-16 pt-8">
+        <div>
+          <div className="text-left max-w-screen-xl mx-auto mb-4 pt-4 md:text-5xl text-3xl font-bold md:px-0 px-4">
+            Sell Quick With Real Value
           </div>
-        </div>
-      </div>
-
-      {showForm && (
-        <div className="border-custom-seasalt border-2 p-4 rounded-md mt-4  md:max-w-screen-md md:fixed absolute top-[10vh] bg-custom-black ml-[50%] -translate-x-[50%]  w-[90vw] z-20">
-          <form className="grid grid-cols-1 gap-4" onSubmit={handleSubmit}>
-            <div className="text-right pr-4">
-              <button onClick={() => setShowForm(false)}>
-                <XMarkIcon className="h-6 w-6" aria-hidden="true" />
+          <div className="max-w-screen-xl mx-auto md:px-0 pl-[5vw]">
+            <div className="flex flex-col items-center justify-center border-2 border-opacity-30 border-custom-seasalt rounded-md relative  mt-8 w-max">
+              <Image
+                src={landing}
+                className="md:h-[60vh] md:w-auto w-[90vw] h-auto"
+              />
+              <button
+                onClick={() => setShowForm(!showForm)}
+                className="
+            hover:bg-custom-yellow hover:text-custom-black text-xl 
+            border-1 border-opacity-45 text-custom-seasalt md:px-16 md:py-4 px-10 py-2 w-[100%] h-[100%] 
+            "
+              >
+                Get Valuation!
               </button>
             </div>
-            <div>
-              <div className="md:inline-block md:w-[50%] md:px-2 md:py-0 py-3">
-                <label className="font-normal text-sm">Name *</label>
-                <input
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  className="p-2 border border-custom-jet rounded text-black w-full"
-                  required
-                />
-              </div>
-              <div className="md:inline-block md:w-[50%] md:px-2 md:py-0 py-3">
-                <label className="font-normal text-sm">Phone Number *</label>
-                <input
-                  type="text"
-                  name="phoneNumber"
-                  value={formData.phoneNumber}
-                  onChange={handleChange}
-                  className="w-full p-2 border border-custom-jet rounded text-black"
-                  required
-                />
-              </div>
-            </div>
-
-            <div>
-              <div className="md:inline-block md:w-[50%] md:px-2 md:py-0 py-3">
-                <label className="font-normal text-sm">Email</label>
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="w-full p-2 border border-custom-jet rounded text-black"
-                />
-              </div>
-              <div className="md:inline-block md:w-[50%] md:px-2 md:py-0 py-3">
-                <label className="font-normal text-sm">Location *</label>
-                <input
-                  type="text"
-                  name="location"
-                  value={formData.location}
-                  onChange={handleChange}
-                  className="w-full p-2 border border-custom-jet rounded text-black"
-                  required
-                />
-              </div>
-            </div>
-
-            <div>
-              <div className="md:inline-block md:w-[50%] md:px-2 md:py-0 py-3">
-                <label className="font-normal text-sm">
-                  Registration Number *
-                </label>
-                <input
-                  type="text"
-                  name="registrationNumber"
-                  value={formData.registrationNumber}
-                  onChange={handleChange}
-                  className="w-full p-2 border border-custom-jet rounded text-black"
-                  required
-                />
-              </div>
-
-              <div className="md:inline-block md:w-[50%] md:px-2 md:py-0 py-3">
-                <label className="font-normal text-sm">Brand *</label>
-                <input
-                  type="text"
-                  name="brand"
-                  value={formData.brand}
-                  onChange={handleChange}
-                  className="w-full p-2 border border-custom-jet rounded text-black"
-                  required
-                />
-              </div>
-            </div>
-
-            <div>
-              <div className="md:inline-block md:w-[50%] md:px-2 md:py-0 py-3">
-                <label className="font-normal text-sm">Model *</label>
-                <input
-                  type="text"
-                  name="model"
-                  value={formData.model}
-                  onChange={handleChange}
-                  className="w-full p-2 border border-custom-jet rounded text-black"
-                  required
-                />
-              </div>
-              <div className="md:inline-block md:w-[50%] md:px-2 md:py-0 py-3">
-                <label className="font-normal text-sm">Variant</label>
-                <input
-                  type="text"
-                  name="variant"
-                  value={formData.variant}
-                  onChange={handleChange}
-                  className="w-full p-2 border border-custom-jet rounded text-black"
-                />
-              </div>
-            </div>
-
-            <div>
-              <div className="md:inline-block md:w-[50%] md:px-2 md:py-0 py-3">
-                <label className="font-normal text-sm">
-                  Manufacture Year *
-                </label>
-                <input
-                  type="number"
-                  name="manufactureYear"
-                  value={formData.manufactureYear}
-                  onChange={handleChange}
-                  className="w-full p-2 border border-custom-jet rounded text-black"
-                  required
-                />
-              </div>
-              <div className="md:inline-block md:w-[50%] md:px-2 md:py-0 py-3">
-                <label className="font-normal text-sm">Kilometers *</label>
-                <input
-                  type="number"
-                  name="kilometers"
-                  value={formData.kilometers}
-                  onChange={handleChange}
-                  className="w-full p-2 border border-custom-jet rounded text-black"
-                  required
-                />
-              </div>
-            </div>
-
-            <label className="font-normal text-sm">Expected Price</label>
-            <input
-              type="number"
-              name="price"
-              value={formData.price}
-              onChange={handleChange}
-              className="w-full p-2 border border-custom-jet rounded text-black"
-            />
-            <button
-              type="submit"
-              className="bg-custom-jet text-custom-seasalt hover:bg-custom-yellow hover:text-custom-jet  px-6 py-2 rounded"
-            >
-              Get Valuation
-            </button>
-          </form>
+          </div>
         </div>
-      )}
 
-      <div className="max-w-screen-xl mx-auto">
-        <div className="font-semibold text-3xl my-8  mt-20 md:px-0 px-4">
-          4 Steps To Sell Your Car
-        </div>
-        <div className="">
-          {stepsToSell.map((step, index) => (
-            <div
-              key={index}
-              className="
+        {showForm && (
+          <div className="modal">
+            <form className="grid grid-cols-1 gap-4" onSubmit={handleSubmit}>
+              <div className="flex items-center justify-between">
+                <h3 className="font-bold text-2xl text-custom-seasalt">
+                  Valuation Form
+                </h3>
+                <button onClick={() => setShowForm(false)}>
+                  <XMarkIcon className="h-6 w-6" aria-hidden="true" />
+                </button>
+              </div>
+              <div>
+                <div className="md:inline-block md:w-[50%] md:px-2 md:py-0 py-3">
+                  <label className="font-normal text-sm">Name *</label>
+                  <input
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    className="p-2 border border-custom-jet rounded text-black w-full"
+                    required
+                  />
+                </div>
+                <div className="md:inline-block md:w-[50%] md:px-2 md:py-0 py-3">
+                  <label className="font-normal text-sm">Phone Number *</label>
+                  <input
+                    type="text"
+                    name="phoneNumber"
+                    value={formData.phoneNumber}
+                    onChange={handleChange}
+                    className="w-full p-2 border border-custom-jet rounded text-black"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div>
+                <div className="md:inline-block md:w-[50%] md:px-2 md:py-0 py-3">
+                  <label className="font-normal text-sm">Email</label>
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    className="w-full p-2 border border-custom-jet rounded text-black"
+                  />
+                </div>
+                <div className="md:inline-block md:w-[50%] md:px-2 md:py-0 py-3">
+                  <label className="font-normal text-sm">Location *</label>
+                  <input
+                    type="text"
+                    name="location"
+                    value={formData.location}
+                    onChange={handleChange}
+                    className="w-full p-2 border border-custom-jet rounded text-black"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div>
+                <div className="md:inline-block md:w-[50%] md:px-2 md:py-0 py-3">
+                  <label className="font-normal text-sm">
+                    Registration Number *
+                  </label>
+                  <input
+                    type="text"
+                    name="registrationNumber"
+                    value={formData.registrationNumber}
+                    onChange={handleChange}
+                    className="w-full p-2 border border-custom-jet rounded text-black"
+                    required
+                  />
+                </div>
+
+                <div className="md:inline-block md:w-[50%] md:px-2 md:py-0 py-3">
+                  <label className="font-normal text-sm">Brand *</label>
+                  <input
+                    type="text"
+                    name="brand"
+                    value={formData.brand}
+                    onChange={handleChange}
+                    className="w-full p-2 border border-custom-jet rounded text-black"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div>
+                <div className="md:inline-block md:w-[50%] md:px-2 md:py-0 py-3">
+                  <label className="font-normal text-sm">Model *</label>
+                  <input
+                    type="text"
+                    name="model"
+                    value={formData.model}
+                    onChange={handleChange}
+                    className="w-full p-2 border border-custom-jet rounded text-black"
+                    required
+                  />
+                </div>
+                <div className="md:inline-block md:w-[50%] md:px-2 md:py-0 py-3">
+                  <label className="font-normal text-sm">Variant</label>
+                  <input
+                    type="text"
+                    name="variant"
+                    value={formData.variant}
+                    onChange={handleChange}
+                    className="w-full p-2 border border-custom-jet rounded text-black"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <div className="md:inline-block md:w-[50%] md:px-2 md:py-0 py-3">
+                  <label className="font-normal text-sm">
+                    Manufacture Year *
+                  </label>
+                  <input
+                    type="number"
+                    name="manufactureYear"
+                    value={formData.manufactureYear}
+                    onChange={handleChange}
+                    className="w-full p-2 border border-custom-jet rounded text-black"
+                    required
+                  />
+                </div>
+                <div className="md:inline-block md:w-[50%] md:px-2 md:py-0 py-3">
+                  <label className="font-normal text-sm">Kilometers *</label>
+                  <input
+                    type="number"
+                    name="kilometers"
+                    value={formData.kilometers}
+                    onChange={handleChange}
+                    className="w-full p-2 border border-custom-jet rounded text-black"
+                    required
+                  />
+                </div>
+              </div>
+
+              <label className="font-normal text-sm">Expected Price</label>
+              <input
+                type="number"
+                name="price"
+                value={formData.price}
+                onChange={handleChange}
+                className="w-full p-2 border border-custom-jet rounded text-black"
+              />
+              <button
+                type="submit"
+                className="bg-custom-jet text-custom-seasalt hover:bg-custom-yellow hover:text-custom-jet  px-6 py-2 rounded"
+              >
+                Get Valuation
+              </button>
+            </form>
+          </div>
+        )}
+      </div>
+
+      <div className="text-left md:px-6 bg-custom-seasalt text-custom-black overflow-x-hidden pb-16 pt-0">
+        <div className="max-w-screen-xl mx-auto">
+          <div className="font-semibold text-3xl my-8  mt-20 md:px-0 px-4">
+            4 Steps To Sell Your Car
+          </div>
+          <div className="">
+            {stepsToSell.map((step, index) => (
+              <div
+                key={index}
+                className="
             md:inline-block 
             block w-[17rem] bg-custom-seasalt p-4 rounded-lg 
             shadow-md align-top mr-8 md:my-2 my-4 hover:scale-105  
@@ -331,24 +349,26 @@ const SellRequestForm = () => {
             md:ml-0 md:translate-x-0 
             ml-[50%] -translate-x-[50%]
             "
-            >
-              <div className="">
-                <Image src={step.image} />
+              >
+                <div className="">
+                  <Image src={step.image} />
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
 
-      <div className="mt-20 max-w-screen-xl mx-auto">
-        <div className="font-semibold text-3xl my-8 md:px-0 px-4">
-          Why Sell Your Car To Us
-        </div>
-        <div className="">
-          {whySellToUs.map((step, index) => (
-            <div
-              key={index}
-              className="
+      <div className="text-left md:px-6 bg-white text-custom-black overflow-x-hidden pb-16 pt-0">
+        <div className="mt-20 max-w-screen-xl mx-auto">
+          <div className="font-semibold text-3xl my-8 md:px-0 px-4">
+            Why Sell Your Car To Us
+          </div>
+          <div className="">
+            {whySellToUs.map((step, index) => (
+              <div
+                key={index}
+                className="
             md:inline-block block  w-[20rem]
              bg-custom-seasalt p-4 rounded-lg shadow-md 
              align-top mr-8 md:my-2 my-4 
@@ -356,10 +376,11 @@ const SellRequestForm = () => {
             md:ml-0 md:translate-x-0 
             ml-[50%] -translate-x-[50%]
             "
-            >
-              <Image src={step.image} />
-            </div>
-          ))}
+              >
+                <Image src={step.image} />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
@@ -378,7 +399,7 @@ const SellRequestForm = () => {
           </div>
         </>
       )}
-    </div>
+    </>
   )
 }
 

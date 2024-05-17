@@ -66,7 +66,7 @@ const handleBrandClick = (item) => {
 
 const ButtonCard = ({ item, type }) => (
   <div
-    className="bg-white shadow-md rounded-lg p-4 w-40 hover:bg-gray-300 cursor-pointer"
+    className="bg-custom-seasalt text-custom-jet shadow-md rounded-lg p-4 w-40 hover:bg-custom-platinum cursor-pointer"
     onClick={() => handleBtnClick(item, type)}
   >
     <div className="text-center ">{item}</div>
@@ -75,7 +75,7 @@ const ButtonCard = ({ item, type }) => (
 
 const BrandCard = ({ logoUrl, name }) => (
   <div
-    className="flex flex-col md:inline-block items-center justify-center bg-white cursor-pointer shadow-md rounded-lg p-3 hover:bg-gray-300"
+    className="flex flex-col md:inline-block items-center justify-center bg-custom-seasalt cursor-pointer shadow-md rounded-lg p-3 hover:bg-custom-platinum"
     onClick={() => handleBrandClick(name)}
   >
     <Image
@@ -97,7 +97,7 @@ const BrandScrollContainer = ({ brands, brandsMapping }) => {
           ),
       )}
       <div
-        className="flex flex-col md:inline-block align-top bg-yellow-400 md:py-8 md:mx-4 items-center justify-center  cursor-pointer shadow-md rounded-lg p-3 hover:bg-yellow-500"
+        className="flex flex-col md:inline-block align-top bg-custom-yellow md:py-8 md:mx-4 items-center justify-center  cursor-pointer shadow-md rounded-lg p-3 "
         onClick={() => handleBrandClick('')}
       >
         View All
@@ -169,10 +169,10 @@ const ButtonRows = () => {
   }, [])
 
   return (
-    <section className="pt-8 pb-8 bg-white text-gray-900">
+    <section className="pt-8 pb-8 bg-custom-platinum text-custom-black">
       <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-6">
         <div className="mb-6">
-          <h2 className="text-4xl font-bold mb-5 text-gray-900">
+          <h2 className="text-4xl font-bold mb-5 text-custom-black">
             Find your dream car.
           </h2>
         </div>
@@ -184,7 +184,7 @@ const ButtonRows = () => {
       ) : (
         <>
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-6">
-            <h3 className="text-2xl font-bold mb-3 text-gray-600">Brands</h3>
+            <h3 className="text-2xl font-bold mb-3 text-custom-jet">Brands</h3>
             {isDesktop ? (
               <BrandScrollContainer
                 brands={Object.keys(brandsMapping)}
@@ -211,7 +211,7 @@ const ButtonRows = () => {
                 )}
                 <SwiperSlide style={{ paddingBottom: '40px' }}>
                   <div
-                    className="flex flex-col w-max px-2 items-center py-8 justify-center  cursor-pointer shadow-md rounded-lg p-3 bg-yellow-400 hover:bg-yellow-500"
+                    className="flex flex-col w-max px-2 items-center py-8 justify-center  cursor-pointer shadow-md rounded-lg p-3 bg-custom-yellow"
                     onClick={() => handleBrandClick('')}
                   >
                     View All
@@ -219,7 +219,7 @@ const ButtonRows = () => {
                 </SwiperSlide>
               </Swiper>
             )}
-            <h3 className="text-2xl font-bold mb-3 mt-8 text-gray-600">
+            <h3 className="text-2xl font-bold mb-3 mt-8 text-custom-jet">
               Types
             </h3>
             <div className="flex flex-wrap gap-4">
@@ -229,7 +229,7 @@ const ButtonRows = () => {
                     <ButtonCard key={index} item={type} type={'Segment'} />
                   ))}
                   <div
-                    className="bg-yellow-400 shadow-md rounded-lg p-4 w-40 hover:bg-yellow-500 cursor-pointer"
+                    className="bg-custom-yellow shadow-md rounded-lg p-4 w-40  cursor-pointer"
                     onClick={() => handleBtnClick('', 'Segment')}
                   >
                     <div className="text-center ">View All</div>
@@ -250,7 +250,7 @@ const ButtonRows = () => {
                   ))}
                   <SwiperSlide key={'all'} style={{ paddingBottom: '40px' }}>
                     <div
-                      className="bg-yellow-400 shadow-md rounded-lg p-4 w-40 hover:bg-yellow-500 cursor-pointer"
+                      className="bg-custom-yellow shadow-md rounded-lg p-4 w-40  cursor-pointer"
                       onClick={() => handleBtnClick('', 'type')}
                     >
                       <div className="text-center ">View All</div>
@@ -259,7 +259,7 @@ const ButtonRows = () => {
                 </Swiper>
               )}
             </div>
-            <h3 className="text-2xl font-bold mb-3 mt-8 text-gray-600">
+            <h3 className="text-2xl font-bold mb-3 mt-8 text-custom-jet">
               Price Range
             </h3>
             <div className="flex flex-wrap gap-4">

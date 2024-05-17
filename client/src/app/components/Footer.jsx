@@ -14,7 +14,7 @@ import { FiMapPin, FiMessageSquare, FiArrowRight } from 'react-icons/fi'
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-900 text-white py-4 px-4">
+    <footer className="bg-custom-black text-custom-seasalt py-4 px-4">
       <div className="container mx-auto max-w-screen-xl flex flex-col lg:flex-row justify-between items-center">
         <div className="flex flex-col md:text-left !text-center !itenm-center mb-4 lg:mb-0">
           <Image src={logo} alt="Logo" className="w-[8rem]  mr-2" />
@@ -36,7 +36,7 @@ const Footer = () => {
               href="https://www.google.com/maps/dir//REAL+VALUE+ranchi+google+business+page/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x39f4e17d184b0973:0xbc6d6be675cca0f0?sa=X&ved=1t:3061&ictx=111"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-900 hover:underline mx-2"
+              className="mx-2"
             >
               <FiMapPin className="text-blue-500 text-2xl" />
             </a>
@@ -44,7 +44,7 @@ const Footer = () => {
               href="mailto:poddarranchi@gmail.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-900 hover:underline mx-2"
+              className="mx-2"
             >
               <SiGmail className="text-red-500 text-2xl" />
             </a>
@@ -52,7 +52,7 @@ const Footer = () => {
               href="https://wa.me/+918873002702?text=Hi there looking forward to connecting with you."
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-900 hover:underline mx-2"
+              className="mx-2"
             >
               <FaWhatsapp className="text-green-500 text-2xl" />
             </a>
@@ -60,7 +60,7 @@ const Footer = () => {
               href="https://www.facebook.com/RealValueRanchi/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-900 hover:underline mx-2"
+              className="mx-2"
             >
               <FaFacebook className="text-blue-500 text-2xl" />
             </a>
@@ -68,7 +68,7 @@ const Footer = () => {
               href="https://www.instagram.com/pmplrealvalue/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-900 hover:underline mx-2"
+              className="mx-2"
             >
               <FaInstagram className="text-pink-500 text-2xl" />
             </a>

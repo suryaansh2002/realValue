@@ -180,7 +180,7 @@ const Hero = () => {
   }, [])
 
   return (
-    <section className="bg-gray-900 mx-auto">
+    <section className="bg-custom-black mx-auto">
       <div className="grid max-w-screen-xl py-12 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12 lg:px-6 px-4">
         <div className="mr-auto place-self-center lg:col-span-7">
           <h1 className="max-w-2xl">
@@ -192,34 +192,34 @@ const Hero = () => {
                     return {
                       text: word,
                       className:
-                        'mb-4 text-2xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-5xl text-white',
+                        'mb-4 text-2xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-5xl text-custom-seasalt',
                     }
                   }
                   return {
                     text: word,
                     className:
-                      'mb-4 text-2xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-5xl !text-yellow-400',
+                      'mb-4 text-2xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-5xl !text-custom-yellow',
                   }
                 })}
             />
           </h1>
-          <p className="max-w-2xl mb-6 font-light lg:mb-8 text-sm md:text-lg lg:text-xl text-gray-400">
+          <p className="max-w-2xl mb-6 font-light lg:mb-8 text-sm md:text-lg lg:text-xl text-custom-platinum">
             Your one-stop-shop for buying, selling, and financing cars. We offer
             the best prices and the best deals on all types of cars.
           </p>
           <a
             href="/buy"
-            className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center border rounded-lg focus:ring-4 focus:ring-gray-800 text-gray-800 border-gray-700 bg-slate-300 mr-5 hover:!bg-yellow-500"
+            className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center border rounded-lg focus:ring-4 focus:ring-custom-black text-custom-black border-custom-black bg-custom-platinum mr-5 hover:!bg-custom-yellow"
           >
             Buy Car
           </a>
           <a
             href="/sell"
-            className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center  rounded-lg hover:!text-yellow-500 text-white  focus:ring-gray-800  !border-yellow-500"
+            className="inline-flex items-center justify-center px-5 py-3 text-base font-medium border border-custom-yellow text-center  rounded-lg hover:!text-custom-yellow text-custom-seasalt  focus:ring-custom-yellow  !border-custom-yellow"
             style={{
               textDecoration: 'underline',
               textDecorationColor: 'transparent',
-              border: '1px solid #f6e05e',
+              // border: '1px solid #f6e05e',
             }}
           >
             Sell Car
@@ -238,7 +238,7 @@ const Hero = () => {
 
       <div className="max-w-screen-xl pt-10 mx-auto lg:pb-24 lg:pt-0 lg:px-6 px-4">
         <div className="mr-auto place-self-center lg:col-span-7">
-          <p className="max-w-2xl mb-12 font-light text-gray-400 md:text-lg lg:mb-0 lg:text-xl ">
+          <p className="max-w-2xl mb-12 font-light text-custom-platinum md:text-lg lg:mb-0 lg:text-xl ">
             Or get started directly by...
           </p>
           <div className="button-container -mt-4">
@@ -257,7 +257,7 @@ const Hero = () => {
                 className="inline-flex items-center 
                 justify-center px-5 py-3 text-base
                  font-medium text-center border rounded-lg 
-                 text-white focus:ring-4  border-gray-700 hover:!bg-yellow-500 focus:ring-gray-700 md:mt-10
+                 text-custom-seasalt focus:ring-4  border-custom-jet hover:!bg-custom-yellow focus:ring-custom-jet md:mt-10
                  "
               >
                 <FaSearch />

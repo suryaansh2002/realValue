@@ -137,13 +137,13 @@ const SellRequestForm = () => {
   ]
 
   return (
-    <div className="text-left pt-4 md:px-6 bg-gray-900 text-white overflow-x-hidden">
+    <div className="text-left pt-4 md:px-6 bg-custom-black text-custom-seasalt overflow-x-hidden">
       <div>
         <div className="text-left max-w-screen-xl mx-auto mb-4 pt-4 md:text-3xl text-3xl font-bold md:px-0 px-4">
           Sell Quick With Real Value
         </div>
         <div className="max-w-screen-xl mx-auto md:px-0 pl-[5vw]">
-          <div className="border-2 border-white rounded-md relative  mt-8 w-max">
+          <div className="border-2 border-custom-seasalt rounded-md relative  mt-8 w-max">
             <Image
               src={landing}
               className="md:h-[60vh] md:w-auto w-[90vw] h-auto"
@@ -151,8 +151,8 @@ const SellRequestForm = () => {
             <button
               onClick={() => setShowForm(!showForm)}
               className="
-            hover:bg-yellow-500 hover:text-gray-900 text-xl  
-            border border-white-900  text-whitew-max md:px-16 md:py-4 px-10 py-2 w-max 
+            hover:bg-custom-yellow hover:text-custom-black text-xl  
+            border border-custom-seasalt  text-custom-seasalt w-max md:px-16 md:py-4 px-10 py-2 w-max 
             rounded-lg my-4 ml-[50%] -translate-x-[50%]"
             >
               Get Valuation!
@@ -162,7 +162,7 @@ const SellRequestForm = () => {
       </div>
 
       {showForm && (
-        <div className="border-white border-2 p-4 rounded-md mt-4  md:max-w-screen-md md:fixed absolute top-[10vh] bg-gray-900 ml-[50%] -translate-x-[50%]  w-[90vw] z-20">
+        <div className="border-custom-seasalt border-2 p-4 rounded-md mt-4  md:max-w-screen-md md:fixed absolute top-[10vh] bg-custom-black ml-[50%] -translate-x-[50%]  w-[90vw] z-20">
           <form className="grid grid-cols-1 gap-4" onSubmit={handleSubmit}>
             <div className="text-right pr-4">
               <button onClick={() => setShowForm(false)}>
@@ -177,7 +177,7 @@ const SellRequestForm = () => {
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  className="p-2 border border-gray-300 rounded text-black w-full"
+                  className="p-2 border border-custom-jet rounded text-black w-full"
                   required
                 />
               </div>
@@ -188,7 +188,7 @@ const SellRequestForm = () => {
                   name="phoneNumber"
                   value={formData.phoneNumber}
                   onChange={handleChange}
-                  className="w-full p-2 border border-gray-300 rounded text-black"
+                  className="w-full p-2 border border-custom-jet rounded text-black"
                   required
                 />
               </div>
@@ -202,7 +202,7 @@ const SellRequestForm = () => {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full p-2 border border-gray-300 rounded text-black"
+                  className="w-full p-2 border border-custom-jet rounded text-black"
                 />
               </div>
               <div className="md:inline-block md:w-[50%] md:px-2 md:py-0 py-3">
@@ -212,7 +212,7 @@ const SellRequestForm = () => {
                   name="location"
                   value={formData.location}
                   onChange={handleChange}
-                  className="w-full p-2 border border-gray-300 rounded text-black"
+                  className="w-full p-2 border border-custom-jet rounded text-black"
                   required
                 />
               </div>
@@ -228,7 +228,7 @@ const SellRequestForm = () => {
                   name="registrationNumber"
                   value={formData.registrationNumber}
                   onChange={handleChange}
-                  className="w-full p-2 border border-gray-300 rounded text-black"
+                  className="w-full p-2 border border-custom-jet rounded text-black"
                   required
                 />
               </div>
@@ -240,7 +240,7 @@ const SellRequestForm = () => {
                   name="brand"
                   value={formData.brand}
                   onChange={handleChange}
-                  className="w-full p-2 border border-gray-300 rounded text-black"
+                  className="w-full p-2 border border-custom-jet rounded text-black"
                   required
                 />
               </div>
@@ -254,7 +254,7 @@ const SellRequestForm = () => {
                   name="model"
                   value={formData.model}
                   onChange={handleChange}
-                  className="w-full p-2 border border-gray-300 rounded text-black"
+                  className="w-full p-2 border border-custom-jet rounded text-black"
                   required
                 />
               </div>
@@ -265,7 +265,7 @@ const SellRequestForm = () => {
                   name="variant"
                   value={formData.variant}
                   onChange={handleChange}
-                  className="w-full p-2 border border-gray-300 rounded text-black"
+                  className="w-full p-2 border border-custom-jet rounded text-black"
                 />
               </div>
             </div>
@@ -280,7 +280,7 @@ const SellRequestForm = () => {
                   name="manufactureYear"
                   value={formData.manufactureYear}
                   onChange={handleChange}
-                  className="w-full p-2 border border-gray-300 rounded text-black"
+                  className="w-full p-2 border border-custom-jet rounded text-black"
                   required
                 />
               </div>
@@ -291,7 +291,7 @@ const SellRequestForm = () => {
                   name="kilometers"
                   value={formData.kilometers}
                   onChange={handleChange}
-                  className="w-full p-2 border border-gray-300 rounded text-black"
+                  className="w-full p-2 border border-custom-jet rounded text-black"
                   required
                 />
               </div>
@@ -303,11 +303,11 @@ const SellRequestForm = () => {
               name="price"
               value={formData.price}
               onChange={handleChange}
-              className="w-full p-2 border border-gray-300 rounded text-black"
+              className="w-full p-2 border border-custom-jet rounded text-black"
             />
             <button
               type="submit"
-              className="bg-blue-500 hover:bg-yellow-500 text-white px-6 py-2 rounded"
+              className="bg-custom-jet text-custom-seasalt hover:bg-custom-yellow hover:text-custom-jet  px-6 py-2 rounded"
             >
               Get Valuation
             </button>
@@ -325,7 +325,7 @@ const SellRequestForm = () => {
               key={index}
               className="
             md:inline-block 
-            block w-[17rem] bg-white p-4 rounded-lg 
+            block w-[17rem] bg-custom-seasalt p-4 rounded-lg 
             shadow-md align-top mr-8 md:my-2 my-4 hover:scale-105  
             hover:shadow-xl  transition-transform duration-200
             md:ml-0 md:translate-x-0 
@@ -350,7 +350,7 @@ const SellRequestForm = () => {
               key={index}
               className="
             md:inline-block block  w-[20rem]
-             bg-white p-4 rounded-lg shadow-md 
+             bg-custom-seasalt p-4 rounded-lg shadow-md 
              align-top mr-8 md:my-2 my-4 
              hover:scale-105  hover:shadow-xl  transition-transform duration-200 
             md:ml-0 md:translate-x-0 
@@ -366,11 +366,11 @@ const SellRequestForm = () => {
       <Faq FAQs={sellFAQData} title="Sell related" />
 
       {(showForm || showModal) && (
-        <div className="fixed inset-0 text-lg bg-black bg-opacity-50 z-10"></div>
+        <div className="fixed inset-0 text-lg bg-custom-black bg-opacity-50 z-10"></div>
       )}
       {showModal && (
         <>
-          <div className="fixed top-1/4 left-1/2 transform text-black -translate-x-1/2 bg-white z-20 p-8 rounded text-center">
+          <div className="fixed top-1/4 left-1/2 transform text-black -translate-x-1/2 bg-custom-seasalt z-20 p-8 rounded text-center">
             <h4 className="font-semibold">
               Thank You for submitting your car details!
             </h4>

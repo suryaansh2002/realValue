@@ -22,7 +22,7 @@ export default function FaqCard({
   }
   return (
     <div
-      className="bg-white rounded-lg shadow-lg block my-4 text-black"
+      className="bg-custom-black border-b border-custom-platinum  shadow-lg block my-4 !text-custom-seasalt"
       onClick={() => handleClick()}
     >
       <div className="py-4 px-6 cursor-pointer">

@@ -33,11 +33,11 @@ const Offers = () => {
     fetchOffers()
   }, [])
   return (
-    <section className="py-20 bg-white-50 text-black relative">
+    <section className="py-20 bg-custom-platinum text-custom-black relative">
       <div className="mx-auto max-w-7xl sm:px-6 px-4 lg:px-6">
         <div className="mb-16">
           <h2
-            className="text-4xl font-bold text-gray-900 mb-5 z-10"
+            className="text-4xl font-bold text-custom-black mb-5 z-10"
             style={{ zIndex: 20 }}
           >
             Offers

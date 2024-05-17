@@ -50,7 +50,7 @@ const Navbar = () => {
   )
 
   return (
-    <div className="bg-gray-900 fixed top-0 z-50 py-4 md:pt-1 md:pb-0 w-[100vw]">
+    <div className="bg-custom-black fixed top-0 z-50 py-4 md:pt-1 md:pb-0 w-[100vw]">
       <div className="mx-auto max-w-screen-xl">
         <div className="flex items-center justify-evenly gap-x-60 lg:justify-between lg:gap-x-96 navbar-container lg:px-4 lg:pr-8">
           <div className="mx-auto lg:mx-0 pl-2">
@@ -111,7 +111,7 @@ const Navbar = () => {
         >
           <Link legacyBehavior href="/">
             <a
-              className="text-white font-bold focus:text-yellow-400"
+              className="text-white font-bold focus:text-custom-yellow"
               onClick={onClose}
             >
               Home
@@ -119,7 +119,7 @@ const Navbar = () => {
           </Link>
           <Link legacyBehavior href="/buy">
             <a
-              className="text-white font-bold focus:text-yellow-400"
+              className="text-white font-bold focus:text-custom-yellow"
               onClick={onClose}
             >
               Buy Car
@@ -127,7 +127,7 @@ const Navbar = () => {
           </Link>
           <Link legacyBehavior href="/sell">
             <a
-              className="text-white font-bold focus:text-yellow-400"
+              className="text-white font-bold focus:text-custom-yellow"
               onClick={onClose}
             >
               Sell Car
@@ -135,7 +135,7 @@ const Navbar = () => {
           </Link>
           <Link legacyBehavior href="/finance">
             <a
-              className="text-white font-bold focus:text-yellow-400"
+              className="text-white font-bold focus:text-custom-yellow"
               onClick={onClose}
             >
               Finance
@@ -143,7 +143,7 @@ const Navbar = () => {
           </Link>
           <Link legacyBehavior href="/about">
             <a
-              className="text-white font-bold focus:text-yellow-400"
+              className="text-white font-bold focus:text-custom-yellow"
               onClick={onClose}
             >
               About Us
@@ -151,7 +151,7 @@ const Navbar = () => {
           </Link>
           <Link legacyBehavior href="/contact">
             <a
-              className="text-white font-bold focus:text-yellow-400"
+              className="text-white font-bold focus:text-custom-yellow"
               onClick={onClose}
             >
               Contact Us

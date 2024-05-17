@@ -34,13 +34,13 @@ const Testimonials = () => {
   }, [])
 
   return (
-    <section className="bg-gray-900 text-white pt-16">
+    <section className="bg-custom-black text-custom-seasalt pt-16">
       <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-6">
         <div className="mb-16">
-          <h2 className="text-4xl font-bold text-white mb-5">
+          <h2 className="text-4xl font-bold text-custom-seaslat mb-5">
             Don't believe us?
           </h2>
-          <span className="text-lg text-gray-500 font-medium block mb-2">
+          <span className="text-lg text-custom-platinum font-medium block mb-2">
             Testimonials from our happy customers!
           </span>
         </div>
@@ -74,16 +74,15 @@ const Testimonials = () => {
             >
               {testimonials.map((item) => (
                 <SwiperSlide key={item._id} style={{ paddingBottom: '30px' }}>
-                  <div className="max-w-xs mx-auto bg-white rounded-xl p-5 shadow-2xl m-2 flex flex-col h-full">
-                    <p className="text-black flex-grow h-[10rem]">
+                  <div className="max-w-xs mx-auto bg-custom-seasalt rounded-xl p-5 shadow-2xl m-2 flex flex-col h-full">
+                    <p className="text-custom-jet flex-grow h-[10rem]">
                       {item.text}
                     </p>
                     <div className="mt-5 flex items-center">
                       <div className="ml-3">
-                        <h3 className="font-semibold text-gray-600">
+                        <h3 className="font-semibold text-custom-jet">
                           {item.name ? item.name : 'Anonymous'}
                         </h3>
-                        {/* <p className="text-gray-500"> Software Engineer </p> */}
                       </div>
                     </div>
                   </div>
@@ -101,7 +100,7 @@ const Testimonials = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <button className="bg-white hover:bg-yellow-400 text-gray-900 font-semibold py-2 px-4 rounded-md">
+            <button className="bg-custom-seasalt hover:bg-custom-yellow text-custom-jet font-semibold py-2 px-4 rounded-md">
               View All
             </button>
           </Link>

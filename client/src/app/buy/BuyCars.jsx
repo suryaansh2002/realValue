@@ -91,10 +91,7 @@ export default function Buy({ allListings }) {
     {
       id: 'transmissionType',
       name: 'Transmission',
-      options: [
-        { value: 'automatic', label: 'Automatic', checked: false },
-        { value: 'manual', label: 'Manual', checked: false },
-      ],
+      options: [],
     },
     {
       id: 'ownership',
@@ -335,6 +332,31 @@ export default function Buy({ allListings }) {
     }
   }
 
+  const fetchAllTransmissionTypes = async () => {
+    try {
+      const response = await axios.get(url + 'api/listings/transmission')
+      if (response.data) {
+        response.data.sort()
+        console.log(response.data)
+        const tempObj = [...filters]
+        const index = tempObj.findIndex((item) => item.id == 'transmissionType')
+        let checkedSegments = []
+        tempObj[index]['options'] = response.data.map((item) => {
+          return {
+            value: item,
+            label: item.split(' ')
+            .map(w => w[0].toUpperCase() + w.substring(1).toLowerCase())
+            .join(' '),
+            checked: checkedSegments.includes(item),
+          }
+        })
+        setFilters(tempObj)
+      }
+    } catch (e) {
+      console.log(e.message)
+    }
+  }
+
   const fetchAllSeats = async () => {
     try {
       const response = await axios.get(url + 'api/listings/seats')
@@ -388,6 +410,7 @@ export default function Buy({ allListings }) {
     fetchAllTypes()
     fetchAllSeats()
     fetchAllFuelTypes()
+    fetchAllTransmissionTypes()
     updateCheckedPrices()
   }, [])
 
@@ -470,14 +493,16 @@ export default function Buy({ allListings }) {
                             </h3>
                             <Disclosure.Panel className="pt-6">
                               {section.type == 'slider' ? (
-                                <div className="space-y-6">
+                                <div className="space-y-6 w-[90%] ml-[5%]">
                                   <Slider
                                     range
                                     defaultValue={section.config.value}
                                     min={section.config.min}
                                     max={section.config.max}
                                     step={section.config.step}
+                              
                                     tooltip={{
+                                      placement:'bottom',
                                       open: true,
                                       formatter:
                                         section.id != 'modelYear' &&
@@ -528,13 +553,13 @@ export default function Buy({ allListings }) {
                   </form>
                   <Button
                     onClick={() => updateFilters()}
-                    className="w-[100%] !bg-yellow-500 mt-4 !hover:text-white"
+                    className="w-[80%] mx-auto !bg-custom-yellow mt-4"
                   >
                     Filter
                   </Button>
                   <Button
                     onClick={() => clearFilters()}
-                    className="w-[100%]  mt-4 !hover:text-white"
+                    className="w-[100%]  mt-4 w-[80%] mx-auto !bg-custom-seasalt "
                   >
                     Clear Filters
                   </Button>
@@ -612,11 +637,11 @@ export default function Buy({ allListings }) {
             </h2>
 
             <div
-              className="flex flex-col md:flex-row lg:gap-x-12 justify-center"
+              className="flex flex-col md:flex-row lg:gap-x-12 justify-center relative"
               style={{ alignSelf: 'center' }}
             >
               {/* Filters */}
-              <form className="hidden lg:block" style={{ flexGrow: 2 }}>
+              <form className="hidden lg:block max-h-[70vh] overflow-y-auto" style={{ flexGrow: 2 }}>
                 <h3 className="sr-only">Categories</h3>
                 {filters.map((section) => (
                   <Disclosure
@@ -649,7 +674,7 @@ export default function Buy({ allListings }) {
                         <Disclosure.Panel className="pt-6">
                           <div className="space-y-4">
                             {section.type == 'slider' ? (
-                              <div className="space-y-6">
+                              <div className="space-y-6 w-[90%] ml-[5%]">
                                 <Slider
                                   range
                                   defaultValue={section.config.value}
@@ -657,6 +682,7 @@ export default function Buy({ allListings }) {
                                   max={section.config.max}
                                   step={section.config.step}
                                   tooltip={{
+                                    placement:'bottom',
                                     open: true,
                                     formatter:
                                       section.id != 'modelYear' &&
@@ -723,7 +749,7 @@ export default function Buy({ allListings }) {
                   display: 'grid',
                   gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
                 }}
-                className="lg:gap-x-4 gap-y-10 lg:w-[75%] w-[100%]"
+                className="lg:gap-x-4 gap-y-10 lg:w-[75%] w-[100%]  max-h-[70vh] overflow-y-auto"
               >
                 {listings.length ? (
                   listings.map((car) => (

@@ -685,7 +685,7 @@ export default function Buy({ allListings }) {
                 ))}
                 <Button
                   onClick={() => updateFilters()}
-                  className="w-[100%] !bg-yellow-500 mt-4 !hover:text-white"
+                  className="w-[100%] !bg-custom-yellow mt-4 !hover:text-white"
                 >
                   Filter
                 </Button>

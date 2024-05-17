@@ -169,7 +169,7 @@ const ButtonRows = () => {
   }, [])
 
   return (
-    <section className="pt-8 pb-8 bg-custom-platinum text-custom-black">
+    <section className="pt-12 pb-24 bg-white text-custom-black">
       <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-6">
         <div className="mb-6">
           <h2 className="text-4xl font-bold mb-5 text-custom-black">

@@ -33,7 +33,7 @@ const Offers = () => {
     fetchOffers()
   }, [])
   return (
-    <section className="py-20 bg-custom-platinum text-custom-black relative">
+    <section className="py-20 bg-white text-custom-black relative">
       <div className="mx-auto max-w-7xl sm:px-6 px-4 lg:px-6">
         <div className="mb-16">
           <h2

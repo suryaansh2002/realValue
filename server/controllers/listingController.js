@@ -55,6 +55,26 @@ exports.getAllTypes = async (req, res) => {
   }
 };
 
+
+exports.getAllFuelTypes = async (req, res) => {
+  try {
+    const brands = await Listing.distinct("fuelTank");
+    res.json(brands);
+  } catch (error) {
+    res.status(500).json({ error: "Server error" });
+  }
+};
+
+exports.getAllTransmissionTypes = async (req, res) => {
+  try {
+    const brands = await Listing.distinct("transmissionType");
+    res.json(brands);
+  } catch (error) {
+    res.status(500).json({ error: "Server error" });
+  }
+};
+
+
 exports.getAllSeats = async (req, res) => {
   try {
     const brands = await Listing.distinct("seats");

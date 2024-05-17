@@ -205,6 +205,8 @@ const SellRequestForm = () => {
                     value={formData.phoneNumber}
                     onChange={handleChange}
                     className="w-full p-2 border border-custom-jet rounded text-black"
+                    pattern="^(?:\+?91\s?)?[0-9]{10}$"
+                    title="Please enter a valid phone number (e.g., +91XXXXXXXXXX or XXXXXXXXXX)"
                     required
                   />
                 </div>
@@ -246,6 +248,7 @@ const SellRequestForm = () => {
                     onChange={handleChange}
                     className="w-full p-2 border border-custom-jet rounded text-black"
                     required
+                    maxLength={10}
                   />
                 </div>
 

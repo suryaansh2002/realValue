@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import styles from '../styles/Sell.module.css'
 import axios from 'axios'
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa'
@@ -45,6 +45,18 @@ const SellRequestForm = () => {
     kilometers: '',
     price: '',
   })
+
+  useEffect(() => {
+    if (showForm) {
+      document.body.classList.add('no-scroll')
+    } else {
+      document.body.classList.remove('no-scroll')
+    }
+
+    return () => {
+      document.body.classList.remove('no-scroll')
+    }
+  }, [showForm])
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
@@ -163,9 +175,9 @@ const SellRequestForm = () => {
         </div>
 
         {showForm && (
-          <div className="border-custom-seasalt border-2 p-4 rounded-md mt-4 md:max-w-screen-md md:fixed absolute top-[10vh] bg-custom-black ml-[50%] -translate-x-[50%] w-[90vw] z-20">
+          <div className="modal">
             <form className="grid grid-cols-1 gap-4" onSubmit={handleSubmit}>
-              <div className="flex items-center justify-between px-2">
+              <div className="flex items-center justify-between">
                 <h3 className="font-bold text-2xl text-custom-seasalt">
                   Valuation Form
                 </h3>

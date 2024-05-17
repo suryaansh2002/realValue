@@ -9,8 +9,12 @@ const Highlights = () => {
         </h2>
 
         <div
-          className="flex md:flex-row flex-col flex-wrap gap-5 items-center py-10"
-          style={{ maxWidth: '1200px' }}
+          className="gap-2 md:gap-12 items-center py-10"
+          style={{
+            maxWidth: '1200px',
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))',
+          }}
         >
           <div className="mb-5">
             <iframe
@@ -24,7 +28,7 @@ const Highlights = () => {
               allowFullScreen
             ></iframe>
           </div>
-          <div className="mb-5 md:w-[25vw] w-[80vw]">
+          <div className="mb-5">
             <iframe
               width="100%"
               height="250"
@@ -36,7 +40,7 @@ const Highlights = () => {
               allowFullScreen
             ></iframe>
           </div>
-          <div className="mb-5 md:w-[25vw] w-[80vw]">
+          <div className="mb-5">
             <iframe
               width="100%"
               height="250"

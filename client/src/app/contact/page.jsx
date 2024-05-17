@@ -6,8 +6,8 @@ import Link from 'next/link'
 
 const ContactUsPage = () => {
   return (
-    <section className="bg-gray-900 ">
-      <div className="container px-4 py-16 lg:px-6 max-w-screen-xl mx-auto">
+    <section className="bg-custom-black">
+      <div className="container px-4 py-8 lg:px-6 max-w-screen-xl mx-auto">
         <div>
           <h1 className="mt-2 text-3xl font-semibold  md:text-4xl text-white">
             Get in touch
@@ -130,7 +130,7 @@ const ContactUsPage = () => {
             </div>
           </div>
 
-          <div>
+          <div className="mt-12">
             <span className="inline-block p-3 text-yellow-500 rounded-full bg-gray-800">
               <svg
                 xmlns="http://www.w3.org/2000/svg"

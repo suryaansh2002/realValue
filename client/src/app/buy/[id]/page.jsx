@@ -57,11 +57,11 @@ const page = ({ params: { id } }) => {
   }
 
   const updateComponent = () => {
-    setDesktop(window.innerWidth > 1024)
+    setDesktop(window.innerWidth > 960)
   }
 
   useEffect(() => {
-    if (window.innerWidth > 1024) {
+    if (window.innerWidth > 960) {
       setDesktop(true)
     }
   }, [])
@@ -114,7 +114,7 @@ const page = ({ params: { id } }) => {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center p-10">
+      <div className="flex items-center justify-center p-10 h-[100vh]">
         <Oval color="#000" height={50} width={50} />
       </div>
     )

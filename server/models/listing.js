@@ -8,7 +8,6 @@ const listingSchema = new mongoose.Schema({
   vehicleNumber: { type: String, required: true },
   fuelType: {
     type: String,
-    enum: ['Petrol', 'Diesel', 'CNG', 'EV'],
     required: true,
   },
   year: { type: Number, required: true },

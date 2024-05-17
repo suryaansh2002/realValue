@@ -86,11 +86,7 @@ export default function Buy({ allListings }) {
     {
       id: 'fuelType',
       name: 'Fuel Type',
-      options: [
-        { value: 'Petrol', label: 'Petrol', checked: false },
-        { value: 'Diesel', label: 'Diesel', checked: false },
-        { value: 'CNG', label: 'CNG', checked: false },
-      ],
+      options: [],
     },
     {
       id: 'transmissionType',
@@ -316,6 +312,29 @@ export default function Buy({ allListings }) {
     }
   }
 
+  const fetchAllFuelTypes = async () => {
+    try {
+      const response = await axios.get(url + 'api/listings/fuel')
+      if (response.data) {
+        response.data.sort()
+        console.log(response.data)
+        const tempObj = [...filters]
+        const index = tempObj.findIndex((item) => item.id == 'fuelType')
+        let checkedSegments = []
+        tempObj[index]['options'] = response.data.map((item) => {
+          return {
+            value: item,
+            label: item,
+            checked: checkedSegments.includes(item),
+          }
+        })
+        setFilters(tempObj)
+      }
+    } catch (e) {
+      console.log(e.message)
+    }
+  }
+
   const fetchAllSeats = async () => {
     try {
       const response = await axios.get(url + 'api/listings/seats')
@@ -368,6 +387,7 @@ export default function Buy({ allListings }) {
     fetchAllBrands()
     fetchAllTypes()
     fetchAllSeats()
+    fetchAllFuelTypes()
     updateCheckedPrices()
   }, [])
 

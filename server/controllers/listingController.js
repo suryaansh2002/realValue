@@ -58,7 +58,7 @@ exports.getAllTypes = async (req, res) => {
 
 exports.getAllFuelTypes = async (req, res) => {
   try {
-    const brands = await Listing.distinct("fuelTank");
+    const brands = await Listing.distinct("fuelType");
     res.json(brands);
   } catch (error) {
     res.status(500).json({ error: "Server error" });

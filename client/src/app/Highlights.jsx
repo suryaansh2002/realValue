@@ -13,7 +13,7 @@ const Highlights = () => {
           style={{
             maxWidth: '1200px',
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
           }}
         >
           <div className="mb-5">

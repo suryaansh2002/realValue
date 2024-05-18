@@ -752,7 +752,7 @@ export default function Buy({ allListings }) {
                   display: 'grid',
                   gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
                 }}
-                className="lg:gap-x-4 gap-y-10 lg:w-[75%] w-[100%]  max-h-[70vh] overflow-y-auto"
+                className="py-10 px-10 md:px-0 lg:gap-x-4 gap-y-10 lg:w-[75%] w-[100%]  max-h-[70vh] overflow-y-auto"
               >
                 {listings.length ? (
                   listings.map((car) => (

@@ -190,15 +190,15 @@ const page = ({ params: { id } }) => {
         </nav>
 
         <Swiper
-          modules={[Navigation, Pagination, Autoplay, Controller]}
+          modules={[Navigation, Pagination, Controller, Autoplay]}
           className="myIndividualCarSwiper"
           onSwiper={setMainSwiper}
           controller={{ control: thumbsSwiper }}
           //   thumbs={{ swiper: thumbsSwiper }}
           pagination={isDesktop && { clickable: true }}
+          autoplay={{ delay: 2000, disableOnInteraction: true }}
           navigation
-          loop={false}
-          centeredSlides={true}
+          centeredSlides={false}
           breakpoints={{
             640: { slidesPerView: 1, spaceBetween: 5 },
             768: { slidesPerView: 2, spaceBetween: 5 },
@@ -221,14 +221,14 @@ const page = ({ params: { id } }) => {
         {!isDesktop && (
           <Swiper
             onSwiper={setThumbsSwiper}
-            modules={[Navigation, Pagination, Autoplay, Controller]}
+            modules={[Navigation, Pagination, Controller]}
             className="thumbsSwiperDown"
             controller={{ control: mainSwiper }}
             slidesPerView="auto"
             spaceBetween={5}
-            // watchSlidesProgress={true}
             pagination={{ clickable: true }}
             loop={false}
+            slideToClickedSlide={isDesktop ? false : true}
             centeredSlides={true}
           >
             {carData.images &&

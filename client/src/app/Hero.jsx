@@ -98,6 +98,7 @@ const Hero = () => {
 
   const fetchAllTypes = async () => {
     try {
+      setLoading(true)
       const response = await axios.get(url + 'api/listings/types')
       if (response.data) {
         const arr = response.data.map((type, index) => {
@@ -116,32 +117,6 @@ const Hero = () => {
 
   const fetchAllBrands = async () => {
     try {
-      // const response = await axios.get(url + 'api/listings/brands')
-      // if (response.data) {
-      // const arr = response.data.map((b, index) => {
-      //   return {
-      //     label: (
-      //       <div>
-      //         <Image style={imageStyles} src={brandsMapping[b]} alt={b} /> {b}
-      //       </div>
-      //     ),
-      //     key: `${index + 1}`,
-      //   }
-      // })
-      const arr = Object.keys(brandsMapping).map((b, index) => {
-        return {
-          label: (
-            <div>
-              <Image style={imageStyles} src={brandsMapping[b]} alt={b} /> {b}
-            </div>
-          ),
-          key: `${index + 1}`,
-        }
-      })
-      console.log(arr)
-      setBrands(arr)
-      setLoading(false)
-      // }
       const response = await axios.get(url + 'api/listings/brands')
       if (response.data) {
         const arr = response.data.map((b, index) => {
@@ -154,17 +129,6 @@ const Hero = () => {
             key: `${index + 1}`,
           }
         })
-        // const arr = Object.keys(brandsMapping).map((b, index) => {
-        //   return {
-        //     label: (
-        //       <div>
-        //         <Image style={imageStyles} src={brandsMapping[b]} alt={b} /> {b}
-        //       </div>
-        //     ),
-        //     key: `${index + 1}`,
-        //   }
-        // })
-        // console.log(arr)
         setBrands(arr)
         setLoading(false)
       }
@@ -215,7 +179,7 @@ const Hero = () => {
           </a>
           <a
             href="/sell"
-            className="inline-flex items-center justify-center px-5 py-3 text-base font-medium border border-custom-yellow text-center  rounded-lg hover:!text-custom-yellow text-custom-seasalt  focus:ring-custom-yellow  !border-custom-yellow"
+            className="inline-flex items-center justify-center px-5 py-3 text-base font-medium border text-center  rounded-lg hover:!text-custom-yellow text-custom-seasalt  focus:ring-custom-yellow  !border-custom-yellow"
             style={{
               textDecoration: 'underline',
               textDecorationColor: 'transparent',

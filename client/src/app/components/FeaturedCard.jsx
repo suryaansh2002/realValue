@@ -36,7 +36,7 @@ const FeaturedCard = ({ car }) => {
             {car.fuelType}
           </span>
           <span className="inline-block bg-custom-platinum text-jet rounded-full px-3 text-sm font-semibold text-gray-700 mr-2 mb-2">
-            {toTitleCase(car.transmissionType)}
+            {car.transmissionType}
           </span>
         </div>
 

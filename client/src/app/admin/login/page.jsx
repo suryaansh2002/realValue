@@ -97,7 +97,7 @@ const Login = () => {
             </button>
           </div>
         </form>
-        <div className="text-center">
+        {/* <div className="text-center">
           <p>Don't have an account?</p>
           <Link
             className="text-indigo-600 hover:text-indigo-700"
@@ -105,7 +105,7 @@ const Login = () => {
           >
             Sign up
           </Link>
-        </div>
+        </div> */}
       </div>
     </div>
   )

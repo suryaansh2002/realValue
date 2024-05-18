@@ -167,6 +167,14 @@ const CreateListing = () => {
     }
   }
 
+  const transmissionTypes = [
+    'AMT',
+    'CVT',
+    'DCT',
+    'TC',
+    'iMT',
+    'MT'
+  ]
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
@@ -317,6 +325,7 @@ const CreateListing = () => {
               <option value="Diesel">Diesel</option>
               <option value="CNG">CNG</option>
               <option value="EV">EV</option>
+              <option value="EV">Hybrid</option>
             </select>
           </div>
           <div>
@@ -423,8 +432,12 @@ const CreateListing = () => {
               className="mt-1 p-2 w-full border rounded-md"
             >
               <option value="">Select Transmission Type</option>
-              <option value="automatic">Automatic</option>
-              <option value="manual">Manual</option>
+              {
+                transmissionTypes.map((type)=>
+              <option value={type}>{type}</option>
+                
+                )
+              }
             </select>
           </div>
           <div>

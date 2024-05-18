@@ -42,7 +42,14 @@ const CreateListing = () => {
   })
   let url = 'https://real-value-server.vercel.app/'
   // url = 'http://localhost:5000/'
-
+  const transmissionTypes = [
+    'AMT',
+    'CVT',
+    'DCT',
+    'TC',
+    'iMT',
+    'MT'
+  ]
   useEffect(() => {
     if (Object.keys(currListing).length) {
       setFormData({
@@ -352,6 +359,7 @@ const CreateListing = () => {
               <option value="Diesel">Diesel</option>
               <option value="CNG">CNG</option>
               <option value="EV">EV</option>
+              <option value="Hybrid">Hybrid</option>
             </select>
           </div>
           <div>
@@ -457,9 +465,13 @@ const CreateListing = () => {
               className="mt-1 p-2 w-full border rounded-md"
             >
               <option value="">Select Transmission Type</option>
-              <option value="automatic">Automatic</option>
-              <option value="manual">Manual</option>
-            </select>
+              {
+                transmissionTypes.map((type)=>
+              <option value={type}>{type}</option>
+                
+                )
+              }
+              </select>
           </div>
           <div>
             <label htmlFor="seats" className="block font-medium text-gray-700">

@@ -344,10 +344,7 @@ export default function Buy({ allListings }) {
         tempObj[index]['options'] = response.data.map((item) => {
           return {
             value: item,
-            label: item
-              .split(' ')
-              .map((w) => w[0].toUpperCase() + w.substring(1).toLowerCase())
-              .join(' '),
+            label: item,
             checked: checkedSegments.includes(item),
           }
         })

@@ -11,8 +11,9 @@ const SignUp = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      let url = 'http://localhost:5000/'
-      const response = await axios.post(url + 'api/user/signup', {
+      let url = 'https://real-value-server.vercel.app/'
+      // url = 'http://localhost:5000/'
+        const response = await axios.post(url + 'api/user/signup', {
         username,
         password,
         access_level: accessLevel,
@@ -35,11 +36,9 @@ const SignUp = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8">
-        <div>
           <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
             Sign Up
           </h2>
-        </div>
         {success == true ? (
           <h3 className="mt-6 text-center text-green-500 text-lg font-extrabold">
             Signed up successfully
@@ -53,7 +52,6 @@ const SignUp = () => {
         )}
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
           <div className="rounded-md shadow-sm -space-y-px">
-            <div>
               <label htmlFor="username" className="sr-only">
                 Username
               </label>
@@ -68,8 +66,6 @@ const SignUp = () => {
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
               />
-            </div>
-            <div>
               <label htmlFor="password" className="sr-only">
                 Password
               </label>
@@ -84,9 +80,7 @@ const SignUp = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-            </div>
-            <div>
-              <label htmlFor="accessLevel" className="sr-only">
+              {/* <label htmlFor="accessLevel" className="sr-only">
                 Access Level
               </label>
               <select
@@ -98,9 +92,8 @@ const SignUp = () => {
               >
                 <option value="regular">Regular</option>
                 <option value="superadmin">Super Admin</option>
-              </select>
+              </select> */}
             </div>
-          </div>
           <div>
             <button
               type="submit"

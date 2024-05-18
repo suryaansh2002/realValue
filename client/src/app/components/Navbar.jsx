@@ -87,7 +87,7 @@ const Navbar = () => {
         closable={false}
         onClose={onClose}
         open={visible}
-        className="bg-black text-white"
+        className="!bg-custom-black text-white"
         style={{
           backgroundColor: '#111827',
           color: 'white',

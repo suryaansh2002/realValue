@@ -9,7 +9,7 @@ const FeaturedCard = ({ car }) => {
     <a href={`/buy/${car._id}`}>
       <div className="max-w-sm rounded-lg align-top overflow-hidden shadow-lg  hover:scale-105  hover:shadow-xl  transition-transform duration-200 border-2 border-transparent bg-custom-seasalt">
         <Image
-          className="w-[100%]"
+          className="w-[100%] h-[24rem]"
           src={car.images[0]}
           width={300}
           height={300}

@@ -344,9 +344,10 @@ export default function Buy({ allListings }) {
         tempObj[index]['options'] = response.data.map((item) => {
           return {
             value: item,
-            label: item.split(' ')
-            .map(w => w[0].toUpperCase() + w.substring(1).toLowerCase())
-            .join(' '),
+            label: item
+              .split(' ')
+              .map((w) => w[0].toUpperCase() + w.substring(1).toLowerCase())
+              .join(' '),
             checked: checkedSegments.includes(item),
           }
         })
@@ -500,9 +501,8 @@ export default function Buy({ allListings }) {
                                     min={section.config.min}
                                     max={section.config.max}
                                     step={section.config.step}
-                              
                                     tooltip={{
-                                      placement:'bottom',
+                                      placement: 'bottom',
                                       open: true,
                                       formatter:
                                         section.id != 'modelYear' &&
@@ -641,7 +641,13 @@ export default function Buy({ allListings }) {
               style={{ alignSelf: 'center' }}
             >
               {/* Filters */}
-              <form className="hidden lg:block max-h-[70vh] overflow-y-auto" style={{ flexGrow: 2 }}>
+              <form
+                className="hidden lg:block max-h-[70vh] overflow-y-auto"
+                style={{
+                  flexGrow: 2,
+                  paddingRight: '14px',
+                }}
+              >
                 <h3 className="sr-only">Categories</h3>
                 {filters.map((section) => (
                   <Disclosure
@@ -682,7 +688,7 @@ export default function Buy({ allListings }) {
                                   max={section.config.max}
                                   step={section.config.step}
                                   tooltip={{
-                                    placement:'bottom',
+                                    placement: 'bottom',
                                     open: true,
                                     formatter:
                                       section.id != 'modelYear' &&

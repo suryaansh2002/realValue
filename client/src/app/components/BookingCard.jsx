@@ -35,6 +35,7 @@ const BookingCard = ({ sendDataToParent }) => {
       onFinish={onFinish}
       onFinishFailed={onFinishFailed}
       onSubmit={(e) => e.preventDefault()}
+      size="large"
     >
       <Form.Item label="Name" name="name" required>
         <Input placeholder="Enter your name" required />
@@ -46,7 +47,7 @@ const BookingCard = ({ sendDataToParent }) => {
         required
         rules={[
           {
-            pattern: /^(?:\+?91\s?)?[0-9]{10}$/,
+            pattern: /^(?:\+?91\s?)?0?[0-9]{10}$/,
             message: 'Please enter a valid 10-digit mobile number',
           },
         ]}

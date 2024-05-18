@@ -6,7 +6,7 @@ const loading = () => {
   return (
     <div className="flex items-center justify-center p-2 h-[100vh]">
       {/* Style this loading in the center of screen */}
-      <Oval color="#000" height={50} width={50} />
+      <Oval color="#fded03" height={50} width={50} secondaryColor="#b45309" />
     </div>
     // <div className="flex flex-col lg:flex-row lg:max-w-6xl mx-auto p-4 sm:p-6 lg:p-8 lg:gap-x-10 gap-5">
     //   {[1, 2, 3, 4].map((_, i) => (

@@ -10,6 +10,24 @@
   }
 }
 
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
 html {
   overflow-x: hidden !important;
 }
@@ -43,12 +61,11 @@ body {
 }
 
 .swiper-button-next::after {
-  /* color: #facc15; */
+  color: white;
 }
 .swiper-button-prev::after {
-  /* color: #facc15; */
+  color: white;
 }
-
 
 .thumbsSwiperDown {
   height: 20%;
@@ -63,6 +80,10 @@ body {
 }
 
 .thumbsSwiperDown .swiper-slide-thumb-active {
+  opacity: 1;
+}
+
+.thumbsSwiperDown .swiper-slide-active {
   opacity: 1;
 }
 
@@ -103,7 +124,6 @@ body {
   max-height: 82vh;
 }
 
-
 @media (max-width: 768px) {
   .button-container {
     display: flex;
@@ -130,16 +150,14 @@ body {
     font-size: 1rem !important;
   }
 
-  .modal{
+  .modal {
     width: 90vw;
     border-radius: 20px;
     padding-bottom: 5rem;
   }
 
-
-  .modal form{
+  .modal form {
     height: 74vh;
     overflow-y: auto;
   }
-
 }

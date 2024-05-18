@@ -3,7 +3,13 @@ import React, { useState, useEffect, useRef } from 'react'
 import axios from 'axios'
 import { AmountWithCommas } from '@/app/utils'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { Autoplay, Navigation, Pagination, Thumbs } from 'swiper/modules'
+import {
+  Autoplay,
+  Navigation,
+  Pagination,
+  Thumbs,
+  Controller,
+} from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
@@ -42,6 +48,7 @@ const page = ({ params: { id } }) => {
   const [isDesktop, setDesktop] = useState(false)
 
   const [thumbsSwiper, setThumbsSwiper] = useState(null)
+  const [mainSwiper, setMainSwiper] = useState(null)
 
   const bookingPOSTURL = 'https://real-value-server.vercel.app/api/bookings'
   const [confirmLoading, setConfirmLoading] = useState(false)
@@ -115,7 +122,7 @@ const page = ({ params: { id } }) => {
   if (loading) {
     return (
       <div className="flex items-center justify-center p-10 h-[100vh]">
-        <Oval color="#000" height={50} width={50} />
+        <Oval color="#fded03" height={50} width={50} secondaryColor="#b45309" />
       </div>
     )
   }
@@ -134,7 +141,7 @@ const page = ({ params: { id } }) => {
           >
             <li>
               <div className="flex items-center">
-                <a href="#" className="mr-2 text-sm font-medium text-gray-900">
+                <a href="/" className="mr-2 text-sm font-medium text-gray-900">
                   Cars
                 </a>
                 <svg
@@ -183,16 +190,15 @@ const page = ({ params: { id } }) => {
         </nav>
 
         <Swiper
-          modules={[Navigation, Pagination, Autoplay, Thumbs]}
+          modules={[Navigation, Pagination, Autoplay, Controller]}
           className="myIndividualCarSwiper"
-          slidesPerView={1}
-          spaceBetween={5}
-          thumbs={{ swiper: thumbsSwiper }}
+          onSwiper={setMainSwiper}
+          controller={{ control: thumbsSwiper }}
+          //   thumbs={{ swiper: thumbsSwiper }}
           pagination={isDesktop && { clickable: true }}
           navigation
-          loop={true}
+          loop={false}
           centeredSlides={true}
-          autoplay={{ delay: 2000, disableOnInteraction: false }}
           breakpoints={{
             640: { slidesPerView: 1, spaceBetween: 5 },
             768: { slidesPerView: 2, spaceBetween: 5 },
@@ -215,20 +221,15 @@ const page = ({ params: { id } }) => {
         {!isDesktop && (
           <Swiper
             onSwiper={setThumbsSwiper}
-            modules={[Navigation, Pagination, Autoplay, Thumbs]}
+            modules={[Navigation, Pagination, Autoplay, Controller]}
             className="thumbsSwiperDown"
-            slidesPerView={4}
+            controller={{ control: mainSwiper }}
+            slidesPerView="auto"
             spaceBetween={5}
-            watchSlidesProgress={true}
+            // watchSlidesProgress={true}
             pagination={{ clickable: true }}
-            loop={true}
+            loop={false}
             centeredSlides={true}
-            autoplay={{ delay: 2000, disableOnInteraction: false }}
-            breakpoints={{
-              640: { slidesPerView: 4, spaceBetween: 5 },
-              768: { slidesPerView: 4, spaceBetween: 5 },
-              1024: { slidesPerView: 4, spaceBetween: 5 },
-            }}
           >
             {carData.images &&
               carData.images.map((carImage, i) => (
@@ -327,7 +328,12 @@ const page = ({ params: { id } }) => {
                 <>
                   <BookingCard sendDataToParent={handleChildData} />
                   <div className="p-5 flex items-center justify-center">
-                    <Oval color="#000" height={50} width={50} />
+                    <Oval
+                      color="#fded03"
+                      height={50}
+                      width={50}
+                      secondaryColor="#b45309"
+                    />
                   </div>
                 </>
               ) : success ? (
@@ -346,7 +352,10 @@ const page = ({ params: { id } }) => {
                       d="M5 13l4 4L19 7"
                     />
                   </svg>
-                  <p>Booking successful!</p>
+                  <p className="mt-3 font-bold text-lg">Booking successful!</p>
+                  <p className="mt-3 font-normal text-lg">
+                    Our exec will contact you! 🚀
+                  </p>
                 </div>
               ) : (
                 <BookingCard sendDataToParent={handleChildData} />
@@ -503,7 +512,10 @@ const page = ({ params: { id } }) => {
                   )}
 
                   {carData.gears && (
-                    <div className="items-center block lg:inline-block my-3 md:w-[45%] ">
+                    <div
+                      className="items-center block lg:inline-block my-3 md:w-[45%]"
+                      id="emiSection"
+                    >
                       <div className="px-2 inline">
                         <PiGearSixFill
                           size={20}
@@ -557,7 +569,10 @@ const page = ({ params: { id } }) => {
                 })}
               />
             </div> */}
-            <div id="emiSection" className="w-[100%]">
+            <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl mt-10 mb-2">
+              Customize your EMI
+            </h1>
+            <div className="w-[100%]">
               <EMICalculator indiPrincipal={carData.price} />
             </div>
           </div>

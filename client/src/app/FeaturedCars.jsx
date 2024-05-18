@@ -52,7 +52,12 @@ const FeaturedCars = ({ featuredCarData }) => {
         {loading ? (
           <div className="flex items-center justify-center p-2">
             {/* Style this loading in the center of screen */}
-            <Oval color="#000" height={50} width={50} />
+            <Oval
+              color="#fded03"
+              height={50}
+              width={50}
+              secondaryColor="#b45309"
+            />
           </div>
         ) : (
           <Swiper

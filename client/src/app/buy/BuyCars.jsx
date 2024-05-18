@@ -416,7 +416,7 @@ export default function Buy({ allListings }) {
   }, [])
 
   return (
-    <div className="bg-white">
+    <div className="bg-white buyCarsSection">
       <div className="mx-auto max-w-screen-xl">
         {/* Mobile filter dialog */}
         <Transition.Root show={mobileFiltersOpen} as={Fragment}>

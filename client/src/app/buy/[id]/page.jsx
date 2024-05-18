@@ -275,9 +275,9 @@ const page = ({ params: { id } }) => {
               <span className="flex items-center justify-center bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
                 {getOwnerShipSuffix(carData.ownership)}
               </span>
-              <span className="flex items-center justify-center bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 w-full">
+              <div className="flex items-center justify-center bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 text-center">
                 {`${carData.type}`}
-              </span>
+              </div>
               <span className="flex items-center justify-center bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
                 {`${carData.kmDriven}km`}
               </span>
@@ -364,15 +364,6 @@ const page = ({ params: { id } }) => {
           </div>
 
           <div className="py-10 lg:col-span-2 lg:col-start-1 lg:border-r lg:border-gray-200 lg:pb-16 lg:pr-8 lg:pt-6">
-            {/* Description and details about car */}
-            {/* <div>
-              <h3 className="sr-only">Description</h3>
-
-              <div className="space-y-6">
-                <p className="text-base text-gray-900">Description</p>
-              </div>
-            </div> */}
-
             <div className="mt-2">
               <div className="bg-gray-100 p-4 rounded-lg mt-4">
                 <h2 className="text-lg font-semibold text-gray-900 mb-2">

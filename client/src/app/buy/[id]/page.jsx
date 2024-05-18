@@ -213,7 +213,7 @@ const page = ({ params: { id } }) => {
                   alt="car-img"
                   width={600}
                   height={400}
-                  style={{ borderRadius: '15px' }}
+                  style={{ borderRadius: '15px', width:'27rem', height:'18rem', objectFit:'cover' }}
                 />
               </SwiperSlide>
             ))}

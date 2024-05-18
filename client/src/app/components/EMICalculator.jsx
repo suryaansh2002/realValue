@@ -110,7 +110,7 @@ const EMICalculator = ({ indiPrincipal }) => {
                   <input
                     type="range"
                     min="100000"
-                    max="5000000"
+                    max={indiPrincipal ? indiPrincipal : '5000000'}
                     step={10000}
                     value={principalAmount}
                     onChange={(e) => {

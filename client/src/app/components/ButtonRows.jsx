@@ -141,6 +141,7 @@ const ButtonRows = () => {
 
   const fetchAllTypes = async () => {
     try {
+      setLoading(true)
       const response = await axios.get(url + 'api/listings/types')
       if (response.data) {
         setTypes(response.data)
@@ -153,6 +154,7 @@ const ButtonRows = () => {
 
   const fetchAllBrands = async () => {
     try {
+      setLoading(true)
       const response = await axios.get(url + 'api/listings/brands')
       if (response.data) {
         setBrands(response.data)

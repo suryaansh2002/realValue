@@ -88,7 +88,7 @@ body {
 .thumbsSwiperDown .swiper-slide-active {
   opacity: 1;
 }
-.swiper{
+.swiper {
   padding: auto;
 }
 .swiper-slide img {
@@ -129,12 +129,12 @@ body {
 }
 
 @media (max-width: 768px) {
-  .thumbsSwiperDown .swiper-slide img{
+  .thumbsSwiperDown .swiper-slide img {
     width: 15rem;
-    height: 8rem;
+    height: 6rem;
     object-fit: cover;
   }
-  
+
   .button-container {
     display: flex;
     flex-direction: column;

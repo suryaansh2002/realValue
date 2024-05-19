@@ -285,13 +285,13 @@ const ButtonRows = () => {
                   className="mySwiperCloudPrice"
                 >
                   <SwiperSlide style={{ paddingBottom: '40px' }}>
-                    <ButtonCard item="< 4 Lakh" type={'Budget'} />
+                    <ButtonCard item="<4 Lakh" type={'Budget'} />
                   </SwiperSlide>
                   <SwiperSlide style={{ paddingBottom: '40px' }}>
-                    <ButtonCard item="4 - 8 Lakh" type={'Budget'} />
+                    <ButtonCard item="4-8 Lakh" type={'Budget'} />
                   </SwiperSlide>
                   <SwiperSlide style={{ paddingBottom: '40px' }}>
-                    <ButtonCard item="> 8 Lakh" type={'Budget'} />
+                    <ButtonCard item=">8 Lakh" type={'Budget'} />
                   </SwiperSlide>
                 </Swiper>
               )}

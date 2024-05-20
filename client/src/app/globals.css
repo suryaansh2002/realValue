@@ -42,6 +42,10 @@ body {
 .button-cloud {
   font-family: 'Inter', sans-serif;
   font-weight: 600;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1.5rem;
 }
 
 .section-line-container {
@@ -129,6 +133,11 @@ body {
 }
 
 @media (max-width: 768px) {
+  .button-cloud {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
   .thumbsSwiperDown .swiper-slide img {
     width: 15rem;
     height: 6rem;

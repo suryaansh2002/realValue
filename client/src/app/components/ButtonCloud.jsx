@@ -18,13 +18,12 @@ const ButtonCloud = ({ options, label }) => {
     }
   }
 
-  const budgetsMapping = 
-    {
-      '<4 Lakh': '0-400000',
-      '4-8 Lakh': '400000-800000',
-      '>8 Lakh': '800000',
-    }
-  
+  const budgetsMapping = {
+    '<4 Lakh': '0-400000',
+    '4-8 Lakh': '400000-800000',
+    '>8 Lakh': '800000',
+  }
+
   useEffect(() => {
     if (currentItem) {
       let tempObj = localStorage.getItem('filters')
@@ -33,13 +32,12 @@ const ButtonCloud = ({ options, label }) => {
       } else {
         tempObj = JSON.parse(tempObj)
       }
-    
-    if (label == 'Budget') {
+
+      if (label == 'Budget') {
         tempObj[label] = budgetsMapping[currentItem.trim()]
+      } else {
+        tempObj[label] = currentItem
       }
-    else{
-      tempObj[label] = currentItem
-    }
       localStorage.setItem('filters', JSON.stringify(tempObj))
     }
   }, [currentItem])
@@ -47,11 +45,14 @@ const ButtonCloud = ({ options, label }) => {
   return (
     <Space wrap>
       <Dropdown menu={menuProps} trigger={['click']} placement="bottom">
-        <Button size="large" className='focus:border-yellow-500  hover:text-custom-jet'>
-          <Space className="button-cloud hover:text-custom-jet">
-            {currentItem ? currentItem : label}
+        <Button
+          size="large"
+          className="focus:border-yellow-500  hover:text-custom-jet"
+        >
+          <div className="button-cloud hover:text-custom-jet">
+            <div>{currentItem ? currentItem : label}</div>
             <DownOutlined />
-          </Space>
+          </div>
         </Button>
       </Dropdown>
     </Space>

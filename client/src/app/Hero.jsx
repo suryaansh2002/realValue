@@ -221,8 +221,7 @@ const Hero = () => {
                 className="inline-flex items-center 
                 justify-center px-5 py-3 text-base
                  font-medium text-center border rounded-lg 
-                 text-custom-seasalt hover:text-custom-jet focus:ring-4  border-custom-jet hover:!bg-custom-yellow focus:ring-custom-jet md:mt-10
-                 "
+                 text-custom-seasalt hover:text-custom-jet focus:ring-4  border-custom-jet hover:!bg-custom-yellow focus:ring-custom-jet md:mt-10"
               >
                 <FaSearch />
               </a>

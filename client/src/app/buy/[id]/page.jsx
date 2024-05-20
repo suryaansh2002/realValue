@@ -196,7 +196,7 @@ const page = ({ params: { id } }) => {
           controller={{ control: thumbsSwiper }}
           //   thumbs={{ swiper: thumbsSwiper }}
           pagination={isDesktop && { clickable: true }}
-          autoplay={{ delay: 2000, disableOnInteraction: true }}
+          autoplay={{ delay: 2000, disableOnInteraction: false }}
           navigation
           centeredSlides={false}
           breakpoints={{
@@ -213,7 +213,12 @@ const page = ({ params: { id } }) => {
                   alt="car-img"
                   width={600}
                   height={400}
-                  style={{ borderRadius: '15px', width:'27rem', height:'18rem', objectFit:'cover' }}
+                  style={{
+                    borderRadius: '15px',
+                    width: '27rem',
+                    height: '18rem',
+                    objectFit: 'cover',
+                  }}
                 />
               </SwiperSlide>
             ))}
@@ -295,7 +300,7 @@ const page = ({ params: { id } }) => {
             <div className="flex justify-between text-base mt-8">
               <p className="text-lg font-bold text-gray-900">
                 EMI starts at ₹
-                {AmountWithCommas(EMICalcLite(carData.price, 11, 36))}/month
+                {AmountWithCommas(EMICalcLite(carData.price, 10, 36))}/month
               </p>
               <a
                 href="#emiSection"

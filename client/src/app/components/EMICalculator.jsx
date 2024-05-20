@@ -9,7 +9,7 @@ ChartJS.register(ArcElement, Tooltip, Legend)
 
 const EMICalculator = ({ indiPrincipal }) => {
   const [principalAmount, setPrincipalAmount] = useState(500000)
-  const [rateOfInterest, setRateOfInterest] = useState(11)
+  const [rateOfInterest, setRateOfInterest] = useState(10)
   const [tenure, setTenure] = useState(3)
   const [emi, setEmi] = useState(0)
   const [totalInterest, setTotalInterest] = useState(0)

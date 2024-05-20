@@ -51,7 +51,6 @@ const FeaturedCars = ({ featuredCarData }) => {
 
         {loading ? (
           <div className="flex items-center justify-center p-2">
-            {/* Style this loading in the center of screen */}
             <Oval
               color="#fded03"
               height={50}

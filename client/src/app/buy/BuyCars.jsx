@@ -500,7 +500,7 @@ export default function Buy({ allListings }) {
                                     step={section.config.step}
                                     tooltip={{
                                       placement: 'bottom',
-                                      open: true,
+                                      // open: true,
                                       formatter:
                                         section.id != 'modelYear' &&
                                         sliderFormatter,
@@ -686,7 +686,7 @@ export default function Buy({ allListings }) {
                                   step={section.config.step}
                                   tooltip={{
                                     placement: 'bottom',
-                                    open: true,
+                                    // open: true,
                                     formatter:
                                       section.id != 'modelYear' &&
                                       sliderFormatter,

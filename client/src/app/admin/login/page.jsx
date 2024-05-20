@@ -16,7 +16,7 @@ const Login = () => {
       // url = 'http://localhost:5000/'
 
       const response = await axios.post(url + 'api/user/login', {
-        username,
+        username: username.trim(),
         password,
       })
       const token = response.data.token
@@ -51,7 +51,7 @@ const Login = () => {
           </h3>
         ) : success == false ? (
           <h3 className="mt-6 text-center text-red-500 text-lg font-extrabold">
-            Error signing up
+            Error Logging in
           </h3>
         ) : (
           <></>

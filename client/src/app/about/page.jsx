@@ -50,23 +50,23 @@ const AboutUs = () => {
         <div className="container max-w-screen-xl mx-auto">
           <div className="pt-0 bg-white">
             <div>
-              <div className="md:inline-block block mr-8 rounded-md shadow-md py-2 px-4 md:my-4 my-12 text-center">
+              <div className="md:inline-block block mr-8 rounded-md shadow-md py-2 px-4 md:my-4 md:w-auto w-[100vw]  my-12 text-center">
                 <div className="text-5xl font-bold mb-2">30+</div>
                 <div className="text-sm font-semibold">Years of Experience</div>
               </div>
-              <div className="md:inline-block block mr-8 rounded-md shadow-md py-2 px-4 md:my-4 my-12 text-center">
+              <div className="md:inline-block block mr-8 rounded-md shadow-md py-2 px-4 md:my-4 md:w-auto w-[100vw]   my-12 text-center">
                 <div className="text-5xl font-bold mb-2">10+</div>
                 <div className="text-sm font-semibold">Finance Partners</div>
               </div>
-              <div className="md:inline-block block mr-8 rounded-md shadow-md py-2 px-4 md:my-4 my-12 text-center">
+              <div className="md:inline-block block mr-8 rounded-md shadow-md py-2 px-4 md:my-4 md:w-auto w-[100vw]  my-12 text-center">
                 <div className="text-5xl font-bold mb-2">40,000+</div>
                 <div className="text-sm font-semibold">Satisfied Customers</div>
               </div>
-              <div className="md:inline-block block mr-8 rounded-md shadow-md py-2 px-4 md:my-4 my-12 text-center">
+              <div className="md:inline-block block mr-8 rounded-md shadow-md py-2 px-4 md:my-4 md:w-auto w-[100vw]   my-12 text-center">
                 <div className="text-5xl font-bold mb-2">4</div>
                 <div className="text-sm font-semibold">Showrooms in Ranchi</div>
               </div>
-              <div className="md:inline-block block align-top mx-4 md:w-[12rem]  rounded-md shadow-md py-2 md:px-4 px-12 md:my-4 my-12 text-center">
+              <div className="md:inline-block block align-top mr-4 md:w-[12rem]  rounded-md shadow-md py-2 w-[100vw]   md:px-4 px-12 md:my-4 my-12 text-center">
                 <div className="text-2xl font-semibold py-2">
                   Post Sales Servicing
                 </div>

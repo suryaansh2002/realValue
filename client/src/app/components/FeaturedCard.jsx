@@ -16,7 +16,7 @@ const FeaturedCard = ({ car }) => {
           alt={`${car.brand} ${car.model}`}
         />
 
-        <div className="md:mb-0 px-6 pt-4 md:pb-0 pb-1 align-top  justify-between">
+        <div className="md:mb-0 px-6 pt-4 align-top justify-between">
           <div className="font-bold text-xl mb-2 text-custom-black  w-[80%] inline-block">
             {car.brand} {car.model}
             <span className="text-custom-jet xs:text-sm ml-2  inline-block font-light text-base ">

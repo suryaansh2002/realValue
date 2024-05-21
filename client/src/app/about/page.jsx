@@ -6,7 +6,11 @@ import why1 from '@/images/sell/why1.jpeg'
 import why2 from '@/images/sell/why2.jpeg'
 import why3 from '@/images/sell/why3.jpeg'
 import Image from 'next/image'
-import about from '@/images/about.jpeg'
+import about1 from '@/images/about1.jpeg'
+import about2 from '@/images/about2.jpeg'
+import about3 from '@/images/about3.jpeg'
+import about4 from '@/images/about4.jpeg'
+
 import founder from '@/images/founder.jpeg'
 
 import CountUp from 'react-countup'
@@ -28,7 +32,7 @@ const AboutUs = () => {
   ]
   return (
     <>
-      <div className="bg-custom-platinum -mt-8 pt-4">
+      <div className="bg-custom-seasalt -mt-8 pt-4">
         <div className="container mx-auto max-w-screen-xl">
           <h1 className="text-4xl font-bold text-left px-4 my-12">About Us</h1>
           <div className="p-6 bg-custom-seasalt rounded-lg shadow-lg mb-8 text-xl">
@@ -153,7 +157,7 @@ const AboutUs = () => {
             </div>
             <div className="mt-8 md:mt-0 md:inline-block md:w-[35%]">
               <Image
-                src={about}
+                src={about4}
                 alt="showroom"
                 className="mx-auto w-[80%] md:mt-0 mt-4"
               />

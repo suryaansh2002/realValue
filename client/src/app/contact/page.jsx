@@ -9,11 +9,11 @@ const ContactUsPage = () => {
     <section className="bg-custom-black">
       <div className="container px-4 py-8 lg:px-6 max-w-screen-xl mx-auto">
         <div>
-          <h1 className="mt-2 text-3xl font-semibold  md:text-4xl text-white">
+          <h1 className="mt-2 text-3xl font-semibold  md:text-4xl text-custom-seasalt">
             Get in touch
           </h1>
 
-          <p className="mt-3 text-lg  text-gray-400">
+          <p className="mt-3 text-lg  text-custom-platinum">
             We would love to hear from you.
           </p>
         </div>
@@ -26,7 +26,7 @@ const ContactUsPage = () => {
         >
           <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-1">
             <div>
-              <span className="inline-block p-3 text-yellow-500 rounded-full bg-gray-800">
+              <span className="inline-block p-3 text-custom-yellow rounded-full bg-custom-jet">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -43,25 +43,25 @@ const ContactUsPage = () => {
                 </svg>
               </span>
 
-              <h2 className="mt-4 text-xl font-medium  text-white">Email</h2>
-              <p className="mt-2 text-base  text-gray-400">
+              <h2 className="mt-4 text-xl font-medium  text-custom-seasalt">Email</h2>
+              <p className="mt-2 text-base  text-custom-platinum">
                 Drop a mail for any queries.
               </p>
               <div className="space-y-2">
-                <p className="mt-2 text-base text-white hover:text-yellow-500">
-                  poddarranchi@gmail.com
+                <p className="mt-2 text-base text-custom-seasalt hover:text-custom-yellow">
+                 <a href='mailto:poddarranchi@gmail.com'>poddarranchi@gmail.com</a> 
                 </p>
-                <p className="mt-2 text-base text-white hover:text-yellow-500">
-                  info@poddarmotors.com
+                <p className="mt-2 text-base text-custom-seasalt hover:text-custom-yellow">
+                <a href='mailto:info@poddarmotors.com'>info@poddarmotors.com</a>
                 </p>
-                <p className="mt-2 text-base text-white hover:text-yellow-500">
-                  contact@poddarmotors.com
+                <p className="mt-2 text-base text-custom-seasalt hover:text-custom-yellow">
+                <a href='mailto:contact@poddarmotors.com'>contact@poddarmotors.com</a>
                 </p>
               </div>
             </div>
 
             <div>
-              <span className="inline-block p-3 text-yellow-500 rounded-full bg-gray-800">
+              <span className="inline-block p-3 text-custom-yellow rounded-full bg-custom-jet">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -78,8 +78,8 @@ const ContactUsPage = () => {
                 </svg>
               </span>
 
-              <h2 className="mt-4 text-xl font-medium  text-white">Phone</h2>
-              <p className="mt-2 text-base  text-gray-400">
+              <h2 className="mt-4 text-xl font-medium  text-custom-seasalt">Phone</h2>
+              <p className="mt-2 text-base  text-custom-platinum">
                 Everyday from 9:30am to 7pm.
               </p>
               <div className="space-y-2">
@@ -88,8 +88,8 @@ const ContactUsPage = () => {
                     className="text-green-500 text-2xl mr-2"
                     size={20}
                   />
-                  <p className="text-base text-white hover:text-yellow-500">
-                    +91 8102856301
+                  <p className="text-base text-custom-seasalt hover:text-custom-yellow">
+                    <a  href={`https://wa.me/+918102856301`}> +91 8102856301</a>
                   </p>
                 </div>
                 <div className="mt-2 flex items-center justify-start">
@@ -97,20 +97,20 @@ const ContactUsPage = () => {
                     className="text-cyan-600 text-2xl mr-2"
                     size={20}
                   />
-                  <p className="text-base text-white hover:text-yellow-500">
-                    8873002702
+                  <p className="text-base text-custom-seasalt hover:text-custom-yellow">
+                  <a  href={`tel:8102856301`}>8873002702</a>
                   </p>
                 </div>
               </div>
             </div>
 
             <div>
-              <span className="inline-block p-3 text-yellow-500 rounded-full bg-gray-800 mx-auto">
-                <FaUsers className="text-yellow-500 text-2xl" size={20} />
+              <span className="inline-block p-3 text-custom-yellow rounded-full bg-custom-jet mx-auto">
+                <FaUsers className="text-custom-yellow text-2xl" size={20} />
               </span>
 
-              <h2 className="mt-4 text-xl font-medium  text-white">Socials</h2>
-              <p className="mt-2 text-base  text-gray-400">Follow us!</p>
+              <h2 className="mt-4 text-xl font-medium  text-custom-seasalt">Socials</h2>
+              <p className="mt-2 text-base  text-custom-platinum">Follow us!</p>
               <div className="flex items-center justify-start space-x-6 mt-3">
                 <Link
                   href="https://www.facebook.com/RealValueRanchi/"
@@ -130,8 +130,8 @@ const ContactUsPage = () => {
             </div>
           </div>
 
-          <div className="mt-12">
-            <span className="inline-block p-3 text-yellow-500 rounded-full bg-gray-800">
+          <div className="md:mt-0 mt-12">
+            <span className="inline-block p-3 text-custom-yellow rounded-full bg-custom-jet">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -153,24 +153,24 @@ const ContactUsPage = () => {
               </svg>
             </span>
 
-            <h2 className="mt-4 text-xl font-medium  text-white">Showrooms</h2>
-            <p className="mt-2 text-base  text-gray-400">
+            <h2 className="mt-4 text-xl font-medium  text-custom-seasalt">Showrooms</h2>
+            <p className="mt-2 text-base  text-custom-platinum">
               Browse our exquisite collection of cars.
             </p>
             <div className="space-y-2">
-              <p className="mt-2 mb-4 text-base text-white hover:text-yellow-500">
+              <p className="mt-2 mb-4 text-base text-custom-seasalt hover:text-custom-yellow">
                 1. (Poddar Automart) Real Value, Kokar Industrial Area, Kokar,
                 Ranchi - 834001 Landmark: Electricity Sub Station
               </p>
-              <p className="mt-2 mb-4 text-base text-white hover:text-yellow-500">
+              <p className="mt-2 mb-4 text-base text-custom-seasalt hover:text-custom-yellow">
                 2. (Poddar Motors) Poddar Motors Pvt. Ltd. , Kokar Industrial
                 Area, Kokar , Ranchi -834001 Landmark: Beside moreish bread
               </p>
-              <p className="mt-2 mb-4 text-base text-white hover:text-yellow-500">
+              <p className="mt-2 mb-4 text-base text-custom-seasalt hover:text-custom-yellow">
                 3. (Tirupati Engicon) Real Value, Kokar Chowk, Kokar, Ranchi -
                 834001 Landmark: Kokar Chowk - Kantatoli road
               </p>
-              <p className="mt-2 mb-4 text-base text-white hover:text-yellow-500">
+              <p className="mt-2 mb-4 text-base text-custom-seasalt hover:text-custom-yellow">
                 4. Real Value, Hazaribagh Road ,Mesra , Ranchi - 834001
                 Landmark: Near BIT Mesra campus
               </p>

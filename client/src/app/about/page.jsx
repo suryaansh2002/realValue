@@ -28,10 +28,10 @@ const AboutUs = () => {
   ]
   return (
     <>
-      <div className="">
+      <div className="bg-custom-platinum -mt-8 pt-4">
         <div className="container mx-auto max-w-screen-xl">
           <h1 className="text-4xl font-bold text-left px-4 my-12">About Us</h1>
-          <div className="p-6 bg-white rounded-lg shadow-lg mb-8 text-xl">
+          <div className="p-6 bg-custom-seasalt rounded-lg shadow-lg mb-8 text-xl">
             <p className="text-gray-700">
               At Real Value, we believe in transforming the used car market to
               provide our customers with the highest quality vehicles at the
@@ -49,33 +49,33 @@ const AboutUs = () => {
           </div>
         </div>
         <div className="container max-w-screen-xl mx-auto">
-          <div className="pt-0 bg-white">
+          <div className="pt-0">
             <div>
-              <div className="md:inline-block block mr-8 rounded-md shadow-lg py-2 px-4 md:my-2 md:w-auto w-[100vw]  my-8 text-center ">
+              <div className="md:inline-block bg-custom-seasalt block mr-8 rounded-md shadow-lg py-2 px-4 md:my-2 md:w-auto w-[100vw]  my-8 text-center ">
                 <div className="text-5xl font-bold mb-2">
                   <CountUp start={0} end={30} duration={3} />+
                 </div>
                 <div className="text-lg font-semibold">Years of Experience</div>
               </div>
-              <div className="md:inline-block block mr-8 rounded-md shadow-lg py-2 px-4 md:my-4 md:w-auto w-[100vw]   my-12 text-center">
+              <div className="md:inline-block bg-custom-seasalt block mr-8 rounded-md shadow-lg py-2 px-4 md:my-4 md:w-auto w-[100vw]   my-12 text-center">
                 <div className="text-5xl font-bold mb-2">
                   <CountUp start={0} end={10} duration={3} />+
                 </div>
                 <div className="text-lg font-semibold">Finance Partners</div>
               </div>
-              <div className="md:inline-block block mr-8 rounded-md shadow-lg py-2 px-4 md:my-4 md:w-auto w-[100vw]  my-12 text-center">
+              <div className="md:inline-block bg-custom-seasalt block mr-8 rounded-md shadow-lg py-2 px-4 md:my-4 md:w-auto w-[100vw]  my-12 text-center">
                 <div className="text-5xl font-bold mb-2">
                   <CountUp start={0} end={40000} duration={3} />+
                 </div>
                 <div className="text-lg font-semibold">Satisfied Customers</div>
               </div>
-              <div className="md:inline-block block mr-8 rounded-md shadow-lg py-2 px-4 md:my-4 md:w-auto w-[100vw] my-12 text-center">
+              <div className="md:inline-block bg-custom-seasalt block mr-8 rounded-md shadow-lg py-2 px-4 md:my-4 md:w-auto w-[100vw] my-12 text-center">
                 <div className="text-5xl font-bold mb-2">
                   <CountUp start={0} end={4} duration={2.5} />
                 </div>
                 <div className="text-lg font-semibold">Showrooms in Ranchi</div>
               </div>
-              <div className="md:inline-block block align-top mr-4 md:w-[12rem]  rounded-md shadow-lg py-2 w-[100vw]  md:px-4 px-12 md:my-4 my-12 text-center">
+              <div className="md:inline-block bg-custom-seasalt block align-top mr-4 md:w-[12rem]  rounded-md shadow-lg py-2 w-[100vw]  md:px-4 px-12 md:my-4 my-12 text-center">
                 <div
                   style={{ fontSize: '1.4rem' }}
                   className="font-semibold py-2"
@@ -88,7 +88,7 @@ const AboutUs = () => {
         </div>
 
         <div className="container mx-auto max-w-screen-xl">
-          <div className="p-6 bg-white rounded-lg shadow-lg my-8">
+          <div className="p-6 bg-custom-seasalt rounded-lg shadow-lg my-8">
             <div className="text-3xl font-bold mb-4">Our Journey</div>
             <div className="text-xl">
               At Real Value, we believe in transforming the used car market to
@@ -100,7 +100,7 @@ const AboutUs = () => {
         </div>
 
         <div className="container mx-auto max-w-screen-xl">
-          <div className="p-6 bg-white rounded-lg shadow-lg mb-8">
+          <div className="p-6 bg-custom-seasalt rounded-lg shadow-lg mb-8">
             <div className="text-3xl font-bold mb-8">Our Mission</div>
             <div className="text-xl">
               Our mission is simple: to organise the used cars market in Ranchi
@@ -113,7 +113,7 @@ const AboutUs = () => {
         </div>
 
         <div className="container mx-auto max-w-screen-xl">
-          <div className="p-6 bg-white rounded-lg shadow-lg mb-8">
+          <div className="p-6 bg-custom-seasalt rounded-lg shadow-lg mb-8">
             <div className="text-3xl font-bold mb-8">Our Values</div>
             <div className="text-xl">
               At Real Value, we hold honesty, customer service, and quality in
@@ -126,7 +126,7 @@ const AboutUs = () => {
         </div>
 
         <div className="container mx-auto max-w-screen-xl">
-          <div className="p-6 bg-white rounded-lg shadow-lg mb-8">
+          <div className="p-6 bg-custom-seasalt rounded-lg shadow-lg mb-8">
             <div className="text-3xl font-bold mb-4">Our Services</div>
             <div className="md:inline-block md:w-[65%] text-xl">
               We offer a comprehensive range of services to meet all your
@@ -162,7 +162,7 @@ const AboutUs = () => {
         </div>
 
         <div className="container mx-auto max-w-screen-xl">
-          <div className="p-6 bg-white rounded-lg shadow-lg mb-8">
+          <div className="p-6 bg-custom-seasalt rounded-lg shadow-lg mb-8">
             <div className="text-3xl font-bold mb-8">
               Why Choose Real Value?
             </div>
@@ -190,7 +190,7 @@ const AboutUs = () => {
         </div>
 
         <div className="container mx-auto max-w-screen-xl">
-          <div className="p-6 bg-white rounded-lg shadow-lg mb-8">
+          <div className="p-6 bg-custom-seasalt rounded-lg shadow-lg mb-8">
             <div className="text-3xl font-bold mb-4 md:mb-0">
               Meet Our Founder
             </div>
@@ -213,7 +213,7 @@ const AboutUs = () => {
         </div>
 
         <div className="container mx-auto max-w-screen-xl">
-          <div className="p-6 bg-white rounded-lg shadow-lg mb-8">
+          <div className="p-6 bg-custom-seasalt rounded-lg shadow-lg mb-8">
             <div className="text-3xl font-bold mb-4">Our Future</div>
             <div className="text-xl">
               Our goal is to become the largest used car dealer in East India.
@@ -226,7 +226,7 @@ const AboutUs = () => {
           </div>
         </div>
         <Features />
-        <div className="mt-20 max-w-screen-xl mx-auto mb-12">
+        <div className="mt-20 max-w-screen-xl mx-auto pb-12">
           <div className="font-semibold text-3xl my-8 md:px-0 px-4">
             Why Sell Your Car To Us
           </div>
@@ -236,7 +236,7 @@ const AboutUs = () => {
                 key={index}
                 className="
             md:inline-block block  w-[20rem]
-             bg-white p-4 rounded-lg shadow-lg 
+             bg-custom-seasalt p-4 rounded-lg shadow-lg 
              align-top mr-8 md:my-2 my-4 
              hover:scale-105  hover:shadow-xl  transition-transform duration-200 
             md:ml-0 md:translate-x-0 
@@ -248,7 +248,7 @@ const AboutUs = () => {
             ))}
           </div>
         </div>
-        {/* <div className="w-[100vw] block md:inline-block md:pl-8 align-top py-8 bg-gray-900 text-white">
+        {/* <div className="w-[100vw] block md:inline-block md:pl-8 align-top py-8 bg-gray-900 text-custom-seasalt">
           <div className="font-semibold text-3xl my-8 ml-4 md:ml-12">
             Why Sell Your Car To Us?
           </div>

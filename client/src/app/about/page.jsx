@@ -40,11 +40,13 @@ const AboutUs = () => {
             </p>
             <p className="my-4 md:mb-0 mb-10">
               Google Ratings: 4.7
-              <FaStar className="text-[#ffd700] inline -translate-y-0.5 ml-1" />
-              <FaStar className="text-[#ffd700] inline -translate-y-0.5 mx-0.5" />
-              <FaStar className="text-[#ffd700] inline -translate-y-0.5 mx-0.5" />
-              <FaStar className="text-[#ffd700] inline -translate-y-0.5 mx-0.5" />
-              <FaStarHalf className="text-[#ffd700] inline -translate-y-0.5 mx-0.5" />
+              <div>
+                <FaStar className="text-[#ffd700] inline -translate-y-0.5 ml-1" />
+                <FaStar className="text-[#ffd700] inline -translate-y-0.5 mx-0.5" />
+                <FaStar className="text-[#ffd700] inline -translate-y-0.5 mx-0.5" />
+                <FaStar className="text-[#ffd700] inline -translate-y-0.5 mx-0.5" />
+                <FaStarHalf className="text-[#ffd700] inline -translate-y-0.5 mx-0.5" />
+              </div>
             </p>
           </div>
           <Image
@@ -56,7 +58,7 @@ const AboutUs = () => {
       </div>
 
       <div
-        className="w-full h-px max-w-6xl mx-auto mb-16"
+        className="w-full h-px max-w-6xl mx-auto md:mb-16 my-8"
         style={{
           backgroundImage:
             'linear-gradient(90deg, rgba(204, 204, 0, 0) 1.46%, rgba(204, 204, 0, 0.6) 40.83%, rgba(204, 204, 0, 0.3) 65.57%, rgba(204, 204, 0, 0) 107.92%)',
@@ -194,7 +196,7 @@ const AboutUs = () => {
       </div>
 
       <div
-        className="w-full h-px max-w-6xl mx-auto mb-16"
+        className="w-full h-px max-w-6xl mx-auto md:mb-16 mb-0"
         style={{
           backgroundImage:
             'linear-gradient(90deg, rgba(204, 204, 0, 0) 1.46%, rgba(204, 204, 0, 0.6) 40.83%, rgba(204, 204, 0, 0.3) 65.57%, rgba(204, 204, 0, 0) 107.92%)',

@@ -111,7 +111,7 @@ const AboutUs = () => {
         <div className="mb-8 md:mb-0">
           <div className="bg-custom-seasalt my-8 text-justify">
             <div className="text-4xl font-bold mb-4">Our Journey</div>
-            <div className="text-2xl">
+            <div className="text-xl">
               At Real Value, we believe in transforming the used car market to
               provide our customers with the highest quality vehicles at the
               best prices. With three strategically located showrooms in Ranchi,
@@ -120,7 +120,7 @@ const AboutUs = () => {
           </div>
           <div className=" bg-custom-seasalt mb-8">
             <div className="text-4xl font-bold mb-8">Our Mission</div>
-            <div className="text-2xl text-justify">
+            <div className="text-xl text-justify">
               Our mission is simple: to organise the used cars market in Ranchi
               and offer the best cars to our customers at the most competitive
               prices. We strive to ensure that every customer finds their
@@ -151,7 +151,7 @@ const AboutUs = () => {
           <div className="container mx-auto max-w-screen-xl">
             <div className=" bg-custom-seasalt mb-8">
               <div className="text-4xl font-bold mb-8">Our Values</div>
-              <div className="text-2xl text-justify">
+              <div className="text-xl text-justify">
                 At Real Value, we hold honesty, customer service, and quality in
                 the highest regard. These values guide everything we do, from
                 the cars we select to the way we interact with our customers. We
@@ -163,7 +163,7 @@ const AboutUs = () => {
 
           <div className=" bg-custom-seasalt mb-8">
             <div className="text-4xl font-bold mb-4">Our Services</div>
-            <div className="text-2xl text-justify">
+            <div className="text-xl text-justify">
               We offer a comprehensive range of services to meet all your
               automotive needs:
               <br />
@@ -173,13 +173,10 @@ const AboutUs = () => {
                   <b>Buying</b>: Find your next car from our extensive inventory
                   of quality used vehicles.
                 </li>
-                <br />
                 <li>
                   <b>Selling</b>: Sell your car to us with confidence, knowing
                   you're getting a fair deal.
                 </li>
-                <br />
-
                 <li>
                   <b>Financing</b>: Take advantage of our financing options to
                   make your purchase more affordable.
@@ -208,7 +205,7 @@ const AboutUs = () => {
           <div className="text-4xl font-bold mb-8 md:mt-0 mt-10">
             Why Choose Real Value?
           </div>
-          <div className="text-2xl text-justify">
+          <div className="text-xl text-justify">
             <ul>
               <li>
                 <b>Experience and Trust:</b> With 30 years in the business and
@@ -244,7 +241,7 @@ const AboutUs = () => {
           <div className="bg-custom-seasalt md:mb-8 mb-4">
             <div className="text-4xl font-bold mb-4">Meet Our Founder</div>
             <div className="flex items-center flex-col md:flex-row justify-between">
-              <div className="align-top text-2xl mb-6 md:mb-0 text-justify">
+              <div className="align-top text-xl mb-6 md:mb-0 text-justify">
                 Milan Poddar, our CEO and Founder, has been the driving force
                 behind Real Value. His vision and dedication have shaped our
                 company into what it is today—a leader in the used car market in
@@ -255,7 +252,7 @@ const AboutUs = () => {
 
           <div className="md:py-4 bg-custom-seasalt mb-10 md:mb-0">
             <div className="text-4xl font-bold mb-4">Our Future</div>
-            <div className="text-2xl text-justify">
+            <div className="text-xl text-justify">
               Our goal is to become the largest used car dealer in East India.
               We are constantly expanding our inventory, improving our services,
               and exploring new ways to better serve our customers.

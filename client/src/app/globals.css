@@ -39,6 +39,10 @@ body {
   }
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .button-cloud {
   font-family: 'Inter', sans-serif;
   font-weight: 600;

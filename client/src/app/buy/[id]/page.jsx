@@ -132,7 +132,7 @@ const page = ({ params: { id } }) => {
   }
 
   return (
-    <div className="bg-white overflow-x-hidden">
+    <div className="bg-white overflow-x-hidden individual-buy-section">
       <div className="pt-6 mx-auto max-w-screen-xl">
         <nav aria-label="Breadcrumb" className="mb-5">
           <ol

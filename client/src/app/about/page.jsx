@@ -13,36 +13,32 @@ import about4 from '@/images/about4.jpeg'
 
 import founder from '@/images/founder.jpeg'
 
+import dayImage from '@/images/about/day.jpg'
+import twilightImage from '@/images/about/twilight.jpg'
+import night from '@/images/about/night.jpg'
+import cars from '@/images/about/cars.jpg'
+
 import CountUp from 'react-countup'
 
 const AboutUs = () => {
-  const whySellToUs = [
-    {
-      title: 'Best Price',
-      image: why1,
-    },
-    {
-      title: 'Hassle Free',
-      image: why2,
-    },
-    {
-      title: 'Instant Payment',
-      image: why3,
-    },
-  ]
   return (
-    <>
-      <div className="bg-custom-seasalt -mt-8 pt-4">
-        <div className="container mx-auto max-w-screen-xl">
-          <h1 className="text-4xl font-bold text-left px-4 my-12">About Us</h1>
-          <div className="p-6 bg-custom-seasalt rounded-lg shadow-lg mb-8 text-xl">
-            <p className="text-gray-700">
+    <div className="bg-custom-seasalt pt-6">
+      <div className="container mx-auto max-w-screen-xl">
+        <div className="container px-6 py-10 max-w-screen-xl mx-auto">
+          <h1 className="text-4xl font-bold text-left">About Us</h1>
+          <p className="mt-4 text-xl text-custom-jet">
+            Who we are and what we do
+          </p>
+        </div>
+        <div className="px-6 py-6 text-justify  bg-custom-seasalt mb-8 text-2xl flex flex-col md:flex-row justify-evenly gap-x-16">
+          <div>
+            <p className="text-gray-700 ">
               At Real Value, we believe in transforming the used car market to
               provide our customers with the highest quality vehicles at the
               best prices. With three strategically located showrooms in Ranchi,
               we are here to serve you with dedication and integrity.
             </p>
-            <p className="mt-4">
+            <p className="my-4 md:mb-0 mb-10">
               Google Ratings: 4.7
               <FaStar className="text-[#ffd700] inline -translate-y-0.5 ml-1" />
               <FaStar className="text-[#ffd700] inline -translate-y-0.5 mx-0.5" />
@@ -51,62 +47,78 @@ const AboutUs = () => {
               <FaStarHalf className="text-[#ffd700] inline -translate-y-0.5 mx-0.5" />
             </p>
           </div>
+          <Image
+            src={dayImage}
+            alt="showroom"
+            className="mx-auto md:w-[40%] w-[100%]"
+          />
         </div>
-        <div className="container max-w-screen-xl mx-auto">
-          <div className="pt-0">
-            <div>
-              <div className="md:inline-block bg-custom-seasalt block mr-8 rounded-md shadow-lg py-2 px-4 md:my-2 md:w-auto w-[100vw]  my-8 text-center ">
-                <div className="text-5xl font-bold mb-2">
-                  <CountUp start={0} end={30} duration={3} />+
-                </div>
-                <div className="text-lg font-semibold">Years of Experience</div>
-              </div>
-              <div className="md:inline-block bg-custom-seasalt block mr-8 rounded-md shadow-lg py-2 px-4 md:my-4 md:w-auto w-[100vw]   my-12 text-center">
-                <div className="text-5xl font-bold mb-2">
-                  <CountUp start={0} end={10} duration={3} />+
-                </div>
-                <div className="text-lg font-semibold">Finance Partners</div>
-              </div>
-              <div className="md:inline-block bg-custom-seasalt block mr-8 rounded-md shadow-lg py-2 px-4 md:my-4 md:w-auto w-[100vw]  my-12 text-center">
-                <div className="text-5xl font-bold mb-2">
-                  <CountUp start={0} end={40000} duration={3} />+
-                </div>
-                <div className="text-lg font-semibold">Satisfied Customers</div>
-              </div>
-              <div className="md:inline-block bg-custom-seasalt block mr-8 rounded-md shadow-lg py-2 px-4 md:my-4 md:w-auto w-[100vw] my-12 text-center">
-                <div className="text-5xl font-bold mb-2">
-                  <CountUp start={0} end={4} duration={2.5} />
-                </div>
-                <div className="text-lg font-semibold">Showrooms in Ranchi</div>
-              </div>
-              <div className="md:inline-block bg-custom-seasalt block align-top mr-4 md:w-[12rem]  rounded-md shadow-lg py-2 w-[100vw]  md:px-4 px-12 md:my-4 my-12 text-center">
-                <div
-                  style={{ fontSize: '1.4rem' }}
-                  className="font-semibold py-2"
-                >
-                  Post Sales Servicing
-                </div>
-              </div>
+      </div>
+
+      <div
+        className="w-full h-px max-w-6xl mx-auto mb-16"
+        style={{
+          backgroundImage:
+            'linear-gradient(90deg, rgba(204, 204, 0, 0) 1.46%, rgba(204, 204, 0, 0.6) 40.83%, rgba(204, 204, 0, 0.3) 65.57%, rgba(204, 204, 0, 0) 107.92%)',
+        }}
+      ></div>
+
+      <div className="container max-w-screen-xl mx-auto py-7">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8">
+          <div className="bg-custom-seasalt rounded-md shadow-lg p-5 text-center">
+            <div className="text-5xl font-bold mb-2">
+              <CountUp start={0} end={30} duration={3} />+
+            </div>
+            <div className="text-lg font-semibold">Years of Experience</div>
+          </div>
+          <div className="bg-custom-seasalt rounded-md shadow-lg p-5 text-center">
+            <div className="text-5xl font-bold mb-2">
+              <CountUp start={0} end={10} duration={3} />+
+            </div>
+            <div className="text-lg font-semibold">Finance Partners</div>
+          </div>
+          <div className="bg-custom-seasalt rounded-md shadow-lg p-5 text-center">
+            <div className="text-5xl font-bold mb-2">
+              <CountUp start={0} end={40000} duration={3} />+
+            </div>
+            <div className="text-lg font-semibold">Satisfied Customers</div>
+          </div>
+          <div className="bg-custom-seasalt rounded-md shadow-lg p-5 text-center">
+            <div className="text-5xl font-bold mb-2">
+              <CountUp start={0} end={4} duration={2.5} />
+            </div>
+            <div className="text-lg font-semibold">Showrooms in Ranchi</div>
+          </div>
+          <div className="bg-custom-seasalt rounded-md shadow-lg p-5 text-center">
+            <div style={{ fontSize: '1.4rem' }} className="font-semibold py-2">
+              Post Sales Servicing
             </div>
           </div>
         </div>
+      </div>
 
-        <div className="container mx-auto max-w-screen-xl">
-          <div className="p-6 bg-custom-seasalt rounded-lg shadow-lg my-8">
-            <div className="text-3xl font-bold mb-4">Our Journey</div>
-            <div className="text-xl">
+      <div
+        className="w-full h-px max-w-6xl mx-auto mt-16"
+        style={{
+          backgroundImage:
+            'linear-gradient(90deg, rgba(204, 204, 0, 0) 1.46%, rgba(204, 204, 0, 0.6) 40.83%, rgba(204, 204, 0, 0.3) 65.57%, rgba(204, 204, 0, 0) 107.92%)',
+        }}
+      ></div>
+
+      <div className="container mx-auto max-w-screen-xl flex flex-col md:flex-row justify-center py-16 gap-x-16 px-6">
+        <div className="mb-8 md:mb-0">
+          <div className="bg-custom-seasalt my-8 text-justify">
+            <div className="text-4xl font-bold mb-4">Our Journey</div>
+            <div className="text-2xl">
               At Real Value, we believe in transforming the used car market to
               provide our customers with the highest quality vehicles at the
               best prices. With three strategically located showrooms in Ranchi,
               we are here to serve you with dedication and integrity.
             </div>
           </div>
-        </div>
-
-        <div className="container mx-auto max-w-screen-xl">
-          <div className="p-6 bg-custom-seasalt rounded-lg shadow-lg mb-8">
-            <div className="text-3xl font-bold mb-8">Our Mission</div>
-            <div className="text-xl">
+          <div className=" bg-custom-seasalt mb-8">
+            <div className="text-4xl font-bold mb-8">Our Mission</div>
+            <div className="text-2xl text-justify">
               Our mission is simple: to organise the used cars market in Ranchi
               and offer the best cars to our customers at the most competitive
               prices. We strive to ensure that every customer finds their
@@ -115,24 +127,41 @@ const AboutUs = () => {
             </div>
           </div>
         </div>
+        <Image
+          src={twilightImage}
+          alt="showroom"
+          className="mx-auto w-[100%] h-[100%] md:w-[40%] md:h-[70%] my-auto"
+          objectFit="contain"
+          objectPosition="center"
+        />
+      </div>
 
-        <div className="container mx-auto max-w-screen-xl">
-          <div className="p-6 bg-custom-seasalt rounded-lg shadow-lg mb-8">
-            <div className="text-3xl font-bold mb-8">Our Values</div>
-            <div className="text-xl">
-              At Real Value, we hold honesty, customer service, and quality in
-              the highest regard. These values guide everything we do, from the
-              cars we select to the way we interact with our customers. We
-              believe in creating lasting relationships based on trust and
-              transparency.
+      <div
+        className="w-full h-px max-w-6xl mx-auto"
+        style={{
+          backgroundImage:
+            'linear-gradient(90deg, rgba(204, 204, 0, 0) 1.46%, rgba(204, 204, 0, 0.6) 40.83%, rgba(204, 204, 0, 0.3) 65.57%, rgba(204, 204, 0, 0) 107.92%)',
+        }}
+      ></div>
+
+      <div className="container mx-auto max-w-screen-xl flex flex-col md:flex-row justify-center py-16 items-center gap-x-16 px-6">
+        <div className="md:mb-0 mb-10">
+          <div className="container mx-auto max-w-screen-xl">
+            <div className=" bg-custom-seasalt mb-8">
+              <div className="text-4xl font-bold mb-8">Our Values</div>
+              <div className="text-2xl text-justify">
+                At Real Value, we hold honesty, customer service, and quality in
+                the highest regard. These values guide everything we do, from
+                the cars we select to the way we interact with our customers. We
+                believe in creating lasting relationships based on trust and
+                transparency.
+              </div>
             </div>
           </div>
-        </div>
 
-        <div className="container mx-auto max-w-screen-xl">
-          <div className="p-6 bg-custom-seasalt rounded-lg shadow-lg mb-8">
-            <div className="text-3xl font-bold mb-4">Our Services</div>
-            <div className="md:inline-block md:w-[65%] text-xl">
+          <div className=" bg-custom-seasalt mb-8">
+            <div className="text-4xl font-bold mb-4">Our Services</div>
+            <div className="text-2xl text-justify">
               We offer a comprehensive range of services to meet all your
               automotive needs:
               <br />
@@ -155,71 +184,76 @@ const AboutUs = () => {
                 </li>
               </ul>
             </div>
-            <div className="mt-8 md:mt-0 md:inline-block md:w-[35%]">
-              <Image
-                src={about4}
-                alt="showroom"
-                className="mx-auto w-[80%] md:mt-0 mt-4"
-              />
-            </div>
           </div>
         </div>
+        <Image
+          src={cars}
+          alt="showroom"
+          className="mx-auto w-[100%] md:w-[40%] h-[70%]"
+        />
+      </div>
 
-        <div className="container mx-auto max-w-screen-xl">
-          <div className="p-6 bg-custom-seasalt rounded-lg shadow-lg mb-8">
-            <div className="text-3xl font-bold mb-8">
-              Why Choose Real Value?
-            </div>
-            <div className="text-xl">
-              <ul>
-                <li>
-                  <b>Experience and Trust:</b> With 30 years in the business and
-                  over 20,000 satisfied customers, we have the experience and
-                  trust you can rely on.
-                </li>
-                <br />
-                <li>
-                  <b>Comprehensive Service:</b> From buying and selling to
-                  financing, we provide a full suite of services under one roof.
-                </li>
-                <br />
-                <li>
-                  <b>Quality Assurance:</b> Every car we sell goes through a
-                  rigorous inspection to ensure it meets our high standards of
-                  quality.
-                </li>
-              </ul>
-            </div>
+      <div
+        className="w-full h-px max-w-6xl mx-auto mb-16"
+        style={{
+          backgroundImage:
+            'linear-gradient(90deg, rgba(204, 204, 0, 0) 1.46%, rgba(204, 204, 0, 0.6) 40.83%, rgba(204, 204, 0, 0.3) 65.57%, rgba(204, 204, 0, 0) 107.92%)',
+        }}
+      ></div>
+
+      <div className="container mx-auto max-w-screen-xl">
+        <div className="p-6 bg-custom-seasalt mb-8">
+          <div className="text-4xl font-bold mb-8 md:mt-0 mt-10">
+            Why Choose Real Value?
+          </div>
+          <div className="text-2xl text-justify">
+            <ul>
+              <li>
+                <b>Experience and Trust:</b> With 30 years in the business and
+                over 20,000 satisfied customers, we have the experience and
+                trust you can rely on.
+              </li>
+              <br />
+              <li>
+                <b>Comprehensive Service:</b> From buying and selling to
+                financing, we provide a full suite of services under one roof.
+              </li>
+              <br />
+              <li>
+                <b>Quality Assurance:</b> Every car we sell goes through a
+                rigorous inspection to ensure it meets our high standards of
+                quality.
+              </li>
+            </ul>
           </div>
         </div>
+      </div>
 
-        <div className="container mx-auto max-w-screen-xl">
-          <div className="p-6 bg-custom-seasalt rounded-lg shadow-lg mb-8">
-            <div className="text-3xl font-bold mb-4 md:mb-0">
-              Meet Our Founder
-            </div>
+      <div
+        className="w-full h-px max-w-6xl mx-auto"
+        style={{
+          backgroundImage:
+            'linear-gradient(90deg, rgba(204, 204, 0, 0) 1.46%, rgba(204, 204, 0, 0.6) 40.83%, rgba(204, 204, 0, 0.3) 65.57%, rgba(204, 204, 0, 0) 107.92%)',
+        }}
+      ></div>
+
+      <div className="container mx-auto max-w-screen-xl flex flex-col md:flex-row justify-center py-16 items-center gap-x-16 px-4">
+        <div>
+          <div className="bg-custom-seasalt md:mb-8 mb-4">
+            <div className="text-4xl font-bold mb-4">Meet Our Founder</div>
             <div className="flex items-center flex-col md:flex-row justify-between">
-              <div className="md:inline-block md:w-[50%] align-top text-xl mb-6 md:mb-0">
+              <div className="align-top text-2xl mb-6 md:mb-0 text-justify">
                 Milan Poddar, our CEO and Founder, has been the driving force
                 behind Real Value. His vision and dedication have shaped our
                 company into what it is today—a leader in the used car market in
                 Ranchi.
               </div>
-              <div className="md:inline-block md:w-[30%] w-[70%]">
-                <Image
-                  src={founder}
-                  alt="founder"
-                  className="mx-auto md:w-[60%] w-[100%] my-auto"
-                />
-              </div>
             </div>
           </div>
-        </div>
 
-        <div className="container mx-auto max-w-screen-xl">
-          <div className="p-6 bg-custom-seasalt rounded-lg shadow-lg mb-8">
-            <div className="text-3xl font-bold mb-4">Our Future</div>
-            <div className="text-xl">
+          <div className="md:py-4 bg-custom-seasalt mb-10 md:mb-0">
+            <div className="text-4xl font-bold mb-4">Our Future</div>
+            <div className="text-2xl text-justify">
               Our goal is to become the largest used car dealer in East India.
               We are constantly expanding our inventory, improving our services,
               and exploring new ways to better serve our customers.
@@ -229,56 +263,13 @@ const AboutUs = () => {
             </div>
           </div>
         </div>
-        <Features />
-        <div className="mt-20 max-w-screen-xl mx-auto pb-12">
-          <div className="font-semibold text-3xl my-8 md:px-0 px-4">
-            Why Sell Your Car To Us
-          </div>
-          <div className="">
-            {whySellToUs.map((step, index) => (
-              <div
-                key={index}
-                className="
-            md:inline-block block  w-[20rem]
-             bg-custom-seasalt p-4 rounded-lg shadow-lg 
-             align-top mr-8 md:my-2 my-4 
-             hover:scale-105  hover:shadow-xl  transition-transform duration-200 
-            md:ml-0 md:translate-x-0 
-            ml-[50%] -translate-x-[50%]
-            "
-              >
-                <Image src={step.image} alt="sell-incentive" />
-              </div>
-            ))}
-          </div>
-        </div>
-        {/* <div className="w-[100vw] block md:inline-block md:pl-8 align-top py-8 bg-gray-900 text-custom-seasalt">
-          <div className="font-semibold text-3xl my-8 ml-4 md:ml-12">
-            Why Sell Your Car To Us?
-          </div>
-          <ul className="space-y-4 ml-6 md:ml-14">
-            <li className="flex items-center py-2">
-              <span className="flex-shrink-0 mr-4">
-                <FaCoins className="text-green-500 text-lg" />
-              </span>
-              <span className="text-lg">Best price</span>
-            </li>
-            <li className="flex items-center py-2">
-              <span className="flex-shrink-0 mr-4">
-                <FaClipboardCheck className="text-blue-500 text-lg" />
-              </span>
-              <span className="text-lg">Hassle-free documentation</span>
-            </li>
-            <li className="flex items-center py-2">
-              <span className="flex-shrink-0 mr-4">
-                <FaMoneyCheckAlt className="text-yellow-500 text-lg" />
-              </span>
-              <span className="text-lg">Instant Payment</span>
-            </li>
-          </ul>
-        </div> */}
+        <Image
+          src={night}
+          alt="showroom"
+          className="mx-auto w-[100%] md:w-[45%] h-[60%]"
+        />
       </div>
-    </>
+    </div>
   )
 }
 

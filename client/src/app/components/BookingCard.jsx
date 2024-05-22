@@ -107,11 +107,13 @@ const BookingCard = ({ sendDataToParent }) => {
         />
       </Form.Item>
       {/* <Form.Item> */}
-        <Button type=""
-         className="mt-10 flex w-full items-center !hover:text-custom-black justify-center md:rounded-md border !border-custom-yellow !text-custom-jet !bg-custom-yellow px-8 py-3 text-base font-medium  !hover:bg-yellow-600  !hover:border-transparent !focus:outline-none !focus:ring-2 !focus:ring-yellow-500 focus:ring-transparent fixed bottom-0 left-0 right-0 z-50 md:static rounded-none"
-                      htmlType="submit">
-          Book Now
-        </Button>
+      <Button
+        type=""
+        className="mt-10 flex w-full items-center !hover:text-custom-black justify-center md:rounded-md border !border-custom-yellow !text-custom-jet !bg-custom-yellow px-8 py-3 text-base font-medium  !hover:bg-yellow-600  !hover:border-transparent !focus:outline-none !focus:ring-2 !focus:ring-yellow-500 focus:ring-transparent fixed bottom-0 left-0 right-0 z-50 md:static rounded-none"
+        htmlType="submit"
+      >
+        Book Now
+      </Button>
       {/* </Form.Item> */}
     </Form>
   )
